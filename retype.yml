@@ -1,0 +1,11 @@
+input: .
+output: .retype
+url: # Add your website address here
+branding:
+  title: Parsley
+  label: Docs
+links:
+- text: GitHub Repo
+  link: https://github.com/matzefriedrich/parsley
+footer:
+  copyright: "&copy; Copyright {{ year }} - Matthias Friedrich. All rights reserved."
