@@ -3,7 +3,21 @@ label: Quick Start
 ---
 # Quick start
 
-To effectively understand dependency mapping in Parsley, let's look at a practical example involving types, interfaces, and constructor methods.
+This quick start guide walks you through structuring your application and using Parsley to dynamically register and resolve services (or components) at runtime. In this documentation, the terms services and components are used interchangeably but mean the same thing—object instances of a specific type. To effectively understand dependency mapping in Parsley, let's look at a practical example involving types, interfaces, and constructor methods. Once you are familiar with the basics, you can check out the rest of this documentation for more advanced usage and integration examples.
+
+## Structuring the application
+
+Inversion of control (IoC) is a design principle that flips your application's traditional approach to handling dependencies. Instead of having components directly instantiate their dependencies, you structure your application so that dependencies are provided to components at the time of their creation. In Parsley, object instances are created through constructor methods, whereby dependencies are expressed as arguments. This approach decouples your components and promotes more flexible and maintainable code.
+
+In the quick start example, we define a `DataService` interface and provide two implementations for it. The application maps the constructor functions to the abstraction, and resolves all registered services to call their `FetchData` method in a loop.
+
+### Add the Parsley reference
+
+Use the following command to add a reference to the latest version of the Parsley library to your project:
+
+```sh
+go get github.com/matzefriedrich/parsley
+```
 
 ### Define interfaces
 
@@ -66,13 +80,13 @@ _ = registration.RegisterTransient(registry, NewLocalDataService)
 
 ### Resolve dependencies
 
-Finally, services can be resolved via Parsley. This involves using the resolving package to obtain instances of your services as needed. Here's a more detailed breakdown of the process:
+Finally, services can be resolved via Parsley. This involves using the `resolving` package to obtain instances of your services as needed. Here's a more detailed breakdown of the process:
 
 * **Create a Resolver**: The `NewResolver` function initializes a resolver with the provided registry, which contains the configuration for all your service mappings.
 
-* **Create a context to manage scoped services**: The `NewScopeContext` function creates a new scope context. A scope context defines the lifetime and scope of the services being resolved. Here, we're using the background context from the context package, which is a common way to initialize a root context in Go.
+* **Create a context to manage scoped services**: The `NewScopedContext` function creates a new scope context. A scope context defines the lifetime and scope of the services being resolved. Here, we're using the background context from the context package, which is a common way to initialize a root context in Go.
 
-* **Resolve the required services**: The `ResolveRequiredServices[T]` function is used to retrieve instances of the specified service type (`DataService` in this case). This function requires the resolver and scope context as parameters. It returns a list of services and an error, allowing you to handle any issues that might occur during the resolution process.
+* **Resolve the required services**: The `ResolveRequiredServices[T]` function is used to retrieve instances of the specified service type (`DataService` in this case). This function requires the resolver and scope context as parameters. It returns a list of object instances compatible with the specified type `T` and an error, allowing you to handle any issues that might occur during the resolution process.
 
 ````golang
 resolver := resolving.NewResolver(registry)
