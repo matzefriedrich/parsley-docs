@@ -2,7 +2,8 @@ package main
 
 import (
 	"context"
-	"github.com/matzefriedrich/parsley-docs/examples/quick-start/cmd/internal"
+
+	"github.com/matzefriedrich/parsley-docs/examples/quick-start/internal"
 	"github.com/matzefriedrich/parsley/pkg/registration"
 	"github.com/matzefriedrich/parsley/pkg/resolving"
 )
