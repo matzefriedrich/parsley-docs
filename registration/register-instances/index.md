@@ -1,6 +1,6 @@
 ---
 label: Register Instances
-tags: [ registration, instances, singletons ]
+tags: [ registration, instances, singleton ]
 ---
 # Register Instances
 

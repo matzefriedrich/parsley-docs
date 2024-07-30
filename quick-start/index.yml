@@ -1,4 +1,5 @@
-order: 1000
-label: Quick Start
 date: 2024-07-16
+label: Quick Start
+icon: ":beginner:"
+order: 1000
 tags: [ introduction, guide ]
