@@ -9,33 +9,33 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Quick start</title>
-    <meta name="title" content="Quick start">
-    <meta name="description" content="This quick start guide walks you through structuring your application and using Parsley to dynamically register and resolve services (or components)...">
+    <title>Register Named Services</title>
+    <meta name="title" content="Register Named Services">
+    <meta name="description" content="In Parsely, you can register services with specific names to support more granular control and flexible resolution of service instances.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/quick-start/">
+    <link rel="canonical" href="/registration/register-named-services/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/quick-start/">
-    <meta property="og:title" content="Quick start">
-    <meta property="og:description" content="This quick start guide walks you through structuring your application and using Parsley to dynamically register and resolve services (or components)...">
+    <meta property="og:url" content="/registration/register-named-services/">
+    <meta property="og:title" content="Register Named Services">
+    <meta property="og:description" content="In Parsely, you can register services with specific names to support more granular control and flexible resolution of service instances.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/quick-start/">
-    <meta property="twitter:title" content="Quick start">
-    <meta property="twitter:description" content="This quick start guide walks you through structuring your application and using Parsley to dynamically register and resolve services (or components)...">
+    <meta property="twitter:url" content="/registration/register-named-services/">
+    <meta property="twitter:title" content="Register Named Services">
+    <meta property="twitter:description" content="In Parsely, you can register services with specific names to support more granular control and flexible resolution of service instances.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=3.5.0.775615257967" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.775615257967" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.775615257967" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.775615257967" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.5.0.775615257967" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775615257967" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775615257967" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.775615257967" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -50,7 +50,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../" class="flex items-center leading-snug text-2xl">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-2xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Parsley</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
                     </div>
@@ -164,125 +164,116 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="quick-start" class="break-words">
+<doc-anchor-target id="register-named-services" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#quick-start">#</doc-anchor-trigger>
-        <span>Quick start</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#register-named-services">#</doc-anchor-trigger>
+        <span>Register Named Services</span>
     </h1>
 </doc-anchor-target>
-<p>This quick start guide walks you through structuring your application and using Parsley to dynamically register and resolve services (or components) at runtime. In this documentation, the terms services and components are used interchangeably but mean the same thing—object instances of a specific type. To effectively understand dependency mapping in Parsley, let&#x27;s look at a practical example involving types, interfaces, and constructor methods. Once you are familiar with the basics, you can check out the rest of this documentation for more advanced usage and integration examples.</p>
-<doc-anchor-target id="structuring-the-application">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#structuring-the-application">#</doc-anchor-trigger>
-        <span>Structuring the application</span>
-    </h2>
-</doc-anchor-target>
-<p>Inversion of control (IoC) is a design principle that flips your application&#x27;s traditional approach to handling dependencies. Instead of having components directly instantiate their dependencies, you structure your application so that dependencies are provided to components at the time of their creation. In Parsley, object instances are created through constructor methods, whereby dependencies are expressed as arguments. This approach decouples your components and promotes more flexible and maintainable code.</p>
-<p>In the quick start example, we define a <code v-pre>DataService</code> interface and provide two implementations for it. The application maps the constructor functions to the abstraction, and resolves all registered services to call their <code v-pre>FetchData</code> method in a loop.</p>
-<doc-anchor-target id="add-the-parsley-reference">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#add-the-parsley-reference">#</doc-anchor-trigger>
-        <span>Add the Parsley reference</span>
-    </h3>
-</doc-anchor-target>
-<p>Use the following command to add a reference to the latest version of the Parsley library to your project:</p>
+<p>In Parsely, you can register services with specific names to support more granular control and flexible resolution of service instances. Named services are beneficial when you need to manage multiple implementations of the same interface or provide different configurations for different contexts.</p>
+<p>When registering named services, you associate a unique name with each implementation. This allows you to resolve and retrieve the correct service based on its name, enhancing your application&#x27;s flexibility and configurability.</p>
+<p>Suppose you have an interface <code v-pre>DataService</code> with two implementations: <code v-pre>remoteDataService</code> and <code v-pre>localDataService</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">go get github.com/matzefriedrich/parsley</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="define-interfaces">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#define-interfaces">#</doc-anchor-trigger>
-        <span>Define interfaces</span>
-    </h3>
-</doc-anchor-target>
-<p>Interfaces in Go are a powerful tool for decoupling dependencies and defining contracts between different components of an application or library. While the Go community often emphasizes composition over inheritance and favors concrete types over interfaces in many scenarios, defining interfaces remains viable, particularly when integrating with existing enterprise patterns - such as dependency injection - from other languages.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">type DataService interface {
-    FetchData() string
-}</code></pre>
-</doc-codeblock></div>
-<p>In the provided example, <code v-pre>DataService</code> is an interface that mandates the implementation of the <code v-pre>FetchData</code> method, which should return a string. This contract ensures that any implementing DataService will provide a method to fetch data, regardless of how it is internally implemented (e.g., fetching from a remote server, database, or local storage).</p>
-<doc-anchor-target id="create-implementation-types">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#create-implementation-types">#</doc-anchor-trigger>
-        <span>Create implementation types</span>
-    </h3>
-</doc-anchor-target>
-<p>Implementation types are the concrete structs that fulfill the contracts defined by the interfaces. If combined with constructor functions (whose return type are interfaces), those structs can be kept private.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">type remoteDataService struct {}
+<pre class="language-go"><code v-pre class="language-go">package internal
 
-func (s *remoteDataService) FetchData() string {
-    return &quot;Data from remote server&quot;
+import &quot;fmt&quot;
+
+type DataService interface {
+	FetchData() string
 }
 
-type localDataService struct {}
+type remoteDataService struct {
+	tenantId string
+}
+
+func (s *remoteDataService) FetchData() string {
+	return fmt.Sprintf(&quot;Data from remote server for tenant %s&quot;, s.tenantId)
+}
+
+type localDataService struct{}
 
 func (s *localDataService) FetchData() string {
-    return &quot;Data from local database&quot;
-}</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="define-constructor-methods">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#define-constructor-methods">#</doc-anchor-trigger>
-        <span>Define constructor methods</span>
-    </h3>
-</doc-anchor-target>
-<p>Constructor methods are responsible for creating instances of the implementation types. These methods specify the dependencies required by the implementation type through their parameters. To keep things simple for now, the services in this example are not dependent on other services, thus the constructor functions do not have any parameters.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">func NewRemoteDataService() DataService {
-    return &amp;remoteDataService{}
+	return &quot;Data from local database&quot;
+}
+
+func NewRemoteDataService() DataService {
+	return &amp;remoteDataService{}
+}
+
+func NewRemoteDataServiceFactory() func(string) DataService {
+	return func(tenantId string) DataService {
+		return &amp;remoteDataService{
+			tenantId: tenantId,
+		}
+	}
 }
 
 func NewLocalDataService() DataService {
-    return &amp;localDataService{}
+	return &amp;localDataService{}
+}
+
+func NewLocalDataServiceFactory() func(string) DataService {
+	return func(_ string) DataService {
+		return &amp;localDataService{}
+	}
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="configure-dependency-mapping-in-parsley">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-dependency-mapping-in-parsley">#</doc-anchor-trigger>
-        <span>Configure dependency mapping in Parsley</span>
-    </h3>
+<doc-anchor-target id="register-named-services-1">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#register-named-services-1">#</doc-anchor-trigger>
+        <span>Register named services</span>
+    </h2>
 </doc-anchor-target>
-<p>With the types, interfaces, and constructor methods defined, you can now configure Parsley to map these dependencies. This involves setting up a service registry and registering the services with appropriate lifetimes. The example below registers the <code v-pre>remoteDataService</code> and <code v-pre>localDataService</code> types as transient services.</p>
-<ul>
-<li><p><strong>Create a service registry</strong>: The <code v-pre>NewServiceRegistry</code> function initializes a new service registry, which will hold the configuration for all your service mappings.</p>
-</li>
-<li><p><strong>Register services</strong>: Services are registered with the registry using functions such as <code v-pre>RegisterTransient</code>, <code v-pre>RegisterScoped</code>, <code v-pre>RegisterSingleon</code> and others. In this example, we&#x27;re registering services using the constructor functions <code v-pre>NewRemoteDataService</code> and <code v-pre>NewLocalDataService</code> with a transient lifetime behavior, causing the resolver to instanciate services each time they are requested.</p>
-</li>
-</ul>
+<p>Register each service with a unique name using <code v-pre>RegisterNamed</code>. This allows you to specify different names for each implementation and control their lifecycle.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">registry := registration.NewServiceRegistry()
-_ = registration.RegisterTransient(registry, NewRemoteDataService)
-_ = registration.RegisterTransient(registry, NewLocalDataService)</code></pre>
+
+_ = features.RegisterNamed[internal.DataService](registry,
+	registration.NamedServiceRegistration(&quot;remote&quot;, internal.NewRemoteDataService, types.LifetimeTransient),
+	registration.NamedServiceRegistration(&quot;local&quot;, internal.NewLocalDataService, types.LifetimeTransient))</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="resolve-dependencies">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#resolve-dependencies">#</doc-anchor-trigger>
-        <span>Resolve dependencies</span>
-    </h3>
+<p>In this example, <code v-pre>RegisterNamed</code> is used to register the constructor functions <code v-pre>NewRemoteDataService</code> and <code v-pre>NewLocalDataService</code> with the names <code v-pre>remote</code> and <code v-pre>local</code>, respectively. The <code v-pre>LifetimeTransient</code> parameter indicates that each service instance is transient and will be created anew each time it is resolved.</p>
+<blockquote>
+<p><strong>Note</strong> Implementation types registered with a name are not resolved when resolving (all) services registered for an interface type. If you want to resolve those services as a list, you must register them twice.</p>
+</blockquote>
+<doc-anchor-target id="resolve-and-use-named-services">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#resolve-and-use-named-services">#</doc-anchor-trigger>
+        <span>Resolve and use named services</span>
+    </h2>
 </doc-anchor-target>
-<p>Finally, services can be resolved via Parsley. This involves using the <code v-pre>resolving</code> package to obtain instances of your services as needed. Here&#x27;s a more detailed breakdown of the process:</p>
-<ul>
-<li><p><strong>Create a Resolver</strong>: The <code v-pre>NewResolver</code> function initializes a resolver with the provided registry, which contains the configuration for all your service mappings.</p>
-</li>
-<li><p><strong>Create a context to manage scoped services</strong>: The <code v-pre>NewScopedContext</code> function creates a new scope context. A scope context defines the lifetime and scope of the services being resolved. Here, we&#x27;re using the background context from the context package, which is a common way to initialize a root context in Go.</p>
-</li>
-<li><p><strong>Resolve the required services</strong>: The <code v-pre>ResolveRequiredServices[T]</code> function is used to retrieve instances of the specified service type (<code v-pre>DataService</code> in this case). This function requires the resolver and scope context as parameters. It returns a list of object instances compatible with the specified type <code v-pre>T</code> and an error, allowing you to handle any issues that might occur during the resolution process.</p>
-</li>
-</ul>
+<p>To resolve a named service, you use a factory function that takes the name of the service (a <code v-pre>string</code> parameter) and returns an instance of the service along with any errors. This is done through the <code v-pre>ResolveRequiredService</code> function:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">resolver := resolving.NewResolver(registry)
-scope := resolving.NewScopeContext(context.Background())
-dataServices, _ := resolving.ResolveRequiredServices[DataService](resolver, scope)
+<pre class="language-go"><code v-pre class="language-go">serviceFactory, _ := resolving.ResolveRequiredService[func(string) (internal.DataService, error)](resolver, scope)
+localDataService, err := serviceFactory(&quot;local&quot;)
+if err != nil {
+	panic(err)
+}
 
-for _, service := range dataServices {
-    data := service.FetchData()
-    fmt.Println(data)
-}</code></pre>
+data := localDataService.FetchData()
+fmt.Println(data)</code></pre>
 </doc-codeblock></div>
+<blockquote>
+<p><strong>Note</strong> You can combine the concept of factory functions and named services, but you must ensure that the signature of the factory function is the same for all named services.</p>
+</blockquote>
 
-                                
+                                <div class="flex items-center mt-6 mb-6 clear-both">
+                                    <span>
+                                        <a href="../../tags/">
+                                            <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
+                                        </a>
+                                        <span class="mr-2"><a href="../../tags/registration/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>registration</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/named-services/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>named services</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/service-factory/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>service factory</span>
+                                </a></span>
+                                    </span>
+                                </div>
+                
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
@@ -290,23 +281,16 @@ for _, service := range dataServices {
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../registration/register-factory-functions/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Welcome to the Parsley documentation</span>
+                                                <span class="block mt-1">Register Factory Functions</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../registration/register-ctor-functions/">
-                                            <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Register Constructor Functions</span>
-                                            </span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                        </a>
                                     </div>
                                 </nav>
                             </footer>
@@ -347,6 +331,6 @@ for _, service := range dataServices {
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Quick Start", level: 1, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Register Named Services", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
