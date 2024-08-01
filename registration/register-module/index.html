@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.775694121872">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.775863410687">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Register Constructor Functions</title>
-    <meta name="title" content="Register Constructor Functions">
-    <meta name="description" content="In Parsely, the fundamental way to register services is by providing a constructor function to the service registry.">
+    <title>Register service modules</title>
+    <meta name="title" content="Register service modules">
+    <meta name="description" content="Parsley provides a convenient way to group related services into modules using the RegisterModule method.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/registration/register-ctor-functions/">
+    <link rel="canonical" href="/registration/register-module/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/registration/register-ctor-functions/">
-    <meta property="og:title" content="Register Constructor Functions">
-    <meta property="og:description" content="In Parsely, the fundamental way to register services is by providing a constructor function to the service registry.">
+    <meta property="og:url" content="/registration/register-module/">
+    <meta property="og:title" content="Register service modules">
+    <meta property="og:description" content="Parsley provides a convenient way to group related services into modules using the RegisterModule method.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/registration/register-ctor-functions/">
-    <meta property="twitter:title" content="Register Constructor Functions">
-    <meta property="twitter:description" content="In Parsely, the fundamental way to register services is by providing a constructor function to the service registry.">
+    <meta property="twitter:url" content="/registration/register-module/">
+    <meta property="twitter:title" content="Register service modules">
+    <meta property="twitter:description" content="Parsley provides a convenient way to group related services into modules using the RegisterModule method.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.775694121872" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.775863410687" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775694121872" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775863410687" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775694121872" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.775694121872" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775863410687" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.775863410687" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -164,44 +164,48 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="register-constructor-functions" class="break-words">
+<doc-anchor-target id="register-service-modules" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#register-constructor-functions">#</doc-anchor-trigger>
-        <span>Register Constructor Functions</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#register-service-modules">#</doc-anchor-trigger>
+        <span>Register service modules</span>
     </h1>
 </doc-anchor-target>
-<p>In Parsely, the fundamental way to register services is by providing a constructor function to the service registry. This method enables you to create instances of your services in a controlled manner and inject them into your application as needed.</p>
-<p>Here’s a basic example of registering a service using a constructor function:</p>
+<p>Parsley provides a convenient way to group related services into modules using the <code v-pre>RegisterModule</code> method. This method allows you to register a function that bundles service registrations, making your code more organized and maintainable. Here’s how to use it:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">registry := registration.NewServiceRegistry()
-_ = registration.RegisterTransient(registry, internal.NewGreeter)</code></pre>
-</doc-codeblock></div>
-<p>In this example, the <code v-pre>NewGreeter</code> function is used to create instances of the <code v-pre>Greeter</code> interface. This function returns an implementation of <code v-pre>Greeter</code> while hiding the concrete type <code v-pre>*greeter</code>.</p>
-<p>The <code v-pre>Greeter</code> interface and its implementation are defined as follows:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package internal
+<pre class="language-go"><code v-pre class="language-go">package main
 
-import &quot;fmt&quot;
+import (
+	&quot;context&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/registration-concepts/internal&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/resolving&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
 
-type Greeter interface {
-	SayHello(name string, polite bool)
+func main() {
+
+	registry := registration.NewServiceRegistry()
+	registry.RegisterModule(greeterModule)
+
+	resolver := resolving.NewResolver(registry)
+	greeter, _ := resolving.ResolveRequiredService[internal.Greeter](resolver, resolving.NewScopedContext(context.Background()))
+	greeter.SayHello(&quot;John&quot;, false)
 }
 
-type greeter struct{}
-
-func (g *greeter) SayHello(name string, polite bool) {
-	if polite {
-		fmt.Printf(&quot;Good day, %s!\n&quot;, name)
-	} else {
-		fmt.Printf(&quot;Hello, %s\n&quot;, name)
-	}
-}
-
-func NewGreeter() Greeter {
-	return &amp;greeter{}
+func greeterModule(registry types.ServiceRegistry) error {
+	registry.Register(internal.NewGreeterFactory(&quot;Hi&quot;), types.LifetimeTransient)
+	return nil
 }</code></pre>
 </doc-codeblock></div>
-<p>While it’s possible for <code v-pre>NewGreeter</code> to return a *greeter directly, it is generally advisable to return the interface type <code v-pre>Greeter</code>. This approach maintains flexibility and abstraction, making it easier to change implementations without modifying dependent code.</p>
+<doc-anchor-target id="benefits">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#benefits">#</doc-anchor-trigger>
+        <span>Benefits</span>
+    </h2>
+</doc-anchor-target>
+<p>Using <code v-pre>RegisterModule</code> offers several benefits. It helps maintain a clean and organized code structure by grouping related services, making the codebase more straightforward to manage.</p>
+<p>Modules allow you to define and reuse service groupings across different parts of your application, promoting modularity and reusability. Additionally, this approach keeps the service registration logic separate from the application logic, enhancing the separation of concerns and improving overall code maintainability and clarity as your application scales.</p>
+<p>Another use case could be a package that keeps all service implementation types private to the package but exports nothing else, like interfaces and module registration functions. This way, services can be integrated into apps without exposure.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
@@ -211,8 +215,14 @@ func NewGreeter() Greeter {
                                         <span class="mr-2"><a href="../../tags/registration/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
                                     <span>registration</span>
                                 </a></span>
-                                        <span class="mr-2"><a href="../../tags/constructor-function/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>constructor function</span>
+                                        <span class="mr-2"><a href="../../tags/modules/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>modules</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/separation-of-concerns/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>separation of concerns</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/service-groupings/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>service groupings</span>
                                 </a></span>
                                     </span>
                                 </div>
@@ -224,20 +234,20 @@ func NewGreeter() Greeter {
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../quick-start/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../registration/register-instances/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Quick Start</span>
+                                                <span class="block mt-1">Register Instances</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../registration/register-factory-functions/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../registration/register-named-services/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Register Factory Functions</span>
+                                                <span class="block mt-1">Register Named Services</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -281,6 +291,6 @@ func NewGreeter() Greeter {
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Register Constructor Functions", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Register Module", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
