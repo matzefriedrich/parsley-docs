@@ -1,3 +1,4 @@
-order: -170
+expanded: true
 label: Resolving Services
+order: -170
 tags: [ introduction, guide ]
