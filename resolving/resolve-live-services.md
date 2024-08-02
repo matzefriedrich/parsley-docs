@@ -5,7 +5,7 @@ tags: [ resolving, instances, complex dependencies, dynamic object creation ]
 ---
 # Live services: Activating unregistered dependencies
 
-Parsley allows you to create live service instances with dependencies using factory functions and the `Activate` method. This feature enables you to dynamically instantiate objects using registered services without prior registration of the object types in question.
+The `Activate` method allows you to dynamically create instances using registered services, even if the requested service type is not registered. This approach is helpful for scenarios where you need to instantiate objects on the fly with specific dependencies provided by registered services.
 
 :::code language="golang" source="/examples/resolving-services/cmd/resolve-live-services/main.go" :::
 
@@ -19,4 +19,4 @@ This is helpful for use cases like the following:
 
 * **Third-party integrations:** When integrating with third-party libraries that require on-the-fly object creation based on dynamically resolved dependencies.
 
-Activating unregistered dependencies enhances flexibility in managing dependencies and streamlines the process of integrating various services dynamically and efficiently.
+The `Activate` method allows for flexible and efficient dependency injection by dynamically pulling registered instances from the resolver and injecting them into your factory function, ensuring that your dynamically created objects have the necessary dependencies.
