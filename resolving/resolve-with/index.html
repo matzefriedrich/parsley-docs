@@ -9,32 +9,33 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Welcome to Parsley</title>
-    <meta name="title" content="Welcome to Parsley">
-    <meta name="description" content="Parsley is an easy-to-use, reflection-based dependency injection package that fits seamlessly into any Go application.">
+    <title>Passing specific instances to the resolver</title>
+    <meta name="title" content="Passing specific instances to the resolver">
+    <meta name="description" content="Parsley's ResolveWithOptions method allows you to pass specific instances into the resolver, providing certain dependencies dynamically at resolution...">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/">
+    <link rel="canonical" href="/resolving/resolve-with/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/">
-    <meta property="og:title" content="Welcome to Parsley">
-    <meta property="og:description" content="Parsley is an easy-to-use, reflection-based dependency injection package that fits seamlessly into any Go application.">
+    <meta property="og:url" content="/resolving/resolve-with/">
+    <meta property="og:title" content="Passing specific instances to the resolver">
+    <meta property="og:description" content="Parsley's ResolveWithOptions method allows you to pass specific instances into the resolver, providing certain dependencies dynamically at resolution...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/">
-    <meta property="twitter:title" content="Welcome to Parsley">
-    <meta property="twitter:description" content="Parsley is an easy-to-use, reflection-based dependency injection package that fits seamlessly into any Go application.">
+    <meta property="twitter:url" content="/resolving/resolve-with/">
+    <meta property="twitter:title" content="Passing specific instances to the resolver">
+    <meta property="twitter:description" content="Parsley's ResolveWithOptions method allows you to pass specific instances into the resolver, providing certain dependencies dynamically at resolution...">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="resources/css/retype.css?v=3.5.0.775948444270" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.775948444270" rel="stylesheet">
 
-    <script data-cfasync="false" src="resources/js/config.js?v=3.5.0.775948444270" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="resources/js/lunr.js?v=3.5.0.775948444270" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775948444270" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775948444270" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.775948444270" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -49,7 +50,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="" class="flex items-center leading-snug text-2xl">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-2xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Parsley</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
                     </div>
@@ -163,39 +164,76 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="welcome-to-parsley" class="break-words">
+<doc-anchor-target id="passing-specific-instances-to-the-resolver" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#welcome-to-parsley">#</doc-anchor-trigger>
-        <span>Welcome to Parsley</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#passing-specific-instances-to-the-resolver">#</doc-anchor-trigger>
+        <span>Passing specific instances to the resolver</span>
     </h1>
 </doc-anchor-target>
-<p>Parsley is an easy-to-use, reflection-based dependency injection package that fits seamlessly into any Go application. It bridges the gap between dependency configuration and service activation, providing automated lifetime management and a clean, organized way to handle dependencies.</p>
-<doc-anchor-target id="features">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#features">#</doc-anchor-trigger>
-        <span>Features</span>
-    </h2>
-</doc-anchor-target>
+<p>Parsley&#x27;s <code v-pre>ResolveWithOptions</code> method allows you to pass specific instances into the resolver, providing certain dependencies dynamically at resolution time. This method is handy when overriding registered dependencies or injecting unregistered instances into your objects.</p>
+<p>In the following example, the <code v-pre>newClient</code> constructor function registers a <code v-pre>client</code> service with a transient lifetime. During the resolution, an existing transport instance is passed to the resolver using <code v-pre>WithInstance</code>, ensuring that this specific instance is used for the client&#x27;s transport dependency.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+	&quot;context&quot;
+	&quot;fmt&quot;
+	&quot;reflect&quot;
+
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/resolving&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+func main() {
+
+	registry := registration.NewServiceRegistry()
+	registry.Register(newClient, types.LifetimeTransient)
+
+	resolver := resolving.NewResolver(registry)
+	ctx := resolving.NewScopedContext(context.Background())
+
+	resolveServiceType := types.MakeServiceType[*client]()
+	transportInstance := resolving.WithInstance[*transport](&amp;transport{})
+	instance, _ := resolver.ResolveWithOptions(ctx, resolveServiceType, transportInstance)
+
+	fmt.Println(reflect.ValueOf(instance).Pointer())
+}
+
+type transport struct {
+}
+
+type client struct {
+	transport *transport
+}
+
+func newClient(transport *transport) *client {
+	return &amp;client{
+		transport: transport,
+	}
+}</code></pre>
+</doc-codeblock></div>
+<p>Parsley&#x27;s ability to inject specific instances dynamically improves flexibility in managing dependencies and provides greater control over the instantiation process. This feature is particularly beneficial for the following use cases:</p>
 <ul>
-<li><strong>Register types via constructor functions:</strong> Easily map dependencies using constructor functions.</li>
-<li><strong>Resolve objects by type:</strong> Supports both interface and pointer types.</li>
-<li><strong>Support for various lifetimes:</strong> Configure services as singletons, scoped, or transient.</li>
-<li><strong>Named service registration:</strong> Register multiple implementations and resolve them by name.</li>
-<li><strong>Factory function support:</strong> Create instances based on runtime parameters.</li>
-<li><strong>Module registration:</strong> Bundle type registrations as modules for easier management.</li>
+<li><p><strong>Runtime configuration:</strong> Dynamically configure services based on runtime conditions by passing specific instances.</p>
+</li>
+<li><p><strong>Dependency injection in testing:</strong> Use mock objects or specific instances during tests to simulate various scenarios without altering the registration setup.</p>
+</li>
+<li><p><strong>Third-party integrations:</strong> Integrate with third-party services or libraries that require preconfigured instances, ensuring they are used as dependencies when needed.</p>
+</li>
 </ul>
-<p>Want to know more? Read on to discover how Parsley can enhance your Go application&#x27;s architecture and maintainability.</p>
+<p>By using <code v-pre>ResolveWithOptions</code>, you can push unregistered instances into the resolver, ensuring the correct instances are used when resolving dependencies.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
-                                        <a href="tags/">
+                                        <a href="../../tags/">
                                             <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
                                         </a>
-                                        <span class="mr-2"><a href="tags/introduction/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>introduction</span>
+                                        <span class="mr-2"><a href="../../tags/resolving/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>resolving</span>
                                 </a></span>
-                                        <span class="mr-2"><a href="tags/guide/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>guide</span>
+                                        <span class="mr-2"><a href="../../tags/instances/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>instances</span>
                                 </a></span>
                                     </span>
                                 </div>
@@ -207,13 +245,20 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../resolving/lifetime-scopes/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Lifetime Scopes</span>
+                                            </span>
+                                        </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="quick-start/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../resolving/resolve-live-services/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Quick Start</span>
+                                                <span class="block mt-1">Activating unregistered dependencies</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -257,6 +302,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Welcome to Parsley", isRoot: true, level: 0, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Resolving services with specific instances", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
