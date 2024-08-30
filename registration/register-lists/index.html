@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.776562654973">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778360169191">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Register Lists of Services</title>
-    <meta name="title" content="Register Lists of Services">
-    <meta name="description" content="The RegisterList[T] method in Parsley allows you to register multiple services of the same type, enabling the resolver to inject a slice of these...">
+    <title>Register service lists</title>
+    <meta name="title" content="Register service lists">
+    <meta name="description" content="Parsley supports registering multiple services under the same contract type, allowing you to inject a list of these services into your application.">
 
     <!-- Canonical -->
     <link rel="canonical" href="/registration/register-lists/">
@@ -19,23 +19,23 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="/registration/register-lists/">
-    <meta property="og:title" content="Register Lists of Services">
-    <meta property="og:description" content="The RegisterList[T] method in Parsley allows you to register multiple services of the same type, enabling the resolver to inject a slice of these...">
+    <meta property="og:title" content="Register service lists">
+    <meta property="og:description" content="Parsley supports registering multiple services under the same contract type, allowing you to inject a list of these services into your application.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/registration/register-lists/">
-    <meta property="twitter:title" content="Register Lists of Services">
-    <meta property="twitter:description" content="The RegisterList[T] method in Parsley allows you to register multiple services of the same type, enabling the resolver to inject a slice of these...">
+    <meta property="twitter:title" content="Register service lists">
+    <meta property="twitter:description" content="Parsley supports registering multiple services under the same contract type, allowing you to inject a list of these services into your application.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.776562654973" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.778360169191" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.776562654973" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778360169191" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.776562654973" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.776562654973" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778360169191" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.778360169191" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -164,13 +164,21 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="register-lists-of-services" class="break-words">
+<doc-anchor-target id="register-service-lists" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#register-lists-of-services">#</doc-anchor-trigger>
-        <span>Register Lists of Services</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#register-service-lists">#</doc-anchor-trigger>
+        <span>Register service lists</span>
     </h1>
 </doc-anchor-target>
-<p>The <code v-pre>RegisterList[T]</code> method in Parsley allows you to register multiple services of the same type, enabling the resolver to inject a slice of these objects into constructor or factory functions. This feature is particularly useful when you want to inject a collection of services that share a common interface or type, allowing for greater flexibility and modularity in your application&#x27;s design.</p>
+<p>Parsley supports registering multiple services under the same contract type, allowing you to inject a list of these services into your application. While you can always resolve multiple services of the same contract using the <code v-pre>ResolveRequiredServices[T]</code> method, injecting them as an array or slice requires a list registration via the <code v-pre>RegisterList[T]</code>  method.</p>
+<p>This method facilitates the automatic injection of all registered services that share the same contract type, providing greater flexibility and scalability in managing multiple service implementations.</p>
+<doc-anchor-target id="example">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
+        <span>Example</span>
+    </h2>
+</doc-anchor-target>
+<p>This example demonstrates registering and injecting a list of services sharing the same contract type using Parsley&#x27;s <code v-pre>RegisterList[T]</code> feature. In the code, two data service constructor functions (<code v-pre>NewLocalDataService</code> and <code v-pre>NewRemoteDataService</code>) are registered, and then <code v-pre>RegisterList[T]</code> is used to group the service registrations under the <code v-pre>DataService</code> contract. Please note that both constructor functions must return the service instances as <code v-pre>DataService</code> objects to make this automation work.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package main
 
@@ -187,21 +195,52 @@ import (
 func main() {
 
 	registry := registration.NewServiceRegistry()
-	registry.Register(internal.NewRemoteDataService, types.LifetimeScoped)
-	registry.Register(internal.NewLocalDataService, types.LifetimeTransient)
 
+	registry.Register(internal.NewLocalDataService, types.LifetimeTransient)
+	registry.Register(internal.NewRemoteDataService, types.LifetimeTransient)
 	features.RegisterList[internal.DataService](registry)
+
+	registry.Register(newAggregator, types.LifetimeTransient)
 
 	resolver := resolving.NewResolver(registry)
 	ctx := resolving.NewScopedContext(context.Background())
+	aggregator, _ := resolving.ResolveRequiredService[*dataAggregationService](resolver, ctx)
 
-	services, _ := resolving.ResolveRequiredService[[]internal.DataService](resolver, ctx)
-	for _, service := range services {
-		fmt.Println(service.FetchData())
+	results := aggregator.fetchAll()
+	for _, result := range results {
+		fmt.Println(result)
 	}
+}
+
+type dataAggregationService struct {
+	dataServices []internal.DataService
+}
+
+func newAggregator(dataServices []internal.DataService) *dataAggregationService {
+	return &amp;dataAggregationService{
+		dataServices: dataServices,
+	}
+}
+
+func (a *dataAggregationService) fetchAll() []string {
+	results := make([]string, 0)
+	for _, dataService := range a.dataServices {
+		data := dataService.FetchData()
+		results = append(results, data)
+	}
+	return results
 }</code></pre>
 </doc-codeblock></div>
-<p>List registrations always have a transient lifetime scope. Each time a list dependency of a specific type is requested from the resolver, a new list instance is created to respect each service instance&#x27;s lifetime. The lifetime behavior for the actual service instances is treated as configured.</p>
+<p>The <code v-pre>dataAggregationService</code> aggregates data from all registered <code v-pre>DataService</code> instances. When <code v-pre>fetchAll()</code> is called, it iterates over the injected list of <code v-pre>DataService</code> implementations, collects their data, and prints the results.</p>
+<p>The printed output confirms that local and remote data services are successfully aggregated and utilized.</p>
+<doc-anchor-target id="benefits-and-use-cases">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#benefits-and-use-cases">#</doc-anchor-trigger>
+        <span>Benefits and use cases</span>
+    </h2>
+</doc-anchor-target>
+<p>This feature is handy when working with multiple implementations of the same service contract, such as aggregating results from various sources or supporting different strategies for a given operation.</p>
+<p>The <code v-pre>RegisterList[T]</code> method simplifies managing these services and ensures that all relevant implementations are easily accessible in a single injection. This is especially valuable in modular systems or scenarios requiring dynamic extension of service capabilities.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
@@ -211,8 +250,8 @@ func main() {
                                         <span class="mr-2"><a href="../../tags/registration/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
                                     <span>registration</span>
                                 </a></span>
-                                        <span class="mr-2"><a href="../../tags/lists-of-services/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>lists of services</span>
+                                        <span class="mr-2"><a href="../../tags/service-lists/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>service lists</span>
                                 </a></span>
                                     </span>
                                 </div>
@@ -281,6 +320,6 @@ func main() {
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Register Lists of Services", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Register Lists", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
