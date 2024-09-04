@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Register Constructor Functions</title>
-    <meta name="title" content="Register Constructor Functions">
-    <meta name="description" content="In Parsely, the fundamental way to register services is by providing a constructor function to the service registry.">
+    <title>Walkthrough: Parsley Integration with GoFiber</title>
+    <meta name="title" content="Walkthrough: Parsley Integration with GoFiber">
+    <meta name="description" content="This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/registration/register-constructor-functions/">
+    <link rel="canonical" href="/integrations/gofiber/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/registration/register-constructor-functions/">
-    <meta property="og:title" content="Register Constructor Functions">
-    <meta property="og:description" content="In Parsely, the fundamental way to register services is by providing a constructor function to the service registry.">
+    <meta property="og:url" content="/integrations/gofiber/">
+    <meta property="og:title" content="Walkthrough: Parsley Integration with GoFiber">
+    <meta property="og:description" content="This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/registration/register-constructor-functions/">
-    <meta property="twitter:title" content="Register Constructor Functions">
-    <meta property="twitter:description" content="In Parsely, the fundamental way to register services is by providing a constructor function to the service registry.">
+    <meta property="twitter:url" content="/integrations/gofiber/">
+    <meta property="twitter:title" content="Walkthrough: Parsley Integration with GoFiber">
+    <meta property="twitter:description" content="This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -164,59 +164,287 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="register-constructor-functions" class="break-words">
+<doc-anchor-target id="walkthrough-parsley-integration-with-gofiber" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#register-constructor-functions">#</doc-anchor-trigger>
-        <span>Register Constructor Functions</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#walkthrough-parsley-integration-with-gofiber">#</doc-anchor-trigger>
+        <span>Walkthrough: Parsley Integration with GoFiber</span>
     </h1>
 </doc-anchor-target>
-<p>In Parsely, the fundamental way to register services is by providing a constructor function to the service registry. This method enables you to create instances of your services in a controlled manner and inject them into your application as needed.</p>
-<p>Here’s a basic example of registering a service using a constructor function:</p>
+<doc-anchor-target id="overview">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#overview">#</doc-anchor-trigger>
+        <span>Overview</span>
+    </h2>
+</doc-anchor-target>
+<p>This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework. By following this example, you&#x27;ll learn how to set up a GoFiber application with dependency injection managed by Parsley, making your codebase more modular, testable, and maintainable.</p>
+<doc-anchor-target id="project-structure">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#project-structure">#</doc-anchor-trigger>
+        <span>Project Structure</span>
+    </h2>
+</doc-anchor-target>
+<p>The code for this example can be found at <a href="https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/gofiber;">https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/gofiber;</a> it has the following structure:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">registry := registration.NewServiceRegistry()
-_ = registration.RegisterTransient(registry, internal.NewGreeter)</code></pre>
+<pre class="language-none"><code v-pre class="language-none">gofiber
+├── cmd
+│   └── main.go
+└── internal
+    ├── application.go
+    ├── modules
+    │   ├── fiber_module.go
+    │   ├── greeter_module.go
+    │   └── route_handlers_module.go
+    ├── route_handlers
+    │   ├── greeter.go
+    │   └── types.go
+    └── services
+        └── greeter.go</code></pre>
 </doc-codeblock></div>
-<p>In this example, the <code v-pre>NewGreeter</code> function is used to create instances of the <code v-pre>Greeter</code> interface. This function returns an implementation of <code v-pre>Greeter</code> while hiding the concrete type <code v-pre>*greeter</code>.</p>
-<p>The <code v-pre>Greeter</code> interface and its implementation are defined as follows:</p>
+<p>This article describes the project&#x27;s structure and the purpose of each module in detail.</p>
+<doc-anchor-target id="main-application">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#main-application">#</doc-anchor-trigger>
+        <span>Main Application</span>
+    </h3>
+</doc-anchor-target>
+<p>The main entry point of the application is in the <code v-pre>cmd/main.go</code> file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package internal
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+	&quot;context&quot;
+
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/gofiber/internal&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/gofiber/internal/modules&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/bootstrap&quot;
+)
+
+func main() {
+	context := context.Background()
+	bootstrap.RunParsleyApplication(context, internal.NewApp,
+		modules.ConfigureFiber,
+		modules.ConfigureGreeter)
+}</code></pre>
+</doc-codeblock></div>
+<p>In this file, the <code v-pre>RunParsleyApplication</code> function is called to bootstrap the application. It initializes the Parsley application context and configures the GoFiber server with the necessary services and route handlers.</p>
+<doc-anchor-target id="modules">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#modules">#</doc-anchor-trigger>
+        <span>Modules</span>
+    </h3>
+</doc-anchor-target>
+<p>The modules package contains the service configurations required to set up the GoFiber application. The <code v-pre>internal/modules/fiber_module.go</code> module configures the Fiber application and registers it as a singleton service within the Parsley framework:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package modules
+
+import (
+	&quot;github.com/gofiber/fiber/v2&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+var _ types.ModuleFunc = ConfigureFiber
+
+// ConfigureFiber Configures all services required by the Fiber app.
+func ConfigureFiber(registry types.ServiceRegistry) error {
+	registration.RegisterInstance(registry, fiber.Config{
+		AppName:   &quot;parsley-fiber-demo&quot;,
+		Immutable: true,
+	})
+	registry.Register(newFiber, types.LifetimeSingleton)
+	registry.RegisterModule(RegisterRouteHandlers)
+	return nil
+}
+
+func newFiber(config fiber.Config) *fiber.App {
+	return fiber.New(config)
+}</code></pre>
+</doc-codeblock></div>
+<p>This configuration ensures that the Fiber instance is initialized and available for dependency injection.</p>
+<doc-anchor-target id="services">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#services">#</doc-anchor-trigger>
+        <span>Services</span>
+    </h3>
+</doc-anchor-target>
+<p>Next, the <code v-pre>internal/services/greeter.go</code> file defines the <code v-pre>Greeter</code> service, which returns a greeting message based on the provided name and politeness flag.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package services
 
 import &quot;fmt&quot;
 
 type Greeter interface {
-	SayHello(name string, polite bool)
+	SayHello(name string, polite bool) string
 }
 
-type greeter struct{}
+type greeter struct {
+}
 
-func (g *greeter) SayHello(name string, polite bool) {
+func (g *greeter) SayHello(name string, polite bool) string {
 	if polite {
-		fmt.Printf(&quot;Good day, %s!\n&quot;, name)
+		return fmt.Sprintf(&quot;Good day, %s!\n&quot;, name)
 	} else {
-		fmt.Printf(&quot;Hello, %s\n&quot;, name)
+		return fmt.Sprintf(&quot;Hi, %s\n&quot;, name)
 	}
 }
 
-func NewGreeter() Greeter {
+func NewGreeterFactory() Greeter {
 	return &amp;greeter{}
 }</code></pre>
 </doc-codeblock></div>
-<p>While it’s possible for <code v-pre>NewGreeter</code> to return a *greeter directly, it is generally advisable to return the interface type <code v-pre>Greeter</code>. This approach maintains flexibility and abstraction, making it easier to change implementations without modifying dependent code.</p>
+<p>The <code v-pre>Greeter</code> service is registered by the <code v-pre>internal/modules/greeter_module.go</code> module.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package modules
 
-                                <div class="flex items-center mt-6 mb-6 clear-both">
-                                    <span>
-                                        <a href="../../tags/">
-                                            <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
-                                        </a>
-                                        <span class="mr-2"><a href="../../tags/registration/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>registration</span>
-                                </a></span>
-                                        <span class="mr-2"><a href="../../tags/constructor-function/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>constructor function</span>
-                                </a></span>
-                                    </span>
-                                </div>
-                
+import (
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/gofiber/internal/services&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+// ConfigureGreeter Configures the services.Greeter service dependencies.
+func ConfigureGreeter(registry types.ServiceRegistry) error {
+	registry.Register(services.NewGreeterFactory, types.LifetimeTransient)
+	return nil
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="route-handlers">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#route-handlers">#</doc-anchor-trigger>
+        <span>Route Handlers</span>
+    </h3>
+</doc-anchor-target>
+<p>In this example, route handlers are also services, structs implementing the <code v-pre>RouteHandler</code> interface, which register one or more route handlers with the Fiber application. The interface is defined as follows:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package route_handlers
+
+import &quot;github.com/gofiber/fiber/v2&quot;
+
+type RouteHandler interface {
+	Register(app *fiber.App)
+}</code></pre>
+</doc-codeblock></div>
+<p>The <code v-pre>internal/route_handlers/greeters.go</code> file registers the route handler for the <code v-pre>/say-hello</code> endpoint, which returns a greeting message based on the query parameters provided in the request. The logic for the message generation is handled by the <code v-pre>Greeter</code> service, which is injected into the <code v-pre>NewGreeterRouteHandler</code> method.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package route_handlers
+
+import (
+	&quot;github.com/gofiber/fiber/v2&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/gofiber/internal/services&quot;
+)
+
+type greeterRouteHandler struct {
+	greeter services.Greeter
+}
+
+// Register Registers all greeterRouteHandler route handlers.
+func (h *greeterRouteHandler) Register(app *fiber.App) {
+	app.Get(&quot;/say-hello&quot;, h.HandleSayHelloRequest)
+}
+
+// HandleSayHelloRequest Handles &quot;GET /say-hello&quot; requests.
+func (h *greeterRouteHandler) HandleSayHelloRequest(ctx *fiber.Ctx) error {
+	name := ctx.Query(&quot;name&quot;)
+	msg := h.greeter.SayHello(name, true)
+	ctx.Send([]byte(msg))
+	return ctx.SendStatus(fiber.StatusOK)
+}
+
+var _ RouteHandler = &amp;greeterRouteHandler{}
+
+func NewGreeterRouteHandler(greeter services.Greeter) RouteHandler {
+	return &amp;greeterRouteHandler{
+		greeter: greeter,
+	}
+}</code></pre>
+</doc-codeblock></div>
+<p>The <code v-pre>internal/modules/route_handler_module.go</code> file handles the registration of the <code v-pre>RouteHandler</code> services themselves.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package modules
+
+import (
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/gofiber/internal/route_handlers&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/features&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+// RegisterRouteHandlers Registers all route handlers of the GoFiber app.
+func RegisterRouteHandlers(registry types.ServiceRegistry) error {
+	features.RegisterList[route_handlers.RouteHandler](registry)
+	registration.RegisterTransient(registry, route_handlers.NewGreeterRouteHandler)
+	return nil
+}</code></pre>
+</doc-codeblock></div>
+<p>This configuration ensures that all route handlers the application requires are correctly registered and injected into the GoFiber instance. Since the application service expects a set of route handler services, the <code v-pre>RegisterList</code> method must be used to register a list activator for the <code v-pre>RouteHandler</code> type.</p>
+<doc-anchor-target id="application-logic">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#application-logic">#</doc-anchor-trigger>
+        <span>Application Logic</span>
+    </h3>
+</doc-anchor-target>
+<p>The <code v-pre>internal/application.go</code> file contains the main application service:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package internal
+
+import (
+	&quot;context&quot;
+
+	&quot;github.com/gofiber/fiber/v2&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/gofiber/internal/route_handlers&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/bootstrap&quot;
+)
+
+type parsleyApplication struct {
+	app *fiber.App
+}
+
+var _ bootstrap.Application = &amp;parsleyApplication{}
+
+// NewApp Creates the main application service instance. This constructor function gets invoked by Parsley; add parameters for all required services.
+func NewApp(app *fiber.App, routeHandlers []route_handlers.RouteHandler) bootstrap.Application {
+	for _, routeHandler := range routeHandlers {
+		routeHandler.Register(app)
+	}
+	return &amp;parsleyApplication{
+		app: app,
+	}
+}
+
+// Run The entrypoint for the Parsley application.
+func (a *parsleyApplication) Run(_ context.Context) error {
+	return a.app.Listen(&quot;:5502&quot;)
+}</code></pre>
+</doc-codeblock></div>
+<p>This file defines the <code v-pre>parsleyApplication</code> struct as the main application service. It registers the route handlers and starts the GoFiber server on port <code v-pre>5502</code>. However, aspects like having the listener port configurable or a graceful server shutdown are omitted here, but they could be addressed here as well.</p>
+<doc-anchor-target id="running-the-application">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#running-the-application">#</doc-anchor-trigger>
+        <span>Running the Application</span>
+    </h3>
+</doc-anchor-target>
+<p>To run the application, navigate to the root directory and execute the following command:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">go run main.go</code></pre>
+</doc-codeblock></div>
+<p>As configured in the code, the application will start a GoFiber server on <code v-pre>http://localhost:5502</code>. You can then access the <code v-pre>/say-hello</code> endpoint:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">curl &quot;http://localhost:5502/say-hello?name=John&quot;</code></pre>
+</doc-codeblock></div>
+<p>This should return:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">plaintext</div>
+<pre class="language-none"><code v-pre class="language-none">Good day, John!</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="conclusion">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#conclusion">#</doc-anchor-trigger>
+        <span>Conclusion</span>
+    </h2>
+</doc-anchor-target>
+<p>This example demonstrates how Parsley can be integrated with GoFiber to manage dependencies and route handlers. By leveraging Parsley, you can build more modular and maintainable Go applications with GoFiber, making managing dependencies easier and ensuring that your services are properly configured and injected.</p>
+<p>For more details on Parsley, check out the Parsley GitHub repository.</p>
+
+                                
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
@@ -224,23 +452,16 @@ func NewGreeter() Greeter {
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../quick-start/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../advanced-features/generate-proxy-services/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Quick Start</span>
+                                                <span class="block mt-1">Generated Proxies</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../registration/register-factory-functions/">
-                                            <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Register Factory Functions</span>
-                                            </span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                        </a>
                                     </div>
                                 </nav>
                             </footer>
@@ -281,6 +502,6 @@ func NewGreeter() Greeter {
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Register Constructor Functions", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Walkthrough: Parsley Integration with GoFiber", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
