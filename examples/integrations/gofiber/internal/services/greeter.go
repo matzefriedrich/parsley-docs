@@ -17,6 +17,6 @@ func (g *greeter) SayHello(name string, polite bool) string {
 	}
 }
 
-func NewGreeterFactory() Greeter {
+func NewGreeter() Greeter {
 	return &greeter{}
 }

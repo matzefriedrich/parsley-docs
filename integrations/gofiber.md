@@ -1,7 +1,5 @@
 # Walkthrough: Parsley Integration with GoFiber
 
-## Overview
-
 This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework. By following this example, you'll learn how to set up a GoFiber application with dependency injection managed by Parsley, making your codebase more modular, testable, and maintainable.
 
 ## Project Structure
@@ -37,7 +35,7 @@ In this file, the `RunParsleyApplication` function is called to bootstrap the ap
 
 ### Modules
 
-The modules package contains the service configurations required to set up the GoFiber application. The `internal/modules/fiber_module.go` module configures the Fiber application and registers it as a singleton service within the Parsley framework:
+The `modules` package contains the service configurations required to set up the GoFiber application. The `fiber_module.go` module configures the Fiber application and registers it as a singleton service within the Parsley framework:
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/modules/fiber_module.go" :::
 
@@ -49,7 +47,7 @@ Next, the `internal/services/greeter.go` file defines the `Greeter` service, whi
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/services/greeter.go" :::
 
-The `Greeter` service is registered by the `internal/modules/greeter_module.go` module.
+The `Greeter` service is registered by the `greeter_module.go` module.
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/modules/greeter_module.go" :::
 
@@ -60,15 +58,15 @@ In this example, route handlers are also services, structs implementing the `Rou
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/route_handlers/types.go" :::
 
-The `internal/route_handlers/greeters.go` file registers the route handler for the `/say-hello` endpoint, which returns a greeting message based on the query parameters provided in the request. The logic for the message generation is handled by the `Greeter` service, which is injected into the `NewGreeterRouteHandler` method.
+The `internal/route_handlers/greeter.go` file registers the route handler for the `/say-hello` endpoint, which returns a greeting message based on the query parameters provided in the request. The logic for the message generation is handled by the `Greeter` service, which is injected into the `NewGreeterRouteHandler` method.
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/route_handlers/greeter.go" :::
 
-The `internal/modules/route_handler_module.go` file handles the registration of the `RouteHandler` services themselves.
+The `route_handler_module.go` file handles the registration of the `RouteHandler` services themselves.
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/modules/route_handlers_module.go" :::
 
-This configuration ensures that all route handlers the application requires are correctly registered and injected into the GoFiber instance. Since the application service expects a set of route handler services, the `RegisterList` method must be used to register a list activator for the `RouteHandler` type.
+This configuration ensures that all route handlers the application requires are correctly registered and injected into the Fiber application instance. Since the application service expects a set of route handler services, the `RegisterList` method must be used to register a list activator for the `RouteHandler` type.
 
 
 ### Application Logic
@@ -95,12 +93,8 @@ curl "http://localhost:5502/say-hello?name=John"
 
 This should return:
 
-```plaintext
+```text
 Good day, John!
 ```
-
-## Conclusion
-
-This example demonstrates how Parsley can be integrated with GoFiber to manage dependencies and route handlers. By leveraging Parsley, you can build more modular and maintainable Go applications with GoFiber, making managing dependencies easier and ensuring that your services are properly configured and injected.
 
 For more details on Parsley, check out the Parsley GitHub repository.
