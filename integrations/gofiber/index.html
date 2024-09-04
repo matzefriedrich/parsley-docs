@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778792926529">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778797650961">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.778792926529" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.778797650961" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778792926529" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778797650961" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778792926529" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.778792926529" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778797650961" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.778797650961" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -170,12 +170,6 @@
         <span>Walkthrough: Parsley Integration with GoFiber</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="overview">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#overview">#</doc-anchor-trigger>
-        <span>Overview</span>
-    </h2>
-</doc-anchor-target>
 <p>This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework. By following this example, you&#x27;ll learn how to set up a GoFiber application with dependency injection managed by Parsley, making your codebase more modular, testable, and maintainable.</p>
 <doc-anchor-target id="project-structure">
     <h2>
@@ -233,7 +227,7 @@ func main() {
         <span>Modules</span>
     </h3>
 </doc-anchor-target>
-<p>The modules package contains the service configurations required to set up the GoFiber application. The <code v-pre>internal/modules/fiber_module.go</code> module configures the Fiber application and registers it as a singleton service within the Parsley framework:</p>
+<p>The <code v-pre>modules</code> package contains the service configurations required to set up the GoFiber application. The <code v-pre>fiber_module.go</code> module configures the Fiber application and registers it as a singleton service within the Parsley framework:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package modules
 
@@ -288,11 +282,11 @@ func (g *greeter) SayHello(name string, polite bool) string {
 	}
 }
 
-func NewGreeterFactory() Greeter {
+func NewGreeter() Greeter {
 	return &amp;greeter{}
 }</code></pre>
 </doc-codeblock></div>
-<p>The <code v-pre>Greeter</code> service is registered by the <code v-pre>internal/modules/greeter_module.go</code> module.</p>
+<p>The <code v-pre>Greeter</code> service is registered by the <code v-pre>greeter_module.go</code> module.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package modules
 
@@ -303,7 +297,7 @@ import (
 
 // ConfigureGreeter Configures the services.Greeter service dependencies.
 func ConfigureGreeter(registry types.ServiceRegistry) error {
-	registry.Register(services.NewGreeterFactory, types.LifetimeTransient)
+	registry.Register(services.NewGreeter, types.LifetimeTransient)
 	return nil
 }</code></pre>
 </doc-codeblock></div>
@@ -323,7 +317,7 @@ type RouteHandler interface {
 	Register(app *fiber.App)
 }</code></pre>
 </doc-codeblock></div>
-<p>The <code v-pre>internal/route_handlers/greeters.go</code> file registers the route handler for the <code v-pre>/say-hello</code> endpoint, which returns a greeting message based on the query parameters provided in the request. The logic for the message generation is handled by the <code v-pre>Greeter</code> service, which is injected into the <code v-pre>NewGreeterRouteHandler</code> method.</p>
+<p>The <code v-pre>internal/route_handlers/greeter.go</code> file registers the route handler for the <code v-pre>/say-hello</code> endpoint, which returns a greeting message based on the query parameters provided in the request. The logic for the message generation is handled by the <code v-pre>Greeter</code> service, which is injected into the <code v-pre>NewGreeterRouteHandler</code> method.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package route_handlers
 
@@ -357,7 +351,7 @@ func NewGreeterRouteHandler(greeter services.Greeter) RouteHandler {
 	}
 }</code></pre>
 </doc-codeblock></div>
-<p>The <code v-pre>internal/modules/route_handler_module.go</code> file handles the registration of the <code v-pre>RouteHandler</code> services themselves.</p>
+<p>The <code v-pre>route_handler_module.go</code> file handles the registration of the <code v-pre>RouteHandler</code> services themselves.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package modules
 
@@ -375,7 +369,7 @@ func RegisterRouteHandlers(registry types.ServiceRegistry) error {
 	return nil
 }</code></pre>
 </doc-codeblock></div>
-<p>This configuration ensures that all route handlers the application requires are correctly registered and injected into the GoFiber instance. Since the application service expects a set of route handler services, the <code v-pre>RegisterList</code> method must be used to register a list activator for the <code v-pre>RouteHandler</code> type.</p>
+<p>This configuration ensures that all route handlers the application requires are correctly registered and injected into the Fiber application instance. Since the application service expects a set of route handler services, the <code v-pre>RegisterList</code> method must be used to register a list activator for the <code v-pre>RouteHandler</code> type.</p>
 <doc-anchor-target id="application-logic">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#application-logic">#</doc-anchor-trigger>
@@ -432,16 +426,8 @@ func (a *parsleyApplication) Run(_ context.Context) error {
 </doc-codeblock></div>
 <p>This should return:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">plaintext</div>
 <pre class="language-none"><code v-pre class="language-none">Good day, John!</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="conclusion">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#conclusion">#</doc-anchor-trigger>
-        <span>Conclusion</span>
-    </h2>
-</doc-anchor-target>
-<p>This example demonstrates how Parsley can be integrated with GoFiber to manage dependencies and route handlers. By leveraging Parsley, you can build more modular and maintainable Go applications with GoFiber, making managing dependencies easier and ensuring that your services are properly configured and injected.</p>
 <p>For more details on Parsley, check out the Parsley GitHub repository.</p>
 
                                 
