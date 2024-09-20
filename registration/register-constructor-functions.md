@@ -24,4 +24,4 @@ The `Greeter` interface and its implementation are defined as follows:
 
 :::code language="golang" source="/examples/quick-start/internal/greeter.go" :::
 
-While it’s possible for `NewGreeter` to return a *greeter directly, it is generally advisable to return the interface type `Greeter`. This approach maintains flexibility and abstraction, making it easier to change implementations without modifying dependent code.
+While it’s possible for `NewGreeter` to return a `*greeter` directly, it is generally advisable to return the interface type `Greeter`. This approach maintains flexibility and abstraction, making it easier to change implementations without modifying dependent code.
