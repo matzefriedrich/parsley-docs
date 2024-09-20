@@ -1,7 +1,5 @@
 module github.com/matzefriedrich/parsley-docs/examples/quick-start
 
-go 1.22.4
+go 1.23
 
-toolchain go1.22.5
-
-require github.com/matzefriedrich/parsley v0.7.1
+require github.com/matzefriedrich/parsley v0.10.1

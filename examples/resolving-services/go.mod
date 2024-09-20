@@ -1,5 +1,5 @@
 module github.com/matzefriedrich/parsley-docs/examples/resolving-services
 
-go 1.22.5
+go 1.23
 
-require github.com/matzefriedrich/parsley v0.7.1
+require github.com/matzefriedrich/parsley v0.10.1

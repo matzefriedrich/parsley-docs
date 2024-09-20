@@ -9,8 +9,14 @@ import (
 )
 
 func main() {
-	context := context.Background()
-	bootstrap.RunParsleyApplication(context, internal.NewApp,
+
+	ctx := context.Background()
+
+	err := bootstrap.RunParsleyApplication(ctx, internal.NewApp,
 		modules.ConfigureFiber,
 		modules.ConfigureGreeter)
+
+	if err != nil {
+		panic(err)
+	}
 }

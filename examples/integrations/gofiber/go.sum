@@ -17,6 +17,8 @@ github.com/mattn/go-runewidth v0.0.15 h1:UNAjwbU9l54TA3KzvqLGxwWjHmMgBUVhBiTjelZ
 github.com/mattn/go-runewidth v0.0.15/go.mod h1:Jdepj2loyihRzMpdS35Xk/zdY8IAYHsh153qUoGf23w=
 github.com/matzefriedrich/parsley v0.8.3 h1:PP9wBkekoHLn6JLHMubwk95KhP0mpgrIGx9Y2ELdsaQ=
 github.com/matzefriedrich/parsley v0.8.3/go.mod h1:9ZFeuhRK7Zke2CLkn3NvGF2POOj9gZhWlvKoE7ZYAxY=
+github.com/matzefriedrich/parsley v0.10.1 h1:1U89mgEfq/Kwj0jDVlKxSjDkCgAx832ZJuxdopNUYfE=
+github.com/matzefriedrich/parsley v0.10.1/go.mod h1:ZqPG+hIhANBJQ9lWbQnwd2U+77dhcmBSNhMsya3cmdE=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
