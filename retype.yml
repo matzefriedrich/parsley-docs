@@ -8,6 +8,9 @@ links:
 - text: GitHub Repo
   link: https://github.com/matzefriedrich/parsley
   icon: mark-github
+- text: Issues
+  link: https://github.com/matzefriedrich/parsley/issues
+  icon: comment-discussion
 footer:
   copyright: "&copy; Copyright {{ year }} - Matthias Friedrich. All rights reserved."
   links:
