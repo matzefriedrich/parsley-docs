@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.779150157893">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780165152115">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.5.0">
+    <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
     <title>Welcome to Parsley</title>
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="resources/css/retype.css?v=3.5.0.779150157893" rel="stylesheet">
+    <link href="resources/css/retype.css?v=3.6.0.780165152115" rel="stylesheet">
 
-    <script data-cfasync="false" src="resources/js/config.js?v=3.5.0.779150157893" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="resources/js/lunr.js?v=3.5.0.779150157893" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="resources/js/config.js?v=3.6.0.780165152115" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="resources/js/lunr.js?v=3.6.0.780165152115" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -170,19 +170,55 @@
     </h1>
 </doc-anchor-target>
 <p>Parsley is an easy-to-use, reflection-based dependency injection package that fits seamlessly into any Go application. It bridges the gap between dependency configuration and service activation, providing automated lifetime management and a clean, organized way to handle dependencies.</p>
-<doc-anchor-target id="features">
+<doc-anchor-target id="key-features">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#features">#</doc-anchor-trigger>
-        <span>Features</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#key-features">#</doc-anchor-trigger>
+        <span>Key Features</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="type-registration--resolution">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#type-registration--resolution">#</doc-anchor-trigger>
+        <span>Type Registration &amp; Resolution</span>
+    </h3>
+</doc-anchor-target>
 <ul>
-<li><strong>Register types via constructor functions:</strong> Easily map dependencies using constructor functions.</li>
-<li><strong>Resolve objects by type:</strong> Supports both interface and pointer types.</li>
-<li><strong>Support for various lifetimes:</strong> Configure services as singletons, scoped, or transient.</li>
-<li><strong>Named service registration:</strong> Register multiple implementations and resolve them by name.</li>
-<li><strong>Factory function support:</strong> Create instances based on runtime parameters.</li>
-<li><strong>Module registration:</strong> Bundle type registrations as modules for easier management.</li>
+<li><strong>Constructor Functions:</strong> <a href="registration/register-constructor-functions/">Register types via constructor functions</a> and automatically inject dependencies into constructors.</li>
+<li><strong>Resolve by Type:</strong> Support for both interfaces and pointer types.</li>
+<li><strong>Safe Casting:</strong> Use <code v-pre>ResolveRequiredService[T]</code> for type-safe resolutions.</li>
+<li><strong>Lifetime Management:</strong> <a href="resolving/lifetime-scopes/">Register types with singleton, scoped, or transient lifetimes</a>.</li>
+</ul>
+<doc-anchor-target id="advanced-registrations">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#advanced-registrations">#</doc-anchor-trigger>
+        <span>Advanced Registrations</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Modular Registrations:</strong> <a href="registration/register-module/">Bundle registrations into modules</a> for cleaner organization.</li>
+<li><strong>Lazy Loading:</strong> <a href="resolving/resolve-lazy-proxy/">Dependencies are injected only when needed</a> using <code v-pre>Lazy[T]</code>.</li>
+<li><strong>Custom Factories:</strong> <a href="registration/register-factory-functions/">Define custom factory functions</a> for dynamic resolution.</li>
+<li><strong>Provide to service instance to the resolver:</strong> <a href="resolving/resolve-with/">Provide service instances to the resolver</a> that cannnot be automatically constructed.</li>
+</ul>
+<doc-anchor-target id="multiple-registrations">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multiple-registrations">#</doc-anchor-trigger>
+        <span>Multiple Registrations</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Named Services:</strong> <a href="registration/register-named-services/">Register and resolve multiple services for the same interface</a>.</li>
+<li><strong>Service Lists:</strong> <a href="registration/register-lists/">Resolve services as a list</a>.</li>
+</ul>
+<doc-anchor-target id="proxy--mocking-support">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#proxy--mocking-support">#</doc-anchor-trigger>
+        <span>Proxy &amp; Mocking Support</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Proxy Services:</strong> <a href="advanced-features/generate-proxy-services/">Generate proxies as drop-in replacements with method interception</a>.</li>
+<li><strong>Mock Generation:</strong> <a href="advanced-features/generate-mocks/">Create configurable mocks</a> to enhance testing.</li>
 </ul>
 <p>Want to know more? Read on to discover how Parsley can enhance your Go application&#x27;s architecture and maintainability.</p>
 
