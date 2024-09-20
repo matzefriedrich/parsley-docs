@@ -1,4 +1,5 @@
 ---
+icon: file
 label:  Resolving services with specific instances
 order: 30
 tags: [ resolving, instances ]

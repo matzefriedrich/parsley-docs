@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Register Module
 tags: [ registration, modules, separation of concerns, service groupings ]
 ---

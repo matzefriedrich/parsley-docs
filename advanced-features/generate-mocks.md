@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Generate Configurable Mocks
 tags: [ service mocks, testing, code generation, mocking ]
 ---

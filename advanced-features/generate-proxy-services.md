@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Generated Proxies
 tags: [ registration, service proxy, service decorator, code generation ]
 ---

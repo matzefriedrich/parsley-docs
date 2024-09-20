@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Lazy Proxies
 tags: [ registration, lazy proxy, resolve behavior, resolving, performance ]
 ---

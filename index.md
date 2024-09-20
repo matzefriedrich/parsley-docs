@@ -1,4 +1,5 @@
 ---
+icon: home
 tags: [ introduction, guide ]
 ---
 

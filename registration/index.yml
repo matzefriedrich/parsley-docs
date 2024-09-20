@@ -1,4 +1,5 @@
 expanded: false
+icon: book
 label: Registration Concepts
 order: -150
 tags: [ introduction, guide ]

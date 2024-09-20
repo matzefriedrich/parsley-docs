@@ -1,3 +1,8 @@
+---
+icon: flame
+label: "Walkthrough: Parsley Integration with GoFiber"
+tags: [  integrations, guide, walkthrough, examples ]
+---
 # Walkthrough: Parsley Integration with GoFiber
 
 This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework. By following this example, you'll learn how to set up a GoFiber application with dependency injection managed by Parsley, making your codebase more modular, testable, and maintainable.

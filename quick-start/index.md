@@ -1,4 +1,5 @@
 ---
+icon: rocket
 label: Quick Start
 ---
 # Quick start

@@ -1,4 +1,5 @@
 ---
+icon: file
 label:  Lifetime Scopes
 order: 100
 tags: [ registration, resolving, instances, lifetime scope ]

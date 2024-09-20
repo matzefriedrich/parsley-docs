@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Register Lists
 tags: [ registration, service lists ]
 ---

@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Register Factory Functions
 tags: [ registration, factory function, service factory ]
 ---

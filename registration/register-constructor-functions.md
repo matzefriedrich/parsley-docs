@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Register Constructor Functions
 tags: [ registration, constructor function ]
 ---

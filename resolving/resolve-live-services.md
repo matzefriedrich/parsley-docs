@@ -1,4 +1,5 @@
 ---
+icon: file
 label:  Activating unregistered dependencies
 order: 20
 tags: [ resolving, instances, complex dependencies, dynamic object creation ]

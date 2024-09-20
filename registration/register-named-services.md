@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Register Named Services
 tags: [ registration, named services, service factory ]
 ---

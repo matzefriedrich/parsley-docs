@@ -1,4 +1,5 @@
 ---
+icon: file
 label: Register Instances
 tags: [ registration, instances, singleton ]
 ---
