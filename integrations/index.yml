@@ -1,4 +1,4 @@
-expanded: true
+expanded: false
 label: Integration
 order: -200
 tags: [ integrations, guide, walkthrough, examples ]
