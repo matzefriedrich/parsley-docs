@@ -15,6 +15,7 @@ Parsley is an easy-to-use, reflection-based dependency injection package that fi
 - **Resolve by Type:** Support for both interfaces and pointer types.
 - **Safe Casting:** Use `ResolveRequiredService[T]` for type-safe resolutions.
 - **Lifetime Management:** [Register types with singleton, scoped, or transient lifetimes](resolving/lifetime-scopes.md).
+- **Validate Service Registrations:** Parsley now includes [built-in validation for service registrations](advanced-features/service-registration-validation.md), prevent runtime errors due to missing or circular dependencies.
 
 ### Advanced Registrations
 
