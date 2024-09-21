@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Mocking Made Easy with Parsley</title>
-    <meta name="title" content="Mocking Made Easy with Parsley">
-    <meta name="description" content="In version v0.9 of Parsley, a powerful new feature is introduced: the generate mocks CLI command.">
+    <title>Validating Service-Registrations</title>
+    <meta name="title" content="Validating Service-Registrations">
+    <meta name="description" content="Parsley provides a Validator service to enhance service registration and dependency management. The Validator">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/advanced-features/generate-mocks/">
+    <link rel="canonical" href="/advanced-features/service-registration-validation/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/advanced-features/generate-mocks/">
-    <meta property="og:title" content="Mocking Made Easy with Parsley">
-    <meta property="og:description" content="In version v0.9 of Parsley, a powerful new feature is introduced: the generate mocks CLI command.">
+    <meta property="og:url" content="/advanced-features/service-registration-validation/">
+    <meta property="og:title" content="Validating Service-Registrations">
+    <meta property="og:description" content="Parsley provides a Validator service to enhance service registration and dependency management. The Validator">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/advanced-features/generate-mocks/">
-    <meta property="twitter:title" content="Mocking Made Easy with Parsley">
-    <meta property="twitter:description" content="In version v0.9 of Parsley, a powerful new feature is introduced: the generate mocks CLI command.">
+    <meta property="twitter:url" content="/advanced-features/service-registration-validation/">
+    <meta property="twitter:title" content="Validating Service-Registrations">
+    <meta property="twitter:description" content="Parsley provides a Validator service to enhance service registration and dependency management. The Validator">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -198,208 +198,130 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="mocking-made-easy-with-parsley" class="break-words">
+<doc-anchor-target id="validating-service-registrations" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#mocking-made-easy-with-parsley">#</doc-anchor-trigger>
-        <span>Mocking Made Easy with Parsley</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#validating-service-registrations">#</doc-anchor-trigger>
+        <span>Validating Service-Registrations</span>
     </h1>
 </doc-anchor-target>
-<p>In <a href="https://github.com/matzefriedrich/parsley/releases/tag/v0.9.0">version v0.9</a> of Parsley, a powerful new feature is introduced: the <code v-pre>generate mocks</code> CLI command. This command generates configurable mock implementations from your service interfaces, making testing faster and more efficient.</p>
-<p>In this article, you learn how to use this feature to generate mock objects for interfaces, configure their behavior, and assert expectations for method calls in tests. It also showcases a real-world example of integrating these mocks into your Go test suites.</p>
-<doc-anchor-target id="why-mocks">
+<p>Parsley provides a <code v-pre>Validator</code> service to enhance service registration and dependency management. The <code v-pre>Validator</code> helps detect two primary issues: missing dependencies and circular dependencies. Both configuration issues may be challenging to fix.</p>
+<doc-anchor-target id="what-are-missing-dependencies">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#why-mocks">#</doc-anchor-trigger>
-        <span>Why Mocks?</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#what-are-missing-dependencies">#</doc-anchor-trigger>
+        <span>What are missing dependencies?</span>
     </h2>
 </doc-anchor-target>
-<p>Mock objects are an essential part of writing unit tests. They allow you to replace the real implementations of your services with objects that simulate their behavior, giving you more control over your test environment. With Parsley’s new <code v-pre>generate mocks</code> command, you can generate mocks that trace method calls, verify parameters, and count invocations without writing additional boilerplate code.</p>
-<doc-anchor-target id="defining-a-service-interface">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#defining-a-service-interface">#</doc-anchor-trigger>
-        <span>Defining a Service Interface</span>
-    </h2>
-</doc-anchor-target>
-<p>Let&#x27;s begin with a simple service interface, <code v-pre>Greeter</code>, which defines two methods: <code v-pre>SayHello</code> and <code v-pre>SayNothing</code>.</p>
+<p>A <strong>missing dependency</strong> occurs when a service relies on a <a href="../../registration/register-constructor-functions/">constructor function</a> that requires a service (the dependency) that hasn&#x27;t been registered. In such cases, Parsley will fail to resolve the necessary object at runtime, leading to potential crashes or undefined behavior. Missing dependencies are often overlooked during development, especially in large, complex applications where services are registered in multiple places or based on runtime conditions.</p>
+<p>For example, if a service <code v-pre>A</code> depends on service <code v-pre>B</code> but <code v-pre>B</code> isn&#x27;t registered, this will cause an error during resolution:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package features
+<pre class="language-go"><code v-pre class="language-go">type A struct {
+    b *B
+}
 
-//go:generate parsley-cli generate mocks
+type B struct {
+}
 
-type Greeter interface {
-    SayHello(name string) (string, error)
-    SayNothing()
+func NewA(b *B) *A {
+    return &amp;A{b: b}
+}
+
+func main() {
+
+    registry := registration.NewServiceRegistry()
+
+     // Register a ctor function for type *A
+    _ = registration.RegisterTransient(registry, NewA)
+    
+    resolver := resolving.NewResolver(registry)
+	scope := resolving.NewScopedContext(context.Background())
+    
+    // ResolveRequiredService results with an error, because *B is missing, but required to construct *A
+    a, err := := resolving.ResolveRequiredService[*A](resolver, scope)
 }</code></pre>
 </doc-codeblock></div>
-<p>By adding the <code v-pre>//go:generate</code> directive at the top, we instruct Parsley’s CLI to generate a mock implementation for this interface.</p>
-<doc-anchor-target id="the-generated-mock-code">
+<p>With the validator, such omissions are detected early, and a meaningful error message is returned before the application proceeds further.</p>
+<doc-anchor-target id="what-are-circular-dependencies">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#what-are-circular-dependencies">#</doc-anchor-trigger>
+        <span>What are circular dependencies?</span>
+    </h2>
+</doc-anchor-target>
+<p>A <strong>circular dependency</strong> happens when two or more services depend on each other, directly or indirectly, creating an endless loop of dependencies. Without proper validation, this can lead to a <strong>stack overflow</strong> error during resolution, causing the application to crash. Circular dependencies are particularly problematic because they can easily occur unintentionally, especially in large systems where many services interact.</p>
+<p>For instance, if service <code v-pre>A</code> depends on service <code v-pre>B</code>, and service <code v-pre>B</code> depends on service <code v-pre>A</code>, neither can be resolved because each requires the other to be instantiated first:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">type A struct {
+    b *B
+}
+
+type B struct {
+    a *A
+}
+
+func NewA(b *B) *A {
+    return &amp;A{b: b}
+}
+
+func NewB(a *A) *B {
+    return &amp;B{a: a}
+}</code></pre>
+</doc-codeblock></div>
+<p>Without a validator, such issues may be difficult to diagnose. Parsley&#x27;s built-in <strong>circular dependency check</strong> ensures that the problem is caught early, preventing the application from entering a non-operable state. Although the resolver module itself checks for circular dependencies at runtime, the <code v-pre>Validator</code> services offers better error messaging and earlier detection.</p>
+<doc-anchor-target id="example-usage">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#the-generated-mock-code">#</doc-anchor-trigger>
-        <span>The Generated Mock Code</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example-usage">#</doc-anchor-trigger>
+        <span>Example Usage</span>
     </h3>
 </doc-anchor-target>
-<p>After running the <code v-pre>parsley-cli generate mocks</code> command, Parsley generates the following mock implementation code. A <code v-pre>mock.g.go</code> file is automatically created, and any manual changes will be overwritten if the command is rerun.</p>
+<p>To validate your service registrations, use the following code:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package features
+<pre class="language-go"><code v-pre class="language-go">func main() {
+  
+    registry := registration.NewServiceRegistry()
 
-import (
-    &quot;github.com/matzefriedrich/parsley/pkg/features&quot;
-)
+    _ = registration.RegisterTransient(NewA)
+    _ = registration.RegisterTransient(NewB)
 
-type greeterMock struct {
-    features.MockBase
-    SayHelloFunc   SayHelloFunc
-    SayNothingFunc SayNothingFunc
-}
-
-type SayHelloFunc func(name string) (string, error)
-type SayNothingFunc func()
-
-const (
-    FunctionSayHello   = &quot;SayHello&quot;
-    FunctionSayNothing = &quot;SayNothing&quot;
-)
-
-func (m *greeterMock) SayHello(name string) (string, error) {
-    m.TraceMethodCall(FunctionSayHello, name)
-    return m.SayHelloFunc(name)
-}
-
-func (m *greeterMock) SayNothing() {
-    m.TraceMethodCall(FunctionSayNothing)
-    m.SayNothingFunc()
-}
-
-var _ Greeter = (*greeterMock)(nil)
-
-// NewGreeterMock Creates a new configurable greeterMock object.
-func NewGreeterMock() *greeterMock {
-    mock := &amp;greeterMock{
-        MockBase: features.NewMockBase(),
-        SayHelloFunc: func(name string) (string, error) {
-            var result0 string
-            var result1 error
-            return result0, result1
-        },
-        SayNothingFunc: func() {},
+    registryValidator := registration.NewServiceRegistrationsValidator()
+    err := registryValidator.Validate(registry)
+    if err != nil {
+        panic(err)
     }
-    mock.AddFunction(FunctionSayHello, &quot;SayHello(name string) (string, error)&quot;)
-    mock.AddFunction(FunctionSayNothing, &quot;SayNothing()&quot;)
-    return mock
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="configuring-mocks-in-tests">
+<p>The validator inspects all registered services in the <code v-pre>ServiceRegistry</code>, ensuring that all dependencies are properly resolved and that there are no circular dependencies.</p>
+<doc-anchor-target id="when-should-the-validator-be-used">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#configuring-mocks-in-tests">#</doc-anchor-trigger>
-        <span>Configuring Mocks in Tests</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#when-should-the-validator-be-used">#</doc-anchor-trigger>
+        <span>When should the validator be used?</span>
     </h2>
 </doc-anchor-target>
-<p>Once the mock has been generated, it can be used in your tests as a drop-in replacement for the actual service. You can configure its behavior by overriding the functions for each method in the interface.</p>
-<p>Here’s an example of how to test the <code v-pre>GreeterMock</code> type by configuring the behavior of <code v-pre>SayHello</code> and using Parsley’s <code v-pre>Verify</code> assertion helpers:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package features
-
-import (
-    &quot;fmt&quot;
-    &quot;github.com/matzefriedrich/parsley/pkg/features&quot;
-    &quot;github.com/stretchr/testify/assert&quot;
-    &quot;testing&quot;
-)
-
-func Test_GreeterMock_SayHello(t *testing.T) {
-    // Arrange
-    mock := NewGreeterMock()
-    mock.SayHelloFunc = func(name string) (string, error) {
-        return fmt.Sprintf(&quot;Hi, %s&quot;, name), nil
-    }
-
-    const expectedName = &quot;John&quot;
-
-    // Act
-    _, _ = mock.SayHello(&quot;Max&quot;)
-    actual, err := mock.SayHello(expectedName)
-
-    // Assert
-    assert.NoError(t, err)
-    assert.Equal(t, &quot;Hi, John&quot;, actual)
-
-    assert.True(t, mock.Verify(FunctionSayHello, features.TimesOnce(), features.Exact(expectedName)))
-    assert.True(t, mock.Verify(FunctionSayHello, features.TimesNever(), features.Exact(&quot;Jane&quot;)))
-    assert.True(t, mock.Verify(FunctionSayHello, features.TimesExactly(2)))
-}</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="verifying-method-calls-and-arguments">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#verifying-method-calls-and-arguments">#</doc-anchor-trigger>
-        <span>Verifying Method Calls (and Arguments)</span>
-    </h2>
-</doc-anchor-target>
-<p>The generated mocks automatically trace method calls and allow you to verify how often methods were invoked and with which arguments. Parsley provides a set of powerful assertion helpers to verify method calls:</p>
-<doc-anchor-target id="counter-verification-functions">
+<p>It is recommended that service registrations be validated after the registration of service types is complete. This is also the case after registering services to a <strong>linked</strong> or <strong>scoped</strong> service registry during runtime.</p>
+<doc-anchor-target id="why-this-matters">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#counter-verification-functions">#</doc-anchor-trigger>
-        <span>Counter verification functions</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#why-this-matters">#</doc-anchor-trigger>
+        <span>Why This Matters</span>
     </h3>
 </doc-anchor-target>
 <ul>
-<li><strong>TimesOnce</strong>: Verifies that a method was called exactly once.</li>
-<li><strong>TimesNever</strong>: Verifies that a method was never called.</li>
-<li><strong>TimesExactly</strong>: Verifies that a method was called exactly <code v-pre>n</code> times.</li>
-</ul>
-<doc-anchor-target id="argument-matching">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#argument-matching">#</doc-anchor-trigger>
-        <span>Argument matching</span>
-    </h3>
-</doc-anchor-target>
-<ul>
-<li><strong>Exact</strong>: Matches arguments exactly.</li>
-<li><strong>IsAny</strong>: Matches any given argument - use this as a placeholder.</li>
-</ul>
-<p>For example, in the test case above:</p>
-<ul>
-<li><p>The mock verifies that <code v-pre>SayHello</code> was called <strong>once</strong> with the exact argument <code v-pre>&quot;John&quot;</code>.</p>
+<li><p><strong>Prevent runtime errors:</strong> Detect missing or invalid service registrations early to prevent application crashes.</p>
 </li>
-<li><p>The mock checks that <code v-pre>SayHello</code> was <strong>never</strong> called with the argument <code v-pre>&quot;Jane&quot;</code>.</p>
+<li><p><strong>Improve developer experience:</strong> Get clear, actionable error messages, helping you resolve issues quickly.</p>
 </li>
-<li><p>Lastly, it verifies that <code v-pre>SayHello</code> was called <strong>exactly twice</strong> in total.</p>
+<li><p><strong>Avoid circular dependency traps:</strong> Protect your application from hard-to-diagnose circular dependencies that can lead to infinite recursion and stack overflow errors. For instance, you can organize application dependencies as <a href="registration/register-module.md">modules</a> and verify the modules using unit tests. Use the validator at runtime if dependencies get dynamically registered depending on configuration.</p>
 </li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> You can also provide custom <code v-pre>TimesFunc</code> and <code v-pre>ArgMatch</code> callbacks to evaluate counter values and method call parameters.</p>
-</blockquote>
-<doc-anchor-target id="conclusion">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#conclusion">#</doc-anchor-trigger>
-        <span>Conclusion</span>
-    </h2>
-</doc-anchor-target>
-<p>With the new <code v-pre>generate mocks</code> command, Parsley makes it easy to create fully configurable and traceable mock objects for your services.</p>
-<p>The mock generation feature is especially useful for writing tests, where you want to simulate different service behaviors, verify method calls, and ensure your components interact correctly with each other.</p>
-<doc-anchor-target id="using-parsleys-generator-commands-without-runtime-dependency-injection">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#using-parsleys-generator-commands-without-runtime-dependency-injection">#</doc-anchor-trigger>
-        <span>Using Parsley’s generator commands without Runtime Dependency Injection</span>
-    </h3>
-</doc-anchor-target>
-<p>Parsley’s generator commands, like the <code v-pre>generate mocks</code> command, can be used independently of Parsley’s runtime dependency injection. This flexibility allows developers to leverage powerful code generation features, such as creating mock implementations for interfaces, without adopting Parsley’s full DI system.</p>
-<p>For instance, you may prefer to manually wire your dependencies in a traditional Go setup while still using Parsley’s mock generation capabilities for testing. This makes Parsley a versatile tool that can be integrated into various workflows, whether or not you choose to use runtime DI for your projects.</p>
+<p>This feature ensures your application&#x27;s dependency graph is valid, enhancing the robustness of service registration and resolution. As such, it is an essential tool for applications with complex service interactions.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
                                         <a href="../../tags/">
                                             <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
                                         </a>
-                                        <span class="mr-2"><a href="../../tags/service-mocks/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>service mocks</span>
+                                        <span class="mr-2"><a href="../../tags/registration/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>registration</span>
                                 </a></span>
-                                        <span class="mr-2"><a href="../../tags/testing/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>testing</span>
-                                </a></span>
-                                        <span class="mr-2"><a href="../../tags/code-generation/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>code generation</span>
-                                </a></span>
-                                        <span class="mr-2"><a href="../../tags/mocking/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>mocking</span>
+                                        <span class="mr-2"><a href="../../tags/validation/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>validation</span>
                                 </a></span>
                                     </span>
                                 </div>
@@ -411,20 +333,20 @@ func Test_GreeterMock_SayHello(t *testing.T) {
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../resolving/resolve-lazy-proxy/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../advanced-features/generate-proxy-services/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Lazy Proxies</span>
+                                                <span class="block mt-1">Generated Proxies</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../advanced-features/generate-proxy-services/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../integrations/gofiber/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Generated Proxies</span>
+                                                <span class="block mt-1">Walkthrough: Parsley Integration with Go​Fiber</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -471,6 +393,6 @@ func Test_GreeterMock_SayHello(t *testing.T) {
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Generate Configurable Mocks", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Validating Service-Registrations", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
