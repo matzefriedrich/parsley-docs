@@ -5,7 +5,7 @@ tags: [ registration, validation ]
 ---
 # Validating Service-Registrations
 
-Parsley provides a `Validator` service to enhance service registration and dependency management. The `Validator` helps detect two primary issues: missing dependencies and circular dependencies. Both configuration issues may be challenging to fix.
+Parsley provides a `Validator` service to improve service registration and dependency management by detecting two key issues: missing dependencies and circular dependencies. These configuration issues can be challenging, but the `Validator` ensures your application's dependency graph is valid. It is an essential tool for enhancing the robustness of service registration and resolution, especially in applications with complex service interactions.
 
 ## What are missing dependencies?
 
@@ -23,20 +23,6 @@ type B struct {
 
 func NewA(b *B) *A {
     return &A{b: b}
-}
-
-func main() {
-
-    registry := registration.NewServiceRegistry()
-
-     // Register a ctor function for type *A
-    _ = registration.RegisterTransient(registry, NewA)
-    
-    resolver := resolving.NewResolver(registry)
-	scope := resolving.NewScopedContext(context.Background())
-    
-    // ResolveRequiredService results with an error, because *B is missing, but required to construct *A
-    a, err := := resolving.ResolveRequiredService[*A](resolver, scope)
 }
 ```
 
@@ -101,5 +87,3 @@ It is recommended that service registrations be validated after the registration
 - **Improve developer experience:** Get clear, actionable error messages, helping you resolve issues quickly.
 
 - **Avoid circular dependency traps:** Protect your application from hard-to-diagnose circular dependencies that can lead to infinite recursion and stack overflow errors. For instance, you can organize application dependencies as [modules](../registration/register-module.md) and verify the modules using unit tests. Use the validator at runtime if dependencies get dynamically registered depending on configuration.
-  
-This feature ensures your application's dependency graph is valid, enhancing the robustness of service registration and resolution. As such, it is an essential tool for applications with complex service interactions.
