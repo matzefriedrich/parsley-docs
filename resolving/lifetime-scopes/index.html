@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780263267968">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780443612332">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.6.0.780263267968" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.780443612332" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780263267968" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780443612332" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780263267968" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780263267968" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780443612332" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780443612332" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -217,21 +217,21 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Value</th>
+<th style="text-align: left;">Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Transient</td>
-<td>A new instance is created every time the service is requested.</td>
+<td style="text-align: left;">A new instance is created every time the service is requested.</td>
 </tr>
 <tr>
 <td>Scoped</td>
-<td>The same instance is reused within a scope.</td>
+<td style="text-align: left;">The same instance is reused within a scope.</td>
 </tr>
 <tr>
 <td>Singleton</td>
-<td>The same instance is reused for all requests. Resolved instances remain valid for the lifetime of the resolver.</td>
+<td style="text-align: left;">The same instance is reused for all requests. Resolved instances remain valid for the lifetime of the resolver.</td>
 </tr>
 </tbody>
 </table>
@@ -239,6 +239,19 @@
 <blockquote>
 <p><strong>Note:</strong> Multiple registrations for the same service type can use different lifetime scopes. The same is true for named service registrations.</p>
 </blockquote>
+<doc-anchor-target id="convenience-functions">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#convenience-functions">#</doc-anchor-trigger>
+        <span>Convenience Functions</span>
+    </h2>
+</doc-anchor-target>
+<p>Parsley provides several <strong>convenience functions</strong> to simplify the registration of services with different lifetimes. These functions allow you to register services with minimal boilerplate and ensure clarity in service management:</p>
+<ul>
+<li><strong>RegisterSingleton:</strong> Registers a service that will have a single instance throughout the application’s lifetime.</li>
+<li><strong>RegisterScoped:</strong> Registers services with a new instance per scope (such as a request or session).</li>
+<li><strong>RegisterTransient:</strong> Registers services that will have a new instance every time they are requested.</li>
+</ul>
+<p>Each of these functions accept <strong>multiple activator functions</strong>, allowing multiple services to be registered in one call.</p>
 <doc-anchor-target id="example">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
