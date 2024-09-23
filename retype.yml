@@ -1,18 +1,38 @@
 input: .
+
 output: .retype
+
 url: # Add your website address here
+
 branding:
   title: Parsley
-  label: Docs
+  label: v1.0.1
+
+
 links:
+
 - text: GitHub Repo
   link: https://github.com/matzefriedrich/parsley
   icon: mark-github
+  target: blank
+
 - text: Issues
   link: https://github.com/matzefriedrich/parsley/issues
   icon: comment-discussion
+  target: blank
+
+
 footer:
   copyright: "&copy; Copyright {{ year }} - Matthias Friedrich. All rights reserved."
   links:
     - text: License Apache 2.0
       link: http://www.apache.org/licenses/LICENSE-2.0
+
+
+breadcrumb:
+  enabled: true
+  home: ":icon-home:"
+  seprator: "|"
+
+exclude:
+  - "gomarkdoc/"
