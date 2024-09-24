@@ -1,7 +1,3 @@
----
-icon: rocket
-label: Quick Start
----
 # Quick start
 
 This quick start guide walks you through structuring your application and using Parsley to dynamically register and resolve services (or components) at runtime. In this documentation, the terms services and components are used interchangeably but mean the same thing—object instances of a specific type. To effectively understand dependency mapping in Parsley, let's look at a practical example involving types, interfaces, and constructor methods. Once you are familiar with the basics, you can check out the rest of this documentation for more advanced usage and integration examples.
