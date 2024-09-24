@@ -2,7 +2,7 @@ input: .
 
 output: .retype
 
-url: # Add your website address here
+url: https://matzefriedrich.github.io/parsley-docs
 
 branding:
   title: Parsley
