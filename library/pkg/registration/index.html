@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780449709293">
+    <meta name="turbo-root" content="/parsley-docs">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780491001282">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -14,28 +15,28 @@
     <meta name="description" content="Constants">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/library/pkg/registration/">
+    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/library/pkg/registration/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/library/pkg/registration/">
+    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/registration/">
     <meta property="og:title" content="registration">
     <meta property="og:description" content="Constants">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/library/pkg/registration/">
+    <meta property="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/registration/">
     <meta property="twitter:title" content="registration">
     <meta property="twitter:description" content="Constants">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=3.6.0.780449709293" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.6.0.780491001282" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.780449709293" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.780491001282" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.780449709293" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.780449709293" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.780491001282" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.780491001282" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -261,7 +262,6 @@
 <p><a name="ErrFailedToRetrieveServiceRegistrations"></a></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">var (
-
     // ErrFailedToRetrieveServiceRegistrations signifies an error encountered while attempting to retrieve service registrations.
     ErrFailedToRetrieveServiceRegistrations = types.NewRegistryError(ErrorFailedToRetrieveServiceRegistrations)
 
@@ -348,7 +348,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func RegisterInstance[T any](registry types.ServiceRegistry, instance T) error</code></pre>
 </doc-codeblock></div>
-<p>RegisterInstance registers an instance of type T. A registered instance behaves like a service registration with a singleton lifetime scope. See <a href="https://matzefriedrich.github.io/parsley-docs/registration/register-instances/">https://matzefriedrich.github.io/parsley-docs/registration/register-instances/</a> for further information.</p>
+<p>RegisterInstance registers an instance of type T. A registered instance behaves like a service registration with a singleton lifetime scope.</p>
 <p><a name="RegisterScoped"></a></p>
 <doc-anchor-target id="func-registerscoped">
     <h2>
@@ -381,7 +381,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func RegisterTransient(registry SupportsRegisterActivatorFunc, activatorFunc ...any) error</code></pre>
 </doc-codeblock></div>
-<p>RegisterTransient registers services with a transient lifetime in the provided service registry. See <a href="https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions/">https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions/</a> for further information.</p>
+<p>RegisterTransient registers services with a transient lifetime in the provided service registry.</p>
 <p><a name="NamedServiceRegistrationFunc"></a></p>
 <doc-anchor-target id="type-namedserviceregistrationfunc">
     <h2>
@@ -411,6 +411,7 @@
         <span>type SupportsRegisterActivatorFunc</span>
     </h2>
 </doc-anchor-target>
+<p>SupportsRegisterActivatorFunc allows the registration of activator functions with different lifetime scopes.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type SupportsRegisterActivatorFunc interface {
     Register(activatorFunc any, scope types.LifetimeScope) error

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780449709293">
+    <meta name="turbo-root" content="/parsley-docs">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780491001282">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -14,28 +15,28 @@
     <meta name="description" content="func Activate[T any](resolver types.Resolver, ctx context.Context, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/library/pkg/resolving/">
+    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/library/pkg/resolving/">
+    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving/">
     <meta property="og:title" content="resolving">
     <meta property="og:description" content="func Activate[T any](resolver types.Resolver, ctx context.Context, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/library/pkg/resolving/">
+    <meta property="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving/">
     <meta property="twitter:title" content="resolving">
     <meta property="twitter:description" content="func Activate[T any](resolver types.Resolver, ctx context.Context, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=3.6.0.780449709293" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.6.0.780491001282" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.780449709293" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.780491001282" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.780449709293" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.780449709293" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.780491001282" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.780491001282" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -236,7 +237,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func Activate[T any](resolver types.Resolver, ctx context.Context, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)</code></pre>
 </doc-codeblock></div>
-<p>Activate attempts to create and return an instance of the requested type using the provided resolver. This method can be used to instantiate service objects of unregistered types. The specified activator function can have parameters to demand service instances for registered service types. See <a href="https://matzefriedrich.github.io/parsley-docs/resolving/resolve-live-services/">https://matzefriedrich.github.io/parsley-docs/resolving/resolve-live-services/</a> for further information.</p>
+<p>Activate attempts to create and return an instance of the requested type using the provided resolver. Use this method to instantiate service objects of unregistered types. The specified activator function can have parameters to demand service instances for registered service types.</p>
 <p><a name="NewResolver"></a></p>
 <doc-anchor-target id="func-newresolver">
     <h2>

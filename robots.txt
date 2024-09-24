@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: /sitemap.xml.gz
+Sitemap: https://matzefriedrich.github.io/parsley-docs/sitemap.xml.gz

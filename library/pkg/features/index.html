@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780449709293">
+    <meta name="turbo-root" content="/parsley-docs">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780491001282">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -14,28 +15,28 @@
     <meta name="description" content="func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T, _ types.LifetimeScope) error">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/library/pkg/features/">
+    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/library/pkg/features/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/library/pkg/features/">
+    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/features/">
     <meta property="og:title" content="features">
     <meta property="og:description" content="func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T, _ types.LifetimeScope) error">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/library/pkg/features/">
+    <meta property="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/features/">
     <meta property="twitter:title" content="features">
     <meta property="twitter:description" content="func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T, _ types.LifetimeScope) error">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=3.6.0.780449709293" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.6.0.780491001282" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.780449709293" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.780491001282" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.780449709293" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.780449709293" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.780491001282" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.780491001282" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -288,6 +289,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T, _ types.LifetimeScope) error</code></pre>
 </doc-codeblock></div>
+<p>RegisterLazy registers a lazily-activated service in the service registry using the provided activator function.</p>
 <p><a name="RegisterList"></a></p>
 <doc-anchor-target id="func-registerlist">
     <h2>
@@ -298,6 +300,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func RegisterList[T any](registry types.ServiceRegistry) error</code></pre>
 </doc-codeblock></div>
+<p>RegisterList registers a function that resolves and returns a list of services of type T with the specified registry.</p>
 <p><a name="RegisterNamed"></a></p>
 <doc-anchor-target id="func-registernamed">
     <h2>
@@ -308,6 +311,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func RegisterNamed[T any](registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error</code></pre>
 </doc-codeblock></div>
+<p>RegisterNamed registers named services with their respective activator functions and lifetime scopes. It supports dependency injection by associating names with service instances.</p>
 <p><a name="ArgMatch"></a></p>
 <doc-anchor-target id="type-argmatch">
     <h2>
@@ -315,6 +319,7 @@
         <span>type ArgMatch</span>
     </h2>
 </doc-anchor-target>
+<p>ArgMatch is a function type used to match an argument against a certain condition during mock function verification.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type ArgMatch func(actual any) bool</code></pre>
 </doc-codeblock></div>
@@ -328,6 +333,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func Exact[T comparable](expected T) ArgMatch</code></pre>
 </doc-codeblock></div>
+<p>Exact returns an ArgMatch that checks if a given argument is exactly equal to the specified expected value.</p>
 <p><a name="IsAny"></a></p>
 <doc-anchor-target id="func-isany">
     <h3>
@@ -338,6 +344,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func IsAny() ArgMatch</code></pre>
 </doc-codeblock></div>
+<p>IsAny always returns true, enabling it to match any given argument during mock function verification.</p>
 <p><a name="Interceptor"></a></p>
 <doc-anchor-target id="type-interceptor">
     <h2>
@@ -345,6 +352,7 @@
         <span>type Interceptor</span>
     </h2>
 </doc-anchor-target>
+<p>Interceptor is a base interface type for defining interceptors that can be used to monitor or alter the behavior of other components.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type Interceptor interface {
     Name() string
@@ -358,6 +366,7 @@
         <span>type InterceptorBase</span>
     </h2>
 </doc-anchor-target>
+<p>InterceptorBase serves as a foundational structure for defining interceptors, managing essential data like name and position.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type InterceptorBase struct {
     // contains filtered or unexported fields
@@ -373,6 +382,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func NewInterceptorBase(name string, position int) InterceptorBase</code></pre>
 </doc-codeblock></div>
+<p>NewInterceptorBase creates a new instance of InterceptorBase with the specified name and position for managing interceptor metadata.</p>
 <p><a name="InterceptorBase.Name"></a></p>
 <doc-anchor-target id="func-interceptorbase-name">
     <h3>
@@ -383,6 +393,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (i InterceptorBase) Name() string</code></pre>
 </doc-codeblock></div>
+<p>Name retrieves the name of the interceptor, which is useful for identification and debugging purposes.</p>
 <p><a name="InterceptorBase.Position"></a></p>
 <doc-anchor-target id="func-interceptorbase-position">
     <h3>
@@ -393,6 +404,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (i InterceptorBase) Position() int</code></pre>
 </doc-codeblock></div>
+<p>Position returns the position of the interceptor, helping determine its order in processing flows within a system.</p>
 <p><a name="Lazy"></a></p>
 <doc-anchor-target id="type-lazy">
     <h2>
@@ -400,6 +412,7 @@
         <span>type Lazy</span>
     </h2>
 </doc-anchor-target>
+<p>Lazy represents a type whose value is initialized lazily upon first access, typically to improve performance or manage resources.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type Lazy[T any] interface {
     Value() T
@@ -412,6 +425,7 @@
         <span>type MethodCallContext</span>
     </h2>
 </doc-anchor-target>
+<p>MethodCallContext captures the context of a method call, including method name, parameters, and return values.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type MethodCallContext struct {
     // contains filtered or unexported fields
@@ -427,6 +441,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func NewMethodCallContext(methodName string, parameters map[string]interface{}) *MethodCallContext</code></pre>
 </doc-codeblock></div>
+<p>NewMethodCallContext creates a new MethodCallContext instance with the provided method name and parameters.</p>
 <p><a name="MethodInterceptor"></a></p>
 <doc-anchor-target id="type-methodinterceptor">
     <h2>
@@ -434,6 +449,7 @@
         <span>type MethodInterceptor</span>
     </h2>
 </doc-anchor-target>
+<p>MethodInterceptor provides hooks to intercept method execution on a proxy object. It allows entering before method invocations, exiting after method executions, and handling errors during method execution for monitoring or altering behavior.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type MethodInterceptor interface {
     Interceptor
@@ -449,6 +465,7 @@
         <span>type MockBase</span>
     </h2>
 </doc-anchor-target>
+<p>MockBase is used as a foundational struct to track and manage mocked functions and their call history. It helps in testing by allowing function signature tracking and call verification.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type MockBase struct {
     // contains filtered or unexported fields
@@ -464,6 +481,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func NewMockBase() MockBase</code></pre>
 </doc-codeblock></div>
+<p>NewMockBase initializes and returns an instance of MockBase, ideal for setting up and using mock functions in tests.</p>
 <p><a name="MockBase.AddFunction"></a></p>
 <doc-anchor-target id="func-mockbase-addfunction">
     <h3>
@@ -474,6 +492,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (m *MockBase) AddFunction(name string, signature string)</code></pre>
 </doc-codeblock></div>
+<p>AddFunction adds a new mock function with the specified name and signature to the MockBase instance.</p>
 <p><a name="MockBase.TraceMethodCall"></a></p>
 <doc-anchor-target id="func-mockbase-tracemethodcall">
     <h3>
@@ -484,6 +503,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (m *MockBase) TraceMethodCall(name string, arguments ...any)</code></pre>
 </doc-codeblock></div>
+<p>TraceMethodCall logs the invocation of a mocked function with specified arguments to facilitate function call tracking during testing. Before function calls can be tracked, the function must be registered with the MockBase instance; use AddFunction.</p>
 <p><a name="MockBase.Verify"></a></p>
 <doc-anchor-target id="func-mockbase-verify">
     <h3>
@@ -494,6 +514,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (m *MockBase) Verify(name string, times TimesFunc, matches ...ArgMatch) bool</code></pre>
 </doc-codeblock></div>
+<p>Verify checks if a mock function was called a specific number of times, optionally matching provided argument conditions.</p>
 <p><a name="MockFunction"></a></p>
 <doc-anchor-target id="type-mockfunction">
     <h2>
@@ -501,6 +522,7 @@
         <span>type MockFunction</span>
     </h2>
 </doc-anchor-target>
+<p>MockFunction provides a structure to represent a mocked function in test scenarios. It allows tracking its calls and signature.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type MockFunction struct {
     // contains filtered or unexported fields
@@ -516,6 +538,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (m MockFunction) String() string</code></pre>
 </doc-codeblock></div>
+<p>String returns the signature of the mocked function if it exists, otherwise it returns the function&#x27;s name.</p>
 <p><a name="ParameterInfo"></a></p>
 <doc-anchor-target id="type-parameterinfo">
     <h2>
@@ -523,6 +546,7 @@
         <span>type ParameterInfo</span>
     </h2>
 </doc-anchor-target>
+<p>ParameterInfo represents information about a method parameter, including its value, type, and name. It is used in method interception where parameters need to be inspected or logged.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type ParameterInfo struct {
     // contains filtered or unexported fields
@@ -538,6 +562,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (p ParameterInfo) String() string</code></pre>
 </doc-codeblock></div>
+<p>String returns a formatted string representation of the ParameterInfo, useful for logging and debugging purposes.</p>
 <p><a name="ProxyBase"></a></p>
 <doc-anchor-target id="type-proxybase">
     <h2>
@@ -545,6 +570,7 @@
         <span>type ProxyBase</span>
     </h2>
 </doc-anchor-target>
+<p>ProxyBase facilitates method interception by allowing the inclusion of multiple interceptors to target method calls. Typically used to monitor, log, or modify behavior of an object&#x27;s method execution.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type ProxyBase struct {
     // contains filtered or unexported fields
@@ -560,6 +586,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func NewProxyBase[T any](target T, interceptors []MethodInterceptor) ProxyBase</code></pre>
 </doc-codeblock></div>
+<p>NewProxyBase creates a ProxyBase instance with the provided target and a sorted list of method interceptors. Useful for setting up method interception on the target object.</p>
 <p><a name="ProxyBase.InvokeEnterMethodInterceptors"></a></p>
 <doc-anchor-target id="func-proxybase-invokeentermethodinterceptors">
     <h3>
@@ -570,6 +597,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (p *ProxyBase) InvokeEnterMethodInterceptors(callContext *MethodCallContext)</code></pre>
 </doc-codeblock></div>
+<p>InvokeEnterMethodInterceptors triggers the Enter method on all registered interceptors before the target method executes.</p>
 <p><a name="ProxyBase.InvokeExitMethodInterceptors"></a></p>
 <doc-anchor-target id="func-proxybase-invokeexitmethodinterceptors">
     <h3>
@@ -580,6 +608,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (p *ProxyBase) InvokeExitMethodInterceptors(callContext *MethodCallContext)</code></pre>
 </doc-codeblock></div>
+<p>InvokeExitMethodInterceptors triggers the Exit method of all registered interceptors after the target method completes.</p>
 <p><a name="ProxyBase.InvokeMethodErrorInterceptors"></a></p>
 <doc-anchor-target id="func-proxybase-invokemethoderrorinterceptors">
     <h3>
@@ -590,6 +619,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (p *ProxyBase) InvokeMethodErrorInterceptors(callContext *MethodCallContext, returnValues ...interface{})</code></pre>
 </doc-codeblock></div>
+<p>InvokeMethodErrorInterceptors intercepts the return values of a method, checks for errors, and triggers OnError for registered interceptors.</p>
 <p><a name="ReturnValueInfo"></a></p>
 <doc-anchor-target id="type-returnvalueinfo">
     <h2>
@@ -597,6 +627,7 @@
         <span>type ReturnValueInfo</span>
     </h2>
 </doc-anchor-target>
+<p>ReturnValueInfo represents the value and type information of a method&#x27;s return value, used in method interception.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type ReturnValueInfo struct {
     // contains filtered or unexported fields
@@ -612,6 +643,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func (r ReturnValueInfo) String() string</code></pre>
 </doc-codeblock></div>
+<p>String returns a string representation of ReturnValueInfo, formatting the value and its type for debugging purposes.</p>
 <p><a name="TimesFunc"></a></p>
 <doc-anchor-target id="type-timesfunc">
     <h2>
@@ -619,6 +651,7 @@
         <span>type TimesFunc</span>
     </h2>
 </doc-anchor-target>
+<p>TimesFunc is used to verify the number of times a mock function is called. It allows flexibility in call count assertions.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">type TimesFunc func(times int) bool</code></pre>
 </doc-codeblock></div>
@@ -632,6 +665,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func TimesAtLeastOnce() TimesFunc</code></pre>
 </doc-codeblock></div>
+<p>TimesAtLeastOnce returns a TimesFunc that verifies if a mock function is called at least once.</p>
 <p><a name="TimesExactly"></a></p>
 <doc-anchor-target id="func-timesexactly">
     <h3>
@@ -642,6 +676,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func TimesExactly(n int) TimesFunc</code></pre>
 </doc-codeblock></div>
+<p>TimesExactly returns a TimesFunc that checks if the number of function calls is exactly equal to the specified value.</p>
 <p><a name="TimesNever"></a></p>
 <doc-anchor-target id="func-timesnever">
     <h3>
@@ -652,6 +687,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func TimesNever() TimesFunc</code></pre>
 </doc-codeblock></div>
+<p>TimesNever returns a TimesFunc that ensures the function has never been called, providing a strict zero call condition.</p>
 <p><a name="TimesOnce"></a></p>
 <doc-anchor-target id="func-timesonce">
     <h3>
@@ -662,6 +698,7 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">func TimesOnce() TimesFunc</code></pre>
 </doc-codeblock></div>
+<p>TimesOnce returns a TimesFunc that checks if the number of function calls equals one. It is useful for verifying single call assertions.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
