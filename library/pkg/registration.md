@@ -48,7 +48,6 @@ const (
 
 ```go
 var (
-
     // ErrFailedToRetrieveServiceRegistrations signifies an error encountered while attempting to retrieve service registrations.
     ErrFailedToRetrieveServiceRegistrations = types.NewRegistryError(ErrorFailedToRetrieveServiceRegistrations)
 
@@ -121,7 +120,7 @@ NewServiceRegistry creates a new types.ServiceRegistry instance.
 func RegisterInstance[T any](registry types.ServiceRegistry, instance T) error
 ```
 
-RegisterInstance registers an instance of type T. A registered instance behaves like a service registration with a singleton lifetime scope. See https://matzefriedrich.github.io/parsley-docs/registration/register-instances/ for further information.
+RegisterInstance registers an instance of type T. A registered instance behaves like a service registration with a singleton lifetime scope.
 
 <a name="RegisterScoped"></a>
 ## func RegisterScoped
@@ -148,7 +147,7 @@ RegisterSingleton registers services with a singleton lifetime in the provided s
 func RegisterTransient(registry SupportsRegisterActivatorFunc, activatorFunc ...any) error
 ```
 
-RegisterTransient registers services with a transient lifetime in the provided service registry. See https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions/ for further information.
+RegisterTransient registers services with a transient lifetime in the provided service registry.
 
 <a name="NamedServiceRegistrationFunc"></a>
 ## type NamedServiceRegistrationFunc
@@ -171,7 +170,7 @@ NamedServiceRegistration registers a service with a specified name, activator fu
 <a name="SupportsRegisterActivatorFunc"></a>
 ## type SupportsRegisterActivatorFunc
 
-
+SupportsRegisterActivatorFunc allows the registration of activator functions with different lifetime scopes.
 
 ```go
 type SupportsRegisterActivatorFunc interface {

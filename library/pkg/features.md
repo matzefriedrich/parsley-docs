@@ -56,7 +56,7 @@ import "github.com/matzefriedrich/parsley/pkg/features"
 func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T, _ types.LifetimeScope) error
 ```
 
-
+RegisterLazy registers a lazily\-activated service in the service registry using the provided activator function.
 
 <a name="RegisterList"></a>
 ## func RegisterList
@@ -65,7 +65,7 @@ func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T,
 func RegisterList[T any](registry types.ServiceRegistry) error
 ```
 
-
+RegisterList registers a function that resolves and returns a list of services of type T with the specified registry.
 
 <a name="RegisterNamed"></a>
 ## func RegisterNamed
@@ -74,12 +74,12 @@ func RegisterList[T any](registry types.ServiceRegistry) error
 func RegisterNamed[T any](registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error
 ```
 
-
+RegisterNamed registers named services with their respective activator functions and lifetime scopes. It supports dependency injection by associating names with service instances.
 
 <a name="ArgMatch"></a>
 ## type ArgMatch
 
-
+ArgMatch is a function type used to match an argument against a certain condition during mock function verification.
 
 ```go
 type ArgMatch func(actual any) bool
@@ -92,7 +92,7 @@ type ArgMatch func(actual any) bool
 func Exact[T comparable](expected T) ArgMatch
 ```
 
-
+Exact returns an ArgMatch that checks if a given argument is exactly equal to the specified expected value.
 
 <a name="IsAny"></a>
 ### func IsAny
@@ -101,12 +101,12 @@ func Exact[T comparable](expected T) ArgMatch
 func IsAny() ArgMatch
 ```
 
-
+IsAny always returns true, enabling it to match any given argument during mock function verification.
 
 <a name="Interceptor"></a>
 ## type Interceptor
 
-
+Interceptor is a base interface type for defining interceptors that can be used to monitor or alter the behavior of other components.
 
 ```go
 type Interceptor interface {
@@ -118,7 +118,7 @@ type Interceptor interface {
 <a name="InterceptorBase"></a>
 ## type InterceptorBase
 
-
+InterceptorBase serves as a foundational structure for defining interceptors, managing essential data like name and position.
 
 ```go
 type InterceptorBase struct {
@@ -133,7 +133,7 @@ type InterceptorBase struct {
 func NewInterceptorBase(name string, position int) InterceptorBase
 ```
 
-
+NewInterceptorBase creates a new instance of InterceptorBase with the specified name and position for managing interceptor metadata.
 
 <a name="InterceptorBase.Name"></a>
 ### func \(InterceptorBase\) Name
@@ -142,7 +142,7 @@ func NewInterceptorBase(name string, position int) InterceptorBase
 func (i InterceptorBase) Name() string
 ```
 
-
+Name retrieves the name of the interceptor, which is useful for identification and debugging purposes.
 
 <a name="InterceptorBase.Position"></a>
 ### func \(InterceptorBase\) Position
@@ -151,12 +151,12 @@ func (i InterceptorBase) Name() string
 func (i InterceptorBase) Position() int
 ```
 
-
+Position returns the position of the interceptor, helping determine its order in processing flows within a system.
 
 <a name="Lazy"></a>
 ## type Lazy
 
-
+Lazy represents a type whose value is initialized lazily upon first access, typically to improve performance or manage resources.
 
 ```go
 type Lazy[T any] interface {
@@ -167,7 +167,7 @@ type Lazy[T any] interface {
 <a name="MethodCallContext"></a>
 ## type MethodCallContext
 
-
+MethodCallContext captures the context of a method call, including method name, parameters, and return values.
 
 ```go
 type MethodCallContext struct {
@@ -182,12 +182,12 @@ type MethodCallContext struct {
 func NewMethodCallContext(methodName string, parameters map[string]interface{}) *MethodCallContext
 ```
 
-
+NewMethodCallContext creates a new MethodCallContext instance with the provided method name and parameters.
 
 <a name="MethodInterceptor"></a>
 ## type MethodInterceptor
 
-
+MethodInterceptor provides hooks to intercept method execution on a proxy object. It allows entering before method invocations, exiting after method executions, and handling errors during method execution for monitoring or altering behavior.
 
 ```go
 type MethodInterceptor interface {
@@ -201,7 +201,7 @@ type MethodInterceptor interface {
 <a name="MockBase"></a>
 ## type MockBase
 
-
+MockBase is used as a foundational struct to track and manage mocked functions and their call history. It helps in testing by allowing function signature tracking and call verification.
 
 ```go
 type MockBase struct {
@@ -216,7 +216,7 @@ type MockBase struct {
 func NewMockBase() MockBase
 ```
 
-
+NewMockBase initializes and returns an instance of MockBase, ideal for setting up and using mock functions in tests.
 
 <a name="MockBase.AddFunction"></a>
 ### func \(\*MockBase\) AddFunction
@@ -225,7 +225,7 @@ func NewMockBase() MockBase
 func (m *MockBase) AddFunction(name string, signature string)
 ```
 
-
+AddFunction adds a new mock function with the specified name and signature to the MockBase instance.
 
 <a name="MockBase.TraceMethodCall"></a>
 ### func \(\*MockBase\) TraceMethodCall
@@ -234,7 +234,7 @@ func (m *MockBase) AddFunction(name string, signature string)
 func (m *MockBase) TraceMethodCall(name string, arguments ...any)
 ```
 
-
+TraceMethodCall logs the invocation of a mocked function with specified arguments to facilitate function call tracking during testing. Before function calls can be tracked, the function must be registered with the MockBase instance; use AddFunction.
 
 <a name="MockBase.Verify"></a>
 ### func \(\*MockBase\) Verify
@@ -243,12 +243,12 @@ func (m *MockBase) TraceMethodCall(name string, arguments ...any)
 func (m *MockBase) Verify(name string, times TimesFunc, matches ...ArgMatch) bool
 ```
 
-
+Verify checks if a mock function was called a specific number of times, optionally matching provided argument conditions.
 
 <a name="MockFunction"></a>
 ## type MockFunction
 
-
+MockFunction provides a structure to represent a mocked function in test scenarios. It allows tracking its calls and signature.
 
 ```go
 type MockFunction struct {
@@ -263,12 +263,12 @@ type MockFunction struct {
 func (m MockFunction) String() string
 ```
 
-
+String returns the signature of the mocked function if it exists, otherwise it returns the function's name.
 
 <a name="ParameterInfo"></a>
 ## type ParameterInfo
 
-
+ParameterInfo represents information about a method parameter, including its value, type, and name. It is used in method interception where parameters need to be inspected or logged.
 
 ```go
 type ParameterInfo struct {
@@ -283,12 +283,12 @@ type ParameterInfo struct {
 func (p ParameterInfo) String() string
 ```
 
-
+String returns a formatted string representation of the ParameterInfo, useful for logging and debugging purposes.
 
 <a name="ProxyBase"></a>
 ## type ProxyBase
 
-
+ProxyBase facilitates method interception by allowing the inclusion of multiple interceptors to target method calls. Typically used to monitor, log, or modify behavior of an object's method execution.
 
 ```go
 type ProxyBase struct {
@@ -303,7 +303,7 @@ type ProxyBase struct {
 func NewProxyBase[T any](target T, interceptors []MethodInterceptor) ProxyBase
 ```
 
-
+NewProxyBase creates a ProxyBase instance with the provided target and a sorted list of method interceptors. Useful for setting up method interception on the target object.
 
 <a name="ProxyBase.InvokeEnterMethodInterceptors"></a>
 ### func \(\*ProxyBase\) InvokeEnterMethodInterceptors
@@ -312,7 +312,7 @@ func NewProxyBase[T any](target T, interceptors []MethodInterceptor) ProxyBase
 func (p *ProxyBase) InvokeEnterMethodInterceptors(callContext *MethodCallContext)
 ```
 
-
+InvokeEnterMethodInterceptors triggers the Enter method on all registered interceptors before the target method executes.
 
 <a name="ProxyBase.InvokeExitMethodInterceptors"></a>
 ### func \(\*ProxyBase\) InvokeExitMethodInterceptors
@@ -321,7 +321,7 @@ func (p *ProxyBase) InvokeEnterMethodInterceptors(callContext *MethodCallContext
 func (p *ProxyBase) InvokeExitMethodInterceptors(callContext *MethodCallContext)
 ```
 
-
+InvokeExitMethodInterceptors triggers the Exit method of all registered interceptors after the target method completes.
 
 <a name="ProxyBase.InvokeMethodErrorInterceptors"></a>
 ### func \(\*ProxyBase\) InvokeMethodErrorInterceptors
@@ -330,12 +330,12 @@ func (p *ProxyBase) InvokeExitMethodInterceptors(callContext *MethodCallContext)
 func (p *ProxyBase) InvokeMethodErrorInterceptors(callContext *MethodCallContext, returnValues ...interface{})
 ```
 
-
+InvokeMethodErrorInterceptors intercepts the return values of a method, checks for errors, and triggers OnError for registered interceptors.
 
 <a name="ReturnValueInfo"></a>
 ## type ReturnValueInfo
 
-
+ReturnValueInfo represents the value and type information of a method's return value, used in method interception.
 
 ```go
 type ReturnValueInfo struct {
@@ -350,12 +350,12 @@ type ReturnValueInfo struct {
 func (r ReturnValueInfo) String() string
 ```
 
-
+String returns a string representation of ReturnValueInfo, formatting the value and its type for debugging purposes.
 
 <a name="TimesFunc"></a>
 ## type TimesFunc
 
-
+TimesFunc is used to verify the number of times a mock function is called. It allows flexibility in call count assertions.
 
 ```go
 type TimesFunc func(times int) bool
@@ -368,7 +368,7 @@ type TimesFunc func(times int) bool
 func TimesAtLeastOnce() TimesFunc
 ```
 
-
+TimesAtLeastOnce returns a TimesFunc that verifies if a mock function is called at least once.
 
 <a name="TimesExactly"></a>
 ### func TimesExactly
@@ -377,7 +377,7 @@ func TimesAtLeastOnce() TimesFunc
 func TimesExactly(n int) TimesFunc
 ```
 
-
+TimesExactly returns a TimesFunc that checks if the number of function calls is exactly equal to the specified value.
 
 <a name="TimesNever"></a>
 ### func TimesNever
@@ -386,7 +386,7 @@ func TimesExactly(n int) TimesFunc
 func TimesNever() TimesFunc
 ```
 
-
+TimesNever returns a TimesFunc that ensures the function has never been called, providing a strict zero call condition.
 
 <a name="TimesOnce"></a>
 ### func TimesOnce
@@ -395,5 +395,5 @@ func TimesNever() TimesFunc
 func TimesOnce() TimesFunc
 ```
 
-
+TimesOnce returns a TimesFunc that checks if the number of function calls equals one. It is useful for verifying single call assertions.
 

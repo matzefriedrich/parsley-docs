@@ -28,7 +28,7 @@ import "github.com/matzefriedrich/parsley/pkg/resolving"
 func Activate[T any](resolver types.Resolver, ctx context.Context, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)
 ```
 
-Activate attempts to create and return an instance of the requested type using the provided resolver. This method can be used to instantiate service objects of unregistered types. The specified activator function can have parameters to demand service instances for registered service types. See https://matzefriedrich.github.io/parsley-docs/resolving/resolve-live-services/ for further information.
+Activate attempts to create and return an instance of the requested type using the provided resolver. Use this method to instantiate service objects of unregistered types. The specified activator function can have parameters to demand service instances for registered service types.
 
 <a name="NewResolver"></a>
 ## func NewResolver

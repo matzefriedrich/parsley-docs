@@ -29,7 +29,7 @@ const (
 
 ## Variables
 
-<a name="ErrCannotRegisterAppFactory"></a>
+<a name="ErrCannotRegisterAppFactory"></a>ErrCannotRegisterAppFactory is returned when the application factory cannot be registered, indicating an issue with the bootstrap process.
 
 ```go
 var (
@@ -44,12 +44,12 @@ var (
 func RunParsleyApplication(cxt context.Context, appFactoryFunc any, configure ...types.ModuleFunc) error
 ```
 
-
+RunParsleyApplication initializes and runs the Parsley application lifecycle. It registers the application factory, configures additional modules, resolves the main application instance, and invokes its Run method.
 
 <a name="Application"></a>
 ## type Application
 
-
+Application provides an abstract interface for creating and running an application. It primarily facilitates the use of dependency injection for resolving services and the managing application lifecycle.
 
 ```go
 type Application interface {
