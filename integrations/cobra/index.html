@@ -10,21 +10,24 @@
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>packages</title>
-    <meta name="title" content="packages">
+    <title>Walkthrough: Parsley Integration with Cobra</title>
+    <meta name="title" content="Walkthrough: Parsley Integration with Cobra">
+    <meta name="description" content="This article provides an example of integrating Parsley with Cobra to build a CLI application. The example in the walkthrough uses the ">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/tags/packages/">
+    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/tags/packages/">
-    <meta property="og:title" content="packages">
+    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
+    <meta property="og:title" content="Walkthrough: Parsley Integration with Cobra">
+    <meta property="og:description" content="This article provides an example of integrating Parsley with Cobra to build a CLI application. The example in the walkthrough uses the ">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/tags/packages/">
-    <meta property="twitter:title" content="packages">
+    <meta property="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
+    <meta property="twitter:title" content="Walkthrough: Parsley Integration with Cobra">
+    <meta property="twitter:description" content="This article provides an example of integrating Parsley with Cobra to build a CLI application. The example in the walkthrough uses the ">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -33,6 +36,7 @@
     <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780953141731" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
     <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780953141731" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780953141731" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -195,55 +199,273 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="tag-packages" class="break-words">
+<doc-anchor-target id="walkthrough-parsley-integration-with-cobra" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#tag-packages">#</doc-anchor-trigger>
-        <span>Tag: packages</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#walkthrough-parsley-integration-with-cobra">#</doc-anchor-trigger>
+        <span>Walkthrough: Parsley Integration with Cobra</span>
     </h1>
 </doc-anchor-target>
-<p>See all <a href="../">tags</a>.</p>
-<a class="no-link mb-6 overflow-hidden border border-gray-200 rounded-lg md:flex dark:border-dark-700 hover:border-gray-400 dark:hover:border-dark-450" href="../../library/pkg/bootstrap/">
-    <div class="p-6">
-        <div class="text-xs font-semibold text-blue-500 uppercase dark:text-blue-400">Package Reference &#8226; pkg</div>
-        <div class="mt-2 text-lg font-semibold leading-snug text-gray-900 dark:text-white md:text-xl">bootstrap</div>
-        <div class="line-clamp-3"><p class="hidden mt-2 md:block">Constants</p></div>
-    </div>
-</a>
-<a class="no-link mb-6 overflow-hidden border border-gray-200 rounded-lg md:flex dark:border-dark-700 hover:border-gray-400 dark:hover:border-dark-450" href="../../library/pkg/features/">
-    <div class="p-6">
-        <div class="text-xs font-semibold text-blue-500 uppercase dark:text-blue-400">Package Reference &#8226; pkg</div>
-        <div class="mt-2 text-lg font-semibold leading-snug text-gray-900 dark:text-white md:text-xl">features</div>
-        <div class="line-clamp-3"><p class="hidden mt-2 md:block">func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T, _ types.LifetimeScope) error</p></div>
-    </div>
-</a>
-<a class="no-link mb-6 overflow-hidden border border-gray-200 rounded-lg md:flex dark:border-dark-700 hover:border-gray-400 dark:hover:border-dark-450" href="../../library/pkg/registration/">
-    <div class="p-6">
-        <div class="text-xs font-semibold text-blue-500 uppercase dark:text-blue-400">Package Reference &#8226; pkg</div>
-        <div class="mt-2 text-lg font-semibold leading-snug text-gray-900 dark:text-white md:text-xl">registration</div>
-        <div class="line-clamp-3"><p class="hidden mt-2 md:block">Constants</p></div>
-    </div>
-</a>
-<a class="no-link mb-6 overflow-hidden border border-gray-200 rounded-lg md:flex dark:border-dark-700 hover:border-gray-400 dark:hover:border-dark-450" href="../../library/pkg/resolving/">
-    <div class="p-6">
-        <div class="text-xs font-semibold text-blue-500 uppercase dark:text-blue-400">Package Reference &#8226; pkg</div>
-        <div class="mt-2 text-lg font-semibold leading-snug text-gray-900 dark:text-white md:text-xl">resolving</div>
-        <div class="line-clamp-3"><p class="hidden mt-2 md:block">func Activate[T any](resolver types.Resolver, ctx context.Context, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)</p></div>
-    </div>
-</a>
-<a class="no-link mb-6 overflow-hidden border border-gray-200 rounded-lg md:flex dark:border-dark-700 hover:border-gray-400 dark:hover:border-dark-450" href="../../library/pkg/types/">
-    <div class="p-6">
-        <div class="text-xs font-semibold text-blue-500 uppercase dark:text-blue-400">Package Reference &#8226; pkg</div>
-        <div class="mt-2 text-lg font-semibold leading-snug text-gray-900 dark:text-white md:text-xl">types</div>
-        <div class="line-clamp-3"><p class="hidden mt-2 md:block">Constants</p></div>
-    </div>
-</a>
+<p>This article provides an example of integrating Parsley with <a href="https://github.com/spf13/cobra">Cobra</a> to build a CLI application. The example in the walkthrough uses the <a href="https://github.com/matzefriedricg/cobra-extensions">cobra-extension package</a>, which provides functionality to implement Cobra command handlers based on typed command services, which is the foundation for integrating with Parsley. The goal is to showcase how Parsley’s service registration and resolving features can streamline the creation of a modular and maintainable CLI setup.</p>
+<doc-anchor-target id="project-structure">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#project-structure">#</doc-anchor-trigger>
+        <span>Project Structure</span>
+    </h2>
+</doc-anchor-target>
+<p>The code for this example can be found at <a href="https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/cobra">examples/integrations/cobra</a> it has the following structure:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">cobra
+├── cmd
+│   └── main.go
+├── go.mod
+├── go.sum
+└── internal
+    ├── commands
+    │   └── hello_command.go
+    ├── modules
+    │   ├── cobra_module.go
+    │   └── services_module.go
+    └── services
+        └── greeter.go</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="main-application">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#main-application">#</doc-anchor-trigger>
+        <span>Main Application</span>
+    </h3>
+</doc-anchor-target>
+<p>The main entry point of the application is in the <code v-pre>cmd/main.go</code> file:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
 
-                                
+import (
+	&quot;context&quot;
+	&quot;github.com/matzefriedrich/cobra-extensions/pkg/charmer&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/modules&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/resolving&quot;
+)
+
+func main() {
+
+	registry := registration.NewServiceRegistry()
+
+	_ = registry.RegisterModule(modules.CobraApplicationModule(&quot;cobra-app&quot;, &quot;A Parsley-enabled Cobra app&quot;))
+	_ = registry.RegisterModule(modules.CobraApplicationCommandsModule)
+	_ = registry.RegisterModule(modules.ServicesModule)
+
+	resolver := resolving.NewResolver(registry)
+	app, _ := resolving.ResolveRequiredService[*charmer.CommandLineApplication](resolver, resolving.NewScopedContext(context.Background()))
+	err := app.Execute()
+	if err != nil {
+		panic(err)
+	}
+}</code></pre>
+</doc-codeblock></div>
+<p>This file registers all dependencies with a <code v-pre>ServiceRegistry</code> instance. To keep things clean, the registration of application services and commands is organized in <code v-pre>ModuleFunc</code> methods. After all application dependencies are registered, a <code v-pre>*charmer.CommandLineApplication</code> service is resolved through a <code v-pre>Resolver</code>; Finally, the <code v-pre>Execute</code> method is called to process the command.</p>
+<doc-anchor-target id="modules">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#modules">#</doc-anchor-trigger>
+        <span>Modules</span>
+    </h3>
+</doc-anchor-target>
+<p>The <code v-pre>modules</code> package contains the service configurations required to set up the Cobra application.</p>
+<p>The <code v-pre>cobra_module.go</code> module configures the Cobra application, registers it as a singleton service, and configures the <code v-pre>*cobra.Command</code> type to be resolvable as a list. The latter is required so that all registered services can be resolved at once and added to the Cobra application.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package modules
+
+import (
+	&quot;context&quot;
+	&quot;github.com/matzefriedrich/cobra-extensions/pkg/charmer&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/commands&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/features&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/resolving&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+	&quot;github.com/spf13/cobra&quot;
+)
+
+// CobraApplicationModule registers a Cobra-based command-line application with the given name and description in the service registry.
+func CobraApplicationModule(appName string, appDescription string) func(registry types.ServiceRegistry) error {
+
+	return func(registry types.ServiceRegistry) error {
+
+		// Enable resolution of *cobra.Command objects at once (as a list)
+		_ = features.RegisterList[*cobra.Command](registry)
+
+		// Register a factory function for *CommandLineApplication
+		_ = registration.RegisterSingleton(registry, func(resolver types.Resolver) *charmer.CommandLineApplication {
+
+			application := charmer.NewCommandLineApplication(appName, appDescription)
+
+			// Resolve all command handlers and add them to the app instance
+			typeCommandServices, _ := resolving.ResolveRequiredServices[*cobra.Command](resolver, context.Background())
+			for _, command := range typeCommandServices {
+				application.AddCommand(command)
+			}
+
+			return application
+		})
+
+		return nil
+	}
+}
+
+// CobraApplicationCommandsModule registers typed command handler services in the given service registry.
+func CobraApplicationCommandsModule(registry types.ServiceRegistry) error {
+	_ = registration.RegisterTransient(registry, commands.NewHelloCommand)
+	return nil
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="services">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#services">#</doc-anchor-trigger>
+        <span>Services</span>
+    </h3>
+</doc-anchor-target>
+<p>Next, the <code v-pre>internal/services/greeter.go</code> module file defines the <code v-pre>Greeter</code> service, which returns a greeting message based on the provided name and politeness flag.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package services
+
+import &quot;fmt&quot;
+
+type Greeter interface {
+	SayHello(name string, polite bool) string
+}
+
+type greeter struct {
+}
+
+func (g *greeter) SayHello(name string, polite bool) string {
+	if polite {
+		return fmt.Sprintf(&quot;Good day, %s!\n&quot;, name)
+	} else {
+		return fmt.Sprintf(&quot;Hi, %s\n&quot;, name)
+	}
+}
+
+func NewGreeter() Greeter {
+	return &amp;greeter{}
+}</code></pre>
+</doc-codeblock></div>
+<p>The <code v-pre>Greeter</code> service is registered by the <code v-pre>services_module.go</code> module.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package modules
+
+import (
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/services&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+// ServicesModule registers a transient service for creating new instances of Greeter in the provided service registry.
+func ServicesModule(registry types.ServiceRegistry) error {
+	_ = registration.RegisterTransient(registry, services.NewGreeter)
+	return nil
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="command-handlers">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#command-handlers">#</doc-anchor-trigger>
+        <span>Command Handlers</span>
+    </h3>
+</doc-anchor-target>
+<p>In this example, command handlers are services,  i.e., structs implementing the <code v-pre>TypedCommand</code> interface. The constructor functions of command handler services must return a <code v-pre>*cobra.Command</code> object so that the application factory function can resolve and add them. The example project provides the <code v-pre>helloCommand</code> service that consumes a <code v-pre>Greeter</code> service to render the greeting message.</p>
+<p>With <strong>cobra-extensions</strong> and <strong>Parsley</strong>, command declaration (a struct with <code v-pre>flag</code> struct tags), the demand of required services via a constructor function, and command logic are all defined in the same module. This helps to organize aspects that belong together as a single unit.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package commands
+
+import (
+	&quot;fmt&quot;
+	&quot;github.com/matzefriedrich/cobra-extensions/pkg/commands&quot;
+	&quot;github.com/matzefriedrich/cobra-extensions/pkg/types&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/services&quot;
+	&quot;github.com/spf13/cobra&quot;
+)
+
+type helloCommand struct {
+	use     types.CommandName `flag:&quot;hello&quot; short:&quot;Prints a greeting to the specified name.&quot;`
+	Name    string            `flag:&quot;name&quot; usage:&quot;The name to greet.&quot; required:&quot;true&quot;`
+	Polite  bool              `flag:&quot;polite&quot;`
+	greeter services.Greeter
+}
+
+func (h *helloCommand) Execute() {
+	message := h.greeter.SayHello(h.Name, h.Polite)
+	fmt.Println(message)
+}
+
+var _ types.TypedCommand = (*helloCommand)(nil)
+
+func NewHelloCommand(greeter services.Greeter) *cobra.Command {
+	command := &amp;helloCommand{
+		greeter: greeter,
+	}
+	return commands.CreateTypedCommand(command)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="running-the-application">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#running-the-application">#</doc-anchor-trigger>
+        <span>Running the Application</span>
+    </h3>
+</doc-anchor-target>
+<p>As configured in the code, the application will start a Cobra application and call it´s <code v-pre>Execute</code> method. To run the application, navigate to the root directory and execute the following command:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">go run main.go hello --name John --polite</code></pre>
+</doc-codeblock></div>
+<p>This should return:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Good day, John!</code></pre>
+</doc-codeblock></div>
+<p>For more details on Parsley, check out the Parsley GitHub repository.</p>
+
+                                <div class="flex items-center mt-6 mb-6 clear-both">
+                                    <span>
+                                        <a href="../../tags/">
+                                            <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
+                                        </a>
+                                        <span class="mr-2"><a href="../../tags/integrations/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>integrations</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/guide/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>guide</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/walkthrough/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>walkthrough</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/examples/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>examples</span>
+                                </a></span>
+                                    </span>
+                                </div>
+                
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
                             <footer class="clear-both">
                             
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../advanced-features/service-registration-validation/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Validating Service-​Registrations</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../integrations/gofiber/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Walkthrough: Parsley Integration with Go​Fiber</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
                             </footer>
                         </main>
                 
@@ -285,6 +507,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "packages", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Walkthrough: Parsley Integration with Cobra", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
