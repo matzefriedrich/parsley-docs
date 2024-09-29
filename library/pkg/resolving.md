@@ -1,7 +1,12 @@
 ---
+meta:
+  title: Parsley Docs - "resolving" package
+description: Official documentation of the Parsley´s "resolving" package
 icon: package
 label: resolving
 tags: [ "packages", "resolving" ]
+category:
+  - Package Reference
 ---
 # resolving
 

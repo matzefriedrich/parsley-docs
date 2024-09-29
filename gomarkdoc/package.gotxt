@@ -1,7 +1,12 @@
 ---
+meta:
+  title: Parsley Docs - "{{ .Name }}" package
+description: Official documentation of the Parsley´s "{{ .Name }}" package
 icon: package
 label: {{ .Name }}
 tags: [ "packages", "{{ .Name }}" ]
+category:
+  - Package Reference
 ---
 {{- "\n" -}}
 

@@ -1,7 +1,12 @@
 ---
+meta:
+  title: Parsley Docs - "types" package
+description: Official documentation of the Parsley´s "types" package
 icon: package
 label: types
 tags: [ "packages", "types" ]
+category:
+  - Package Reference
 ---
 # types
 

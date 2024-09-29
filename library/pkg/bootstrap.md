@@ -1,7 +1,12 @@
 ---
+meta:
+  title: Parsley Docs - "bootstrap" package
+description: Official documentation of the Parsley´s "bootstrap" package
 icon: package
 label: bootstrap
 tags: [ "packages", "bootstrap" ]
+category:
+  - Package Reference
 ---
 # bootstrap
 

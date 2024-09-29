@@ -1,7 +1,12 @@
 ---
+meta:
+  title: Parsley Docs - "features" package
+description: Official documentation of the Parsley´s "features" package
 icon: package
 label: features
 tags: [ "packages", "features" ]
+category:
+  - Package Reference
 ---
 # features
 

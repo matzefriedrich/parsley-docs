@@ -1,7 +1,12 @@
 ---
+meta:
+  title: Parsley Docs - "registration" package
+description: Official documentation of the Parsley´s "registration" package
 icon: package
 label: registration
 tags: [ "packages", "registration" ]
+category:
+  - Package Reference
 ---
 # registration
 
