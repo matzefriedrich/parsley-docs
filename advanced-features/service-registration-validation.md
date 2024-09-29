@@ -1,7 +1,12 @@
 ---
+meta:
+  title: Parsley - Validating Service Registrations
+description: This article discusses the importance of validating service registrations in Parsley using the built-in `Validator` service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.
 icon: file
 label: Validating Service-Registrations
 tags: [ registration, validation ]
+category:
+  - Registration
 ---
 # Validating Service-Registrations
 

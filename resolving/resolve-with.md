@@ -1,8 +1,13 @@
 ---
+meta:
+  title: "Parsley - Dynamic Dependency Injection with ResolveWithOptions"
+description: Explore how to use Parsley's `ResolveWithOptions` method to dynamically pass specific instances to the resolver, enhancing your application's flexibility in managing dependencies. This guide demonstrates how to override registered dependencies or inject unregistered instances during resolution.
 icon: file
 label:  Resolving services with specific instances
 order: 30
 tags: [ resolving, instances ]
+category:
+  - Resolving
 ---
 # Passing specific instances to the resolver 
 

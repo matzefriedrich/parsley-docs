@@ -1,6 +1,12 @@
 ---
+meta:
+  title: Parsley - Learn about the Parsley dependency injection framework for Go and its key features
+description: Learn about the Parsley library and its key features.
 icon: home
 tags: [ introduction, guide ]
+category:
+  - Introduction
+route: /welcome
 ---
 
 # Welcome to Parsley

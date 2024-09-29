@@ -1,7 +1,12 @@
 ---
+meta:
+  title: Parsley - Register services via Constructor Functions
+description: Learn how to register services in Parsley using constructor functions. Understand what constructor functions are in Go and how Parsley uses them to automatically resolve and inject dependencies into your application.
 icon: file
 label: Register Constructor Functions
 tags: [ registration, constructor function ]
+category:
+  - Registration
 ---
 # Register Constructor Functions
 

@@ -1,8 +1,13 @@
 ---
+meta:
+  title: Parsley - Licensing
+description: 
 label: Licensing
 icon: shield-check
 order: -900
 tags: [ licensing ]
+category:
+  - Licensing
 ---
 # Licensing Information
 
@@ -15,7 +20,7 @@ Parsley relies on several open-source libraries, each with its own license. The 
 | Module                                     | Version | License      |
 |--------------------------------------------|---------|--------------|
 | github.com/hashicorp/go-version            | v1.7.0  | MPL-2.0      |
-| github.com/matzefriedrich/cobra-extensions | v0.2.6  | MIT          |
+| github.com/matzefriedrich/cobra-extensions | v0.3.1  | MIT          |
 | github.com/pkg/errors                      | v0.9.1  | BSD-2-Clause |
 | github.com/spf13/cobra                     | v1.8.1  | Apache-2.0   |
 | github.com/stretchr/testify                | v1.9.0  | MIT          |

@@ -1,9 +1,16 @@
 ---
+meta:
+  title: Parsley - Managing Multiple Service Implementations
+description: Learn how to register and inject multiple services of the same contract type in Parsley using the `RegisterList[T]` method. Simplify service management and gain flexibility by automatically injecting arrays or slices of services that share a common interface or type.
 icon: file
-label: Register Lists
+label: Manage Multiple Service Implementations
 tags: [ registration, service lists ]
+category:
+  - Registration
+  - Multiple Service Registrations
+order: -100
 ---
-# Register service lists
+# Manage Multiple Service Implementations
 
 Parsley supports registering multiple services under the same contract type, allowing you to inject a list of these services into your application. While you can always resolve multiple services of the same contract using the `ResolveRequiredServices[T]` method, injecting them as an array or slice requires a list registration via the `RegisterList[T]`  method.
 
