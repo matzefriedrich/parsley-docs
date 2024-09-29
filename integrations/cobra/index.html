@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780953141731">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780955242077">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -12,7 +12,7 @@
     <!-- Primary Meta Tags -->
     <title>Walkthrough: Parsley Integration with Cobra</title>
     <meta name="title" content="Walkthrough: Parsley Integration with Cobra">
-    <meta name="description" content="This article provides an example of integrating Parsley with Cobra to build a CLI application. The example in the walkthrough uses the ">
+    <meta name="description" content="This guide demonstrates how to integrate Parsley with Cobra to build a modular and maintainable CLI application. It leverages the ">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
@@ -21,22 +21,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
     <meta property="og:title" content="Walkthrough: Parsley Integration with Cobra">
-    <meta property="og:description" content="This article provides an example of integrating Parsley with Cobra to build a CLI application. The example in the walkthrough uses the ">
+    <meta property="og:description" content="This guide demonstrates how to integrate Parsley with Cobra to build a modular and maintainable CLI application. It leverages the ">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
     <meta property="twitter:title" content="Walkthrough: Parsley Integration with Cobra">
-    <meta property="twitter:description" content="This article provides an example of integrating Parsley with Cobra to build a CLI application. The example in the walkthrough uses the ">
+    <meta property="twitter:description" content="This guide demonstrates how to integrate Parsley with Cobra to build a modular and maintainable CLI application. It leverages the ">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.6.0.780953141731" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.780955242077" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780953141731" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780955242077" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780953141731" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780953141731" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780955242077" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780955242077" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -205,7 +205,7 @@
         <span>Walkthrough: Parsley Integration with Cobra</span>
     </h1>
 </doc-anchor-target>
-<p>This article provides an example of integrating Parsley with <a href="https://github.com/spf13/cobra">Cobra</a> to build a CLI application. The example in the walkthrough uses the <a href="https://github.com/matzefriedricg/cobra-extensions">cobra-extension package</a>, which provides functionality to implement Cobra command handlers based on typed command services, which is the foundation for integrating with Parsley. The goal is to showcase how Parsley’s service registration and resolving features can streamline the creation of a modular and maintainable CLI setup.</p>
+<p>This guide demonstrates how to integrate Parsley with <a href="https://github.com/spf13/cobra">Cobra</a> to build a modular and maintainable CLI application. It leverages the <a href="https://github.com/matzefriedrich/cobra-extensions">cobra-extension package</a> package to implement command handlers based on typed command services, making it a natural fit for Parsley’s dependency injection capabilities.</p>
 <doc-anchor-target id="project-structure">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#project-structure">#</doc-anchor-trigger>
@@ -234,7 +234,7 @@
         <span>Main Application</span>
     </h3>
 </doc-anchor-target>
-<p>The main entry point of the application is in the <code v-pre>cmd/main.go</code> file:</p>
+<p>The <code v-pre>cmd/main.go</code> file serves as the application&#x27;s entry point. Here, the service dependencies are registered using a <code v-pre>ServiceRegistry</code> instance. Dependency registration is organized in <code v-pre>ModuleFunc</code> methods, keeping the main setup clean. Finally, a <code v-pre>*charmer.CommandLineApplication</code> service is resolved, and its Execute method is called to run the application.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package main
 
@@ -262,15 +262,14 @@ func main() {
 	}
 }</code></pre>
 </doc-codeblock></div>
-<p>This file registers all dependencies with a <code v-pre>ServiceRegistry</code> instance. To keep things clean, the registration of application services and commands is organized in <code v-pre>ModuleFunc</code> methods. After all application dependencies are registered, a <code v-pre>*charmer.CommandLineApplication</code> service is resolved through a <code v-pre>Resolver</code>; Finally, the <code v-pre>Execute</code> method is called to process the command.</p>
 <doc-anchor-target id="modules">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#modules">#</doc-anchor-trigger>
         <span>Modules</span>
     </h3>
 </doc-anchor-target>
-<p>The <code v-pre>modules</code> package contains the service configurations required to set up the Cobra application.</p>
-<p>The <code v-pre>cobra_module.go</code> module configures the Cobra application, registers it as a singleton service, and configures the <code v-pre>*cobra.Command</code> type to be resolvable as a list. The latter is required so that all registered services can be resolved at once and added to the Cobra application.</p>
+<p>The <code v-pre>internal/modules</code> package defines the service configurations required for the CLI setup.</p>
+<p>The <code v-pre>cobra_module.go</code> module configures the Cobra application and registers it as a singleton service. It also enables the resolution of all <code v-pre>*cobra.Command</code> types as a list, which is necessary to populate the Cobra application with registered commands.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package modules
 
@@ -317,13 +316,29 @@ func CobraApplicationCommandsModule(registry types.ServiceRegistry) error {
 	return nil
 }</code></pre>
 </doc-codeblock></div>
+<p>The <code v-pre>services_module.go</code> registers application-specific services, such as the <code v-pre>Greeter</code> service.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package modules
+
+import (
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/services&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+// ServicesModule registers a transient service for creating new instances of Greeter in the provided service registry.
+func ServicesModule(registry types.ServiceRegistry) error {
+	_ = registration.RegisterTransient(registry, services.NewGreeter)
+	return nil
+}</code></pre>
+</doc-codeblock></div>
 <doc-anchor-target id="services">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#services">#</doc-anchor-trigger>
         <span>Services</span>
     </h3>
 </doc-anchor-target>
-<p>Next, the <code v-pre>internal/services/greeter.go</code> module file defines the <code v-pre>Greeter</code> service, which returns a greeting message based on the provided name and politeness flag.</p>
+<p>The Greeter service in <code v-pre>internal/services/greeter.go</code> generates a greeting message based on the provided name and politeness level. This service is used by command handlers to produce responses.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package services
 
@@ -348,30 +363,13 @@ func NewGreeter() Greeter {
 	return &amp;greeter{}
 }</code></pre>
 </doc-codeblock></div>
-<p>The <code v-pre>Greeter</code> service is registered by the <code v-pre>services_module.go</code> module.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package modules
-
-import (
-	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/services&quot;
-	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
-	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
-)
-
-// ServicesModule registers a transient service for creating new instances of Greeter in the provided service registry.
-func ServicesModule(registry types.ServiceRegistry) error {
-	_ = registration.RegisterTransient(registry, services.NewGreeter)
-	return nil
-}</code></pre>
-</doc-codeblock></div>
 <doc-anchor-target id="command-handlers">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#command-handlers">#</doc-anchor-trigger>
         <span>Command Handlers</span>
     </h3>
 </doc-anchor-target>
-<p>In this example, command handlers are services,  i.e., structs implementing the <code v-pre>TypedCommand</code> interface. The constructor functions of command handler services must return a <code v-pre>*cobra.Command</code> object so that the application factory function can resolve and add them. The example project provides the <code v-pre>helloCommand</code> service that consumes a <code v-pre>Greeter</code> service to render the greeting message.</p>
-<p>With <strong>cobra-extensions</strong> and <strong>Parsley</strong>, command declaration (a struct with <code v-pre>flag</code> struct tags), the demand of required services via a constructor function, and command logic are all defined in the same module. This helps to organize aspects that belong together as a single unit.</p>
+<p>Command handlers in this example are services that implement the <code v-pre>TypedCommand</code> interface, providing structured logic and dependency injection. For instance, the <code v-pre>helloCommand</code> service uses <code v-pre>Greeter</code> to output personalized greetings. With cobra-extensions and Parsley, command declaration, service resolution, and command logic are consolidated in the same module, making the codebase easier to navigate and maintain.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-go"><code v-pre class="language-go">package commands
 
