@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780955468372">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780966635025">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Walkthrough: Parsley Integration with GoFiber</title>
-    <meta name="title" content="Walkthrough: Parsley Integration with GoFiber">
-    <meta name="description" content="This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework.">
+    <title>Parsley - Walkthrough: Integrating Parsley with GoFiber for Dependency Injection</title>
+    <meta name="title" content="Parsley - Walkthrough: Integrating Parsley with GoFiber for Dependency Injection">
+    <meta name="description" content="Learn how to integrate the Parsley dependency injection framework with the GoFiber web framework. Follow this guide to set up a GoFiber application using Parsley, creating a more modular, testable, and maintainable codebase.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/integrations/gofiber/">
@@ -20,23 +20,23 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/gofiber/">
-    <meta property="og:title" content="Walkthrough: Parsley Integration with GoFiber">
-    <meta property="og:description" content="This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework.">
+    <meta property="og:title" content="Parsley - Walkthrough: Integrating Parsley with GoFiber for Dependency Injection">
+    <meta property="og:description" content="Learn how to integrate the Parsley dependency injection framework with the GoFiber web framework. Follow this guide to set up a GoFiber application using Parsley, creating a more modular, testable, and maintainable codebase.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/gofiber/">
-    <meta property="twitter:title" content="Walkthrough: Parsley Integration with GoFiber">
-    <meta property="twitter:description" content="This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework.">
+    <meta property="twitter:title" content="Parsley - Walkthrough: Integrating Parsley with GoFiber for Dependency Injection">
+    <meta property="twitter:description" content="Learn how to integrate the Parsley dependency injection framework with the GoFiber web framework. Follow this guide to set up a GoFiber application using Parsley, creating a more modular, testable, and maintainable codebase.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.6.0.780955468372" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.780966635025" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780955468372" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780966635025" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780955468372" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780955468372" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780966635025" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780966635025" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -205,6 +205,11 @@
         <span>Walkthrough: Parsley Integration with GoFiber</span>
     </h1>
 </doc-anchor-target>
+<div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350 items-center">
+    <div>In&nbsp;</div>
+    <div><a href="../../categories/walkthrough/">Walkthrough</a></div>
+</div>
+
 <p>This guide demonstrates how to integrate the Parsley dependency injection framework with the GoFiber web framework. By following this example, you&#x27;ll learn how to set up a GoFiber application with dependency injection managed by Parsley, making your codebase more modular, testable, and maintainable.</p>
 <doc-anchor-target id="project-structure">
     <h2>
