@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780966635025">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780967490344">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Validating Service-Registrations</title>
-    <meta name="title" content="Validating Service-Registrations">
-    <meta name="description" content="Parsley provides a Validator service to improve service registration and dependency management by detecting two key issues: missing dependencies and...">
+    <title>Parsley - Validating Service Registrations</title>
+    <meta name="title" content="Parsley - Validating Service Registrations">
+    <meta name="description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation/">
@@ -20,23 +20,23 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation/">
-    <meta property="og:title" content="Validating Service-Registrations">
-    <meta property="og:description" content="Parsley provides a Validator service to improve service registration and dependency management by detecting two key issues: missing dependencies and...">
+    <meta property="og:title" content="Parsley - Validating Service Registrations">
+    <meta property="og:description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation/">
-    <meta property="twitter:title" content="Validating Service-Registrations">
-    <meta property="twitter:description" content="Parsley provides a Validator service to improve service registration and dependency management by detecting two key issues: missing dependencies and...">
+    <meta property="twitter:title" content="Parsley - Validating Service Registrations">
+    <meta property="twitter:description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.6.0.780966635025" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.780967490344" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780966635025" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780967490344" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780966635025" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780966635025" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780967490344" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.780967490344" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -53,7 +53,7 @@
                     <div class="flex items-center px-2 md:px-6">
                         <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-2xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Parsley</span>
-                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">v1.0.1</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">v1.0.2</span>
                     </div>
         
                     <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
@@ -205,6 +205,11 @@
         <span>Validating Service-Registrations</span>
     </h1>
 </doc-anchor-target>
+<div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350 items-center">
+    <div>In&nbsp;</div>
+    <div><a href="../../categories/registration/">Registration</a></div>
+</div>
+
 <p>Parsley provides a <code v-pre>Validator</code> service to improve service registration and dependency management by detecting two key issues: missing dependencies and circular dependencies. These configuration issues can be challenging, but the <code v-pre>Validator</code> ensures your application&#x27;s dependency graph is valid. It is an essential tool for enhancing the robustness of service registration and resolution, especially in applications with complex service interactions.</p>
 <doc-anchor-target id="what-are-missing-dependencies">
     <h2>
