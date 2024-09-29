@@ -6,7 +6,6 @@ icon: home
 tags: [ introduction, guide ]
 category:
   - Introduction
-route: /welcome
 ---
 
 # Welcome to Parsley
