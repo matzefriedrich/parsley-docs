@@ -5,7 +5,7 @@ tags: [  integrations, guide, walkthrough, examples ]
 ---
 # Walkthrough: Parsley Integration with Cobra
 
-This guide demonstrates how to integrate Parsley with [Cobra](https://github.com/spf13/cobra) to build a modular and maintainable CLI application. It leverages the [cobra-extension package](https://github.com/matzefriedrich/cobra-extensions) package to implement command handlers based on typed command services, making it a natural fit for Parsley’s dependency injection capabilities.
+This guide demonstrates how to integrate Parsley with [Cobra](https://github.com/spf13/cobra) to build a modular and maintainable CLI application. It leverages the [cobra-extension](https://github.com/matzefriedrich/cobra-extensions) package to implement command handlers based on typed command services, making it a natural fit for Parsley’s dependency injection capabilities.
 
 ## Project Structure
 
