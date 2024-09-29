@@ -11,18 +11,28 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// CobraApplicationModule creates a module for a command-line application using Cobra with the given name and description.
+// CobraApplicationModule registers a Cobra-based command-line application with the given name and description in the service registry.
 func CobraApplicationModule(appName string, appDescription string) func(registry types.ServiceRegistry) error {
+
 	return func(registry types.ServiceRegistry) error {
+
+		// Enable resolution of *cobra.Command objects at once (as a list)
 		_ = features.RegisterList[*cobra.Command](registry)
+
+		// Register a factory function for *CommandLineApplication
 		_ = registration.RegisterSingleton(registry, func(resolver types.Resolver) *charmer.CommandLineApplication {
+
 			application := charmer.NewCommandLineApplication(appName, appDescription)
-			commands, _ := resolving.ResolveRequiredServices[*cobra.Command](resolver, context.Background())
-			for _, command := range commands {
+
+			// Resolve all command handlers and add them to the app instance
+			typeCommandServices, _ := resolving.ResolveRequiredServices[*cobra.Command](resolver, context.Background())
+			for _, command := range typeCommandServices {
 				application.AddCommand(command)
 			}
+
 			return application
 		})
+
 		return nil
 	}
 }
