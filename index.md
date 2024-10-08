@@ -7,7 +7,6 @@ tags: [ introduction, guide ]
 category:
   - Introduction
 ---
-
 # Welcome to Parsley
 
 Parsley is an easy-to-use, reflection-based dependency injection package that fits seamlessly into any Go application. It bridges the gap between dependency configuration and service activation, providing automated lifetime management and a clean, organized way to handle dependencies.
