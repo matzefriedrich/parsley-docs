@@ -19,14 +19,15 @@ Parsley relies on several open-source libraries, each with its own license. The 
 
 | Module                                     | Version | License      |
 |--------------------------------------------|---------|--------------|
-| github.com/hashicorp/go-version            | v1.7.0  | MPL-2.0      |
 | github.com/matzefriedrich/cobra-extensions | v0.3.1  | MIT          |
 | github.com/pkg/errors                      | v0.9.1  | BSD-2-Clause |
 | github.com/spf13/cobra                     | v1.8.1  | Apache-2.0   |
 | github.com/stretchr/testify                | v1.9.0  | MIT          |
 | golang.org/x/mod                           | v0.21.0 | BSD-3-Clause |
 
-For specific license details, please refer to the respective third-party projects, or refer to the automated dependencies listing at [deps.dev/go/github.com/matzefriedrich/parsley](https://deps.dev/go/github.com%2Fmatzefriedrich%2Fparsley).
+For specific license details, please refer to the respective third-party projects, or refer to the automated dependencies listing at [deps.dev/go/github.com/matzefriedrich/parsley](https://deps.dev/go/github.com%2Fmatzefriedrich%2Fparsley), or check the linked FOSSA licence compliance report.
+
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B48327%2Fgithub.com%2Fmatzefriedrich%2Fparsley.svg?type=large&issueType=license)](https://app.fossa.com/projects/custom%2B48327%2Fgithub.com%2Fmatzefriedrich%2Fparsley?ref=badge_large&issueType=license)
 
 ### License Notices
 
