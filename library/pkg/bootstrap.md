@@ -43,7 +43,7 @@ var (
 ```
 
 <a name="RunParsleyApplication"></a>
-## func RunParsleyApplication
+## func [RunParsleyApplication](<https://github.com/matzefriedrich/parsley/blob/main/pkg/bootstrap/application.go#L30>)
 
 ```go
 func RunParsleyApplication(cxt context.Context, appFactoryFunc any, configure ...types.ModuleFunc) error
@@ -52,7 +52,7 @@ func RunParsleyApplication(cxt context.Context, appFactoryFunc any, configure ..
 RunParsleyApplication initializes and runs the Parsley application lifecycle. It registers the application factory, configures additional modules, resolves the main application instance, and invokes its Run method.
 
 <a name="Application"></a>
-## type Application
+## type [Application](<https://github.com/matzefriedrich/parsley/blob/main/pkg/bootstrap/types.go#L6-L8>)
 
 Application provides an abstract interface for creating and running an application. It primarily facilitates the use of dependency injection for resolving services and the managing application lifecycle.
 
