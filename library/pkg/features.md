@@ -16,12 +16,14 @@ import "github.com/matzefriedrich/parsley/pkg/features"
 
 ## Index
 
+- [func RegisterFactory\[T any\]\(registry types.ServiceRegistry, scope types.LifetimeScope\) error](<#RegisterFactory>)
 - [func RegisterLazy\[T any\]\(registry types.ServiceRegistry, activatorFunc func\(\) T, \_ types.LifetimeScope\) error](<#RegisterLazy>)
-- [func RegisterList\[T any\]\(registry types.ServiceRegistry\) error](<#RegisterList>)
-- [func RegisterNamed\[T any\]\(registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc\) error](<#RegisterNamed>)
+- [func RegisterList\[T any\]\(ctx context.Context, registry types.ServiceRegistry\) error](<#RegisterList>)
+- [func RegisterNamed\[T any\]\(ctx context.Context, registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc\) error](<#RegisterNamed>)
 - [type ArgMatch](<#ArgMatch>)
   - [func Exact\[T comparable\]\(expected T\) ArgMatch](<#Exact>)
   - [func IsAny\(\) ArgMatch](<#IsAny>)
+- [type FactoryFunc](<#FactoryFunc>)
 - [type Interceptor](<#Interceptor>)
 - [type InterceptorBase](<#InterceptorBase>)
   - [func NewInterceptorBase\(name string, position int\) InterceptorBase](<#NewInterceptorBase>)
@@ -54,6 +56,15 @@ import "github.com/matzefriedrich/parsley/pkg/features"
   - [func TimesOnce\(\) TimesFunc](<#TimesOnce>)
 
 
+<a name="RegisterFactory"></a>
+## func [RegisterFactory](<https://github.com/matzefriedrich/parsley/blob/main/pkg/features/factory.go#L14>)
+
+```go
+func RegisterFactory[T any](registry types.ServiceRegistry, scope types.LifetimeScope) error
+```
+
+RegisterFactory registers a factory function for resolving instances of a specified type with a given lifetime scope.
+
 <a name="RegisterLazy"></a>
 ## func [RegisterLazy](<https://github.com/matzefriedrich/parsley/blob/main/pkg/features/lazy_services.go#L41>)
 
@@ -64,19 +75,19 @@ func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T,
 RegisterLazy registers a lazily\-activated service in the service registry using the provided activator function.
 
 <a name="RegisterList"></a>
-## func [RegisterList](<https://github.com/matzefriedrich/parsley/blob/main/pkg/features/list_services.go#L10>)
+## func [RegisterList](<https://github.com/matzefriedrich/parsley/blob/main/pkg/features/list_services.go#L11>)
 
 ```go
-func RegisterList[T any](registry types.ServiceRegistry) error
+func RegisterList[T any](ctx context.Context, registry types.ServiceRegistry) error
 ```
 
 RegisterList registers a function that resolves and returns a list of services of type T with the specified registry.
 
 <a name="RegisterNamed"></a>
-## func [RegisterNamed](<https://github.com/matzefriedrich/parsley/blob/main/pkg/features/named_services.go#L26>)
+## func [RegisterNamed](<https://github.com/matzefriedrich/parsley/blob/main/pkg/features/named_services.go#L28>)
 
 ```go
-func RegisterNamed[T any](registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error
+func RegisterNamed[T any](ctx context.Context, registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error
 ```
 
 RegisterNamed registers named services with their respective activator functions and lifetime scopes. It supports dependency injection by associating names with service instances.
@@ -107,6 +118,15 @@ func IsAny() ArgMatch
 ```
 
 IsAny always returns true, enabling it to match any given argument during mock function verification.
+
+<a name="FactoryFunc"></a>
+## type [FactoryFunc](<https://github.com/matzefriedrich/parsley/blob/main/pkg/features/factory.go#L11>)
+
+FactoryFunc represents a function that creates an instance of type T using a context for dependency resolution.
+
+```go
+type FactoryFunc[T any] func(ctx context.Context) (T, error)
+```
 
 <a name="Interceptor"></a>
 ## type [Interceptor](<https://github.com/matzefriedrich/parsley/blob/main/pkg/features/proxies.go#L10-L13>)

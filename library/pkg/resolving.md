@@ -16,27 +16,27 @@ import "github.com/matzefriedrich/parsley/pkg/resolving"
 
 ## Index
 
-- [func Activate\[T any\]\(resolver types.Resolver, ctx context.Context, activatorFunc any, options ...types.ResolverOptionsFunc\) \(T, error\)](<#Activate>)
+- [func Activate\[T any\]\(ctx context.Context, resolver types.Resolver, activatorFunc any, options ...types.ResolverOptionsFunc\) \(T, error\)](<#Activate>)
 - [func NewResolver\(registry types.ServiceRegistry\) types.Resolver](<#NewResolver>)
 - [func NewScopedContext\(ctx context.Context\) context.Context](<#NewScopedContext>)
-- [func ResolveRequiredService\[T any\]\(resolver types.Resolver, ctx context.Context\) \(T, error\)](<#ResolveRequiredService>)
-- [func ResolveRequiredServices\[T any\]\(resolver types.Resolver, ctx context.Context\) \(\[\]T, error\)](<#ResolveRequiredServices>)
+- [func ResolveRequiredService\[T any\]\(ctx context.Context, resolver types.Resolver\) \(T, error\)](<#ResolveRequiredService>)
+- [func ResolveRequiredServices\[T any\]\(ctx context.Context, resolver types.Resolver\) \(\[\]T, error\)](<#ResolveRequiredServices>)
 - [func WithInstance\[T any\]\(instance T\) types.ResolverOptionsFunc](<#WithInstance>)
 - [type NamedServiceResolverActivatorFunc](<#NamedServiceResolverActivatorFunc>)
-  - [func CreateNamedServiceResolverActivatorFunc\[T any\]\(\) NamedServiceResolverActivatorFunc\[T\]](<#CreateNamedServiceResolverActivatorFunc>)
+  - [func CreateNamedServiceResolverActivatorFunc\[T any\]\(ctx context.Context\) NamedServiceResolverActivatorFunc\[T\]](<#CreateNamedServiceResolverActivatorFunc>)
 
 
 <a name="Activate"></a>
-## func [Activate](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/activate.go#L11>)
+## func [Activate](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/activate.go#L12>)
 
 ```go
-func Activate[T any](resolver types.Resolver, ctx context.Context, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)
+func Activate[T any](ctx context.Context, resolver types.Resolver, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)
 ```
 
 Activate attempts to create and return an instance of the requested type using the provided resolver. Use this method to instantiate service objects of unregistered types. The specified activator function can have parameters to demand service instances for registered service types.
 
 <a name="NewResolver"></a>
-## func [NewResolver](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/resolver.go#L58>)
+## func [NewResolver](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/resolver.go#L59>)
 
 ```go
 func NewResolver(registry types.ServiceRegistry) types.Resolver
@@ -54,19 +54,19 @@ func NewScopedContext(ctx context.Context) context.Context
 NewScopedContext creates a new context with an associated service instance map, useful for managing service lifetimes within scope.
 
 <a name="ResolveRequiredService"></a>
-## func [ResolveRequiredService](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/resolver.go#L43>)
+## func [ResolveRequiredService](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/resolver.go#L44>)
 
 ```go
-func ResolveRequiredService[T any](resolver types.Resolver, ctx context.Context) (T, error)
+func ResolveRequiredService[T any](ctx context.Context, resolver types.Resolver) (T, error)
 ```
 
 ResolveRequiredService resolves a single service instance of the specified type using the given resolver and context. The method can return the following errors: ErrorCannotResolveService, ErrorAmbiguousServiceInstancesResolved.
 
 <a name="ResolveRequiredServices"></a>
-## func [ResolveRequiredServices](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/resolver.go#L18>)
+## func [ResolveRequiredServices](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/resolver.go#L19>)
 
 ```go
-func ResolveRequiredServices[T any](resolver types.Resolver, ctx context.Context) ([]T, error)
+func ResolveRequiredServices[T any](ctx context.Context, resolver types.Resolver) ([]T, error)
 ```
 
 ResolveRequiredServices resolves all registered services of a specified type T using the given resolver and context.
@@ -81,7 +81,7 @@ func WithInstance[T any](instance T) types.ResolverOptionsFunc
 WithInstance Creates a ResolverOptionsFunc that registers a specific instance of a type T with a service registry to be resolved as a singleton.
 
 <a name="NamedServiceResolverActivatorFunc"></a>
-## type [NamedServiceResolverActivatorFunc](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/named_service_resolver.go#L9>)
+## type [NamedServiceResolverActivatorFunc](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/named_service_resolver.go#L10>)
 
 NamedServiceResolverActivatorFunc defines a function for resolving named services.
 
@@ -90,10 +90,10 @@ type NamedServiceResolverActivatorFunc[T any] func(types.Resolver) func(string) 
 ```
 
 <a name="CreateNamedServiceResolverActivatorFunc"></a>
-### func [CreateNamedServiceResolverActivatorFunc](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/named_service_resolver.go#L12>)
+### func [CreateNamedServiceResolverActivatorFunc](<https://github.com/matzefriedrich/parsley/blob/main/pkg/resolving/named_service_resolver.go#L13>)
 
 ```go
-func CreateNamedServiceResolverActivatorFunc[T any]() NamedServiceResolverActivatorFunc[T]
+func CreateNamedServiceResolverActivatorFunc[T any](ctx context.Context) NamedServiceResolverActivatorFunc[T]
 ```
 
 CreateNamedServiceResolverActivatorFunc creates a NamedServiceResolverActivatorFunc for resolving named services.
