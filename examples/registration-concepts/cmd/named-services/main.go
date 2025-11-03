@@ -13,16 +13,18 @@ import (
 
 func main() {
 
+	ctx := context.Background()
+
 	registry := registration.NewServiceRegistry()
 
-	_ = features.RegisterNamed[internal.DataService](registry,
+	_ = features.RegisterNamed[internal.DataService](ctx, registry,
 		registration.NamedServiceRegistration("remote", internal.NewRemoteDataService, types.LifetimeTransient),
 		registration.NamedServiceRegistration("local", internal.NewLocalDataService, types.LifetimeTransient))
 
 	resolver := resolving.NewResolver(registry)
-	scope := resolving.NewScopedContext(context.Background())
+	scope := resolving.NewScopedContext(ctx)
 
-	serviceFactory, _ := resolving.ResolveRequiredService[func(string) (internal.DataService, error)](resolver, scope)
+	serviceFactory, _ := resolving.ResolveRequiredService[func(string) (internal.DataService, error)](scope, resolver)
 	localDataService, err := serviceFactory("local")
 	if err != nil {
 		panic(err)

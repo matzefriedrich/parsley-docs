@@ -43,7 +43,7 @@ var (
 ```
 
 <a name="RunParsleyApplication"></a>
-## func [RunParsleyApplication](<https://github.com/matzefriedrich/parsley/blob/main/pkg/bootstrap/application.go#L30>)
+## func [RunParsleyApplication](<https://github.com/matzefriedrich/parsley/blob/main/pkg/bootstrap/application.go#L31>)
 
 ```go
 func RunParsleyApplication(cxt context.Context, appFactoryFunc any, configure ...types.ModuleFunc) error

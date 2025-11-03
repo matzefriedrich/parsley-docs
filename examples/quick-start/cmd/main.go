@@ -16,7 +16,7 @@ func main() {
 	resolver := resolving.NewResolver(registry)
 	scope := resolving.NewScopedContext(context.Background())
 
-	greeter, _ := resolving.ResolveRequiredService[internal.Greeter](resolver, scope)
+	greeter, _ := resolving.ResolveRequiredService[internal.Greeter](scope, resolver)
 
 	const polite = true
 	greeter.SayHello("John", polite)

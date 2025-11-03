@@ -6,7 +6,7 @@ url: https://matzefriedrich.github.io/parsley-docs
 
 branding:
   title: Parsley
-  label: v1.0.10
+  label: v1.3.0
 
 
 links:
@@ -32,7 +32,7 @@ footer:
 breadcrumb:
   enabled: true
   home: ":icon-home:"
-  seprator: "|"
+  separator: "/"
 
 exclude:
   - "gomarkdoc/"
