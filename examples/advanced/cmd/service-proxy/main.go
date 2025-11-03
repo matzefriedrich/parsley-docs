@@ -2,12 +2,13 @@ package main
 
 import (
 	"context"
+	"log"
+
 	"github.com/matzefriedrich/parsley-docs/examples/advanced/internal"
 	"github.com/matzefriedrich/parsley/pkg/features"
 	"github.com/matzefriedrich/parsley/pkg/registration"
 	"github.com/matzefriedrich/parsley/pkg/resolving"
 	"github.com/matzefriedrich/parsley/pkg/types"
-	"log"
 )
 
 func main() {
@@ -16,12 +17,12 @@ func main() {
 	registry.Register(internal.NewGreeter, types.LifetimeTransient)
 	registry.Register(internal.NewGreeterProxyImpl, types.LifetimeTransient)
 
-	features.RegisterList[features.MethodInterceptor](registry)
+	features.RegisterList[features.MethodInterceptor](context.Background(), registry)
 	registry.Register(newLoggingInterceptor, types.LifetimeSingleton)
 
 	resolver := resolving.NewResolver(registry)
 	ctx := resolving.NewScopedContext(context.Background())
-	proxy, _ := resolving.ResolveRequiredService[internal.GreeterProxy](resolver, ctx)
+	proxy, _ := resolving.ResolveRequiredService[internal.GreeterProxy](ctx, resolver)
 
 	proxy.SayHello("John", true)
 }

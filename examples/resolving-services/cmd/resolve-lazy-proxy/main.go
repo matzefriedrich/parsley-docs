@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+
 	"github.com/matzefriedrich/parsley-docs/examples/resolving-services/internal"
 	"github.com/matzefriedrich/parsley/pkg/features"
 	"github.com/matzefriedrich/parsley/pkg/registration"
@@ -16,7 +17,7 @@ func main() {
 
 	resolver := resolving.NewResolver(registry)
 	ctx := resolving.NewScopedContext(context.Background())
-	lazy, _ := resolving.ResolveRequiredService[features.Lazy[internal.Greeter]](resolver, ctx)
+	lazy, _ := resolving.ResolveRequiredService[features.Lazy[internal.Greeter]](ctx, resolver)
 
 	greeter := lazy.Value()
 	greeter.SayHello("John", true)

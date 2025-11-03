@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+
 	"github.com/matzefriedrich/parsley-docs/examples/registration-concepts/internal"
 	"github.com/matzefriedrich/parsley/pkg/features"
 	"github.com/matzefriedrich/parsley/pkg/registration"
@@ -16,13 +17,13 @@ func main() {
 
 	registry.Register(internal.NewLocalDataService, types.LifetimeTransient)
 	registry.Register(internal.NewRemoteDataService, types.LifetimeTransient)
-	features.RegisterList[internal.DataService](registry)
+	features.RegisterList[internal.DataService](context.Background(), registry)
 
 	registry.Register(newAggregator, types.LifetimeTransient)
 
 	resolver := resolving.NewResolver(registry)
 	ctx := resolving.NewScopedContext(context.Background())
-	aggregator, _ := resolving.ResolveRequiredService[*dataAggregationService](resolver, ctx)
+	aggregator, _ := resolving.ResolveRequiredService[*dataAggregationService](ctx, resolver)
 
 	results := aggregator.fetchAll()
 	for _, result := range results {

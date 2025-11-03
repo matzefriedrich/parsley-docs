@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+
 	"github.com/matzefriedrich/parsley-docs/examples/resolving-services/internal"
 	"github.com/matzefriedrich/parsley/pkg/registration"
 	"github.com/matzefriedrich/parsley/pkg/resolving"
@@ -21,7 +22,7 @@ func main() {
 	resolver := resolving.NewResolver(registry)
 	ctx := resolving.NewScopedContext(context.Background())
 
-	instance, _ := resolving.Activate[*ouchie](resolver, ctx, func(greeter internal.Greeter) *ouchie {
+	instance, _ := resolving.Activate[*ouchie](ctx, resolver, func(greeter internal.Greeter) *ouchie {
 		return &ouchie{
 			msg: greeter.Ouch(),
 		}

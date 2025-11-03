@@ -3,11 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+	"reflect"
+
 	"github.com/matzefriedrich/parsley-docs/examples/resolving-services/internal"
 	"github.com/matzefriedrich/parsley/pkg/registration"
 	"github.com/matzefriedrich/parsley/pkg/resolving"
 	"github.com/matzefriedrich/parsley/pkg/types"
-	"reflect"
 )
 
 func main() {
@@ -22,7 +23,7 @@ func main() {
 
 	for i := 0; i < 3; i++ {
 		ctx := resolving.NewScopedContext(context.Background())
-		greeter, _ := resolving.ResolveRequiredService[internal.Greeter](resolver, ctx)
+		greeter, _ := resolving.ResolveRequiredService[internal.Greeter](ctx, resolver)
 		greeter.SayHello("John", false)
 	}
 }
