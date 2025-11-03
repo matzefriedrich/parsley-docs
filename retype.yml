@@ -32,7 +32,7 @@ footer:
 breadcrumb:
   enabled: true
   home: ":icon-home:"
-  seprator: "|"
+  separator: "/"
 
 exclude:
   - "gomarkdoc/"
