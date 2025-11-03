@@ -36,3 +36,5 @@ breadcrumb:
 
 exclude:
   - "gomarkdoc/"
+
+poweredByRetype: false
