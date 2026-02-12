@@ -8,11 +8,24 @@ Parsley is an easy-to-use, reflection-based dependency injection package that fi
 
 The documentation is hosted at: [https://matzefriedrich.github.io/parsley-docs](https://matzefriedrich.github.io/parsley-docs)
 
-## Toolset
+## Prerequisites
 
-- [Retype](https://retype.com/) - A static site generator for building documentation websites from Markdown files.
+* Retype; see [retype.com](https://retype.com/)
+* [gomarkdoc](https://github.com/princjef/gomarkdoc)
 
-- [gomarkdoc](https://github.com/princjef/gomarkdoc) - Tool used to generate documentation for Go packages from source code.
+## Usage
+
+Retype comes in different flavors; see [https://retype.com/guides/installation/](https://retype.com/guides/installation/) for further information on available installation options.
+
+```sh
+$ dotnet tool install retypeapp --global
+```
+
+Install `gomarkdoc`:
+
+```sh
+$ go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
+```
 
 ### Updating package documentation
 
@@ -24,14 +37,24 @@ To update the Go package documentation in `library/pkg/`, you can run the provid
 
 ### Building locally
 
-To build and preview the documentation locally using Retype:
-
-1. Install Retype (see [Retype installation guide](https://retype.com/guides/installation/)).
-2. Run the following command in the project root:
+Run the following command to build and preview the documentation locally using Retype:
 
 ```bash
 retype start
 ```
+
+You can also build a Docker image of the documentation site to view it locally:
+
+```sh
+$ docker build --rm -t parsley-docs -f Dockerfile .
+```
+
+Run the documentation using the following command:
+
+```sh
+$ docker run --rm -p 27821:80 parsley-docs
+```
+
 
 ---
 
