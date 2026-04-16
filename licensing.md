@@ -5,7 +5,7 @@ description:
 label: Licensing
 icon: shield-check
 order: -900
-tags: [ licensing ]
+tags: [ guide ]
 category:
   - Licensing
 ---

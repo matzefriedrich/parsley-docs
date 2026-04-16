@@ -4,7 +4,7 @@ meta:
 description: Set up a GoFiber application using Parsley to create a modular, testable, and maintainable codebase.
 icon: flame
 label: "Walkthrough: Parsley Integration with GoFiber"
-tags: [  integrations, guide, walkthrough, examples ]
+tags: [ integrations, guide, walkthrough, examples ]
 category:
   - Walkthrough
 ---

@@ -5,7 +5,7 @@ description: Manage service instance lifetimes in Parsley using transient, scope
 icon: file
 label:  Lifetime Scopes
 order: 100
-tags: [ registration, resolving, instances, lifetime scope, transient, singleton, scoped ]
+tags: [ registration, resolving, instances, lifetime management ]
 category:
   - Registration
   - Resolving

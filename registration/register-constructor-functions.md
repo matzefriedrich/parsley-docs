@@ -4,7 +4,7 @@ meta:
 description: Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.
 icon: file
 label: Register Constructor Functions
-tags: [ registration, constructor function ]
+tags: [ registration ]
 category:
   - Registration
 ---

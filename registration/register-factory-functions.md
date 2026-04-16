@@ -4,7 +4,7 @@ meta:
 description: Use factory functions in Parsley for dynamic service configuration and more control over service creation.
 icon: file
 label: Register Factory Functions
-tags: [ registration, factory function, service factory ]
+tags: [ registration, service factory ]
 category:
   - Registration
 ---

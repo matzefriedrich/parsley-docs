@@ -4,7 +4,7 @@ meta:
 description: Integrate Parsley with Cobra to build modular CLI applications using typed services and dependency injection.
 icon: flame
 label: "Walkthrough: Parsley Integration with Cobra"
-tags: [  integrations, guide, walkthrough, examples ]
+tags: [ integrations, guide, walkthrough, examples ]
 category:
   - Walkthrough
 ---

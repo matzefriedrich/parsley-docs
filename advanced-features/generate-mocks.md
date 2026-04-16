@@ -4,7 +4,7 @@ meta:
 description: Learn how to use the Parsley CLI to generate mock implementations for service interfaces in Go, configure their behavior, and assert expectations in tests.
 icon: file
 label: Generate Configurable Mocks
-tags: [ service mocks, testing, code generation, mocking, CLI ]
+tags: [ examples, code generation ]
 category:
   - Parsley CLI
   - Mocking

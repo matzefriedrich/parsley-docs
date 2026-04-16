@@ -4,7 +4,7 @@ meta:
 description: Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.
 icon: file
 label: Register Module
-tags: [ registration, modules, separation of concerns, service groupings ]
+tags: [ registration ]
 category:
   - Registration
 ---

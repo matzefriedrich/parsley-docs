@@ -4,7 +4,7 @@ meta:
 description: Optimize performance by using lazy proxies in Parsley to defer service instance creation until they are needed.
 icon: file
 label: Lazy Proxies
-tags: [ registration, lazy proxy, resolve behavior, resolving, performance ]
+tags: [ registration, resolving ]
 category:
   - Registration
   - Resolving

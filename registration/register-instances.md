@@ -4,7 +4,7 @@ meta:
 description: Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.
 icon: file
 label: Register Instances
-tags: [ registration, instances, singleton ]
+tags: [ registration, instances, lifetime management ]
 category:
   - Registration
 ---

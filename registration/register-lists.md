@@ -4,7 +4,7 @@ meta:
 description: Register and inject multiple services of the same contract type in Parsley using arrays or slices.
 icon: file
 label: Manage Multiple Service Implementations
-tags: [ registration, service lists ]
+tags: [ registration, multiple registrations ]
 category:
   - Registration
   - Multiple Service Registrations

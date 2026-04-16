@@ -4,7 +4,7 @@ meta:
 description: Explore how the Parsley CLI generates proxy services and interfaces for service contracts using go:generate annotations.
 icon: file
 label: Generated Proxies
-tags: [ registration, service proxy, service decorator, code generation ]
+tags: [ registration, code generation ]
 category:
   - Parsley CLI
   - Registration

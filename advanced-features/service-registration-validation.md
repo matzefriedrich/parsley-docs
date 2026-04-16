@@ -4,7 +4,7 @@ meta:
 description: Validate Parsley service registrations using the built-in Validator to identify missing or circular dependencies and prevent runtime errors.
 icon: file
 label: Validating Service-Registrations
-tags: [ registration, validation ]
+tags: [ registration ]
 category:
   - Registration
 ---

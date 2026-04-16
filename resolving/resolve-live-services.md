@@ -5,7 +5,7 @@ description: Create instances of unregistered dependencies dynamically in Parsle
 icon: file
 label: Activating Unregistered Dependencies
 order: 20
-tags: [ resolving, instances, complex dependencies, dynamic object creation ]
+tags: [ resolving, instances ]
 category:
   - Resolving
 ---
