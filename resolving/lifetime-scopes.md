@@ -1,7 +1,7 @@
 ---
 meta:
   title: "Parsley - Understanding Lifetime Scopes: Manage Service Instance Lifetimes"
-description: Discover how to manage service instance lifetimes in Parsley through various lifetime scopes. This guide explains the significance of lifetime settings, detailing how they influence the frequency of constructor or factory method calls and the management of service instances in your application.
+description: Manage service instance lifetimes in Parsley using transient, scoped, and singleton lifetime settings.
 icon: file
 label:  Lifetime Scopes
 order: 100

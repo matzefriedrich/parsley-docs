@@ -1,7 +1,7 @@
 ---
 meta:
   title: "Parsley - Walkthrough: Integrating Parsley with Cobra for Modular CLI Applications"
-description: Learn how to integrate Parsley with Cobra to build a modular and maintainable CLI application. This guide utilizes the cobra-extensions package to implement command handlers with typed services, showcasing how Parsley's dependency injection enhances your command-line projects.
+description: Integrate Parsley with Cobra to build modular CLI applications using typed services and dependency injection.
 icon: flame
 label: "Walkthrough: Parsley Integration with Cobra"
 tags: [  integrations, guide, walkthrough, examples ]

@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley - Register service instances
-description: Learn how to use the `RegisterInstance` method in Parsley to manually register and manage complex service instances. Ensure consistent state and availability across your application by treating registered instances as singletons, making them accessible to other services as dependencies.
+description: Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.
 icon: file
 label: Register Instances
 tags: [ registration, instances, singleton ]

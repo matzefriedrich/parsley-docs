@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley CLI - Mocking Made Easy
-description: This article introduces the new `generate mocks` CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go. You'll learn how to generate mocks quickly, configure their behavior, and assert expectations for method calls within your test suites.
+description: Learn how to use the Parsley CLI to generate mock implementations for service interfaces in Go, configure their behavior, and assert expectations in tests.
 icon: file
 label: Generate Configurable Mocks
 tags: [ service mocks, testing, code generation, mocking, CLI ]

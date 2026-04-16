@@ -1,7 +1,7 @@
 ---
 meta:
   title: "Parsley - Harnessing Lazy Proxies: Delayed Activation of Services"
-description: Explore the concept of lazy proxies in Parsley, a feature that allows for the deferred creation of service instances until they are needed. This guide explains how lazy proxies can optimize performance by managing resource-intensive dependencies effectively.
+description: Optimize performance by using lazy proxies in Parsley to defer service instance creation until they are needed.
 icon: file
 label: Lazy Proxies
 tags: [ registration, lazy proxy, resolve behavior, resolving, performance ]

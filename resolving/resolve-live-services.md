@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley - Dynamic Dependency Creation with Live Services
-description: Discover how to use the `Activate` method in Parsley to create instances of unregistered dependencies dynamically. This guide illustrates how to instantiate objects on-the-fly while leveraging registered services. Learn about practical use cases, including dynamic object creation, managing complex dependencies, and integrating with third-party libraries.
+description: Create instances of unregistered dependencies dynamically in Parsley while leveraging existing registered services.
 icon: file
 label: Activating Unregistered Dependencies
 order: 20

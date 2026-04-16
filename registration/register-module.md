@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley - Organize Service Registrations using Modules
-description: Learn how to group related services with the `RegisterModule` method in Parsley to maintain modular code structure. Discover how service modules improve code organization, reusability, and separation of concerns, making your applications easier to scale and manage.
+description: Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.
 icon: file
 label: Register Module
 tags: [ registration, modules, separation of concerns, service groupings ]

@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley - Advanced Service Registration using Factory Functions
-description: Learn how to use factory functions in Parsley to gain more control over service creation. Discover the difference between factory and constructor functions, and see how factory functions enable dynamic service configuration with additional parameters.
+description: Use factory functions in Parsley for dynamic service configuration and more control over service creation.
 icon: file
 label: Register Factory Functions
 tags: [ registration, factory function, service factory ]

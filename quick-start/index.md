@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley - Quick Start Guide
-description: Get started with Parsley by learning how to register and resolve services dynamically. This guide covers the basics of setting up service dependencies, implementing interfaces, and using Parsley’s service registry to structure your application with the Inversion of Control (IoC) design principle.
+description: Learn how to register and resolve services dynamically using Parsley to implement the Inversion of Control design principle.
 category:
   - Introduction
 ---
