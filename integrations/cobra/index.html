@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829690253264">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Parsley - Walkthrough: Integrating Parsley with Cobra for Modular CLI Applications</title>
     <meta name="title" content="Parsley - Walkthrough: Integrating Parsley with Cobra for Modular CLI Applications">
-    <meta name="description" content="Learn how to integrate Parsley with Cobra to build a modular and maintainable CLI application. This guide utilizes the cobra-extensions package to implement command handlers with typed services, showcasing how Parsley's dependency injection enhances your command-line projects.">
+    <meta name="description" content="Integrate Parsley with Cobra to build modular CLI applications using typed services and dependency injection.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
     <meta property="og:title" content="Parsley - Walkthrough: Integrating Parsley with Cobra for Modular CLI Applications">
-    <meta property="og:description" content="Learn how to integrate Parsley with Cobra to build a modular and maintainable CLI application. This guide utilizes the cobra-extensions package to implement command handlers with typed services, showcasing how Parsley's dependency injection enhances your command-line projects.">
+    <meta property="og:description" content="Integrate Parsley with Cobra to build modular CLI applications using typed services and dependency injection.">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
@@ -31,19 +31,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/cobra/">
     <meta name="twitter:title" content="Parsley - Walkthrough: Integrating Parsley with Cobra for Modular CLI Applications">
-    <meta name="twitter:description" content="Learn how to integrate Parsley with Cobra to build a modular and maintainable CLI application. This guide utilizes the cobra-extensions package to implement command handlers with typed services, showcasing how Parsley's dependency injection enhances your command-line projects.">
+    <meta name="twitter:description" content="Integrate Parsley with Cobra to build modular CLI applications using typed services and dependency injection.">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/integrations/cobra.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829690253264" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829690253264" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -205,7 +205,7 @@
     <div><a href="../../categories/walkthrough/">Walkthrough</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Learn how to integrate Parsley with Cobra to build a modular and maintainable CLI application. This guide utilizes the cobra-extensions package to implement command handlers with typed services, showcasing how Parsley's dependency injection enhances your command-line projects.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Integrate Parsley with Cobra to build modular CLI applications using typed services and dependency injection.</div>
 <p>This guide demonstrates how to integrate Parsley with <a href="https://github.com/spf13/cobra" class="outbound" target="_blank"><span>Cobra</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a> to build a modular and maintainable CLI application. It leverages the <a href="https://github.com/matzefriedrich/cobra-extensions" class="outbound" target="_blank"><span>cobra-extensions</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a> package to implement command handlers based on typed command services, making it a natural fit for Parsley&#x27;s dependency injection capabilities.</p>
 <h2 id="project-structure">Project Structure</h2>
 <p>The code for this example can be found at <a href="https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/cobra" class="outbound" target="_blank"><span>examples/integrations/cobra</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a>. It has the following structure:</p>

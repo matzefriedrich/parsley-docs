@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829690253264">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Parsley - Dynamic Dependency Injection with ResolveWithOptions</title>
     <meta name="title" content="Parsley - Dynamic Dependency Injection with ResolveWithOptions">
-    <meta name="description" content="Explore how to use Parsley's ResolveWithOptions method to dynamically pass specific instances to the resolver, enhancing your application's flexibility in managing dependencies.">
+    <meta name="description" content="Use ResolveWithOptions in Parsley to dynamically pass specific instances to the resolver and override registered dependencies.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/resolving/resolve-with/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/resolving/resolve-with/">
     <meta property="og:title" content="Parsley - Dynamic Dependency Injection with ResolveWithOptions">
-    <meta property="og:description" content="Explore how to use Parsley's ResolveWithOptions method to dynamically pass specific instances to the resolver, enhancing your application's flexibility in managing dependencies.">
+    <meta property="og:description" content="Use ResolveWithOptions in Parsley to dynamically pass specific instances to the resolver and override registered dependencies.">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
@@ -31,19 +31,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/resolving/resolve-with/">
     <meta name="twitter:title" content="Parsley - Dynamic Dependency Injection with ResolveWithOptions">
-    <meta name="twitter:description" content="Explore how to use Parsley's ResolveWithOptions method to dynamically pass specific instances to the resolver, enhancing your application's flexibility in managing dependencies.">
+    <meta name="twitter:description" content="Use ResolveWithOptions in Parsley to dynamically pass specific instances to the resolver and override registered dependencies.">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/resolving/resolve-with.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829690253264" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829690253264" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -205,7 +205,7 @@
     <div><a href="../../categories/resolving/">Resolving</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Explore how to use Parsley's &lt;code translate=&quot;no&quot; v-pre&gt;ResolveWithOptions&lt;/code&gt; method to dynamically pass specific instances to the resolver, enhancing your application's flexibility in managing dependencies. This guide demonstrates how to override registered dependencies or inject unregistered instances during resolution.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Use ResolveWithOptions in Parsley to dynamically pass specific instances to the resolver and override registered dependencies.</div>
 <p>Parsley&#x27;s <code translate="no" v-pre>ResolveWithOptions</code> method allows you to pass specific instances into the resolver, providing certain dependencies dynamically at resolution time. This method is handy when overriding registered dependencies or injecting unregistered instances into your objects.</p>
 <p>In the following example, the <code translate="no" v-pre>newClient</code> constructor function registers a <code translate="no" v-pre>client</code> service with a transient lifetime. During the resolution, an existing transport instance is passed to the resolver using <code translate="no" v-pre>WithInstance</code>, ensuring that this specific instance is used for the client&#x27;s transport dependency.</p>
 <div id="passing-specific-instances-to-the-resolver-code-1" class="codeblock-wrapper"><doc-codeblock>

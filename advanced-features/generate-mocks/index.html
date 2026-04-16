@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829690253264">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Parsley CLI - Mocking Made Easy</title>
     <meta name="title" content="Parsley CLI - Mocking Made Easy">
-    <meta name="description" content="This article introduces the new generate mocks CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go.">
+    <meta name="description" content="Learn how to use the Parsley CLI to generate mock implementations for service interfaces in Go, configure their behavior, and assert expectations in tests.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-mocks/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-mocks/">
     <meta property="og:title" content="Parsley CLI - Mocking Made Easy">
-    <meta property="og:description" content="This article introduces the new generate mocks CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go.">
+    <meta property="og:description" content="Learn how to use the Parsley CLI to generate mock implementations for service interfaces in Go, configure their behavior, and assert expectations in tests.">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
@@ -31,19 +31,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-mocks/">
     <meta name="twitter:title" content="Parsley CLI - Mocking Made Easy">
-    <meta name="twitter:description" content="This article introduces the new generate mocks CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go.">
+    <meta name="twitter:description" content="Learn how to use the Parsley CLI to generate mock implementations for service interfaces in Go, configure their behavior, and assert expectations in tests.">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-mocks.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829690253264" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829690253264" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -207,7 +207,7 @@
     <div><a href="../../categories/automated-testing/">Automated testing</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">This article introduces the new &lt;code translate=&quot;no&quot; v-pre&gt;generate mocks&lt;/code&gt; CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go. You'll learn how to generate mocks quickly, configure their behavior, and assert expectations for method calls within your test suites.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Learn how to use the Parsley CLI to generate mock implementations for service interfaces in Go, configure their behavior, and assert expectations in tests.</div>
 <p>In <a href="https://github.com/matzefriedrich/parsley/releases/tag/v0.9.0" class="outbound" target="_blank"><span>version v0.9</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a> of Parsley, a powerful new feature is introduced: the <code translate="no" v-pre>generate mocks</code> CLI command. This command generates configurable mock implementations from your service interfaces, making testing faster and more efficient.</p>
 <p>In this article, you learn how to use this feature to generate mock objects for interfaces, configure their behavior, and assert expectations for method calls in tests. It also showcases a real-world example of integrating these mocks into your Go test suites.</p>
 <h2 id="why-mocks">Why Mocks?</h2>

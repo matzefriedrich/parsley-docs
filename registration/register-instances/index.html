@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829690253264">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Parsley - Register service instances</title>
     <meta name="title" content="Parsley - Register service instances">
-    <meta name="description" content="Learn how to use the RegisterInstance method in Parsley to manually register and manage complex service instances. Ensure consistent state and availability across your application by treating registered instances as singletons, making them accessible to other services as dependencies.">
+    <meta name="description" content="Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/registration/register-instances/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/registration/register-instances/">
     <meta property="og:title" content="Parsley - Register service instances">
-    <meta property="og:description" content="Learn how to use the RegisterInstance method in Parsley to manually register and manage complex service instances. Ensure consistent state and availability across your application by treating registered instances as singletons, making them accessible to other services as dependencies.">
+    <meta property="og:description" content="Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
@@ -31,19 +31,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/registration/register-instances/">
     <meta name="twitter:title" content="Parsley - Register service instances">
-    <meta name="twitter:description" content="Learn how to use the RegisterInstance method in Parsley to manually register and manage complex service instances. Ensure consistent state and availability across your application by treating registered instances as singletons, making them accessible to other services as dependencies.">
+    <meta name="twitter:description" content="Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/registration/register-instances.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829690253264" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829690253264" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -205,7 +205,7 @@
     <div><a href="../../categories/registration/">Registration</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Learn how to use the &lt;code translate=&quot;no&quot; v-pre&gt;RegisterInstance&lt;/code&gt; method in Parsley to manually register and manage complex service instances. Ensure consistent state and availability across your application by treating registered instances as singletons, making them accessible to other services as dependencies.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.</div>
 <p>In Parsley, the <code translate="no" v-pre>RegisterInstance</code> method registers a preexisting service instance, particularly useful for objects that cannot be created automatically due to complex configuration, data dependencies, or third-party APIs. Once registered, these instances behave as singletons, meaning the same instance is reused throughout the application. This ensures the registered object is consistently available as a dependency for other services, maintaining consistency and state across your application.</p>
 <p>Let&#x27;s go through the process of registering a service instance manually and using it within your application.</p>
 <p>Assume you have an interface <code translate="no" v-pre>DataService</code> and an implementation <code translate="no" v-pre>LocalDataService</code>.</p>

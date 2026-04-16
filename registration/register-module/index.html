@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829690253264">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Parsley - Organize Service Registrations using Modules</title>
     <meta name="title" content="Parsley - Organize Service Registrations using Modules">
-    <meta name="description" content="Learn how to group related services with the RegisterModule method in Parsley to maintain modular code structure. Discover how service modules improve code organization, reusability, and separation of concerns, making your applications easier to scale and manage.">
+    <meta name="description" content="Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/registration/register-module/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/registration/register-module/">
     <meta property="og:title" content="Parsley - Organize Service Registrations using Modules">
-    <meta property="og:description" content="Learn how to group related services with the RegisterModule method in Parsley to maintain modular code structure. Discover how service modules improve code organization, reusability, and separation of concerns, making your applications easier to scale and manage.">
+    <meta property="og:description" content="Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
@@ -31,19 +31,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/registration/register-module/">
     <meta name="twitter:title" content="Parsley - Organize Service Registrations using Modules">
-    <meta name="twitter:description" content="Learn how to group related services with the RegisterModule method in Parsley to maintain modular code structure. Discover how service modules improve code organization, reusability, and separation of concerns, making your applications easier to scale and manage.">
+    <meta name="twitter:description" content="Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/registration/register-module.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829690253264" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829690253264" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -205,7 +205,7 @@
     <div><a href="../../categories/registration/">Registration</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Learn how to group related services with the &lt;code translate=&quot;no&quot; v-pre&gt;RegisterModule&lt;/code&gt; method in Parsley to maintain modular code structure. Discover how service modules improve code organization, reusability, and separation of concerns, making your applications easier to scale and manage.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.</div>
 <p>Parsley provides a convenient way to group related services into modules using the <code translate="no" v-pre>RegisterModule</code> method. This method allows you to register a function that bundles service registrations, making your code more organized and maintainable. Here&#x27;s how to use it:</p>
 <div id="register-service-modules-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">package main
@@ -251,7 +251,7 @@ func greeterModule(registry types.ServiceRegistry) error {
                 <span class="card-compact-icon inline-flex shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" role="presentation" fill="currentColor"><!--icon--><path d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm2-.5a.5.5 0 0 0-.5.5v18a.5.5 0 0 0 .5.5h14a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4Zm10 0v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5Z"/></svg></span>
                 <span class="card-compact-title">Validating Service Registrations</span>
             </div>
-            <p class="card-compact-description">This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You'll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.</p>
+            <p class="card-compact-description">Validate Parsley service registrations using the built-in Validator to identify missing or circular dependencies and prevent runtime errors.</p>
         </div>
     </a>
 </div>
