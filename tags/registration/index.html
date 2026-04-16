@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829692112697">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829692970095">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -32,11 +32,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829692112697" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829692970095" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829692112697" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829692970095" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829692112697" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829692970095" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -195,29 +195,11 @@
 <h1 id="tag-registration">Tag: registration</h1>
 <p>See all <a href="../">tags</a>.</p>
 <div class="card-container">
-    <a href="../../registration/register-lists/" class="group card no-link">
-        <div class="p-card-padding">
-            <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
-            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Manage Multiple Service Implementations</div>
-            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">Parsley supports registering multiple services under the same contract type, allowing you to inject a list of these services into your application. While you can always resolve multiple services of the same contract using the <code translate="no" v-pre>ResolveRequiredServices[T]</code> method, injecting them as an array or slice requires a list registration via the <code translate="no" v-pre>RegisterList[T]</code> method.</p></div>
-        </div>
-    </a>
-</div>
-<div class="card-container">
     <a href="../../registration/register-constructor-functions/" class="group card no-link">
         <div class="p-card-padding">
             <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
             <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Register Constructor Functions</div>
             <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">In Parsley, the fundamental way to register services is by providing a constructor function to the service registry. This method enables you to create instances of your services in a controlled manner and inject them into your application as needed.</p></div>
-        </div>
-    </a>
-</div>
-<div class="card-container">
-    <a href="../../registration/register-factory-functions/" class="group card no-link">
-        <div class="p-card-padding">
-            <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
-            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Register Factory Functions</div>
-            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">In Parsley, you can register a factory function to provide more control and customization when creating service instances. A factory function differs from a constructor function because it allows you to pass additional parameters to configure the service creation process.</p></div>
         </div>
     </a>
 </div>
@@ -231,11 +213,11 @@
     </a>
 </div>
 <div class="card-container">
-    <a href="../../registration/register-module/" class="group card no-link">
+    <a href="../../registration/register-factory-functions/" class="group card no-link">
         <div class="p-card-padding">
             <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
-            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Register Service Modules</div>
-            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">Parsley provides a convenient way to group related services into modules using the <code translate="no" v-pre>RegisterModule</code> method. This method allows you to register a function that bundles service registrations, making your code more organized and maintainable. Here's how to use it:</p></div>
+            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Register Factory Functions</div>
+            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">In Parsley, you can register a factory function to provide more control and customization when creating service instances. A factory function differs from a constructor function because it allows you to pass additional parameters to configure the service creation process.</p></div>
         </div>
     </a>
 </div>
@@ -245,6 +227,24 @@
             <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
             <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Register Named Services</div>
             <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">In Parsley, you can register services with specific names to support more granular control and flexible resolution of service instances. Named services are beneficial when you need to manage multiple implementations of the same interface or provide different configurations for different contexts.</p></div>
+        </div>
+    </a>
+</div>
+<div class="card-container">
+    <a href="../../registration/register-lists/" class="group card no-link">
+        <div class="p-card-padding">
+            <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
+            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Manage Multiple Service Implementations</div>
+            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">Parsley supports registering multiple services under the same contract type, allowing you to inject a list of these services into your application. While you can always resolve multiple services of the same contract using the <code translate="no" v-pre>ResolveRequiredServices[T]</code> method, injecting them as an array or slice requires a list registration via the <code translate="no" v-pre>RegisterList[T]</code> method.</p></div>
+        </div>
+    </a>
+</div>
+<div class="card-container">
+    <a href="../../registration/register-module/" class="group card no-link">
+        <div class="p-card-padding">
+            <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
+            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Register Service Modules</div>
+            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">Parsley provides a convenient way to group related services into modules using the <code translate="no" v-pre>RegisterModule</code> method. This method allows you to register a function that bundles service registrations, making your code more organized and maintainable. Here's how to use it:</p></div>
         </div>
     </a>
 </div>
@@ -267,20 +267,20 @@
     </a>
 </div>
 <div class="card-container">
-    <a href="../../advanced-features/generate-proxy-services/" class="group card no-link">
-        <div class="p-card-padding">
-            <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Parsley CLI &#8226; Registration &#8226; Advanced Features</div>
-            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Advanced Dependency Injection With Generated Proxies</div>
-            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">The Parsley CLI introduces a powerful feature for advanced dependency injection through its <code translate="no" v-pre>generate proxy</code> command. This command, combined with <code translate="no" v-pre>//go:generate</code> annotations, automatically generates proxy services and interfaces for your service contracts.</p></div>
-        </div>
-    </a>
-</div>
-<div class="card-container">
     <a href="../../advanced-features/service-registration-validation/" class="group card no-link">
         <div class="p-card-padding">
             <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
             <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Validating Service Registrations</div>
             <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">Parsley provides a <code translate="no" v-pre>Validator</code> service to improve service registration and dependency management by detecting two key issues: missing dependencies and circular dependencies. These configuration issues can be challenging, but the <code translate="no" v-pre>Validator</code> ensures your application's dependency graph is valid. It is an essential tool for enhancing the robustness of service registration and resolution, especially in applications with complex service interactions.</p></div>
+        </div>
+    </a>
+</div>
+<div class="card-container">
+    <a href="../../advanced-features/generate-proxy-services/" class="group card no-link">
+        <div class="p-card-padding">
+            <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Parsley CLI &#8226; Registration &#8226; Advanced Features</div>
+            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Advanced Dependency Injection With Generated Proxies</div>
+            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">The Parsley CLI introduces a powerful feature for advanced dependency injection through its <code translate="no" v-pre>generate proxy</code> command. This command, combined with <code translate="no" v-pre>//go:generate</code> annotations, automatically generates proxy services and interfaces for your service contracts.</p></div>
         </div>
     </a>
 </div>
