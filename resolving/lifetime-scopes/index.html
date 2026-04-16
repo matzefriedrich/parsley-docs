@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829687364575">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829687364575" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829687364575" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -208,7 +208,7 @@
 
 <div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Discover how to manage service instance lifetimes in Parsley through various lifetime scopes. This guide explains the significance of lifetime settings, detailing how they influence the frequency of constructor or factory method calls and the management of service instances in your application.</div>
 <p>Parsley allows you to control the lifetime of your service instances through different lifetime scopes. The lifetime setting determines how often the constructor or factory method of a service registration is called and how instances are managed.</p>
-<h2 id="supported-service-lifetimes">Supported service lifetimes</h2>
+<h2 id="supported-service-lifetimes">Supported Service Lifetimes</h2>
 <p>The following lifetime scopes are supported:</p>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
@@ -244,7 +244,7 @@
 <li><strong>RegisterScoped:</strong> Registers services with a new instance per scope (such as a request or session).</li>
 <li><strong>RegisterTransient:</strong> Registers services that will have a new instance every time they are requested.</li>
 </ul>
-<p>Each of these functions accept <strong>multiple activator functions</strong>, allowing multiple services to be registered in one call.</p>
+<p>Each of these functions accepts <strong>multiple activator functions</strong>, allowing multiple services to be registered in one call.</p>
 <h2 id="example">Example</h2>
 <p>The following demonstration is based on the greeter example code:</p>
 <div id="example-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -411,7 +411,7 @@ Hi, John</code></pre>
                         <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../resolving/resolve-with/">
                             <span>
                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                <span class="block mt-1">Resolving services with specific instances</span>
+                                <span class="block mt-1">Resolving Services With Specific Instances</span>
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                         </a>

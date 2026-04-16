@@ -1,10 +1,10 @@
 # Walkthrough: Parsley Integration with Cobra
 
-This guide demonstrates how to integrate Parsley with [Cobra](https://github.com/spf13/cobra) to build a modular and maintainable CLI application. It leverages the [cobra-extension](https://github.com/matzefriedrich/cobra-extensions) package to implement command handlers based on typed command services, making it a natural fit for Parsley’s dependency injection capabilities.
+This guide demonstrates how to integrate Parsley with [Cobra](https://github.com/spf13/cobra) to build a modular and maintainable CLI application. It leverages the [cobra-extensions](https://github.com/matzefriedrich/cobra-extensions) package to implement command handlers based on typed command services, making it a natural fit for Parsley's dependency injection capabilities.
 
 ## Project Structure
 
-The code for this example can be found at [examples/integrations/cobra](https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/cobra) it has the following structure:
+The code for this example can be found at [examples/integrations/cobra](https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/cobra). It has the following structure:
 
 ```text
 cobra
@@ -54,9 +54,9 @@ Command handlers in this example are services that implement the `TypedCommand` 
 
 ### Running the Application
 
-As configured in the code, the application will start a Cobra application and call it´s `Execute` method. To run the application, navigate to the root directory and execute the following command:
+As configured in the code, the application will start a Cobra application and call its `Execute` method. To run the application, navigate to the root directory and execute the following command:
 
-```sh
+```bash
 go run main.go hello --name John --polite
 ```
 

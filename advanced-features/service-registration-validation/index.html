@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829687364575">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Parsley - Validating Service Registrations</title>
     <meta name="title" content="Parsley - Validating Service Registrations">
-    <meta name="description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
+    <meta name="description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You'll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation/">
     <meta property="og:title" content="Parsley - Validating Service Registrations">
-    <meta property="og:description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
+    <meta property="og:description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You'll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
@@ -31,19 +31,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation/">
     <meta name="twitter:title" content="Parsley - Validating Service Registrations">
-    <meta name="twitter:description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
+    <meta name="twitter:description" content="This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You'll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829687364575" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829687364575" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -199,15 +199,15 @@
                 <doc-page-actions></doc-page-actions>
 
                 <!-- Page content  -->
-<h1 id="validating-service-registrations">Validating Service-Registrations</h1>
+<h1 id="validating-service-registrations">Validating Service Registrations</h1>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350 items-center">
     <div>In&nbsp;</div>
     <div><a href="../../categories/registration/">Registration</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">This article discusses the importance of validating service registrations in Parsley using the built-in &lt;code translate=&quot;no&quot; v-pre&gt;Validator&lt;/code&gt; service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">This article discusses the importance of validating service registrations in Parsley using the built-in &lt;code translate=&quot;no&quot; v-pre&gt;Validator&lt;/code&gt; service. You'll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.</div>
 <p>Parsley provides a <code translate="no" v-pre>Validator</code> service to improve service registration and dependency management by detecting two key issues: missing dependencies and circular dependencies. These configuration issues can be challenging, but the <code translate="no" v-pre>Validator</code> ensures your application&#x27;s dependency graph is valid. It is an essential tool for enhancing the robustness of service registration and resolution, especially in applications with complex service interactions.</p>
-<h2 id="what-are-missing-dependencies">What are missing dependencies?</h2>
+<h2 id="what-are-missing-dependencies">What Are Missing Dependencies?</h2>
 <p>A <strong>missing dependency</strong> occurs when a service relies on a <a href="../../registration/register-constructor-functions/">constructor function</a> that requires a service (the dependency) that hasn&#x27;t been registered. In such cases, Parsley will fail to resolve the necessary object at runtime, leading to potential crashes or undefined behavior. Missing dependencies are often overlooked during development, especially in large, complex applications where services are registered in multiple places or based on runtime conditions.</p>
 <p>For example, if a service <code translate="no" v-pre>A</code> depends on service <code translate="no" v-pre>B</code> but <code translate="no" v-pre>B</code> isn&#x27;t registered, this will cause an error during resolution:</p>
 <div id="what-are-missing-dependencies-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -223,7 +223,7 @@ func NewA(b *B) *A {
 }</code></pre>
 </doc-codeblock></div>
 <p>With the validator, such omissions are detected early, and a meaningful error message is returned before the application proceeds further.</p>
-<h2 id="what-are-circular-dependencies">What are circular dependencies?</h2>
+<h2 id="what-are-circular-dependencies">What Are Circular Dependencies?</h2>
 <p>A <strong>circular dependency</strong> happens when two or more services depend on each other, directly or indirectly, creating an endless loop of dependencies. Without proper validation, this can lead to a <strong>stack overflow</strong> error during resolution, causing the application to crash. Circular dependencies are particularly problematic because they can easily occur unintentionally, especially in large systems where many services interact.</p>
 <p>For instance, if service <code translate="no" v-pre>A</code> depends on service <code translate="no" v-pre>B</code>, and service <code translate="no" v-pre>B</code> depends on service <code translate="no" v-pre>A</code>, neither can be resolved because each requires the other to be instantiated first:</p>
 <div id="what-are-circular-dependencies-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -243,12 +243,11 @@ func NewB(a *A) *B {
     return &amp;B{a: a}
 }</code></pre>
 </doc-codeblock></div>
-<p>Without a validator, such issues may be difficult to diagnose. Parsley&#x27;s built-in <strong>circular dependency check</strong> ensures that the problem is caught early, preventing the application from entering a non-operable state. Although the resolver module itself checks for circular dependencies at runtime, the <code translate="no" v-pre>Validator</code> services offers better error messaging and earlier detection.</p>
+<p>Without a validator, such issues may be difficult to diagnose. Parsley&#x27;s built-in <strong>circular dependency check</strong> ensures that the problem is caught early, preventing the application from entering a non-operable state. Although the resolver module itself checks for circular dependencies at runtime, the <code translate="no" v-pre>Validator</code> service offers better error messaging and earlier detection.</p>
 <h3 id="example-usage">Example Usage</h3>
 <p>To validate your service registrations, use the following code:</p>
 <div id="example-usage-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func main() {
-  
     registry := registration.NewServiceRegistry()
 
     _ = registration.RegisterTransient(NewA)
@@ -262,7 +261,7 @@ func NewB(a *A) *B {
 }</code></pre>
 </doc-codeblock></div>
 <p>The validator inspects all registered services in the <code translate="no" v-pre>ServiceRegistry</code>, ensuring that all dependencies are properly resolved and that there are no circular dependencies.</p>
-<h2 id="when-should-the-validator-be-used">When should the validator be used?</h2>
+<h2 id="when-should-the-validator-be-used">When Should the Validator Be Used?</h2>
 <p>It is recommended that service registrations be validated after the registration of service types is complete. This is also the case after registering services to a <strong>linked</strong> or <strong>scoped</strong> service registry during runtime.</p>
 <h3 id="why-this-matters">Why This Matters</h3>
 <ul>

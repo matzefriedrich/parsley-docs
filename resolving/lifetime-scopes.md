@@ -1,8 +1,8 @@
 # Lifetime Scopes in Parsley
 
-Parsley allows you to control the lifetime of your service instances through different lifetime scopes. The lifetime setting determines how often the constructor or factory method of a service registration is called and how instances are managed. 
+Parsley allows you to control the lifetime of your service instances through different lifetime scopes. The lifetime setting determines how often the constructor or factory method of a service registration is called and how instances are managed.
 
-## Supported service lifetimes
+## Supported Service Lifetimes
 
 The following lifetime scopes are supported:
 
@@ -22,7 +22,7 @@ Parsley provides several **convenience functions** to simplify the registration 
 - **RegisterScoped:** Registers services with a new instance per scope (such as a request or session).
 - **RegisterTransient:** Registers services that will have a new instance every time they are requested.
 
-Each of these functions accept **multiple activator functions**, allowing multiple services to be registered in one call.
+Each of these functions accepts **multiple activator functions**, allowing multiple services to be registered in one call.
 
 ## Example
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829687364575">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=4.5.3.829687364575" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=4.5.3.829687364575" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -184,7 +184,7 @@
                         </li>
                         <li class="pr-4">
                             <a href="../quick-start/" class="pr-4">
-                                Quick start
+                                Quick Start
                             </a>
                         </li>
                     </ol>
@@ -193,7 +193,7 @@
                 <doc-page-actions></doc-page-actions>
 
                 <!-- Page content  -->
-<h1 id="quick-start">Quick start</h1>
+<h1 id="quick-start">Quick Start</h1>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350 items-center">
     <div>In&nbsp;</div>
     <div><a href="../categories/introduction/">Introduction</a></div>
@@ -201,15 +201,15 @@
 
 <div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Get started with Parsley by learning how to register and resolve services dynamically. This guide covers the basics of setting up service dependencies, implementing interfaces, and using Parsley’s service registry to structure your application with the Inversion of Control (IoC) design principle.</div>
 <p>This quick start guide walks you through structuring your application and using Parsley to dynamically register and resolve services (or components) at runtime. In this documentation, the terms services and components are used interchangeably but mean the same thing—object instances of a specific type. To effectively understand dependency mapping in Parsley, let&#x27;s look at a practical example involving types, interfaces, and constructor methods. Once you are familiar with the basics, you can check out the rest of this documentation for more advanced usage and integration examples.</p>
-<h2 id="structuring-the-application">Structuring the application</h2>
+<h2 id="structuring-the-application">Structuring the Application</h2>
 <p>Inversion of control (IoC) is a design principle that flips your application&#x27;s traditional approach to handling dependencies. Instead of having components directly instantiate their dependencies, you structure your application so that dependencies are provided to components at the time of their creation. In Parsley, object instances are created through constructor methods, whereby dependencies are expressed as arguments. This approach decouples your components and promotes more flexible and maintainable code.</p>
 <p>In the quick start example, we define a <code translate="no" v-pre>DataService</code> interface and provide two implementations for it. The application maps the constructor functions to the abstraction, and resolves all registered services to call their <code translate="no" v-pre>FetchData</code> method in a loop.</p>
-<h3 id="add-the-parsley-reference">Add the Parsley reference</h3>
+<h3 id="add-the-parsley-reference">Add the Parsley Reference</h3>
 <p>Use the following command to add a reference to the latest version of the Parsley library to your project:</p>
 <div id="add-the-parsley-reference-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">go get github.com/matzefriedrich/parsley</code></pre>
 </doc-codeblock></div>
-<h3 id="define-interfaces">Define interfaces</h3>
+<h3 id="define-interfaces">Define Interfaces</h3>
 <p>Interfaces in Go are a powerful tool for decoupling dependencies and defining contracts between different components of an application or library. While the Go community often emphasizes composition over inheritance and favors concrete types over interfaces in many scenarios, defining interfaces remains viable, particularly when integrating with existing enterprise patterns - such as dependency injection - from other languages.</p>
 <div id="define-interfaces-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type DataService interface {
@@ -217,7 +217,7 @@
 }</code></pre>
 </doc-codeblock></div>
 <p>In the provided example, <code translate="no" v-pre>DataService</code> is an interface that mandates the implementation of the <code translate="no" v-pre>FetchData</code> method, which should return a string. This contract ensures that any implementing DataService will provide a method to fetch data, regardless of how it is internally implemented (e.g., fetching from a remote server, database, or local storage).</p>
-<h3 id="create-implementation-types">Create implementation types</h3>
+<h3 id="create-implementation-types">Create Implementation Types</h3>
 <p>Implementation types are the concrete structs that fulfill the contracts defined by the interfaces. If combined with constructor functions (whose return type are interfaces), those structs can be kept private.</p>
 <div id="create-implementation-types-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type remoteDataService struct {}
@@ -232,7 +232,7 @@ func (s *localDataService) FetchData() string {
     return &quot;Data from local database&quot;
 }</code></pre>
 </doc-codeblock></div>
-<h3 id="define-constructor-methods">Define constructor methods</h3>
+<h3 id="define-constructor-methods">Define Constructor Methods</h3>
 <p>Constructor methods are responsible for creating instances of the implementation types. These methods specify the dependencies required by the implementation type through their parameters. To keep things simple for now, the services in this example are not dependent on other services, thus the constructor functions do not have any parameters.</p>
 <div id="define-constructor-methods-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func NewRemoteDataService() DataService {
@@ -243,14 +243,14 @@ func NewLocalDataService() DataService {
     return &amp;localDataService{}
 }</code></pre>
 </doc-codeblock></div>
-<h3 id="configure-dependency-mapping-in-parsley">Configure dependency mapping in Parsley</h3>
+<h3 id="configure-dependency-mapping-in-parsley">Configure Dependency Mapping in Parsley</h3>
 <p>With the types, interfaces, and constructor methods defined, you can now configure Parsley to map these dependencies. This involves setting up a service registry and registering the services with appropriate lifetimes. The example below registers the <code translate="no" v-pre>remoteDataService</code> and <code translate="no" v-pre>localDataService</code> types as transient services.</p>
 <ul>
 <li>
 <p><strong>Create a service registry</strong>: The <code translate="no" v-pre>NewServiceRegistry</code> function initializes a new service registry, which will hold the configuration for all your service mappings.</p>
 </li>
 <li>
-<p><strong>Register services</strong>: Services are registered with the registry using functions such as <code translate="no" v-pre>RegisterTransient</code>, <code translate="no" v-pre>RegisterScoped</code>, <code translate="no" v-pre>RegisterSingleon</code> and others. In this example, we&#x27;re registering services using the constructor functions <code translate="no" v-pre>NewRemoteDataService</code> and <code translate="no" v-pre>NewLocalDataService</code> with a transient lifetime behavior, causing the resolver to instanciate services each time they are requested.</p>
+<p><strong>Register services</strong>: Services are registered with the registry using functions such as <code translate="no" v-pre>RegisterTransient</code>, <code translate="no" v-pre>RegisterScoped</code>, <code translate="no" v-pre>RegisterSingleton</code> and others. In this example, we&#x27;re registering services using the constructor functions <code translate="no" v-pre>NewRemoteDataService</code> and <code translate="no" v-pre>NewLocalDataService</code> with a transient lifetime behavior, causing the resolver to instantiate services each time they are requested.</p>
 </li>
 </ul>
 <div id="configure-dependency-mapping-in-parsley-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -258,7 +258,7 @@ func NewLocalDataService() DataService {
 _ = registration.RegisterTransient(registry, NewRemoteDataService)
 _ = registration.RegisterTransient(registry, NewLocalDataService)</code></pre>
 </doc-codeblock></div>
-<h3 id="resolve-dependencies">Resolve dependencies</h3>
+<h3 id="resolve-dependencies">Resolve Dependencies</h3>
 <p>Finally, services can be resolved via Parsley. This involves using the <code translate="no" v-pre>resolving</code> package to obtain instances of your services as needed. Here&#x27;s a more detailed breakdown of the process:</p>
 <ul>
 <li>
@@ -350,6 +350,6 @@ for _, service := range dataServices {
 
     <div id="retype-overlay-target"></div>
 
-        <script data-cfasync="false">window.__DOCS__ = { "title": "Quick start", level: 1, icon: "file", hasPrism: true, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/quick-start/index.md" }</script>
+        <script data-cfasync="false">window.__DOCS__ = { "title": "Quick Start", level: 1, icon: "file", hasPrism: true, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/quick-start/index.md" }</script>
 </body>
 </html>

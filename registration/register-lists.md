@@ -14,8 +14,8 @@ The `dataAggregationService` aggregates data from all registered `DataService` i
 
 The printed output confirms that local and remote data services are successfully aggregated and utilized.
 
-## Benefits and use cases
+## Benefits and Use Cases
 
-This feature is handy when working with multiple implementations of the same service contract, such as aggregating results from various sources or supporting different strategies for a given operation. 
+This feature is handy when working with multiple implementations of the same service contract, such as aggregating results from various sources or supporting different strategies for a given operation.
 
 The `RegisterList[T]` method simplifies managing these services and ensures that all relevant implementations are easily accessible in a single injection. This is especially valuable in modular systems or scenarios requiring dynamic extension of service capabilities.

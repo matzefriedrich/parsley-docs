@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829687364575">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829687364575" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829687364575" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -206,8 +206,8 @@
 </div>
 
 <div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Learn how to register services in Parsley using constructor functions. Understand what constructor functions are in Go and how Parsley uses them to automatically resolve and inject dependencies into your application.</div>
-<p>In Parsely, the fundamental way to register services is by providing a constructor function to the service registry. This method enables you to create instances of your services in a controlled manner and inject them into your application as needed.</p>
-<h3 id="what-is-a-constructor-function">What is a constructor function?</h3>
+<p>In Parsley, the fundamental way to register services is by providing a constructor function to the service registry. This method enables you to create instances of your services in a controlled manner and inject them into your application as needed.</p>
+<h3 id="what-is-a-constructor-function">What Is a Constructor Function?</h3>
 <p>In Go, a <strong>constructor function</strong> is a regular function used to initialize and return an instance of a type. It typically follows the pattern <code translate="no" v-pre>NewTypeName</code> and allows for setting up a struct with necessary values or configurations before returning it.  Unlike languages with built-in constructors, Go doesn&#x27;t have special constructor syntax, so developers create these functions explicitly to manage object initialization and ensure type safety. For example, a constructor for the <code translate="no" v-pre>greeter</code> struct might be <code translate="no" v-pre>NewGreeter() *greeter</code> or <code translate="no" v-pre>NewGreeter() Greeter</code> if interfaces are preferred.</p>
 <p>When registering a constructor function for a service type, Parsley inspects the given function upon service resolution and automatically determines the required services. Constructor functions must also be registered for required services so that Parsley can construct the whole tree of dependencies and pass service instances as needed.</p>
 <h2 id="example">Example</h2>
@@ -250,9 +250,9 @@ func NewGreeter() Greeter {
         <div class="card-compact-body">
             <div class="card-compact-header">
                 <span class="card-compact-icon inline-flex shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" role="presentation" fill="currentColor"><!--icon--><path d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm2-.5a.5.5 0 0 0-.5.5v18a.5.5 0 0 0 .5.5h14a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4Zm10 0v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5Z"/></svg></span>
-                <span class="card-compact-title">Validating Service-Registrations</span>
+                <span class="card-compact-title">Validating Service Registrations</span>
             </div>
-            <p class="card-compact-description">This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You’ll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.</p>
+            <p class="card-compact-description">This article discusses the importance of validating service registrations in Parsley using the built-in Validator service. You'll learn how the Validator helps identify critical issues like missing and circular dependencies, which can lead to runtime errors and application crashes.</p>
         </div>
     </a>
 </div>
@@ -296,7 +296,7 @@ func NewGreeter() Greeter {
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                             <span>
                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                <span class="block mt-1">Quick start</span>
+                                <span class="block mt-1">Quick Start</span>
                             </span>
                         </a>
                     </div>

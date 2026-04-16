@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829687364575">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
 
     <!-- Primary Meta Tags -->
-    <title>Lazy Proxies</title>
-    <meta name="title" content="Lazy Proxies">
+    <title>Parsley - Harnessing Lazy Proxies: Delayed Activation of Services</title>
+    <meta name="title" content="Parsley - Harnessing Lazy Proxies: Delayed Activation of Services">
     <meta name="description" content="Explore the concept of lazy proxies in Parsley, a feature that allows for the deferred creation of service instances until they are needed. This guide explains how lazy proxies can optimize performance by managing resource-intensive dependencies effectively.">
 
     <!-- Canonical -->
@@ -22,7 +22,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/resolving/resolve-lazy-proxy/">
-    <meta property="og:title" content="Lazy Proxies">
+    <meta property="og:title" content="Parsley - Harnessing Lazy Proxies: Delayed Activation of Services">
     <meta property="og:description" content="Explore the concept of lazy proxies in Parsley, a feature that allows for the deferred creation of service instances until they are needed. This guide explains how lazy proxies can optimize performance by managing resource-intensive dependencies effectively.">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
@@ -30,7 +30,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/resolving/resolve-lazy-proxy/">
-    <meta name="twitter:title" content="Lazy Proxies">
+    <meta name="twitter:title" content="Parsley - Harnessing Lazy Proxies: Delayed Activation of Services">
     <meta name="twitter:description" content="Explore the concept of lazy proxies in Parsley, a feature that allows for the deferred creation of service instances until they are needed. This guide explains how lazy proxies can optimize performance by managing resource-intensive dependencies effectively.">
 
     <!-- Alternate Markdown -->
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829687364575" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829687364575" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -207,7 +207,7 @@
 </div>
 
 <div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Explore the concept of lazy proxies in Parsley, a feature that allows for the deferred creation of service instances until they are needed. This guide explains how lazy proxies can optimize performance by managing resource-intensive dependencies effectively.</div>
-<p>Parsley supports lazy proxies, a powerful feature that allows for the delayed activation of services. A lazy proxy acts as a placeholder for a dependency, deferring its creation until it’s needed. This is particularly useful for services that are expensive to create or may not always be required immediately.</p>
+<p>Parsley supports lazy proxies, a powerful feature that allows for the delayed activation of services. A lazy proxy acts as a placeholder for a dependency, deferring its creation until it is needed. This is particularly useful for services that are expensive to create or may not always be required immediately.</p>
 <p>Once the service is activated, the lazy proxy retains the instance, ensuring that subsequent calls to the Value() method return the same instance. This balances performance and resource management, particularly in complex applications.</p>
 <h2 id="example">Example</h2>
 <p>In this example, we register a <code translate="no" v-pre>Greeter</code> service using a lazy proxy via the <code translate="no" v-pre>RegisterLazy[T]</code> method. The <code translate="no" v-pre>NewGreeterFactory</code> function is passed as the factory for creating <code translate="no" v-pre>Greeter</code> instances, and the <code translate="no" v-pre>LifetimeTransient</code> scope is used, meaning a new instance would typically be created each time.</p>
@@ -238,7 +238,7 @@ func main() {
 }</code></pre>
 </doc-codeblock></div>
 <p>However, the <code translate="no" v-pre>Greeter</code> instance is not created immediately using a lazy proxy. Instead, a <code translate="no" v-pre>Lazy[Greeter]</code> proxy is resolved, and the actual <code translate="no" v-pre>Greeter</code> instance is only created when <code translate="no" v-pre>lazy.Value()</code> is called for the first time. This instance is then cached within the proxy, ensuring that the same <code translate="no" v-pre>Greeter</code> object is returned on subsequent calls to <code translate="no" v-pre>Value()</code>.</p>
-<h2 id="benefits-and-use-cases">Benefits and use cases</h2>
+<h2 id="benefits-and-use-cases">Benefits and Use Cases</h2>
 <p>Lazy proxies are ideal for optimizing the performance of applications where certain dependencies are resource-intensive to create but may not always be needed immediately. By deferring the creation of such dependencies until they are required, you can improve startup times and reduce unnecessary resource consumption.</p>
 <p>This feature is especially useful in scenarios involving complex object graphs, optional dependencies, or services that are conditionally used based on runtime factors.</p>
 <div id="retype-backlinks">
@@ -293,7 +293,7 @@ func main() {
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                             <span>
                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                <span class="block mt-1">Activating unregistered dependencies</span>
+                                <span class="block mt-1">Activating Unregistered Dependencies</span>
                             </span>
                         </a>
                     </div>

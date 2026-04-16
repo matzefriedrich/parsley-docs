@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829687364575">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829689264601">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829687364575" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829689264601" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829687364575" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829687364575" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829689264601" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829689264601" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -207,11 +207,11 @@
     <div><a href="../../categories/automated-testing/">Automated testing</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">This article introduces the new &lt;code translate=&quot;no&quot; v-pre&gt;generate mocks&lt;/code&gt; CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go. You’ll learn how to generate mocks quickly, configure their behavior, and assert expectations for method calls within your test suites.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">This article introduces the new &lt;code translate=&quot;no&quot; v-pre&gt;generate mocks&lt;/code&gt; CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go. You'll learn how to generate mocks quickly, configure their behavior, and assert expectations for method calls within your test suites.</div>
 <p>In <a href="https://github.com/matzefriedrich/parsley/releases/tag/v0.9.0" class="outbound" target="_blank"><span>version v0.9</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a> of Parsley, a powerful new feature is introduced: the <code translate="no" v-pre>generate mocks</code> CLI command. This command generates configurable mock implementations from your service interfaces, making testing faster and more efficient.</p>
 <p>In this article, you learn how to use this feature to generate mock objects for interfaces, configure their behavior, and assert expectations for method calls in tests. It also showcases a real-world example of integrating these mocks into your Go test suites.</p>
 <h2 id="why-mocks">Why Mocks?</h2>
-<p>Mock objects are an essential part of writing unit tests. They allow you to replace the real implementations of your services with objects that simulate their behavior, giving you more control over your test environment. With Parsley’s new <code translate="no" v-pre>generate mocks</code> command, you can generate mocks that trace method calls, verify parameters, and count invocations without writing additional boilerplate code.</p>
+<p>Mock objects are an essential part of writing unit tests. They allow you to replace the real implementations of your services with objects that simulate their behavior, giving you more control over your test environment. With Parsley&#x27;s new <code translate="no" v-pre>generate mocks</code> command, you can generate mocks that trace method calls, verify parameters, and count invocations without writing additional boilerplate code.</p>
 <h2 id="defining-a-service-interface">Defining a Service Interface</h2>
 <p>Let&#x27;s begin with a simple service interface, <code translate="no" v-pre>Greeter</code>, which defines two methods: <code translate="no" v-pre>SayHello</code> and <code translate="no" v-pre>SayNothing</code>.</p>
 <div id="defining-a-service-interface-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -224,7 +224,7 @@ type Greeter interface {
     SayNothing()
 }</code></pre>
 </doc-codeblock></div>
-<p>By adding the <code translate="no" v-pre>//go:generate</code> directive at the top, we instruct Parsley’s CLI to generate a mock implementation for this interface.</p>
+<p>By adding the <code translate="no" v-pre>//go:generate</code> directive at the top, we instruct Parsley&#x27;s CLI to generate a mock implementation for this interface.</p>
 <h3 id="the-generated-mock-code">The Generated Mock Code</h3>
 <p>After running the <code translate="no" v-pre>parsley-cli generate mocks</code> command, Parsley generates the following mock implementation code. A <code translate="no" v-pre>mock.g.go</code> file is automatically created, and any manual changes will be overwritten if the command is rerun.</p>
 <div id="the-generated-mock-code-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -278,7 +278,7 @@ func NewGreeterMock() *greeterMock {
 </doc-codeblock></div>
 <h2 id="configuring-mocks-in-tests">Configuring Mocks in Tests</h2>
 <p>Once the mock has been generated, it can be used in your tests as a drop-in replacement for the actual service. You can configure its behavior by overriding the functions for each method in the interface.</p>
-<p>Here’s an example of how to test the <code translate="no" v-pre>GreeterMock</code> type by configuring the behavior of <code translate="no" v-pre>SayHello</code> and using Parsley’s <code translate="no" v-pre>Verify</code> assertion helpers:</p>
+<p>Here&#x27;s an example of how to test the <code translate="no" v-pre>GreeterMock</code> type by configuring the behavior of <code translate="no" v-pre>SayHello</code> and using Parsley&#x27;s <code translate="no" v-pre>Verify</code> assertion helpers:</p>
 <div id="configuring-mocks-in-tests-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">package features
 
@@ -313,13 +313,13 @@ func Test_GreeterMock_SayHello(t *testing.T) {
 </doc-codeblock></div>
 <h2 id="verifying-method-calls-and-arguments">Verifying Method Calls (and Arguments)</h2>
 <p>The generated mocks automatically trace method calls and allow you to verify how often methods were invoked and with which arguments. Parsley provides a set of powerful assertion helpers to verify method calls:</p>
-<h3 id="counter-verification-functions">Counter verification functions</h3>
+<h3 id="counter-verification-functions">Counter Verification Functions</h3>
 <ul>
 <li><strong>TimesOnce</strong>: Verifies that a method was called exactly once.</li>
 <li><strong>TimesNever</strong>: Verifies that a method was never called.</li>
 <li><strong>TimesExactly</strong>: Verifies that a method was called exactly <code translate="no" v-pre>n</code> times.</li>
 </ul>
-<h3 id="argument-matching">Argument matching</h3>
+<h3 id="argument-matching">Argument Matching</h3>
 <ul>
 <li><strong>Exact</strong>: Matches arguments exactly.</li>
 <li><strong>IsAny</strong>: Matches any given argument - use this as a placeholder.</li>
@@ -342,8 +342,8 @@ func Test_GreeterMock_SayHello(t *testing.T) {
 <h2 id="conclusion">Conclusion</h2>
 <p>With the new <code translate="no" v-pre>generate mocks</code> command, Parsley makes it easy to create fully configurable and traceable mock objects for your services.</p>
 <p>The mock generation feature is especially useful for writing tests, where you want to simulate different service behaviors, verify method calls, and ensure your components interact correctly with each other.</p>
-<h3 id="using-parsleys-generator-commands-without-runtime-dependency-injection">Using Parsley’s generator commands without Runtime Dependency Injection</h3>
-<p>Parsley’s generator commands, like the <code translate="no" v-pre>generate mocks</code> command, can be used independently of Parsley’s runtime dependency injection. This flexibility allows developers to leverage powerful code generation features, such as creating mock implementations for interfaces, without adopting Parsley’s full DI system.</p>
+<h3 id="using-parsleys-generator-commands-without-runtime-dependency-injection">Using Parsley&#x27;s Generator Commands Without Runtime Dependency Injection</h3>
+<p>Parsley&#x27;s generator commands, like the <code translate="no" v-pre>generate mocks</code> command, can be used independently of Parsley&#x27;s runtime dependency injection. This flexibility allows developers to leverage powerful code generation features, such as creating mock implementations for interfaces, without adopting Parsley&#x27;s full DI system.</p>
 <p>For instance, you may prefer to manually wire your dependencies in a traditional Go setup while still using Parsley’s mock generation capabilities for testing. This makes Parsley a versatile tool that can be integrated into various workflows, whether or not you choose to use runtime DI for your projects.</p>
 <div id="retype-backlinks">
     <h2>See also</h2>
