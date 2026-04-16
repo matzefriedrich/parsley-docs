@@ -5,38 +5,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829690253264">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829690810943">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
 
     <!-- Primary Meta Tags -->
-    <title>performance</title>
-    <meta name="title" content="performance">
+    <title>lifetime management</title>
+    <meta name="title" content="lifetime management">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/tags/performance/">
+    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/tags/lifetime-management/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://matzefriedrich.github.io/parsley-docs/sitemap.xml">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/tags/performance/">
-    <meta property="og:title" content="performance">
+    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/tags/lifetime-management/">
+    <meta property="og:title" content="lifetime management">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/tags/performance/">
-    <meta name="twitter:title" content="performance">
+    <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/tags/lifetime-management/">
+    <meta name="twitter:title" content="lifetime management">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829690253264" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829690810943" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829690810943" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829690253264" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829690810943" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -182,8 +182,8 @@
                             <span class="ml-1 mr-1">/</span>
                         </li>
                         <li class="pr-4">
-                            <a href="../../tags/performance/" class="pr-4">
-                                performance
+                            <a href="../../tags/lifetime-management/" class="pr-4">
+                                lifetime management
                             </a>
                         </li>
                     </ol>
@@ -192,14 +192,23 @@
                 <doc-page-actions></doc-page-actions>
 
                 <!-- Page content  -->
-<h1 id="tag-performance">Tag: performance</h1>
+<h1 id="tag-lifetime-management">Tag: lifetime management</h1>
 <p>See all <a href="../">tags</a>.</p>
 <div class="card-container">
-    <a href="../../resolving/resolve-lazy-proxy/" class="group card no-link">
+    <a href="../../registration/register-instances/" class="group card no-link">
+        <div class="p-card-padding">
+            <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration</div>
+            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Register Instances</div>
+            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">In Parsley, the <code translate="no" v-pre>RegisterInstance</code> method registers a preexisting service instance, particularly useful for objects that cannot be created automatically due to complex configuration, data dependencies, or third-party APIs. Once registered, these instances behave as singletons, meaning the same instance is reused throughout the application. This ensures the registered object is consistently available as a dependency for other services, maintaining consistency and state across your application.</p></div>
+        </div>
+    </a>
+</div>
+<div class="card-container">
+    <a href="../../resolving/lifetime-scopes/" class="group card no-link">
         <div class="p-card-padding">
             <div class="text-card-kicker font-card-kicker text-card-kicker-text card-kicker-case">Registration &#8226; Resolving</div>
-            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Lazy Proxies</div>
-            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">Parsley supports lazy proxies, a powerful feature that allows for the delayed activation of services. A lazy proxy acts as a placeholder for a dependency, deferring its creation until it is needed. This is particularly useful for services that are expensive to create or may not always be required immediately.</p></div>
+            <div class="mt-2 text-card-title font-card-title leading-card-title text-card-title-text md:text-card-title-md">Lifetime Scopes in Parsley</div>
+            <div class="line-clamp-5"><p class="mt-card-description-margin-top text-card-description-text">Parsley allows you to control the lifetime of your service instances through different lifetime scopes. The lifetime setting determines how often the constructor or factory method of a service registration is called and how instances are managed.</p></div>
         </div>
     </a>
 </div>
@@ -251,6 +260,6 @@
 
     <div id="retype-overlay-target"></div>
 
-        <script data-cfasync="false">window.__DOCS__ = { "title": "performance", level: 2, icon: "file", hasPrism: false, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+        <script data-cfasync="false">window.__DOCS__ = { "title": "lifetime management", level: 2, icon: "file", hasPrism: false, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
