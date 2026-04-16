@@ -6,7 +6,7 @@ icon: flame
 label: "Walkthrough: Parsley Integration with GoFiber"
 tags: [ integrations, guide, walkthrough, examples ]
 category:
-  - Walkthrough
+  - Integrations
 ---
 # Walkthrough: Parsley Integration with GoFiber
 

@@ -7,8 +7,7 @@ label: Generate Configurable Mocks
 tags: [ examples, code generation ]
 category:
   - Parsley CLI
-  - Mocking
-  - Automated testing
+  - Advanced Features
 ---
 # Mocking Made Easy with Parsley
 

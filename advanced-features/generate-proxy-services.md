@@ -8,7 +8,7 @@ tags: [ registration, code generation ]
 category:
   - Parsley CLI
   - Registration
-  - Extensibility
+  - Advanced Features
 ---
 # Advanced Dependency Injection With Generated Proxies
 

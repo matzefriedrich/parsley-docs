@@ -7,7 +7,7 @@ icon: shield-check
 order: -900
 tags: [ guide ]
 category:
-  - Licensing
+  - Introduction
 ---
 # Licensing Information
 

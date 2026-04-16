@@ -7,8 +7,6 @@ label: Manage Multiple Service Implementations
 tags: [ registration, multiple registrations ]
 category:
   - Registration
-  - Multiple Service Registrations
-order: -100
 ---
 # Manage Multiple Service Implementations
 

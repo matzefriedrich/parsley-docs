@@ -7,7 +7,6 @@ label: Register Named Services
 tags: [ registration, multiple registrations, service factory ]
 category:
   - Registration
-  - Multiple Service Registrations
 ---
 # Register Named Services
 
