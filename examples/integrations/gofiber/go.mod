@@ -1,6 +1,6 @@
 module github.com/matzefriedrich/parsley-docs/examples/integrations/gofiber
 
-go 1.25.3
+go 1.26.2
 
 require (
 	github.com/gofiber/fiber/v2 v2.52.9
