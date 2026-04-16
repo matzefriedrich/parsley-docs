@@ -5,6 +5,7 @@ description: Manually register complex service instances as singletons in Parsle
 icon: file
 label: Register Instances
 tags: [ registration, instances, lifetime management ]
+order: 95
 category:
   - Registration
 ---

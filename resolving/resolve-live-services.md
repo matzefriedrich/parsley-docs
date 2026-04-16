@@ -4,7 +4,7 @@ meta:
 description: Create instances of unregistered dependencies dynamically in Parsley while leveraging existing registered services.
 icon: file
 label: Activating Unregistered Dependencies
-order: 20
+order: 80
 tags: [ resolving, instances ]
 category:
   - Resolving

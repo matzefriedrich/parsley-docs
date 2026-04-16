@@ -5,6 +5,7 @@ description: Use factory functions in Parsley for dynamic service configuration 
 icon: file
 label: Register Factory Functions
 tags: [ registration, service factory ]
+order: 90
 category:
   - Registration
 ---

@@ -5,6 +5,7 @@ description: Register services in Parsley using constructor functions to automat
 icon: file
 label: Register Constructor Functions
 tags: [ registration ]
+order: 100
 category:
   - Registration
 ---

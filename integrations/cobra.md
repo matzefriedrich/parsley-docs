@@ -5,6 +5,7 @@ description: Integrate Parsley with Cobra to build modular CLI applications usin
 icon: flame
 label: "Walkthrough: Parsley Integration with Cobra"
 tags: [ integrations, guide, walkthrough, examples ]
+order: 100
 category:
   - Integrations
 ---

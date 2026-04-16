@@ -4,6 +4,7 @@ meta:
 description: Learn about the Parsley library and its key features.
 icon: home
 tags: [ guide ]
+order: 2000
 category:
   - Introduction
 ---

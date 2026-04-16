@@ -1,5 +1,5 @@
 expanded: false
 icon: book
 label: Resolving Services
-order: -170
+order: 800
 tags: [ introduction, guide ]

@@ -5,6 +5,7 @@ description: Use named service registration in Parsley to manage multiple implem
 icon: file
 label: Register Named Services
 tags: [ registration, multiple registrations, service factory ]
+order: 85
 category:
   - Registration
 ---

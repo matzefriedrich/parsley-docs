@@ -5,6 +5,7 @@ description: Register and inject multiple services of the same contract type in 
 icon: file
 label: Manage Multiple Service Implementations
 tags: [ registration, multiple registrations ]
+order: 80
 category:
   - Registration
 ---

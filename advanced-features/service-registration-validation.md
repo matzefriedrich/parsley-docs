@@ -5,6 +5,7 @@ description: Validate Parsley service registrations using the built-in Validator
 icon: file
 label: Validating Service-Registrations
 tags: [ registration ]
+order: 100
 category:
   - Registration
 ---

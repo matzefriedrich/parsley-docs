@@ -4,6 +4,7 @@ meta:
 description: Learn how to register and resolve services dynamically using Parsley to implement the Inversion of Control design principle.
 category:
   - Introduction
+order: 100
 ---
 # Quick Start
 

@@ -5,6 +5,7 @@ description: Explore how the Parsley CLI generates proxy services and interfaces
 icon: file
 label: Generated Proxies
 tags: [ registration, code generation ]
+order: 90
 category:
   - Parsley CLI
   - Registration

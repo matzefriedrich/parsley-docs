@@ -5,6 +5,7 @@ description: Group related services into modules in Parsley to improve code orga
 icon: file
 label: Register Module
 tags: [ registration ]
+order: 75
 category:
   - Registration
 ---

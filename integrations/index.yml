@@ -1,5 +1,5 @@
 expanded: false
 icon: book
 label: Integrations
-order: -200
+order: 600
 tags: [ integrations, guide, walkthrough, examples ]

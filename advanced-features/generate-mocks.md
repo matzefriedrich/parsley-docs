@@ -5,6 +5,7 @@ description: Learn how to use the Parsley CLI to generate mock implementations f
 icon: file
 label: Generate Configurable Mocks
 tags: [ examples, code generation ]
+order: 80
 category:
   - Parsley CLI
   - Advanced Features

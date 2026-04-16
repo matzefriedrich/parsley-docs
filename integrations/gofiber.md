@@ -5,6 +5,7 @@ description: Set up a GoFiber application using Parsley to create a modular, tes
 icon: flame
 label: "Walkthrough: Parsley Integration with GoFiber"
 tags: [ integrations, guide, walkthrough, examples ]
+order: 90
 category:
   - Integrations
 ---

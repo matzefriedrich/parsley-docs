@@ -5,6 +5,7 @@ description: Optimize performance by using lazy proxies in Parsley to defer serv
 icon: file
 label: Lazy Proxies
 tags: [ registration, resolving ]
+order: 70
 category:
   - Registration
   - Resolving

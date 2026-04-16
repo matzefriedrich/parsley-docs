@@ -4,7 +4,7 @@ meta:
 description: Use ResolveWithOptions in Parsley to dynamically pass specific instances to the resolver and override registered dependencies.
 icon: file
 label: Resolving Services With Specific Instances
-order: 30
+order: 90
 tags: [ resolving, instances ]
 category:
   - Resolving
