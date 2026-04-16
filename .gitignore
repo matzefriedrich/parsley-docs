@@ -1,3 +1,5 @@
 .idea/
-.junie/
 .vscode/
+
+.junie/*
+!.junie/AGENTS.md
