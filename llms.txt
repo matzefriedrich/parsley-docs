@@ -38,11 +38,11 @@
 
 ### pkg
 
-- [bootstrap](https://matzefriedrich.github.io/parsley-docs/library/pkg/bootstrap.md): Official documentation of the Parsley´s "bootstrap" package
-- [features](https://matzefriedrich.github.io/parsley-docs/library/pkg/features.md): Official documentation of the Parsley´s "features" package
-- [registration](https://matzefriedrich.github.io/parsley-docs/library/pkg/registration.md): Official documentation of the Parsley´s "registration" package
-- [resolving](https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving.md): Official documentation of the Parsley´s "resolving" package
-- [types](https://matzefriedrich.github.io/parsley-docs/library/pkg/types.md): Official documentation of the Parsley´s "types" package
+- [bootstrap](https://matzefriedrich.github.io/parsley-docs/library/pkg/bootstrap.md): Official documentation for the Parsley bootstrap package.
+- [features](https://matzefriedrich.github.io/parsley-docs/library/pkg/features.md): Official documentation for the Parsley features package.
+- [registration](https://matzefriedrich.github.io/parsley-docs/library/pkg/registration.md): Official documentation for the Parsley registration package.
+- [resolving](https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving.md): Official documentation for the Parsley resolving package.
+- [types](https://matzefriedrich.github.io/parsley-docs/library/pkg/types.md): Official documentation for the Parsley types package.
 
 ## CLI Reference
 
