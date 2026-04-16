@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley - Advanced Dependency Injection with Generated Proxies
-description: This article explores the advanced dependency injection capabilities offered by the Parsley CLI through its `generate proxy` command. You’ll learn how to automatically generate proxy services and interfaces for your service contracts using `//go:generate` annotations.
+description: This article explores the advanced dependency injection capabilities offered by the Parsley CLI through its `generate proxy` command. You'll learn how to automatically generate proxy services and interfaces for your service contracts using `//go:generate` annotations.
 icon: file
 label: Generated Proxies
 tags: [ registration, service proxy, service decorator, code generation ]
@@ -10,12 +10,12 @@ category:
   - Registration
   - Extensibility
 ---
-# Advanced Dependency Injection with generated Proxies
+# Advanced Dependency Injection With Generated Proxies
 
 The Parsley CLI introduces a powerful feature for advanced dependency injection through its `generate proxy` command. This command, combined with `//go:generate` annotations, automatically generates proxy services and interfaces for your service contracts.
 
 Use the following command to install the `parsley-cli` utility:
-```sh
+```bash
 go install github.com/matzefriedrich/parsley/cmd/parsley-cli
 ```
 
@@ -25,7 +25,7 @@ Consider a `Greeter` interface and its implementation. By adding the `//go:gener
 
 :::code language="golang" source="/examples/advanced/internal/greeter.go" :::
 
-The code generator creates a `greeter.proxy.g.go` that contains a type that also implements the `Greeter` interface and thus can be used as drop-in replacements for the actual `Greeter` service. The proxy type supports intercepting method calls, allowing custom logic to be added before or after a method is invoked.
+The code generator creates a `greeter.proxy.g.go` that contains a type that also implements the `Greeter` interface and thus can be used as a drop-in replacement for the actual `Greeter` service. The proxy type supports intercepting method calls, allowing custom logic to be added before or after a method is invoked.
 
 :::code language="golang" source="/examples/advanced/internal/greeter.proxy.g.go" :::
 
@@ -35,7 +35,7 @@ The boilerplate code to register the generated proxies and a custom `MethodInter
 
 :::code language="golang" source="/examples/advanced/cmd/service-proxy/main.go" :::
 
-## Benefits and use cases
+## Benefits and Use Cases
 
 * **Separation of Concerns:** Proxies can separate core business logic from cross-cutting concerns like logging or security.
 

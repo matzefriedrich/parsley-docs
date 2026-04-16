@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley CLI - Mocking Made Easy
-description: This article introduces the new `generate mocks` CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go. You’ll learn how to generate mocks quickly, configure their behavior, and assert expectations for method calls within your test suites.
+description: This article introduces the new `generate mocks` CLI command in Parsley, a feature that simplifies the creation of mock implementations for service interfaces in Go. You'll learn how to generate mocks quickly, configure their behavior, and assert expectations for method calls within your test suites.
 icon: file
 label: Generate Configurable Mocks
 tags: [ service mocks, testing, code generation, mocking, CLI ]
@@ -18,7 +18,7 @@ In this article, you learn how to use this feature to generate mock objects for 
 
 ## Why Mocks?
 
-Mock objects are an essential part of writing unit tests. They allow you to replace the real implementations of your services with objects that simulate their behavior, giving you more control over your test environment. With Parsley’s new `generate mocks` command, you can generate mocks that trace method calls, verify parameters, and count invocations without writing additional boilerplate code.
+Mock objects are an essential part of writing unit tests. They allow you to replace the real implementations of your services with objects that simulate their behavior, giving you more control over your test environment. With Parsley's new `generate mocks` command, you can generate mocks that trace method calls, verify parameters, and count invocations without writing additional boilerplate code.
 
 ## Defining a Service Interface
 
@@ -35,7 +35,7 @@ type Greeter interface {
 }
 ```
 
-By adding the `//go:generate` directive at the top, we instruct Parsley’s CLI to generate a mock implementation for this interface.
+By adding the `//go:generate` directive at the top, we instruct Parsley's CLI to generate a mock implementation for this interface.
 
 ### The Generated Mock Code
 
@@ -95,7 +95,7 @@ func NewGreeterMock() *greeterMock {
 
 Once the mock has been generated, it can be used in your tests as a drop-in replacement for the actual service. You can configure its behavior by overriding the functions for each method in the interface.
 
-Here’s an example of how to test the `GreeterMock` type by configuring the behavior of `SayHello` and using Parsley’s `Verify` assertion helpers:
+Here's an example of how to test the `GreeterMock` type by configuring the behavior of `SayHello` and using Parsley's `Verify` assertion helpers:
 
 ```go
 package features
@@ -134,13 +134,13 @@ func Test_GreeterMock_SayHello(t *testing.T) {
 
 The generated mocks automatically trace method calls and allow you to verify how often methods were invoked and with which arguments. Parsley provides a set of powerful assertion helpers to verify method calls:
 
-### Counter verification functions
+### Counter Verification Functions
 
 - **TimesOnce**: Verifies that a method was called exactly once.
 - **TimesNever**: Verifies that a method was never called.
 - **TimesExactly**: Verifies that a method was called exactly `n` times.
 
-### Argument matching
+### Argument Matching
 
 - **Exact**: Matches arguments exactly.
 - **IsAny**: Matches any given argument - use this as a placeholder.
@@ -162,8 +162,8 @@ With the new `generate mocks` command, Parsley makes it easy to create fully con
 
 The mock generation feature is especially useful for writing tests, where you want to simulate different service behaviors, verify method calls, and ensure your components interact correctly with each other.
 
-### Using Parsley’s generator commands without Runtime Dependency Injection
+### Using Parsley's Generator Commands Without Runtime Dependency Injection
 
-Parsley’s generator commands, like the `generate mocks` command, can be used independently of Parsley’s runtime dependency injection. This flexibility allows developers to leverage powerful code generation features, such as creating mock implementations for interfaces, without adopting Parsley’s full DI system.
+Parsley's generator commands, like the `generate mocks` command, can be used independently of Parsley's runtime dependency injection. This flexibility allows developers to leverage powerful code generation features, such as creating mock implementations for interfaces, without adopting Parsley's full DI system.
 
 For instance, you may prefer to manually wire your dependencies in a traditional Go setup while still using Parsley’s mock generation capabilities for testing. This makes Parsley a versatile tool that can be integrated into various workflows, whether or not you choose to use runtime DI for your projects.

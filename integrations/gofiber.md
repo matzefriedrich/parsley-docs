@@ -14,7 +14,7 @@ This guide demonstrates how to integrate the Parsley dependency injection framew
 
 ## Project Structure
 
-The code for this example can be found at [examples/integrations/gofiber](https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/gofiber) it has the following structure:
+The code for this example can be found at [examples/integrations/gofiber](https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/gofiber). It has the following structure:
 
 ```text
 gofiber
@@ -91,13 +91,13 @@ This file defines the `parsleyApplication` struct as the main application servic
 
 To run the application, navigate to the root directory and execute the following command:
 
-```sh
+```bash
 go run main.go
 ```
 
 As configured in the code, the application will start a GoFiber server on `http://localhost:5502`. You can then access the `/say-hello` endpoint:
 
-```sh
+```bash
 curl "http://localhost:5502/say-hello?name=John"
 ```
 
