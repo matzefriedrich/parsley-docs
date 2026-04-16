@@ -1,6 +1,6 @@
 ---
 meta:
-  title - "Parsley - Harnessing Lazy Proxies: Delayed Activation of Services"
+  title: "Parsley - Harnessing Lazy Proxies: Delayed Activation of Services"
 description: Explore the concept of lazy proxies in Parsley, a feature that allows for the deferred creation of service instances until they are needed. This guide explains how lazy proxies can optimize performance by managing resource-intensive dependencies effectively.
 icon: file
 label: Lazy Proxies
@@ -11,7 +11,7 @@ category:
 ---
 # Lazy Proxies
 
-Parsley supports lazy proxies, a powerful feature that allows for the delayed activation of services. A lazy proxy acts as a placeholder for a dependency, deferring its creation until it’s needed. This is particularly useful for services that are expensive to create or may not always be required immediately.
+Parsley supports lazy proxies, a powerful feature that allows for the delayed activation of services. A lazy proxy acts as a placeholder for a dependency, deferring its creation until it is needed. This is particularly useful for services that are expensive to create or may not always be required immediately.
 
 Once the service is activated, the lazy proxy retains the instance, ensuring that subsequent calls to the Value() method return the same instance. This balances performance and resource management, particularly in complex applications.
 
@@ -23,7 +23,7 @@ In this example, we register a `Greeter` service using a lazy proxy via the `Reg
 
 However, the `Greeter` instance is not created immediately using a lazy proxy. Instead, a `Lazy[Greeter]` proxy is resolved, and the actual `Greeter` instance is only created when `lazy.Value()` is called for the first time. This instance is then cached within the proxy, ensuring that the same `Greeter` object is returned on subsequent calls to `Value()`.
 
-## Benefits and use cases
+## Benefits and Use Cases
 
 Lazy proxies are ideal for optimizing the performance of applications where certain dependencies are resource-intensive to create but may not always be needed immediately. By deferring the creation of such dependencies until they are required, you can improve startup times and reduce unnecessary resource consumption.
 

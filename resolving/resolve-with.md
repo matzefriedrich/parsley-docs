@@ -3,13 +3,13 @@ meta:
   title: "Parsley - Dynamic Dependency Injection with ResolveWithOptions"
 description: Explore how to use Parsley's `ResolveWithOptions` method to dynamically pass specific instances to the resolver, enhancing your application's flexibility in managing dependencies. This guide demonstrates how to override registered dependencies or inject unregistered instances during resolution.
 icon: file
-label:  Resolving services with specific instances
+label: Resolving Services With Specific Instances
 order: 30
 tags: [ resolving, instances ]
 category:
   - Resolving
 ---
-# Passing specific instances to the resolver 
+# Passing Specific Instances to the Resolver
 
 Parsley's `ResolveWithOptions` method allows you to pass specific instances into the resolver, providing certain dependencies dynamically at resolution time. This method is handy when overriding registered dependencies or injecting unregistered instances into your objects.
 
@@ -19,10 +19,10 @@ In the following example, the `newClient` constructor function registers a `clie
 
 Parsley's ability to inject specific instances dynamically improves flexibility in managing dependencies and provides greater control over the instantiation process. This feature is particularly beneficial for the following use cases:
 
-* **Runtime configuration:** Dynamically configure services based on runtime conditions by passing specific instances.
+* **Runtime Configuration:** Dynamically configure services based on runtime conditions by passing specific instances.
 
-* **Dependency injection in testing:** Use mock objects or specific instances during tests to simulate various scenarios without altering the registration setup.
+* **Dependency Injection in Testing:** Use mock objects or specific instances during tests to simulate various scenarios without altering the registration setup.
 
-* **Third-party integrations:** Integrate with third-party services or libraries that require preconfigured instances, ensuring they are used as dependencies when needed.
+* **Third-Party Integrations:** Integrate with third-party services or libraries that require preconfigured instances, ensuring they are used as dependencies when needed.
 
 By using `ResolveWithOptions`, you can push unregistered instances into the resolver, ensuring the correct instances are used when resolving dependencies.

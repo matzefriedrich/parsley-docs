@@ -1,7 +1,7 @@
 ---
 meta:
   title: Parsley - Licensing
-description: 
+description:
 label: Licensing
 icon: shield-check
 order: -900
@@ -15,7 +15,7 @@ The Parsley library is released under the [Apache License, Version 2.0](http://w
 
 ## Third-Party Dependencies
 
-Parsley relies on several open-source libraries, each with its own license. The following table outlines Parsley´s direct dependencies:
+Parsley relies on several open-source libraries, each with its own license. The following table outlines Parsley's direct dependencies:
 
 | Module                                     | Version | License      |
 |--------------------------------------------|---------|--------------|
@@ -25,7 +25,7 @@ Parsley relies on several open-source libraries, each with its own license. The 
 | github.com/stretchr/testify                | v1.11.1 | MIT          |
 | golang.org/x/mod                           | v0.29.0 | BSD-3-Clause |
 
-For specific license details, please refer to the respective third-party projects, or refer to the automated dependencies listing at [deps.dev/go/github.com/matzefriedrich/parsley](https://deps.dev/go/github.com%2Fmatzefriedrich%2Fparsley), or check the linked FOSSA licence compliance report.
+For specific license details, please refer to the respective third-party projects, or refer to the automated dependencies listing at [deps.dev/go/github.com/matzefriedrich/parsley](https://deps.dev/go/github.com%2Fmatzefriedrich%2Fparsley), or check the linked FOSSA license compliance report.
 
 [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B48327%2Fgithub.com%2Fmatzefriedrich%2Fparsley.svg?type=large&issueType=license)](https://app.fossa.com/projects/custom%2B48327%2Fgithub.com%2Fmatzefriedrich%2Fparsley?ref=badge_large&issueType=license)
 

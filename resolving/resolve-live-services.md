@@ -3,13 +3,13 @@ meta:
   title: Parsley - Dynamic Dependency Creation with Live Services
 description: Discover how to use the `Activate` method in Parsley to create instances of unregistered dependencies dynamically. This guide illustrates how to instantiate objects on-the-fly while leveraging registered services. Learn about practical use cases, including dynamic object creation, managing complex dependencies, and integrating with third-party libraries.
 icon: file
-label:  Activating unregistered dependencies
+label: Activating Unregistered Dependencies
 order: 20
 tags: [ resolving, instances, complex dependencies, dynamic object creation ]
 category:
   - Resolving
 ---
-# Live services: Activating unregistered dependencies
+# Live Services: Activating Unregistered Dependencies
 
 The `Activate` method allows you to dynamically create instances using registered services, even if the requested service type is not registered. This approach is helpful for scenarios where you need to instantiate objects on the fly with specific dependencies provided by registered services.
 
@@ -19,10 +19,10 @@ In this example, a `Greeter` service is registered with a transient lifetime. Th
 
 This is helpful for use cases like the following:
 
-* **Dynamic object creation:** When you need to create objects that depend on registered services without having to register these objects themselves.
- 
-* **Complex dependencies:** For scenarios where objects require a complex set of dependencies that are not straightforward to register individually.
+* **Dynamic Object Creation:** When you need to create objects that depend on registered services without having to register these objects themselves.
 
-* **Third-party integrations:** When integrating with third-party libraries that require on-the-fly object creation based on dynamically resolved dependencies.
+* **Complex Dependencies:** For scenarios where objects require a complex set of dependencies that are not straightforward to register individually.
+
+* **Third-Party Integrations:** When integrating with third-party libraries that require on-the-fly object creation based on dynamically resolved dependencies.
 
 The `Activate` method allows for flexible and efficient dependency injection by dynamically pulling registered instances from the resolver and injecting them into your factory function, ensuring that your dynamically created objects have the necessary dependencies.
