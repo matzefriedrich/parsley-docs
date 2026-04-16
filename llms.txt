@@ -9,12 +9,12 @@
 
 ## Registration Concepts
 
+- [Manage Multiple Service Implementations](https://matzefriedrich.github.io/parsley-docs/registration/register-lists.md): Register and inject multiple services of the same contract type in Parsley using arrays or slices.
 - [Register Constructor Functions](https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions.md): Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.
 - [Register Factory Functions](https://matzefriedrich.github.io/parsley-docs/registration/register-factory-functions.md): Use factory functions in Parsley for dynamic service configuration and more control over service creation.
 - [Register Instances](https://matzefriedrich.github.io/parsley-docs/registration/register-instances.md): Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.
 - [Register Service Modules](https://matzefriedrich.github.io/parsley-docs/registration/register-module.md): Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.
 - [Register Named Services](https://matzefriedrich.github.io/parsley-docs/registration/register-named-services.md): Use named service registration in Parsley to manage multiple implementations of the same interface with precise control.
-- [Manage Multiple Service Implementations](https://matzefriedrich.github.io/parsley-docs/registration/register-lists.md): Register and inject multiple services of the same contract type in Parsley using arrays or slices.
 
 ## Resolving Services
 
