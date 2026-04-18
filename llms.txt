@@ -32,6 +32,7 @@
 ## Integrations
 
 - [Walkthrough: Parsley Integration with Cobra](https://matzefriedrich.github.io/parsley-docs/integrations/cobra.md): Integrate Parsley with Cobra to build modular CLI applications using typed services and dependency injection.
+- [Walkthrough: Parsley Integration with Gin](https://matzefriedrich.github.io/parsley-docs/integrations/gin.md): Set up a Gin application using Parsley to create a modular, testable, and maintainable codebase.
 - [Walkthrough: Parsley Integration with GoFiber](https://matzefriedrich.github.io/parsley-docs/integrations/gofiber.md): Set up a GoFiber application using Parsley to create a modular, testable, and maintainable codebase.
 
 ## Package Reference
