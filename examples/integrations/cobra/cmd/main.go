@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+
 	"github.com/matzefriedrich/cobra-extensions/pkg/charmer"
 	"github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/modules"
 	"github.com/matzefriedrich/parsley/pkg/registration"
@@ -17,8 +18,11 @@ func main() {
 	_ = registry.RegisterModule(modules.ServicesModule)
 
 	resolver := resolving.NewResolver(registry)
-	app, _ := resolving.ResolveRequiredService[*charmer.CommandLineApplication](resolver, resolving.NewScopedContext(context.Background()))
-	err := app.Execute()
+
+	ctx := context.Background()
+	scopedContext := resolving.NewScopedContext(ctx)
+	app, _ := resolving.ResolveRequiredService[*charmer.CommandLineApplication](scopedContext, resolver)
+	err := app.Execute(ctx)
 	if err != nil {
 		panic(err)
 	}

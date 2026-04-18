@@ -2,6 +2,7 @@ package modules
 
 import (
 	"context"
+
 	"github.com/matzefriedrich/cobra-extensions/pkg/charmer"
 	"github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/commands"
 	"github.com/matzefriedrich/parsley/pkg/features"
@@ -17,7 +18,7 @@ func CobraApplicationModule(appName string, appDescription string) func(registry
 	return func(registry types.ServiceRegistry) error {
 
 		// Enable resolution of *cobra.Command objects at once (as a list)
-		_ = features.RegisterList[*cobra.Command](registry)
+		_ = features.RegisterList[*cobra.Command](context.Background(), registry)
 
 		// Register a factory function for *CommandLineApplication
 		_ = registration.RegisterSingleton(registry, func(resolver types.Resolver) *charmer.CommandLineApplication {
@@ -25,7 +26,7 @@ func CobraApplicationModule(appName string, appDescription string) func(registry
 			application := charmer.NewCommandLineApplication(appName, appDescription)
 
 			// Resolve all command handlers and add them to the app instance
-			typeCommandServices, _ := resolving.ResolveRequiredServices[*cobra.Command](resolver, context.Background())
+			typeCommandServices, _ := resolving.ResolveRequiredServices[*cobra.Command](context.Background(), resolver)
 			for _, command := range typeCommandServices {
 				application.AddCommand(command)
 			}
