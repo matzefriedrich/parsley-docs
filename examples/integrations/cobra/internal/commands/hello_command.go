@@ -1,7 +1,9 @@
 package commands
 
 import (
+	"context"
 	"fmt"
+
 	"github.com/matzefriedrich/cobra-extensions/pkg/commands"
 	"github.com/matzefriedrich/cobra-extensions/pkg/types"
 	"github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/services"
@@ -15,7 +17,7 @@ type helloCommand struct {
 	greeter services.Greeter
 }
 
-func (h *helloCommand) Execute() {
+func (h *helloCommand) Execute(ctx context.Context) {
 	message := h.greeter.SayHello(h.Name, h.Polite)
 	fmt.Println(message)
 }

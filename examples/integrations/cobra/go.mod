@@ -4,13 +4,14 @@ go 1.26.2
 
 require (
 	github.com/matzefriedrich/cobra-extensions v0.6.0
-	github.com/matzefriedrich/parsley v1.3.0
-	github.com/spf13/cobra v1.10.1
+	github.com/matzefriedrich/parsley v1.3.3
+	github.com/spf13/cobra v1.10.2
 )
 
 require (
-	github.com/google/uuid v1.6.0 // indirect
-	github.com/hashicorp/go-version v1.7.0 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.7 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
+	go.yaml.in/yaml/v3 v3.0.4 // indirect
 )
