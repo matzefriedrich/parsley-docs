@@ -11,30 +11,30 @@
     <meta name="generator" content="Retype 4.5.3">
 
     <!-- Primary Meta Tags -->
-    <title>Parsley - Register services via Constructor Functions</title>
-    <meta name="title" content="Parsley - Register services via Constructor Functions">
-    <meta name="description" content="Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.">
+    <title>Parsley - Walkthrough: Integrating Parsley with Chi for Dependency Injection</title>
+    <meta name="title" content="Parsley - Walkthrough: Integrating Parsley with Chi for Dependency Injection">
+    <meta name="description" content="Set up a Chi application using Parsley to create a modular, testable, and maintainable codebase.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions/">
+    <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/integrations/chi/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://matzefriedrich.github.io/parsley-docs/sitemap.xml">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions/">
-    <meta property="og:title" content="Parsley - Register services via Constructor Functions">
-    <meta property="og:description" content="Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.">
+    <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/chi/">
+    <meta property="og:title" content="Parsley - Walkthrough: Integrating Parsley with Chi for Dependency Injection">
+    <meta property="og:description" content="Set up a Chi application using Parsley to create a modular, testable, and maintainable codebase.">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions/">
-    <meta name="twitter:title" content="Parsley - Register services via Constructor Functions">
-    <meta name="twitter:description" content="Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.">
+    <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/integrations/chi/">
+    <meta name="twitter:title" content="Parsley - Walkthrough: Integrating Parsley with Chi for Dependency Injection">
+    <meta name="twitter:description" content="Set up a Chi application using Parsley to create a modular, testable, and maintainable codebase.">
 
     <!-- Alternate Markdown -->
-    <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions.md">
+    <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/integrations/chi.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
@@ -184,13 +184,13 @@
                         </li>
                         <li class="pr-4">
                             <span class="pr-4">
-                                Registration Concepts
+                                Integrations
                             </span>
                             <span class="ml-1 mr-1">/</span>
                         </li>
                         <li class="pr-4">
-                            <a href="../../registration/register-constructor-functions/" class="pr-4">
-                                Register Constructor Functions
+                            <a href="../../integrations/chi/" class="pr-4">
+                                Walkthrough: Parsley Integration with Chi
                             </a>
                         </li>
                     </ol>
@@ -199,84 +199,259 @@
                 <doc-page-actions></doc-page-actions>
 
                 <!-- Page content  -->
-<h1 id="register-constructor-functions">Register Constructor Functions</h1>
+<h1 id="walkthrough-parsley-integration-with-chi">Walkthrough: Parsley Integration with Chi</h1>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350 items-center">
     <div>In&nbsp;</div>
-    <div><a href="../../categories/registration/">Registration</a></div>
+    <div><a href="../../categories/integrations/">Integrations</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.</div>
-<p>In Parsley, the fundamental way to register services is by providing a constructor function to the service registry. This method enables you to create instances of your services in a controlled manner and inject them into your application as needed.</p>
-<h3 id="what-is-a-constructor-function">What Is a Constructor Function?</h3>
-<p>In Go, a <strong>constructor function</strong> is a regular function used to initialize and return an instance of a type. It typically follows the pattern <code translate="no" v-pre>NewTypeName</code> and allows for setting up a struct with necessary values or configurations before returning it.  Unlike languages with built-in constructors, Go doesn&#x27;t have special constructor syntax, so developers create these functions explicitly to manage object initialization and ensure type safety. For example, a constructor for the <code translate="no" v-pre>greeter</code> struct might be <code translate="no" v-pre>NewGreeter() *greeter</code> or <code translate="no" v-pre>NewGreeter() Greeter</code> if interfaces are preferred.</p>
-<p>When registering a constructor function for a service type, Parsley inspects the given function upon service resolution and automatically determines the required services. Constructor functions must also be registered for required services so that Parsley can construct the whole tree of dependencies and pass service instances as needed.</p>
-<h2 id="example">Example</h2>
-<p>Here’s a basic example of registering a service using a constructor function:</p>
-<div id="example-code-1" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-go"><code v-pre class="language-go">registry := registration.NewServiceRegistry()
-_ = registration.RegisterTransient(registry, internal.NewGreeter)</code></pre>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Set up a Chi application using Parsley to create a modular, testable, and maintainable codebase.</div>
+<p>This guide demonstrates how to integrate the Parsley dependency injection framework with the Chi web framework. By following this example, you&#x27;ll learn how to set up a Chi application with dependency injection managed by Parsley, making your codebase more modular, testable, and maintainable.</p>
+<h2 id="project-structure">Project Structure</h2>
+<p>The code for this example can be found at <a href="https://github.com/matzefriedrich/parsley-docs/tree/main/examples/integrations/chi" class="outbound" target="_blank"><span>examples/integrations/chi</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a>. It has the following structure:</p>
+<div id="project-structure-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">chi
+├── cmd
+│   └── main.go
+└── internal
+    ├── application.go
+    ├── modules
+    │   ├── chi_module.go
+    │   ├── greeter_module.go
+    │   └── route_handlers_module.go
+    ├── route_handlers
+    │   ├── greeter.go
+    │   └── types.go
+    └── services
+        └── greeter.go</code></pre>
 </doc-codeblock></div>
-<p>In this example, the <code translate="no" v-pre>NewGreeter</code> function is used to create instances of the <code translate="no" v-pre>Greeter</code> interface. This function returns an implementation of <code translate="no" v-pre>Greeter</code> while hiding the concrete type <code translate="no" v-pre>*greeter</code>.</p>
-<p>The <code translate="no" v-pre>Greeter</code> interface and its implementation are defined as follows:</p>
-<div id="example-code-2" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-go"><code v-pre class="language-go">package internal
+<p>This article describes the project&#x27;s structure and the purpose of each module in detail.</p>
+<h3 id="main-application">Main Application</h3>
+<p>The main entry point of the application is in the <code translate="no" v-pre>cmd/main.go</code> file:</p>
+<div id="main-application-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-go"><code v-pre class="language-go">package main
+
+import (
+	&quot;context&quot;
+
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/chi/internal&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/chi/internal/modules&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/bootstrap&quot;
+)
+
+func main() {
+
+	ctx := context.Background()
+
+	err := bootstrap.RunParsleyApplication(ctx, internal.NewApp,
+		modules.ConfigureChi,
+		modules.ConfigureGreeter)
+
+	if err != nil {
+		panic(err)
+	}
+}</code></pre>
+</doc-codeblock></div>
+<p>In this file, the <code translate="no" v-pre>RunParsleyApplication</code> function is called to bootstrap the application. It initializes the Parsley application context and configures the Chi server with the necessary services and route handlers.</p>
+<h3 id="modules">Modules</h3>
+<p>The <code translate="no" v-pre>modules</code> package contains the service configurations required to set up the Chi application. The <code translate="no" v-pre>chi_module.go</code> module configures the Chi router and registers it as a singleton service within the Parsley framework:</p>
+<div id="modules-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-go"><code v-pre class="language-go">package modules
+
+import (
+	&quot;github.com/go-chi/chi/v5&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+var _ types.ModuleFunc = ConfigureChi
+
+// ConfigureChi Configures all services required by the chi app.
+func ConfigureChi(registry types.ServiceRegistry) error {
+	_ = registry.Register(newChi, types.LifetimeSingleton)
+	_ = registry.RegisterModule(RegisterRouteHandlers)
+	return nil
+}
+
+func newChi() chi.Router {
+	return chi.NewRouter()
+}</code></pre>
+</doc-codeblock></div>
+<p>This configuration ensures that the Chi router is initialized and available for dependency injection.</p>
+<h3 id="services">Services</h3>
+<p>Next, the <code translate="no" v-pre>internal/services/greeter.go</code> file defines the <code translate="no" v-pre>Greeter</code> service, which returns a greeting message based on the provided name and politeness flag.</p>
+<div id="services-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-go"><code v-pre class="language-go">package services
 
 import &quot;fmt&quot;
 
 type Greeter interface {
-	SayHello(name string, polite bool)
+	SayHello(name string, polite bool) string
 }
 
-type greeter struct{}
+type greeter struct {
+}
 
-func (g *greeter) SayHello(name string, polite bool) {
+func (g *greeter) SayHello(name string, polite bool) string {
 	if polite {
-		fmt.Printf(&quot;Good day, %s!\n&quot;, name)
-	} else {
-		fmt.Printf(&quot;Hello, %s\n&quot;, name)
+		return fmt.Sprintf(&quot;Good day, %s!\n&quot;, name)
 	}
+	return fmt.Sprintf(&quot;Hi, %s\n&quot;, name)
 }
 
 func NewGreeter() Greeter {
 	return &amp;greeter{}
 }</code></pre>
 </doc-codeblock></div>
-<p>While it’s possible for <code translate="no" v-pre>NewGreeter</code> to return a <code translate="no" v-pre>*greeter</code> directly, it is generally advisable to return the interface type <code translate="no" v-pre>Greeter</code>. This approach maintains flexibility and abstraction, making it easier to change implementations without modifying dependent code.</p>
-<div id="retype-backlinks">
-    <h2>See also</h2>
-<div class="card-compact-group">
-<div class="card-compact-container">
-    <a href="/parsley-docs/advanced-features/service-registration-validation/" class="group card-compact no-link">
-        <div class="card-compact-body">
-            <div class="card-compact-header">
-                <span class="card-compact-icon inline-flex shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" role="presentation" fill="currentColor"><!--icon--><path d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm2-.5a.5.5 0 0 0-.5.5v18a.5.5 0 0 0 .5.5h14a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4Zm10 0v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5Z"/></svg></span>
-                <span class="card-compact-title">Validating Service Registrations</span>
-            </div>
-            <p class="card-compact-description">Validate Parsley service registrations using the built-in Validator to identify missing or circular dependencies and prevent runtime errors.</p>
-        </div>
-    </a>
-</div>
-<div class="card-compact-container">
-    <a href="/parsley-docs/" class="group card-compact no-link">
-        <div class="card-compact-body">
-            <div class="card-compact-header">
-                <span class="card-compact-icon inline-flex shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" role="presentation" fill="currentColor"><!--icon--><path d="M11.03 2.59a1.501 1.501 0 0 1 1.94 0l7.5 6.363a1.5 1.5 0 0 1 .53 1.144V19.5a1.5 1.5 0 0 1-1.5 1.5h-5.75a.75.75 0 0 1-.75-.75V14h-2v6.25a.75.75 0 0 1-.75.75H4.5A1.5 1.5 0 0 1 3 19.5v-9.403c0-.44.194-.859.53-1.144ZM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v6.25h5v-9.403Z"/></svg></span>
-                <span class="card-compact-title">Welcome to Parsley</span>
-            </div>
-            <p class="card-compact-description">Learn about the Parsley library and its key features.</p>
-        </div>
-    </a>
-</div>
-</div>
-</div>
+<p>The <code translate="no" v-pre>Greeter</code> service is registered by the <code translate="no" v-pre>greeter_module.go</code> module.</p>
+<div id="services-code-2" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-go"><code v-pre class="language-go">package modules
+
+import (
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/chi/internal/services&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+// ConfigureGreeter Configures the services.Greeter service dependencies.
+func ConfigureGreeter(registry types.ServiceRegistry) error {
+	registry.Register(services.NewGreeter, types.LifetimeTransient)
+	return nil
+}</code></pre>
+</doc-codeblock></div>
+<h3 id="route-handlers">Route Handlers</h3>
+<p>In this example, route handlers are also services, structs implementing the <code translate="no" v-pre>RouteHandler</code> interface, which register one or more route handlers with the Chi router. The interface is defined as follows:</p>
+<div id="route-handlers-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-go"><code v-pre class="language-go">package route_handlers
+
+import &quot;github.com/go-chi/chi/v5&quot;
+
+type RouteHandler interface {
+	Register(router chi.Router)
+}</code></pre>
+</doc-codeblock></div>
+<p>The <code translate="no" v-pre>internal/route_handlers/greeter.go</code> file registers the route handler for the <code translate="no" v-pre>/say-hello</code> endpoint, which returns a greeting message based on the query parameters provided in the request. The logic for the message generation is handled by the <code translate="no" v-pre>Greeter</code> service, which is injected into the <code translate="no" v-pre>NewGreeterRouteHandler</code> method.</p>
+<div id="route-handlers-code-2" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-go"><code v-pre class="language-go">package route_handlers
+
+import (
+	&quot;net/http&quot;
+
+	&quot;github.com/go-chi/chi/v5&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/chi/internal/services&quot;
+)
+
+type greeterRouteHandler struct {
+	greeter services.Greeter
+}
+
+// Register Registers all greeterRouteHandler route handlers.
+func (h *greeterRouteHandler) Register(router chi.Router) {
+	router.Get(&quot;/say-hello&quot;, h.HandleSayHelloRequest)
+}
+
+// HandleSayHelloRequest Handles &quot;GET /say-hello&quot; requests.
+func (h *greeterRouteHandler) HandleSayHelloRequest(w http.ResponseWriter, r *http.Request) {
+	name := r.URL.Query().Get(&quot;name&quot;)
+	msg := h.greeter.SayHello(name, true)
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write([]byte(msg))
+}
+
+var _ RouteHandler = &amp;greeterRouteHandler{}
+
+func NewGreeterRouteHandler(greeter services.Greeter) RouteHandler {
+	return &amp;greeterRouteHandler{
+		greeter: greeter,
+	}
+}</code></pre>
+</doc-codeblock></div>
+<p>The <code translate="no" v-pre>route_handler_module.go</code> file handles the registration of the <code translate="no" v-pre>RouteHandler</code> services themselves.</p>
+<div id="route-handlers-code-3" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-go"><code v-pre class="language-go">package modules
+
+import (
+	&quot;context&quot;
+
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/chi/internal/route_handlers&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/features&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/types&quot;
+)
+
+// RegisterRouteHandlers Registers all route handlers of the chi app.
+func RegisterRouteHandlers(registry types.ServiceRegistry) error {
+	_ = features.RegisterList[route_handlers.RouteHandler](context.Background(), registry)
+	_ = registration.RegisterTransient(registry, route_handlers.NewGreeterRouteHandler)
+	return nil
+}</code></pre>
+</doc-codeblock></div>
+<p>This configuration ensures that all route handlers the application requires are correctly registered and injected into the Chi router instance. Since the application service expects a set of route handler services, the <code translate="no" v-pre>RegisterList</code> method must be used to register a list activator for the <code translate="no" v-pre>RouteHandler</code> type.</p>
+<h3 id="application-logic">Application Logic</h3>
+<p>The <code translate="no" v-pre>internal/application.go</code> file contains the main application service:</p>
+<div id="application-logic-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-go"><code v-pre class="language-go">package internal
+
+import (
+	&quot;context&quot;
+	&quot;net/http&quot;
+
+	&quot;github.com/go-chi/chi/v5&quot;
+	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/chi/internal/route_handlers&quot;
+	&quot;github.com/matzefriedrich/parsley/pkg/bootstrap&quot;
+)
+
+type parsleyApplication struct {
+	router chi.Router
+}
+
+var _ bootstrap.Application = &amp;parsleyApplication{}
+
+// NewApp Creates the main application service instance. This constructor function gets invoked by Parsley; add parameters for all required services.
+func NewApp(router chi.Router, routeHandlers []route_handlers.RouteHandler) bootstrap.Application {
+	for _, routeHandler := range routeHandlers {
+		routeHandler.Register(router)
+	}
+	return &amp;parsleyApplication{
+		router: router,
+	}
+}
+
+// Run The entrypoint for the Parsley application.
+func (a *parsleyApplication) Run(_ context.Context) error {
+	return http.ListenAndServe(&quot;:5504&quot;, a.router)
+}</code></pre>
+</doc-codeblock></div>
+<p>This file defines the <code translate="no" v-pre>parsleyApplication</code> struct as the main application service. It registers the route handlers and starts the Chi server on port <code translate="no" v-pre>5504</code>. However, aspects like having the listener port configurable or a graceful server shutdown are omitted here, but they could be addressed here as well.</p>
+<h3 id="running-the-application">Running the Application</h3>
+<p>To run the application, navigate to the root directory and execute the following command:</p>
+<div id="running-the-application-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">go run main.go</code></pre>
+</doc-codeblock></div>
+<p>As configured in the code, the application will start a Chi server on <code translate="no" v-pre>http://localhost:5504</code>. You can then access the <code translate="no" v-pre>/say-hello</code> endpoint:</p>
+<div id="running-the-application-code-2" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">curl &quot;http://localhost:5504/say-hello?name=John&quot;</code></pre>
+</doc-codeblock></div>
+<p>This should return:</p>
+<div id="running-the-application-code-3" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">Good day, John!</code></pre>
+</doc-codeblock></div>
+<p>For more details on Parsley, check out the Parsley GitHub repository.</p>
 
                 <div id="retype-tags" class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-6 mb-6 clear-both">
                     <span>
                         <a href="../../tags/">
                             <svg class="inline-block -mb-px mr-1.5 text-body-link hover:text-body-link-hover" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
                         </a>
-                        <span class="mr-2"><a href="../../tags/registration/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                    <span>registration</span>
+                        <span class="mr-2"><a href="../../tags/integrations/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                    <span>integrations</span>
+                </a></span>
+                        <span class="mr-2"><a href="../../tags/guide/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                    <span>guide</span>
+                </a></span>
+                        <span class="mr-2"><a href="../../tags/walkthrough/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                    <span>walkthrough</span>
+                </a></span>
+                        <span class="mr-2"><a href="../../tags/examples/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                    <span>examples</span>
                 </a></span>
                     </span>
                 
@@ -289,20 +464,20 @@ func NewGreeter() Greeter {
             
                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                     <div class="w-1/2">
-                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../">
+                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../integrations/cobra/">
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                             <span>
                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                <span class="block mt-1">Welcome to Parsley</span>
+                                <span class="block mt-1">Walkthrough: Parsley Integration with Cobra</span>
                             </span>
                         </a>
                     </div>
             
                     <div class="w-1/2">
-                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../registration/register-instances/">
+                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../integrations/gin/">
                             <span>
                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                <span class="block mt-1">Register Instances</span>
+                                <span class="block mt-1">Walkthrough: Parsley Integration with Gin</span>
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                         </a>
@@ -349,6 +524,6 @@ func NewGreeter() Greeter {
 
     <div id="retype-overlay-target"></div>
 
-        <script data-cfasync="false">window.__DOCS__ = { "title": "Register Constructor Functions", level: 2, icon: "file", hasPrism: true, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/registration/register-constructor-functions.md" }</script>
+        <script data-cfasync="false">window.__DOCS__ = { "title": "Walkthrough: Parsley Integration with Chi", level: 2, icon: "file", hasPrism: true, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/integrations/chi.md" }</script>
 </body>
 </html>
