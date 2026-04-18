@@ -2,152 +2,152 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/resolving/lifetime-scopes/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/registration/register-named-services/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/registration/register-instances/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/registration/register-factory-functions/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/registration/register-lists/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-proxy-services/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/registration/register-module/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/resolving/resolve-lazy-proxy/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/resolving/resolve-with/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/licensing/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-mocks/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/quick-start/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/integrations/cobra/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/integrations/gofiber/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/resolving/resolve-live-services/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/completion/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/generate/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/tags/</loc>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/library/pkg/bootstrap/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/library/pkg/features/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/library/pkg/registration/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/parsley-cli_init/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/library/pkg/types/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/parsley-cli_markdown/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/tags/registration/</loc>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/parsley-cli_version/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/categories/registration/</loc>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/completion/parsley-cli_completion_fish/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/completion/parsley-cli_completion_powershell/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/completion/parsley-cli_completion_zsh/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/completion/parsley-cli_completion_bash/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/generate/parsley-cli_generate_proxy/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/cli-reference/generate/parsley-cli_generate_mocks/</loc>
-    <lastmod>2026-04-17T00:15:41Z</lastmod>
+    <lastmod>2026-04-18T21:52:36Z</lastmod>
   </url>
   <url>
     <loc>https://matzefriedrich.github.io/parsley-docs/categories/</loc>

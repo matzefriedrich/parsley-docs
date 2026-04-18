@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829692970095">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829857172621">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829692970095" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829857172621" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829692970095" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829857172621" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829692970095" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829692970095" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829857172621" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829857172621" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -268,12 +268,12 @@ var _ types.ModuleFunc = ConfigureFiber
 
 // ConfigureFiber Configures all services required by the Fiber app.
 func ConfigureFiber(registry types.ServiceRegistry) error {
-	registration.RegisterInstance(registry, fiber.Config{
+	_ = registration.RegisterInstance(registry, fiber.Config{
 		AppName:   &quot;parsley-fiber-demo&quot;,
 		Immutable: true,
 	})
-	registry.Register(newFiber, types.LifetimeSingleton)
-	registry.RegisterModule(RegisterRouteHandlers)
+	_ = registry.Register(newFiber, types.LifetimeSingleton)
+	_ = registry.RegisterModule(RegisterRouteHandlers)
 	return nil
 }
 
@@ -299,9 +299,8 @@ type greeter struct {
 func (g *greeter) SayHello(name string, polite bool) string {
 	if polite {
 		return fmt.Sprintf(&quot;Good day, %s!\n&quot;, name)
-	} else {
-		return fmt.Sprintf(&quot;Hi, %s\n&quot;, name)
 	}
+	return fmt.Sprintf(&quot;Hi, %s\n&quot;, name)
 }
 
 func NewGreeter() Greeter {
@@ -319,7 +318,7 @@ import (
 
 // ConfigureGreeter Configures the services.Greeter service dependencies.
 func ConfigureGreeter(registry types.ServiceRegistry) error {
-	registry.Register(services.NewGreeter, types.LifetimeTransient)
+	_ = registry.Register(services.NewGreeter, types.LifetimeTransient)
 	return nil
 }</code></pre>
 </doc-codeblock></div>
@@ -356,7 +355,7 @@ func (h *greeterRouteHandler) Register(app *fiber.App) {
 func (h *greeterRouteHandler) HandleSayHelloRequest(ctx *fiber.Ctx) error {
 	name := ctx.Query(&quot;name&quot;)
 	msg := h.greeter.SayHello(name, true)
-	ctx.Send([]byte(msg))
+	_ = ctx.Send([]byte(msg))
 	return ctx.SendStatus(fiber.StatusOK)
 }
 
@@ -382,9 +381,9 @@ import (
 )
 
 // RegisterRouteHandlers Registers all route handlers of the GoFiber app.
-func RegisterRouteHandlers(ctx context.Context, registry types.ServiceRegistry) error {
-	features.RegisterList[route_handlers.RouteHandler](ctx, registry)
-	registration.RegisterTransient(registry, route_handlers.NewGreeterRouteHandler)
+func RegisterRouteHandlers(registry types.ServiceRegistry) error {
+	_ = features.RegisterList[route_handlers.RouteHandler](context.Background(), registry)
+	_ = registration.RegisterTransient(registry, route_handlers.NewGreeterRouteHandler)
 	return nil
 }</code></pre>
 </doc-codeblock></div>
