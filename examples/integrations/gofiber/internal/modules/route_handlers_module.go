@@ -10,8 +10,8 @@ import (
 )
 
 // RegisterRouteHandlers Registers all route handlers of the GoFiber app.
-func RegisterRouteHandlers(ctx context.Context, registry types.ServiceRegistry) error {
-	features.RegisterList[route_handlers.RouteHandler](ctx, registry)
-	registration.RegisterTransient(registry, route_handlers.NewGreeterRouteHandler)
+func RegisterRouteHandlers(registry types.ServiceRegistry) error {
+	_ = features.RegisterList[route_handlers.RouteHandler](context.Background(), registry)
+	_ = registration.RegisterTransient(registry, route_handlers.NewGreeterRouteHandler)
 	return nil
 }

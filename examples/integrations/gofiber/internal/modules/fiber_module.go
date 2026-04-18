@@ -10,12 +10,12 @@ var _ types.ModuleFunc = ConfigureFiber
 
 // ConfigureFiber Configures all services required by the Fiber app.
 func ConfigureFiber(registry types.ServiceRegistry) error {
-	registration.RegisterInstance(registry, fiber.Config{
+	_ = registration.RegisterInstance(registry, fiber.Config{
 		AppName:   "parsley-fiber-demo",
 		Immutable: true,
 	})
-	registry.Register(newFiber, types.LifetimeSingleton)
-	registry.RegisterModule(RegisterRouteHandlers)
+	_ = registry.Register(newFiber, types.LifetimeSingleton)
+	_ = registry.RegisterModule(RegisterRouteHandlers)
 	return nil
 }
 

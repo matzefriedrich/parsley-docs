@@ -7,6 +7,6 @@ import (
 
 // ConfigureGreeter Configures the services.Greeter service dependencies.
 func ConfigureGreeter(registry types.ServiceRegistry) error {
-	registry.Register(services.NewGreeter, types.LifetimeTransient)
+	_ = registry.Register(services.NewGreeter, types.LifetimeTransient)
 	return nil
 }
