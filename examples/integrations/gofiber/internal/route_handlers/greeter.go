@@ -18,7 +18,7 @@ func (h *greeterRouteHandler) Register(app *fiber.App) {
 func (h *greeterRouteHandler) HandleSayHelloRequest(ctx *fiber.Ctx) error {
 	name := ctx.Query("name")
 	msg := h.greeter.SayHello(name, true)
-	ctx.Send([]byte(msg))
+	_ = ctx.Send([]byte(msg))
 	return ctx.SendStatus(fiber.StatusOK)
 }
 
