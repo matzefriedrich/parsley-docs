@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829858164955">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829858800608">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829858164955" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829858800608" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829858164955" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829858800608" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829858164955" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829858164955" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829858800608" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829858800608" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -231,6 +231,7 @@
 
 import (
 	&quot;context&quot;
+
 	&quot;github.com/matzefriedrich/cobra-extensions/pkg/charmer&quot;
 	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/modules&quot;
 	&quot;github.com/matzefriedrich/parsley/pkg/registration&quot;
@@ -246,8 +247,11 @@ func main() {
 	_ = registry.RegisterModule(modules.ServicesModule)
 
 	resolver := resolving.NewResolver(registry)
-	app, _ := resolving.ResolveRequiredService[*charmer.CommandLineApplication](resolver, resolving.NewScopedContext(context.Background()))
-	err := app.Execute()
+
+	ctx := context.Background()
+	scopedContext := resolving.NewScopedContext(ctx)
+	app, _ := resolving.ResolveRequiredService[*charmer.CommandLineApplication](scopedContext, resolver)
+	err := app.Execute(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -261,6 +265,7 @@ func main() {
 
 import (
 	&quot;context&quot;
+
 	&quot;github.com/matzefriedrich/cobra-extensions/pkg/charmer&quot;
 	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/commands&quot;
 	&quot;github.com/matzefriedrich/parsley/pkg/features&quot;
@@ -276,7 +281,7 @@ func CobraApplicationModule(appName string, appDescription string) func(registry
 	return func(registry types.ServiceRegistry) error {
 
 		// Enable resolution of *cobra.Command objects at once (as a list)
-		_ = features.RegisterList[*cobra.Command](registry)
+		_ = features.RegisterList[*cobra.Command](context.Background(), registry)
 
 		// Register a factory function for *CommandLineApplication
 		_ = registration.RegisterSingleton(registry, func(resolver types.Resolver) *charmer.CommandLineApplication {
@@ -284,7 +289,7 @@ func CobraApplicationModule(appName string, appDescription string) func(registry
 			application := charmer.NewCommandLineApplication(appName, appDescription)
 
 			// Resolve all command handlers and add them to the app instance
-			typeCommandServices, _ := resolving.ResolveRequiredServices[*cobra.Command](resolver, context.Background())
+			typeCommandServices, _ := resolving.ResolveRequiredServices[*cobra.Command](context.Background(), resolver)
 			for _, command := range typeCommandServices {
 				application.AddCommand(command)
 			}
@@ -350,7 +355,9 @@ func NewGreeter() Greeter {
 <pre translate="no" class="language-go"><code v-pre class="language-go">package commands
 
 import (
+	&quot;context&quot;
 	&quot;fmt&quot;
+
 	&quot;github.com/matzefriedrich/cobra-extensions/pkg/commands&quot;
 	&quot;github.com/matzefriedrich/cobra-extensions/pkg/types&quot;
 	&quot;github.com/matzefriedrich/parsley-docs/examples/integrations/cobra/internal/services&quot;
@@ -364,7 +371,7 @@ type helloCommand struct {
 	greeter services.Greeter
 }
 
-func (h *helloCommand) Execute() {
+func (h *helloCommand) Execute(ctx context.Context) {
 	message := h.greeter.SayHello(h.Name, h.Polite)
 	fmt.Println(message)
 }
