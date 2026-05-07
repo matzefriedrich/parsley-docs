@@ -168,7 +168,7 @@ var (
 ```
 
 <a name="NewDependencyError"></a>
-## func [NewDependencyError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/dependency_error.go#L21>)
+## func NewDependencyError
 
 ```go
 func NewDependencyError(msg string) error
@@ -177,7 +177,7 @@ func NewDependencyError(msg string) error
 NewDependencyError creates a new DependencyError with the provided message.
 
 <a name="NewReflectionError"></a>
-## func [NewReflectionError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/reflection_error.go#L9>)
+## func NewReflectionError
 
 ```go
 func NewReflectionError(msg string, initializers ...ParsleyErrorFunc) error
@@ -186,7 +186,7 @@ func NewReflectionError(msg string, initializers ...ParsleyErrorFunc) error
 NewReflectionError creates a new ReflectionError with a specified message and optional initializers.
 
 <a name="NewRegistryError"></a>
-## func [NewRegistryError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/registry_error.go#L51>)
+## func NewRegistryError
 
 ```go
 func NewRegistryError(msg string, initializers ...ParsleyErrorFunc) error
@@ -195,7 +195,7 @@ func NewRegistryError(msg string, initializers ...ParsleyErrorFunc) error
 NewRegistryError creates a new RegistryError with the given message and initializers to modify the error.
 
 <a name="NewResolverError"></a>
-## func [NewResolverError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/resolver_error.go#L64>)
+## func NewResolverError
 
 ```go
 func NewResolverError(msg string, initializers ...ParsleyErrorFunc) error
@@ -204,7 +204,7 @@ func NewResolverError(msg string, initializers ...ParsleyErrorFunc) error
 NewResolverError creates a new ResolverError with the provided message and applies optional ParsleyErrorFunc initializers.
 
 <a name="DependencyError"></a>
-## type [DependencyError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/dependency_error.go#L16-L18>)
+## type DependencyError
 
 DependencyError represents an error that occurs due to a missing or failed dependency. This error type encapsulates a ParsleyError.
 
@@ -215,7 +215,7 @@ type DependencyError struct {
 ```
 
 <a name="DependencyInfo"></a>
-## type [DependencyInfo](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L159-L189>)
+## type DependencyInfo
 
 DependencyInfo provides functionality to manage dependency information.
 
@@ -254,7 +254,7 @@ type DependencyInfo interface {
 ```
 
 <a name="FunctionInfo"></a>
-## type [FunctionInfo](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L10-L16>)
+## type FunctionInfo
 
 FunctionInfo Stores information about a service activator function. This interface supports the internal infrastructure.
 
@@ -265,11 +265,13 @@ type FunctionInfo interface {
     Parameters() []FunctionParameterInfo
     ReturnType() ServiceType
     ParameterTypes() []ServiceType
+    HasErrorReturn() bool
+    ExpectsContextParameter() bool
 }
 ```
 
 <a name="FunctionParameterInfo"></a>
-## type [FunctionParameterInfo](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L18-L21>)
+## type FunctionParameterInfo
 
 
 
@@ -281,7 +283,7 @@ type FunctionParameterInfo interface {
 ```
 
 <a name="LifetimeScope"></a>
-## type [LifetimeScope](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L192>)
+## type LifetimeScope
 
 LifetimeScope represents the duration for which a service or object instance is retained.
 
@@ -306,7 +308,7 @@ const (
 ```
 
 <a name="ModuleFunc"></a>
-## type [ModuleFunc](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L78>)
+## type ModuleFunc
 
 ModuleFunc defines a function used to register services with the given service registry.
 
@@ -315,7 +317,7 @@ type ModuleFunc func(registry ServiceRegistry) error
 ```
 
 <a name="NamedService"></a>
-## type [NamedService](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L140-L143>)
+## type NamedService
 
 NamedService is a generic interface defining a service with a name and an activator function.
 
@@ -327,7 +329,7 @@ type NamedService[T any] interface {
 ```
 
 <a name="ParsleyAggregateError"></a>
-## type [ParsleyAggregateError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L56-L59>)
+## type ParsleyAggregateError
 
 ParsleyAggregateError represents an aggregate of multiple errors.
 
@@ -339,7 +341,7 @@ type ParsleyAggregateError struct {
 ```
 
 <a name="ParsleyAggregateError.Error"></a>
-### func \(ParsleyAggregateError\) [Error](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L67>)
+### func \(ParsleyAggregateError\) Error
 
 ```go
 func (f ParsleyAggregateError) Error() string
@@ -348,7 +350,7 @@ func (f ParsleyAggregateError) Error() string
 Error returns the message associated with the ParsleyAggregateError.
 
 <a name="ParsleyAggregateError.Errors"></a>
-### func \(ParsleyAggregateError\) [Errors](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L62>)
+### func \(ParsleyAggregateError\) Errors
 
 ```go
 func (f ParsleyAggregateError) Errors() []error
@@ -357,7 +359,7 @@ func (f ParsleyAggregateError) Errors() []error
 Errors returns the slice of errors contained within ParsleyAggregateError.
 
 <a name="ParsleyAggregateError.Is"></a>
-### func \(ParsleyAggregateError\) [Is](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L72>)
+### func \(ParsleyAggregateError\) Is
 
 ```go
 func (f ParsleyAggregateError) Is(err error) bool
@@ -366,7 +368,7 @@ func (f ParsleyAggregateError) Is(err error) bool
 Is checks if the given error is equivalent to any error within the ParsleyAggregateError.
 
 <a name="ParsleyError"></a>
-## type [ParsleyError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L6-L9>)
+## type ParsleyError
 
 ParsleyError represents an error with an associated message and optional underlying cause.
 
@@ -378,7 +380,7 @@ type ParsleyError struct {
 ```
 
 <a name="ParsleyError.Error"></a>
-### func \(ParsleyError\) [Error](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L12>)
+### func \(ParsleyError\) Error
 
 ```go
 func (f ParsleyError) Error() string
@@ -387,7 +389,7 @@ func (f ParsleyError) Error() string
 Error returns the message associated with the ParsleyError.
 
 <a name="ParsleyError.Is"></a>
-### func \(ParsleyError\) [Is](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L22>)
+### func \(ParsleyError\) Is
 
 ```go
 func (f ParsleyError) Is(err error) bool
@@ -396,7 +398,7 @@ func (f ParsleyError) Is(err error) bool
 Is compares the current ParsleyError's message with another error's message to determine if they are the same.
 
 <a name="ParsleyError.Unwrap"></a>
-### func \(ParsleyError\) [Unwrap](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L17>)
+### func \(ParsleyError\) Unwrap
 
 ```go
 func (f ParsleyError) Unwrap() error
@@ -405,7 +407,7 @@ func (f ParsleyError) Unwrap() error
 Unwrap returns the underlying cause of the ParsleyError, allowing for error unwrapping functionality.
 
 <a name="ParsleyErrorFunc"></a>
-## type [ParsleyErrorFunc](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L27>)
+## type ParsleyErrorFunc
 
 ParsleyErrorFunc is a function type that modifies a given error.
 
@@ -414,7 +416,7 @@ type ParsleyErrorFunc func(e error)
 ```
 
 <a name="ForServiceType"></a>
-### func [ForServiceType](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L46>)
+### func ForServiceType
 
 ```go
 func ForServiceType(serviceType string) ParsleyErrorFunc
@@ -423,7 +425,7 @@ func ForServiceType(serviceType string) ParsleyErrorFunc
 ForServiceType creates a ParsleyErrorFunc that sets the service type name on errors that implement the ParsleyErrorWithServiceTypeName interface.
 
 <a name="WithAggregatedCause"></a>
-### func [WithAggregatedCause](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L85>)
+### func WithAggregatedCause
 
 ```go
 func WithAggregatedCause(errs ...error) ParsleyErrorFunc
@@ -432,7 +434,7 @@ func WithAggregatedCause(errs ...error) ParsleyErrorFunc
 WithAggregatedCause returns a ParsleyErrorFunc that sets an aggregated error cause with the provided errors.
 
 <a name="WithCause"></a>
-### func [WithCause](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L30>)
+### func WithCause
 
 ```go
 func WithCause(err error) ParsleyErrorFunc
@@ -441,7 +443,7 @@ func WithCause(err error) ParsleyErrorFunc
 WithCause wraps a given error within a ParsleyError.
 
 <a name="ParsleyErrorWithServiceTypeName"></a>
-## type [ParsleyErrorWithServiceTypeName](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/parsley_error.go#L41-L43>)
+## type ParsleyErrorWithServiceTypeName
 
 ParsleyErrorWithServiceTypeName defines an interface for setting the service type name on errors.
 
@@ -452,7 +454,7 @@ type ParsleyErrorWithServiceTypeName interface {
 ```
 
 <a name="ReflectionError"></a>
-## type [ReflectionError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/reflection_error.go#L4-L6>)
+## type ReflectionError
 
 ReflectionError represents an error specifically related to reflection operations, extending ParsleyError.
 
@@ -463,7 +465,7 @@ type ReflectionError struct {
 ```
 
 <a name="RegistryError"></a>
-## type [RegistryError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/registry_error.go#L29-L32>)
+## type RegistryError
 
 RegistryError represents an error that gets returned for failing registry operations.
 
@@ -475,7 +477,7 @@ type RegistryError struct {
 ```
 
 <a name="RegistryError.MatchesServiceType"></a>
-### func \(\*RegistryError\) [MatchesServiceType](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/registry_error.go#L43>)
+### func \(\*RegistryError\) MatchesServiceType
 
 ```go
 func (r *RegistryError) MatchesServiceType(name string) bool
@@ -484,7 +486,7 @@ func (r *RegistryError) MatchesServiceType(name string) bool
 MatchesServiceType checks if the service type name of the RegistryError matches the specified name.
 
 <a name="RegistryError.ServiceTypeName"></a>
-### func \(\*RegistryError\) [ServiceTypeName](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/registry_error.go#L38>)
+### func \(\*RegistryError\) ServiceTypeName
 
 ```go
 func (r *RegistryError) ServiceTypeName(name string)
@@ -493,7 +495,7 @@ func (r *RegistryError) ServiceTypeName(name string)
 ServiceTypeName sets the service type name of the RegistryError.
 
 <a name="Resolver"></a>
-## type [Resolver](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L149-L156>)
+## type Resolver
 
 Resolver provides methods to resolve registered services based on types.
 
@@ -509,7 +511,7 @@ type Resolver interface {
 ```
 
 <a name="ResolverError"></a>
-## type [ResolverError](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/resolver_error.go#L50-L53>)
+## type ResolverError
 
 ResolverError represents an error that gets returned for failing service resolver operations.
 
@@ -521,7 +523,7 @@ type ResolverError struct {
 ```
 
 <a name="ResolverError.ServiceTypeName"></a>
-### func \(\*ResolverError\) [ServiceTypeName](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/resolver_error.go#L59>)
+### func \(\*ResolverError\) ServiceTypeName
 
 ```go
 func (r *ResolverError) ServiceTypeName(name string)
@@ -530,7 +532,7 @@ func (r *ResolverError) ServiceTypeName(name string)
 ServiceTypeName sets the service type name for the ResolverError instance.
 
 <a name="ResolverOptionsFunc"></a>
-## type [ResolverOptionsFunc](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L146>)
+## type ResolverOptionsFunc
 
 ResolverOptionsFunc represents a function that configures a service registry used by the resolver.
 
@@ -539,7 +541,7 @@ type ResolverOptionsFunc func(registry ServiceRegistry) error
 ```
 
 <a name="ServiceKey"></a>
-## type [ServiceKey](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L24-L26>)
+## type ServiceKey
 
 ServiceKey represents a unique key for identifying services in the service registry.
 
@@ -550,7 +552,7 @@ type ServiceKey struct {
 ```
 
 <a name="NewServiceKey"></a>
-### func [NewServiceKey](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L34>)
+### func NewServiceKey
 
 ```go
 func NewServiceKey(value string) ServiceKey
@@ -559,7 +561,7 @@ func NewServiceKey(value string) ServiceKey
 NewServiceKey creates a new ServiceKey with the given value.
 
 <a name="ServiceKey.String"></a>
-### func \(ServiceKey\) [String](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L29>)
+### func \(ServiceKey\) String
 
 ```go
 func (s ServiceKey) String() string
@@ -568,7 +570,7 @@ func (s ServiceKey) String() string
 String Gets the value of the current ServiceKey instance.
 
 <a name="ServiceRegistration"></a>
-## type [ServiceRegistration](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L93-L112>)
+## type ServiceRegistration
 
 ServiceRegistration represents a service registrations.
 
@@ -596,7 +598,7 @@ type ServiceRegistration interface {
 ```
 
 <a name="ServiceRegistrationList"></a>
-## type [ServiceRegistrationList](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L115-L129>)
+## type ServiceRegistrationList
 
 ServiceRegistrationList provides functionality to manage a list of service registrations. This interface supports internal infrastructure services.
 
@@ -619,7 +621,7 @@ type ServiceRegistrationList interface {
 ```
 
 <a name="ServiceRegistrationSetup"></a>
-## type [ServiceRegistrationSetup](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L132-L137>)
+## type ServiceRegistrationSetup
 
 ServiceRegistrationSetup extends ServiceRegistration and supports internal infrastructure services.
 
@@ -633,7 +635,7 @@ type ServiceRegistrationSetup interface {
 ```
 
 <a name="ServiceRegistry"></a>
-## type [ServiceRegistry](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L55-L75>)
+## type ServiceRegistry
 
 ServiceRegistry provides methods to map service types to activator functions. The service registration organizes and stores the metadata required by the service resolver.
 
@@ -658,11 +660,14 @@ type ServiceRegistry interface {
 
     // RegisterModule registers one or more modules, encapsulated as ModuleFunc, with the service registry. A module is a logical unit of service registrations.
     RegisterModule(modules ...ModuleFunc) error
+
+    // RegisterModuleIf registers one or more modules with the service registry if the provided condition is true.
+    RegisterModuleIf(condition bool, modules ...ModuleFunc) error
 }
 ```
 
 <a name="ServiceRegistryAccessor"></a>
-## type [ServiceRegistryAccessor](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L81-L90>)
+## type ServiceRegistryAccessor
 
 ServiceRegistryAccessor provides methods to access and retrieve service registrations from the registry.
 
@@ -680,7 +685,7 @@ type ServiceRegistryAccessor interface {
 ```
 
 <a name="ServiceType"></a>
-## type [ServiceType](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/types.go#L39-L52>)
+## type ServiceType
 
 ServiceType represents a service type.
 
@@ -702,7 +707,7 @@ type ServiceType interface {
 ```
 
 <a name="MakeServiceType"></a>
-### func [MakeServiceType](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/service_type.go#L44>)
+### func MakeServiceType
 
 ```go
 func MakeServiceType[T any]() ServiceType
@@ -711,7 +716,7 @@ func MakeServiceType[T any]() ServiceType
 MakeServiceType creates a ServiceType instance for the specified generic type T.
 
 <a name="ServiceTypeFrom"></a>
-### func [ServiceTypeFrom](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/types/service_type.go#L51>)
+### func ServiceTypeFrom
 
 ```go
 func ServiceTypeFrom(t reflect.Type) ServiceType
