@@ -1,18 +1,22 @@
 #!/bin/bash
 
 DEPENDENCY="github.com/matzefriedrich/parsley"
+VERSION=${1:-"latest"}
 
 for project_dir in $(find . -mindepth 1 -maxdepth 1 -type d); do
     echo "Processing $project_dir"
     
     if [ -f "$project_dir/go.mod" ]; then
-        echo "Updating dependency $DEPENDENCY in $project_dir"
+        echo "Updating dependency $DEPENDENCY to $VERSION in $project_dir"
         
         cd "$project_dir"
         
-        go get -u $DEPENDENCY
+        go get -u "$DEPENDENCY@$VERSION"
         go mod tidy
         
+        # Update generated code
+        go generate ./...
+
         # Find all main.go files within cmd/* subdirectories
         for main_file in $(find ./cmd -mindepth 2 -type f -name main.go); do
             # Get the directory containing the main.go file

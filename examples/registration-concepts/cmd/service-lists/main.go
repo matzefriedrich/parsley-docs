@@ -17,7 +17,7 @@ func main() {
 
 	registry.Register(internal.NewLocalDataService, types.LifetimeTransient)
 	registry.Register(internal.NewRemoteDataService, types.LifetimeTransient)
-	features.RegisterList[internal.DataService](context.Background(), registry)
+	features.RegisterList[internal.DataService](registry)
 
 	registry.Register(newAggregator, types.LifetimeTransient)
 
