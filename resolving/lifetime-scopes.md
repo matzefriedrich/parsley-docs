@@ -79,7 +79,7 @@ ctx := resolving.NewScopedContext(context.Background())
 resolver := resolving.NewResolver(registry)
 
 for i := 0; i < 3; i++ {
-    greeter, _ := resolving.ResolveRequiredService[internal.Greeter](resolver, ctx)
+    greeter, _ := resolving.ResolveRequiredService[internal.Greeter](ctx, resolver)
     greeter.SayHello("John", false)
 }
 ```
@@ -100,7 +100,7 @@ resolver := resolving.NewResolver(registry)
 
 for i := 0; i < 3; i++ {
     ctx := resolving.NewScopedContext(context.Background())
-    greeter, _ := resolving.ResolveRequiredService[internal.Greeter](resolver, ctx)
+    greeter, _ := resolving.ResolveRequiredService[internal.Greeter](ctx, resolver)
     greeter.SayHello("John", false)
 }
 ```
