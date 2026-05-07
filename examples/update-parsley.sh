@@ -13,9 +13,11 @@ for project_dir in $(find . -mindepth 1 -maxdepth 1 -type d); do
         
         go get -u "$DEPENDENCY@$VERSION"
         go mod tidy
-        
+
         # Update generated code
         go generate ./...
+
+        golangci-lint run --fix
 
         # Find all main.go files within cmd/* subdirectories
         for main_file in $(find ./cmd -mindepth 2 -type f -name main.go); do
