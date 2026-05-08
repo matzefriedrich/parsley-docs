@@ -16,7 +16,7 @@ Parsley supports lazy proxies, a powerful feature that allows for the delayed ac
 
 Once the service is activated, the lazy proxy retains the instance, ensuring that subsequent calls to the `Value()` method return the same instance. This balances performance and resource management, particularly in complex applications.
 
-### Support for dependencies
+### Support for Dependencies
 
 The `RegisterLazy[T]` method now supports activator functions with dependencies. This means you can pass a constructor function that requires other services as the second argument, and Parsley will automatically resolve those dependencies when the lazy service is first accessed.
 

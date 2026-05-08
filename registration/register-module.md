@@ -15,7 +15,7 @@ Parsley provides a convenient way to group related services into modules using t
 
 :::code language="golang" source="/examples/registration-concepts/cmd/modules/main.go" :::
 
-### Conditional module registration
+### Conditional Module Registration
 
 Sometimes, you might want to register a module only if a certain condition is met (e.g., based on environment variables or configuration). For this, Parsley provides the `RegisterModuleIf` method:
 
