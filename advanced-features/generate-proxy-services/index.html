@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829858800608">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831514044758">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829858800608" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831514044758" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829858800608" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829858800608" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829858800608" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831514044758" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -60,7 +60,7 @@
                 <div class="flex items-center px-2 md:px-6">
                     <a id="retype-branding-logo" href="https://matzefriedrich.github.io/parsley-docs/" class="flex items-center leading-snug text-2xl">
                         <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Parsley</span>
-                    </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">v1.3.3</span>
+                    </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">v1.5.0-alpha1</span>
                 </div>
     
                 <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
@@ -251,11 +251,13 @@ func NewGreeter() Greeter {
 package internal
 
 import (
+	&quot;fmt&quot;
+
 	&quot;github.com/matzefriedrich/parsley/pkg/features&quot;
 )
 
-// GreeterProxyImpl A generated proxy service type for Greeter objects.
-type GreeterProxyImpl struct {
+// greeterProxyImpl A generated proxy service type for Greeter objects.
+type greeterProxyImpl struct {
 	features.ProxyBase
 	target Greeter
 }
@@ -267,22 +269,24 @@ type GreeterProxy interface {
 
 // NewGreeterProxyImpl Creates a new GreeterProxy object. Register this constructor method with the registry.
 func NewGreeterProxyImpl(target Greeter, interceptors []features.MethodInterceptor) GreeterProxy {
-	return &amp;GreeterProxyImpl{
+	return &amp;greeterProxyImpl{
 		ProxyBase: features.NewProxyBase(target, interceptors),
 		target:    target,
 	}
 }
 
-func (p *GreeterProxyImpl) SayHello(name string, polite bool) {
+func (p *greeterProxyImpl) SayHello(name string, polite bool) {
 
 	const methodName = &quot;SayHello&quot;
 	parameters := map[string]interface{}{
-		&quot;name&quot;: name,
-
+		&quot;name&quot;:   name,
 		&quot;polite&quot;: polite,
 	}
 
-	callContext := features.NewMethodCallContext(methodName, parameters)
+	parameterNames := []string{&quot;name&quot;, &quot;polite&quot;}
+	resultNames := []string{}
+
+	callContext := features.NewMethodCallContext(methodName, parameterNames, parameters, resultNames...)
 	p.InvokeEnterMethodInterceptors(callContext)
 	defer func() {
 		p.InvokeExitMethodInterceptors(callContext)
@@ -291,7 +295,7 @@ func (p *GreeterProxyImpl) SayHello(name string, polite bool) {
 	p.target.SayHello(name, polite)
 }
 
-var _ Greeter = &amp;GreeterProxyImpl{}</code></pre>
+var _ Greeter = &amp;greeterProxyImpl{}</code></pre>
 </doc-codeblock></div>
 <p>In this example, the <code translate="no" v-pre>GreeterProxy</code> wraps the <code translate="no" v-pre>Greeter</code> service, and any registered <code translate="no" v-pre>MethodInterceptor</code> services can act upon method invocations, adding custom behavior such as logging, validation, or modification of method parameters.</p>
 <p>The boilerplate code to register the generated proxies and a custom <code translate="no" v-pre>MethodInterceptor</code> for logging purposes looks as follows:</p>
@@ -315,7 +319,7 @@ func main() {
 	registry.Register(internal.NewGreeter, types.LifetimeTransient)
 	registry.Register(internal.NewGreeterProxyImpl, types.LifetimeTransient)
 
-	features.RegisterList[features.MethodInterceptor](context.Background(), registry)
+	features.RegisterList[features.MethodInterceptor](registry)
 	registry.Register(newLoggingInterceptor, types.LifetimeSingleton)
 
 	resolver := resolving.NewResolver(registry)

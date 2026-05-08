@@ -7,7 +7,7 @@ import "github.com/matzefriedrich/parsley/pkg/features"
 ## Index
 
 - [func RegisterFactory\[T any\]\(registry types.ServiceRegistry, scope types.LifetimeScope\) error](<#RegisterFactory>)
-- [func RegisterLazy\[T any\]\(registry types.ServiceRegistry, activatorFunc func\(\) T, \_ types.LifetimeScope\) error](<#RegisterLazy>)
+- [func RegisterLazy\[T any\]\(registry types.ServiceRegistry, activatorFunc any, scope types.LifetimeScope\) error](<#RegisterLazy>)
 - [func RegisterList\[T any\]\(registry types.ServiceRegistry\) error](<#RegisterList>)
 - [func RegisterNamed\[T any\]\(ctx context.Context, registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc\) error](<#RegisterNamed>)
 - [type ArgMatch](<#ArgMatch>)
@@ -21,7 +21,7 @@ import "github.com/matzefriedrich/parsley/pkg/features"
   - [func \(i InterceptorBase\) Position\(\) int](<#InterceptorBase.Position>)
 - [type Lazy](<#Lazy>)
 - [type MethodCallContext](<#MethodCallContext>)
-  - [func NewMethodCallContext\(methodName string, parameters map\[string\]interface\{\}\) \*MethodCallContext](<#NewMethodCallContext>)
+  - [func NewMethodCallContext\(methodName string, parameterNames \[\]string, parameters map\[string\]interface\{\}, returnNames ...string\) \*MethodCallContext](<#NewMethodCallContext>)
 - [type MethodInterceptor](<#MethodInterceptor>)
 - [type MockBase](<#MockBase>)
   - [func NewMockBase\(\) MockBase](<#NewMockBase>)
@@ -31,14 +31,21 @@ import "github.com/matzefriedrich/parsley/pkg/features"
 - [type MockFunction](<#MockFunction>)
   - [func \(m MockFunction\) String\(\) string](<#MockFunction.String>)
 - [type ParameterInfo](<#ParameterInfo>)
+  - [func \(p ParameterInfo\) Name\(\) string](<#ParameterInfo.Name>)
+  - [func \(p ParameterInfo\) ParameterType\(\) reflect.Type](<#ParameterInfo.ParameterType>)
   - [func \(p ParameterInfo\) String\(\) string](<#ParameterInfo.String>)
+  - [func \(p ParameterInfo\) Value\(\) interface\{\}](<#ParameterInfo.Value>)
 - [type ProxyBase](<#ProxyBase>)
   - [func NewProxyBase\[T any\]\(target T, interceptors \[\]MethodInterceptor\) ProxyBase](<#NewProxyBase>)
   - [func \(p \*ProxyBase\) InvokeEnterMethodInterceptors\(callContext \*MethodCallContext\)](<#ProxyBase.InvokeEnterMethodInterceptors>)
   - [func \(p \*ProxyBase\) InvokeExitMethodInterceptors\(callContext \*MethodCallContext\)](<#ProxyBase.InvokeExitMethodInterceptors>)
-  - [func \(p \*ProxyBase\) InvokeMethodErrorInterceptors\(callContext \*MethodCallContext, returnValues ...interface\{\}\)](<#ProxyBase.InvokeMethodErrorInterceptors>)
+  - [func \(p \*ProxyBase\) InvokeMethodErrorInterceptors\(callContext \*MethodCallContext, returnValues ...any\)](<#ProxyBase.InvokeMethodErrorInterceptors>)
 - [type ReturnValueInfo](<#ReturnValueInfo>)
+  - [func NewReturnValueInfo\(name string, value any, valueType reflect.Type\) ReturnValueInfo](<#NewReturnValueInfo>)
+  - [func \(r ReturnValueInfo\) Name\(\) string](<#ReturnValueInfo.Name>)
   - [func \(r ReturnValueInfo\) String\(\) string](<#ReturnValueInfo.String>)
+  - [func \(r ReturnValueInfo\) Value\(\) interface\{\}](<#ReturnValueInfo.Value>)
+  - [func \(r ReturnValueInfo\) ValueType\(\) reflect.Type](<#ReturnValueInfo.ValueType>)
 - [type TimesFunc](<#TimesFunc>)
   - [func TimesAtLeastOnce\(\) TimesFunc](<#TimesAtLeastOnce>)
   - [func TimesExactly\(n int\) TimesFunc](<#TimesExactly>)
@@ -46,7 +53,7 @@ import "github.com/matzefriedrich/parsley/pkg/features"
   - [func TimesOnce\(\) TimesFunc](<#TimesOnce>)
 
 <a name="RegisterFactory"></a>
-## func [RegisterFactory](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/factory.go#L14>)
+## func RegisterFactory
 
 ```go
 func RegisterFactory[T any](registry types.ServiceRegistry, scope types.LifetimeScope) error
@@ -55,16 +62,16 @@ func RegisterFactory[T any](registry types.ServiceRegistry, scope types.Lifetime
 RegisterFactory registers a factory function for resolving instances of a specified type with a given lifetime scope.
 
 <a name="RegisterLazy"></a>
-## func [RegisterLazy](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/lazy_services.go#L41>)
+## func RegisterLazy
 
 ```go
-func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc func() T, _ types.LifetimeScope) error
+func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc any, scope types.LifetimeScope) error
 ```
 
-RegisterLazy registers a lazily\-activated service in the service registry using the provided activator function.
+RegisterLazy registers a lazily activated service in the service registry using the provided activator function.
 
 <a name="RegisterList"></a>
-## func [RegisterList](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/list_services.go#L11>)
+## func RegisterList
 
 ```go
 func RegisterList[T any](registry types.ServiceRegistry) error
@@ -73,7 +80,7 @@ func RegisterList[T any](registry types.ServiceRegistry) error
 RegisterList registers a function that resolves and returns a list of services of type T with the specified registry.
 
 <a name="RegisterNamed"></a>
-## func [RegisterNamed](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/named_services.go#L28>)
+## func RegisterNamed
 
 ```go
 func RegisterNamed[T any](ctx context.Context, registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error
@@ -82,7 +89,7 @@ func RegisterNamed[T any](ctx context.Context, registry types.ServiceRegistry, s
 RegisterNamed registers named services with their respective activator functions and lifetime scopes. It supports dependency injection by associating names with service instances.
 
 <a name="ArgMatch"></a>
-## type [ArgMatch](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L4>)
+## type ArgMatch
 
 ArgMatch is a function type used to match an argument against a certain condition during mock function verification.
 
@@ -91,7 +98,7 @@ type ArgMatch func(actual any) bool
 ```
 
 <a name="Exact"></a>
-### func [Exact](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L14>)
+### func Exact
 
 ```go
 func Exact[T comparable](expected T) ArgMatch
@@ -100,7 +107,7 @@ func Exact[T comparable](expected T) ArgMatch
 Exact returns an ArgMatch that checks if a given argument is exactly equal to the specified expected value.
 
 <a name="IsAny"></a>
-### func [IsAny](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L7>)
+### func IsAny
 
 ```go
 func IsAny() ArgMatch
@@ -109,7 +116,7 @@ func IsAny() ArgMatch
 IsAny always returns true, enabling it to match any given argument during mock function verification.
 
 <a name="FactoryFunc"></a>
-## type [FactoryFunc](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/factory.go#L11>)
+## type FactoryFunc
 
 FactoryFunc represents a function that creates an instance of type T using a context for dependency resolution.
 
@@ -118,7 +125,7 @@ type FactoryFunc[T any] func(ctx context.Context) (T, error)
 ```
 
 <a name="Interceptor"></a>
-## type [Interceptor](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L10-L13>)
+## type Interceptor
 
 Interceptor is a base interface type for defining interceptors that can be used to monitor or alter the behavior of other components.
 
@@ -130,7 +137,7 @@ type Interceptor interface {
 ```
 
 <a name="InterceptorBase"></a>
-## type [InterceptorBase](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L25-L28>)
+## type InterceptorBase
 
 InterceptorBase serves as a foundational structure for defining interceptors, managing essential data like name and position.
 
@@ -141,7 +148,7 @@ type InterceptorBase struct {
 ```
 
 <a name="NewInterceptorBase"></a>
-### func [NewInterceptorBase](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L41>)
+### func NewInterceptorBase
 
 ```go
 func NewInterceptorBase(name string, position int) InterceptorBase
@@ -150,7 +157,7 @@ func NewInterceptorBase(name string, position int) InterceptorBase
 NewInterceptorBase creates a new instance of InterceptorBase with the specified name and position for managing interceptor metadata.
 
 <a name="InterceptorBase.Name"></a>
-### func \(InterceptorBase\) [Name](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L31>)
+### func \(InterceptorBase\) Name
 
 ```go
 func (i InterceptorBase) Name() string
@@ -159,7 +166,7 @@ func (i InterceptorBase) Name() string
 Name retrieves the name of the interceptor, which is useful for identification and debugging purposes.
 
 <a name="InterceptorBase.Position"></a>
-### func \(InterceptorBase\) [Position](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L36>)
+### func \(InterceptorBase\) Position
 
 ```go
 func (i InterceptorBase) Position() int
@@ -168,18 +175,18 @@ func (i InterceptorBase) Position() int
 Position returns the position of the interceptor, helping determine its order in processing flows within a system.
 
 <a name="Lazy"></a>
-## type [Lazy](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/lazy_services.go#L34-L36>)
+## type Lazy
 
 Lazy represents a type whose value is initialized lazily upon first access, typically to improve performance or manage resources.
 
 ```go
 type Lazy[T any] interface {
-    Value() T
+    Value(ctx context.Context) T
 }
 ```
 
 <a name="MethodCallContext"></a>
-## type [MethodCallContext](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L49-L53>)
+## type MethodCallContext
 
 MethodCallContext captures the context of a method call, including method name, parameters, and return values.
 
@@ -190,16 +197,16 @@ type MethodCallContext struct {
 ```
 
 <a name="NewMethodCallContext"></a>
-### func [NewMethodCallContext](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L83>)
+### func NewMethodCallContext
 
 ```go
-func NewMethodCallContext(methodName string, parameters map[string]interface{}) *MethodCallContext
+func NewMethodCallContext(methodName string, parameterNames []string, parameters map[string]interface{}, returnNames ...string) *MethodCallContext
 ```
 
-NewMethodCallContext creates a new MethodCallContext instance with the provided method name and parameters.
+NewMethodCallContext creates a new MethodCallContext instance with the provided method name, parameters, and return value names.
 
 <a name="MethodInterceptor"></a>
-## type [MethodInterceptor](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L17-L22>)
+## type MethodInterceptor
 
 MethodInterceptor provides hooks to intercept method execution on a proxy object. It allows entering before method invocations, exiting after method executions, and handling errors during method execution for monitoring or altering behavior.
 
@@ -213,7 +220,7 @@ type MethodInterceptor interface {
 ```
 
 <a name="MockBase"></a>
-## type [MockBase](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L5-L7>)
+## type MockBase
 
 MockBase is used as a foundational struct to track and manage mocked functions and their call history. It helps in testing by allowing function signature tracking and call verification.
 
@@ -224,7 +231,7 @@ type MockBase struct {
 ```
 
 <a name="NewMockBase"></a>
-### func [NewMockBase](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L29>)
+### func NewMockBase
 
 ```go
 func NewMockBase() MockBase
@@ -233,7 +240,7 @@ func NewMockBase() MockBase
 NewMockBase initializes and returns an instance of MockBase, ideal for setting up and using mock functions in tests.
 
 <a name="MockBase.AddFunction"></a>
-### func \(\*MockBase\) [AddFunction](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L36>)
+### func \(\*MockBase\) AddFunction
 
 ```go
 func (m *MockBase) AddFunction(name string, signature string)
@@ -242,7 +249,7 @@ func (m *MockBase) AddFunction(name string, signature string)
 AddFunction adds a new mock function with the specified name and signature to the MockBase instance.
 
 <a name="MockBase.TraceMethodCall"></a>
-### func \(\*MockBase\) [TraceMethodCall](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L45>)
+### func \(\*MockBase\) TraceMethodCall
 
 ```go
 func (m *MockBase) TraceMethodCall(name string, arguments ...any)
@@ -251,7 +258,7 @@ func (m *MockBase) TraceMethodCall(name string, arguments ...any)
 TraceMethodCall logs the invocation of a mocked function with specified arguments to facilitate function call tracking during testing. Before function calls can be tracked, the function must be registered with the MockBase instance; use AddFunction.
 
 <a name="MockBase.Verify"></a>
-### func \(\*MockBase\) [Verify](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L56>)
+### func \(\*MockBase\) Verify
 
 ```go
 func (m *MockBase) Verify(name string, times TimesFunc, matches ...ArgMatch) bool
@@ -260,7 +267,7 @@ func (m *MockBase) Verify(name string, times TimesFunc, matches ...ArgMatch) boo
 Verify checks if a mock function was called a specific number of times, optionally matching provided argument conditions.
 
 <a name="MockFunction"></a>
-## type [MockFunction](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L10-L14>)
+## type MockFunction
 
 MockFunction provides a structure to represent a mocked function in test scenarios. It allows tracking its calls and signature.
 
@@ -271,7 +278,7 @@ type MockFunction struct {
 ```
 
 <a name="MockFunction.String"></a>
-### func \(MockFunction\) [String](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L17>)
+### func \(MockFunction\) String
 
 ```go
 func (m MockFunction) String() string
@@ -280,7 +287,7 @@ func (m MockFunction) String() string
 String returns the signature of the mocked function if it exists, otherwise it returns the function's name.
 
 <a name="ParameterInfo"></a>
-## type [ParameterInfo](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L57-L61>)
+## type ParameterInfo
 
 ParameterInfo represents information about a method parameter, including its value, type, and name. It is used in method interception where parameters need to be inspected or logged.
 
@@ -290,8 +297,26 @@ type ParameterInfo struct {
 }
 ```
 
+<a name="ParameterInfo.Name"></a>
+### func \(ParameterInfo\) Name
+
+```go
+func (p ParameterInfo) Name() string
+```
+
+Name returns the parameter name.
+
+<a name="ParameterInfo.ParameterType"></a>
+### func \(ParameterInfo\) ParameterType
+
+```go
+func (p ParameterInfo) ParameterType() reflect.Type
+```
+
+ParameterType retrieves the reflected type of the parameter.
+
 <a name="ParameterInfo.String"></a>
-### func \(ParameterInfo\) [String](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L64>)
+### func \(ParameterInfo\) String
 
 ```go
 func (p ParameterInfo) String() string
@@ -299,10 +324,19 @@ func (p ParameterInfo) String() string
 
 String returns a formatted string representation of the ParameterInfo, useful for logging and debugging purposes.
 
-<a name="ProxyBase"></a>
-## type [ProxyBase](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L93-L96>)
+<a name="ParameterInfo.Value"></a>
+### func \(ParameterInfo\) Value
 
-ProxyBase facilitates method interception by allowing the inclusion of multiple interceptors to target method calls. Typically used to monitor, log, or modify behavior of an object's method execution.
+```go
+func (p ParameterInfo) Value() interface{}
+```
+
+Value returns the value of the parameter.
+
+<a name="ProxyBase"></a>
+## type ProxyBase
+
+ProxyBase facilitates method interception by allowing the inclusion of multiple interceptors to target method calls. Typically used to monitor, log, or modify the behavior of an object's method execution.
 
 ```go
 type ProxyBase struct {
@@ -311,7 +345,7 @@ type ProxyBase struct {
 ```
 
 <a name="NewProxyBase"></a>
-### func [NewProxyBase](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L146>)
+### func NewProxyBase
 
 ```go
 func NewProxyBase[T any](target T, interceptors []MethodInterceptor) ProxyBase
@@ -320,7 +354,7 @@ func NewProxyBase[T any](target T, interceptors []MethodInterceptor) ProxyBase
 NewProxyBase creates a ProxyBase instance with the provided target and a sorted list of method interceptors. Useful for setting up method interception on the target object.
 
 <a name="ProxyBase.InvokeEnterMethodInterceptors"></a>
-### func \(\*ProxyBase\) [InvokeEnterMethodInterceptors](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L113>)
+### func \(\*ProxyBase\) InvokeEnterMethodInterceptors
 
 ```go
 func (p *ProxyBase) InvokeEnterMethodInterceptors(callContext *MethodCallContext)
@@ -329,7 +363,7 @@ func (p *ProxyBase) InvokeEnterMethodInterceptors(callContext *MethodCallContext
 InvokeEnterMethodInterceptors triggers the Enter method on all registered interceptors before the target method executes.
 
 <a name="ProxyBase.InvokeExitMethodInterceptors"></a>
-### func \(\*ProxyBase\) [InvokeExitMethodInterceptors](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L130>)
+### func \(\*ProxyBase\) InvokeExitMethodInterceptors
 
 ```go
 func (p *ProxyBase) InvokeExitMethodInterceptors(callContext *MethodCallContext)
@@ -338,16 +372,16 @@ func (p *ProxyBase) InvokeExitMethodInterceptors(callContext *MethodCallContext)
 InvokeExitMethodInterceptors triggers the Exit method of all registered interceptors after the target method completes.
 
 <a name="ProxyBase.InvokeMethodErrorInterceptors"></a>
-### func \(\*ProxyBase\) [InvokeMethodErrorInterceptors](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L99>)
+### func \(\*ProxyBase\) InvokeMethodErrorInterceptors
 
 ```go
-func (p *ProxyBase) InvokeMethodErrorInterceptors(callContext *MethodCallContext, returnValues ...interface{})
+func (p *ProxyBase) InvokeMethodErrorInterceptors(callContext *MethodCallContext, returnValues ...any)
 ```
 
 InvokeMethodErrorInterceptors intercepts the return values of a method, checks for errors, and triggers OnError for registered interceptors.
 
 <a name="ReturnValueInfo"></a>
-## type [ReturnValueInfo](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L69-L72>)
+## type ReturnValueInfo
 
 ReturnValueInfo represents the value and type information of a method's return value, used in method interception.
 
@@ -357,8 +391,26 @@ type ReturnValueInfo struct {
 }
 ```
 
+<a name="NewReturnValueInfo"></a>
+### func NewReturnValueInfo
+
+```go
+func NewReturnValueInfo(name string, value any, valueType reflect.Type) ReturnValueInfo
+```
+
+NewReturnValueInfo creates a new ReturnValueInfo object.
+
+<a name="ReturnValueInfo.Name"></a>
+### func \(ReturnValueInfo\) Name
+
+```go
+func (r ReturnValueInfo) Name() string
+```
+
+Name returns the return value name.
+
 <a name="ReturnValueInfo.String"></a>
-### func \(ReturnValueInfo\) [String](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L75>)
+### func \(ReturnValueInfo\) String
 
 ```go
 func (r ReturnValueInfo) String() string
@@ -366,8 +418,26 @@ func (r ReturnValueInfo) String() string
 
 String returns a string representation of ReturnValueInfo, formatting the value and its type for debugging purposes.
 
+<a name="ReturnValueInfo.Value"></a>
+### func \(ReturnValueInfo\) Value
+
+```go
+func (r ReturnValueInfo) Value() interface{}
+```
+
+Value returns the value stored in the ReturnValueInfo instance.
+
+<a name="ReturnValueInfo.ValueType"></a>
+### func \(ReturnValueInfo\) ValueType
+
+```go
+func (r ReturnValueInfo) ValueType() reflect.Type
+```
+
+ValueType retrieves the return value type.
+
 <a name="TimesFunc"></a>
-## type [TimesFunc](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L25>)
+## type TimesFunc
 
 TimesFunc is used to verify the number of times a mock function is called. It allows flexibility in call count assertions.
 
@@ -376,7 +446,7 @@ type TimesFunc func(times int) bool
 ```
 
 <a name="TimesAtLeastOnce"></a>
-### func [TimesAtLeastOnce](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L35>)
+### func TimesAtLeastOnce
 
 ```go
 func TimesAtLeastOnce() TimesFunc
@@ -385,7 +455,7 @@ func TimesAtLeastOnce() TimesFunc
 TimesAtLeastOnce returns a TimesFunc that verifies if a mock function is called at least once.
 
 <a name="TimesExactly"></a>
-### func [TimesExactly](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L42>)
+### func TimesExactly
 
 ```go
 func TimesExactly(n int) TimesFunc
@@ -394,7 +464,7 @@ func TimesExactly(n int) TimesFunc
 TimesExactly returns a TimesFunc that checks if the number of function calls is exactly equal to the specified value.
 
 <a name="TimesNever"></a>
-### func [TimesNever](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L49>)
+### func TimesNever
 
 ```go
 func TimesNever() TimesFunc
@@ -403,7 +473,7 @@ func TimesNever() TimesFunc
 TimesNever returns a TimesFunc that ensures the function has never been called, providing a strict zero call condition.
 
 <a name="TimesOnce"></a>
-### func [TimesOnce](<https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L28>)
+### func TimesOnce
 
 ```go
 func TimesOnce() TimesFunc

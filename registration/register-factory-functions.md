@@ -6,10 +6,23 @@ Instead of directly registering a constructor function that returns a service in
 
 Here's a detailed look at how to register and use a factory function:
 
+### Example
+
 Suppose you want to create a `Greeter` service where the salutation can be customized. You can use a factory function to achieve this. Here's how you would define and register a factory function:
 
 :::code language="golang" source="/examples/registration-concepts/internal/greeter.go" :::
 
-This is how you use it:
+### Supported Signatures
+
+The function returned by the factory function supports various signatures, similar to constructor functions:
+
+* `func(...) T`
+* `func(context.Context, ...) T`
+* `func(...) (T, error)`
+* `func(context.Context, ...) (T, error)`
+
+If the signature includes a `context.Context`, it must be the first parameter. Returning an `error` allows Parsley to handle and propagate errors during service resolution.
+
+### Example Usage
 
 :::code language="golang" source="/examples/registration-concepts/cmd/factory-functions/main.go" range="10-21" :::

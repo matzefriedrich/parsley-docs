@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829858800608">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831514044758">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829858800608" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831514044758" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829858800608" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829858800608" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829858800608" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831514044758" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -60,7 +60,7 @@
                 <div class="flex items-center px-2 md:px-6">
                     <a id="retype-branding-logo" href="https://matzefriedrich.github.io/parsley-docs/" class="flex items-center leading-snug text-2xl">
                         <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Parsley</span>
-                    </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">v1.3.3</span>
+                    </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">v1.5.0-alpha1</span>
                 </div>
     
                 <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
@@ -208,7 +208,9 @@
 
 <div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Optimize performance by using lazy proxies in Parsley to defer service instance creation until they are needed.</div>
 <p>Parsley supports lazy proxies, a powerful feature that allows for the delayed activation of services. A lazy proxy acts as a placeholder for a dependency, deferring its creation until it is needed. This is particularly useful for services that are expensive to create or may not always be required immediately.</p>
-<p>Once the service is activated, the lazy proxy retains the instance, ensuring that subsequent calls to the Value() method return the same instance. This balances performance and resource management, particularly in complex applications.</p>
+<p>Once the service is activated, the lazy proxy retains the instance, ensuring that subsequent calls to the <code translate="no" v-pre>Value()</code> method return the same instance. This balances performance and resource management, particularly in complex applications.</p>
+<h3 id="support-for-dependencies">Support for Dependencies</h3>
+<p>The <code translate="no" v-pre>RegisterLazy[T]</code> method now supports activator functions with dependencies. This means you can pass a constructor function that requires other services as the second argument, and Parsley will automatically resolve those dependencies when the lazy service is first accessed.</p>
 <h2 id="example">Example</h2>
 <p>In this example, we register a <code translate="no" v-pre>Greeter</code> service using a lazy proxy via the <code translate="no" v-pre>RegisterLazy[T]</code> method. The <code translate="no" v-pre>NewGreeterFactory</code> function is passed as the factory for creating <code translate="no" v-pre>Greeter</code> instances, and the <code translate="no" v-pre>LifetimeTransient</code> scope is used, meaning a new instance would typically be created each time.</p>
 <div id="example-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -233,11 +235,11 @@ func main() {
 	ctx := resolving.NewScopedContext(context.Background())
 	lazy, _ := resolving.ResolveRequiredService[features.Lazy[internal.Greeter]](ctx, resolver)
 
-	greeter := lazy.Value()
+	greeter := lazy.Value(ctx)
 	greeter.SayHello(&quot;John&quot;, true)
 }</code></pre>
 </doc-codeblock></div>
-<p>However, the <code translate="no" v-pre>Greeter</code> instance is not created immediately using a lazy proxy. Instead, a <code translate="no" v-pre>Lazy[Greeter]</code> proxy is resolved, and the actual <code translate="no" v-pre>Greeter</code> instance is only created when <code translate="no" v-pre>lazy.Value()</code> is called for the first time. This instance is then cached within the proxy, ensuring that the same <code translate="no" v-pre>Greeter</code> object is returned on subsequent calls to <code translate="no" v-pre>Value()</code>.</p>
+<p>However, the <code translate="no" v-pre>Greeter</code> instance is not created immediately using a lazy proxy. Instead, a <code translate="no" v-pre>Lazy[Greeter]</code> proxy is resolved, and the actual <code translate="no" v-pre>Greeter</code> instance is only created when <code translate="no" v-pre>lazy.Value(ctx)</code> is called for the first time. This instance is then cached within the proxy, ensuring that the same <code translate="no" v-pre>Greeter</code> object is returned on subsequent calls to <code translate="no" v-pre>Value()</code>.</p>
 <h2 id="benefits-and-use-cases">Benefits and Use Cases</h2>
 <p>Lazy proxies are ideal for optimizing the performance of applications where certain dependencies are resource-intensive to create but may not always be needed immediately. By deferring the creation of such dependencies until they are required, you can improve startup times and reduce unnecessary resource consumption.</p>
 <p>This feature is especially useful in scenarios involving complex object graphs, optional dependencies, or services that are conditionally used based on runtime factors.</p>
