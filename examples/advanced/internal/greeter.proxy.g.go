@@ -6,11 +6,13 @@
 package internal
 
 import (
+	"fmt"
+
 	"github.com/matzefriedrich/parsley/pkg/features"
 )
 
-// GreeterProxyImpl A generated proxy service type for Greeter objects.
-type GreeterProxyImpl struct {
+// greeterProxyImpl A generated proxy service type for Greeter objects.
+type greeterProxyImpl struct {
 	features.ProxyBase
 	target Greeter
 }
@@ -22,22 +24,24 @@ type GreeterProxy interface {
 
 // NewGreeterProxyImpl Creates a new GreeterProxy object. Register this constructor method with the registry.
 func NewGreeterProxyImpl(target Greeter, interceptors []features.MethodInterceptor) GreeterProxy {
-	return &GreeterProxyImpl{
+	return &greeterProxyImpl{
 		ProxyBase: features.NewProxyBase(target, interceptors),
 		target:    target,
 	}
 }
 
-func (p *GreeterProxyImpl) SayHello(name string, polite bool) {
+func (p *greeterProxyImpl) SayHello(name string, polite bool) {
 
 	const methodName = "SayHello"
 	parameters := map[string]interface{}{
-		"name": name,
-
+		"name":   name,
 		"polite": polite,
 	}
 
-	callContext := features.NewMethodCallContext(methodName, parameters)
+	parameterNames := []string{"name", "polite"}
+	resultNames := []string{}
+
+	callContext := features.NewMethodCallContext(methodName, parameterNames, parameters, resultNames...)
 	p.InvokeEnterMethodInterceptors(callContext)
 	defer func() {
 		p.InvokeExitMethodInterceptors(callContext)
@@ -46,4 +50,4 @@ func (p *GreeterProxyImpl) SayHello(name string, polite bool) {
 	p.target.SayHello(name, polite)
 }
 
-var _ Greeter = &GreeterProxyImpl{}
+var _ Greeter = &greeterProxyImpl{}

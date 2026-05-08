@@ -15,6 +15,18 @@ Parsley provides a convenient way to group related services into modules using t
 
 :::code language="golang" source="/examples/registration-concepts/cmd/modules/main.go" :::
 
+### Conditional Module Registration
+
+Sometimes, you might want to register a module only if a certain condition is met (e.g., based on environment variables or configuration). For this, Parsley provides the `RegisterModuleIf` method:
+
+```go
+registry := registration.NewServiceRegistry()
+isDev := os.Getenv("ENV") == "development"
+
+// Register the DebugModule only in development environment
+_ = registry.RegisterModuleIf(isDev, DebugModule)
+```
+
 ## Benefits
 
 Using `RegisterModule` offers several benefits. It helps maintain a clean and organized code structure by grouping related services, making the codebase more straightforward to manage.

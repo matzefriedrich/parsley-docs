@@ -17,6 +17,17 @@ In Parsley, the fundamental way to register services is by providing a construct
 
 In Go, a **constructor function** is a regular function used to initialize and return an instance of a type. It typically follows the pattern `NewTypeName` and allows for setting up a struct with necessary values or configurations before returning it.  Unlike languages with built-in constructors, Go doesn't have special constructor syntax, so developers create these functions explicitly to manage object initialization and ensure type safety. For example, a constructor for the `greeter` struct might be `NewGreeter() *greeter` or `NewGreeter() Greeter` if interfaces are preferred.
 
+### Supported Signatures
+
+Parsley is very flexible and supports various signatures for constructor functions. The following patterns are supported:
+
+* `func(...) T`
+* `func(context.Context, ...) T`
+* `func(...) (T, error)`
+* `func(context.Context, ...) (T, error)`
+
+The `context.Context` parameter, if present, must be the first argument. It allows the constructor to access the resolution context, which is useful for things like tracing or accessing context-specific values. If the constructor returns an `error`, Parsley will propagate this error during the service resolution process.
+
 When registering a constructor function for a service type, Parsley inspects the given function upon service resolution and automatically determines the required services. Constructor functions must also be registered for required services so that Parsley can construct the whole tree of dependencies and pass service instances as needed.
 
 ## Example

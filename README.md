@@ -55,7 +55,6 @@ Run the documentation using the following command:
 $ docker run --rm -p 27821:80 parsley-docs
 ```
 
-
 ---
 
 Copyright 2024 - 2026 by Matthias Friedrich

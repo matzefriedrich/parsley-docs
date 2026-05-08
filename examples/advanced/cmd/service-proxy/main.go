@@ -17,7 +17,7 @@ func main() {
 	registry.Register(internal.NewGreeter, types.LifetimeTransient)
 	registry.Register(internal.NewGreeterProxyImpl, types.LifetimeTransient)
 
-	features.RegisterList[features.MethodInterceptor](context.Background(), registry)
+	features.RegisterList[features.MethodInterceptor](registry)
 	registry.Register(newLoggingInterceptor, types.LifetimeSingleton)
 
 	resolver := resolving.NewResolver(registry)

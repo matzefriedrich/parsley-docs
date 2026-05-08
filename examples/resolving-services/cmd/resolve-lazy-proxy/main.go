@@ -19,6 +19,6 @@ func main() {
 	ctx := resolving.NewScopedContext(context.Background())
 	lazy, _ := resolving.ResolveRequiredService[features.Lazy[internal.Greeter]](ctx, resolver)
 
-	greeter := lazy.Value()
+	greeter := lazy.Value(ctx)
 	greeter.SayHello("John", true)
 }

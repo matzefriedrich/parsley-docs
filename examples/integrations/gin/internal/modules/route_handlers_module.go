@@ -1,8 +1,6 @@
 package modules
 
 import (
-	"context"
-
 	"github.com/matzefriedrich/parsley-docs/examples/integrations/gin/internal/route_handlers"
 	"github.com/matzefriedrich/parsley/pkg/features"
 	"github.com/matzefriedrich/parsley/pkg/registration"
@@ -11,7 +9,7 @@ import (
 
 // RegisterRouteHandlers Registers all route handlers of the Gin app.
 func RegisterRouteHandlers(registry types.ServiceRegistry) error {
-	_ = features.RegisterList[route_handlers.RouteHandler](context.Background(), registry)
+	_ = features.RegisterList[route_handlers.RouteHandler](registry)
 	_ = registration.RegisterTransient(registry, route_handlers.NewGreeterRouteHandler)
 	return nil
 }

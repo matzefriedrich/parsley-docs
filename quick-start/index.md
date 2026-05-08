@@ -57,7 +57,9 @@ func (s *localDataService) FetchData() string {
 
 ### Define Constructor Methods
 
-Constructor methods are responsible for creating instances of the implementation types. These methods specify the dependencies required by the implementation type through their parameters. To keep things simple for now, the services in this example are not dependent on other services, thus the constructor functions do not have any parameters.
+Constructor methods are responsible for creating instances of the implementation types. These methods specify the dependencies required by the implementation type through their parameters. Parsley supports various signatures for constructor functions, including those that accept a `context.Context` and those that return an `error`.
+
+To keep things simple for now, the services in this example are not dependent on other services, thus the constructor functions do not have any parameters.
 
 ```go
 func NewRemoteDataService() DataService {
@@ -95,8 +97,8 @@ Finally, services can be resolved via Parsley. This involves using the `resolvin
 
 ```go
 resolver := resolving.NewResolver(registry)
-scope := resolving.NewScopeContext(context.Background())
-dataServices, _ := resolving.ResolveRequiredServices[DataService](resolver, scope)
+scope := resolving.NewScopedContext(context.Background())
+dataServices, _ := resolving.ResolveRequiredServices[DataService](scope, resolver)
 
 for _, service := range dataServices {
     data := service.FetchData()
