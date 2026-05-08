@@ -32,4 +32,3 @@ For specific license details, please refer to the respective third-party project
 ### License Notices
 
 In compliance with open-source licensing obligations, the Parsley documentation lists all relevant third-party licenses within its documentation. This approach ensures transparency and provides proper attribution to all authors and contributors while avoiding the need to include full copies of each license.
-

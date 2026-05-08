@@ -87,8 +87,6 @@ It is recommended that service registrations be validated after the registration
 
 ### Why This Matters
 
-- **Prevent runtime errors:** Detect missing or invalid service registrations early to prevent application crashes.
-
-- **Improve developer experience:** Get clear, actionable error messages, helping you resolve issues quickly.
-
-- **Avoid circular dependency traps:** Protect your application from hard-to-diagnose circular dependencies that can lead to infinite recursion and stack overflow errors. For instance, you can organize application dependencies as [modules](../registration/register-module.md) and verify the modules using unit tests. Use the validator at runtime if dependencies get dynamically registered depending on configuration.
+* **Prevent runtime errors:** Detect missing or invalid service registrations early to prevent application crashes.
+* **Improve developer experience:** Get clear, actionable error messages, helping you resolve issues quickly.
+* **Avoid circular dependency traps:** Protect your application from hard-to-diagnose circular dependencies that can lead to infinite recursion and stack overflow errors. For instance, you can organize application dependencies as [modules](../registration/register-module.md) and verify the modules using unit tests. Use the validator at runtime if dependencies are dynamically registered based on configuration.

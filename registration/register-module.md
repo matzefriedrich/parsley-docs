@@ -23,7 +23,7 @@ Sometimes, you might want to register a module only if a certain condition is me
 registry := registration.NewServiceRegistry()
 isDev := os.Getenv("ENV") == "development"
 
-// Register the DebugModule only in development environment
+// Register the DebugModule only in a development environment
 _ = registry.RegisterModuleIf(isDev, DebugModule)
 ```
 
@@ -33,4 +33,4 @@ Using `RegisterModule` offers several benefits. It helps maintain a clean and or
 
 Modules allow you to define and reuse service groupings across different parts of your application, promoting modularity and reusability. Additionally, this approach keeps the service registration logic separate from the application logic, enhancing the separation of concerns and improving overall code maintainability and clarity as your application scales.
 
-Another use case could be a package that keeps all service implementation types private to the package but exports nothing else, like interfaces and module registration functions. This way, services can be integrated into apps without exposure.
+Another use case is a package that keeps all service implementation types private while exporting only interfaces and module registration functions. This way, services can be integrated into applications without exposing their implementation details.

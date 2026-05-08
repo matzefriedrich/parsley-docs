@@ -17,17 +17,17 @@ The documentation is hosted at: [https://matzefriedrich.github.io/parsley-docs](
 
 Retype comes in different flavors; see [https://retype.com/guides/installation/](https://retype.com/guides/installation/) for further information on available installation options.
 
-```sh
+```bash
 $ dotnet tool install retypeapp --global
 ```
 
 Install `gomarkdoc`:
 
-```sh
+```bash
 $ go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
 ```
 
-### Updating package documentation
+### Updating Package Documentation
 
 To update the Go package documentation in `library/pkg/`, you can run the provided script. This requires `gomarkdoc` to be installed and the `parsley` source repository to be present in the parent directory (`../parsley`).
 
@@ -35,7 +35,7 @@ To update the Go package documentation in `library/pkg/`, you can run the provid
 ./update-package-docs.sh
 ```
 
-### Building locally
+### Building Locally
 
 Run the following command to build and preview the documentation locally using Retype:
 
@@ -45,13 +45,13 @@ retype start
 
 You can also build a Docker image of the documentation site to view it locally:
 
-```sh
+```bash
 $ docker build --rm -t parsley-docs -f Dockerfile .
 ```
 
 Run the documentation using the following command:
 
-```sh
+```bash
 $ docker run --rm -p 27821:80 parsley-docs
 ```
 

@@ -36,4 +36,4 @@ If the signature includes a `context.Context`, it must be the first parameter. R
 
 ### Example Usage
 
-:::code language="golang" source="/examples/registration-concepts/cmd/factory-functions/main.go" range="10-21" :::
+:::code language="golang" source="/examples/registration-concepts/cmd/factory-functions/main.go" range="12-21" :::
