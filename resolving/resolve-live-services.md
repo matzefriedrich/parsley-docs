@@ -6,12 +6,10 @@ The `Activate` method allows you to dynamically create instances using registere
 
 In this example, a `Greeter` service is registered with a transient lifetime. The `Activate` method is used to create an instance of the `ouchie` struct on the fly, consuming the `Greeter` dependency within the factory function.
 
-This is helpful for use cases like the following:
+This is useful for use cases such as:
 
-* **Dynamic Object Creation:** When you need to create objects that depend on registered services without having to register these objects themselves.
-
+* **Dynamic Object Creation:** When you need to create objects that depend on registered services without having to register those objects themselves.
 * **Complex Dependencies:** For scenarios where objects require a complex set of dependencies that are not straightforward to register individually.
-
 * **Third-Party Integrations:** When integrating with third-party libraries that require on-the-fly object creation based on dynamically resolved dependencies.
 
 The `Activate` method allows for flexible and efficient dependency injection by dynamically pulling registered instances from the resolver and injecting them into your factory function, ensuring that your dynamically created objects have the necessary dependencies.

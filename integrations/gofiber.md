@@ -57,15 +57,15 @@ In this example, route handlers are also services, structs implementing the `Rou
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/route_handlers/types.go" :::
 
-The `internal/route_handlers/greeter.go` file registers the route handler for the `/say-hello` endpoint, which returns a greeting message based on the query parameters provided in the request. The logic for the message generation is handled by the `Greeter` service, which is injected into the `NewGreeterRouteHandler` method.
+The `internal/route_handlers/greeter.go` file registers the route handler for the `/say-hello` endpoint, which returns a greeting message based on the query parameters provided in the request. The message generation logic is handled by the `Greeter` service, which is injected into the `NewGreeterRouteHandler` function.
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/route_handlers/greeter.go" :::
 
-The `route_handler_module.go` file handles the registration of the `RouteHandler` services themselves.
+The `route_handler_module.go` file handles the registration of the `RouteHandler` services.
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/modules/route_handlers_module.go" :::
 
-This configuration ensures that all route handlers the application requires are correctly registered and injected into the Fiber application instance. Since the application service expects a set of route handler services, the `RegisterList` method must be used to register a list activator for the `RouteHandler` type.
+This configuration ensures that all required route handlers are correctly registered and injected into the Fiber application instance. Since the application service expects a set of route handler services, the `RegisterList` method is used to register a list activator for the `RouteHandler` type.
 
 ### Application Logic
 
@@ -73,17 +73,17 @@ The `internal/application.go` file contains the main application service:
 
 :::code language="golang" source="/examples/integrations/gofiber/internal/application.go" :::
 
-This file defines the `parsleyApplication` struct as the main application service. It registers the route handlers and starts the GoFiber server on port `5502`. However, aspects like having the listener port configurable or a graceful server shutdown are omitted here, but they could be addressed here as well.
+This file defines the `parsleyApplication` struct as the main application service. It registers the route handlers and starts the GoFiber server on port `5502`. While aspects like configurable listener ports or graceful server shutdown are omitted for simplicity, they could be addressed within this service as well.
 
 ### Running the Application
 
-To run the application, navigate to the root directory and execute the following command:
+To run the application, navigate to its root directory and execute the following command:
 
 ```bash
 go run main.go
 ```
 
-As configured in the code, the application will start a GoFiber server on `http://localhost:5502`. You can then access the `/say-hello` endpoint:
+As configured, the application will start a GoFiber server on `http://localhost:5502`. You can then access the `/say-hello` endpoint:
 
 ```bash
 curl "http://localhost:5502/say-hello?name=John"

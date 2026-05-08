@@ -9,11 +9,11 @@ go install github.com/matzefriedrich/parsley/cmd/parsley-cli
 
 ## Example
 
-Consider a `Greeter` interface and its implementation. By adding the `//go:generate parsley-cli generate proxy` annotation in your code, you enable the Parsley CLI to generate a corresponding proxy class. This proxy wraps the original service and allows for method interception, enabling additional behavior to be injected around service calls.
+Consider a `Greeter` interface and its implementation. By adding the `//go:generate parsley-cli generate proxy` annotation to your code, you enable the Parsley CLI to generate a corresponding proxy type. This proxy wraps the original service and allows for method interception, enabling additional behavior to be injected around service calls.
 
 :::code language="golang" source="/examples/advanced/internal/greeter.go" :::
 
-The code generator creates a `greeter.proxy.g.go` that contains a type that also implements the `Greeter` interface and thus can be used as a drop-in replacement for the actual `Greeter` service. The proxy type supports intercepting method calls, allowing custom logic to be added before or after a method is invoked.
+The code generator creates a `greeter.proxy.g.go` file that contains a type that also implements the `Greeter` interface, which can be used as a drop-in replacement for the actual `Greeter` service. The proxy type supports intercepting method calls, allowing custom logic to be added before or after a method is invoked.
 
 :::code language="golang" source="/examples/advanced/internal/greeter.proxy.g.go" :::
 
@@ -26,7 +26,7 @@ The boilerplate code to register the generated proxies and a custom `MethodInter
 ## Benefits and Use Cases
 
 * **Separation of Concerns:** Proxies can separate core business logic from cross-cutting concerns like logging or security.
+* **Dynamic Interception:** Proxies allow dynamic interception of method calls, making it easier to add or modify behavior without altering the service's core logic.
+* **Extensibility:** This feature provides a flexible mechanism to extend the functionality of services, making it ideal for scenarios where services require dynamic behavior adjustments. 
 
-* **Dynamic Interception:** Proxies allow dynamic interception of method calls, making adding or modifying behavior easier without altering the service's core logic.
-
-* **Extensibility:** This feature provides a flexible mechanism to extend the functionality of services, making it ideal for scenarios where services require dynamic behavior adjustments. This advanced feature of Parsley CLI simplifies complex dependency injection scenarios, providing developers with robust tools to manage and extend service behavior effortlessly.
+The Parsley CLI simplifies complex dependency injection scenarios by providing developers with robust tools to manage and extend service behavior effortlessly.

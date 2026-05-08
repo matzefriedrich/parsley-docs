@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831514044758">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831515664906">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831514044758" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831515664906" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831514044758" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831515664906" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -208,7 +208,7 @@
 <div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.</div>
 <p>In Parsley, the fundamental way to register services is by providing a constructor function to the service registry. This method enables you to create instances of your services in a controlled manner and inject them into your application as needed.</p>
 <h3 id="what-is-a-constructor-function">What Is a Constructor Function?</h3>
-<p>In Go, a <strong>constructor function</strong> is a regular function used to initialize and return an instance of a type. It typically follows the pattern <code translate="no" v-pre>NewTypeName</code> and allows for setting up a struct with necessary values or configurations before returning it.  Unlike languages with built-in constructors, Go doesn&#x27;t have special constructor syntax, so developers create these functions explicitly to manage object initialization and ensure type safety. For example, a constructor for the <code translate="no" v-pre>greeter</code> struct might be <code translate="no" v-pre>NewGreeter() *greeter</code> or <code translate="no" v-pre>NewGreeter() Greeter</code> if interfaces are preferred.</p>
+<p>In Go, a <strong>constructor function</strong> is a regular function used to initialize and return an instance of a type. It typically follows the pattern <code translate="no" v-pre>NewTypeName</code> and allows for setting up a struct with necessary values or configurations before returning it. Unlike languages with built-in constructors, Go doesn&#x27;t have special constructor syntax; so, developers create these functions explicitly to manage object initialization and ensure type safety. For example, a constructor function for the <code translate="no" v-pre>greeter</code> struct might be <code translate="no" v-pre>NewGreeter() *greeter</code> or <code translate="no" v-pre>NewGreeter() Greeter</code> if interfaces are preferred.</p>
 <h3 id="supported-signatures">Supported Signatures</h3>
 <p>Parsley is very flexible and supports various signatures for constructor functions. The following patterns are supported:</p>
 <ul>
@@ -217,7 +217,7 @@
 <li><code translate="no" v-pre>func(...) (T, error)</code></li>
 <li><code translate="no" v-pre>func(context.Context, ...) (T, error)</code></li>
 </ul>
-<p>The <code translate="no" v-pre>context.Context</code> parameter, if present, must be the first argument. It allows the constructor to access the resolution context, which is useful for things like tracing or accessing context-specific values. If the constructor returns an <code translate="no" v-pre>error</code>, Parsley will propagate this error during the service resolution process.</p>
+<p>The <code translate="no" v-pre>context.Context</code> parameter, if present, must be the first argument. It allows the constructor function to access the resolution context, which is useful for tasks like tracing or accessing context-specific values. If the constructor function returns an <code translate="no" v-pre>error</code>, Parsley will propagate this error during the service resolution process.</p>
 <p>When registering a constructor function for a service type, Parsley inspects the given function upon service resolution and automatically determines the required services. Constructor functions must also be registered for required services so that Parsley can construct the whole tree of dependencies and pass service instances as needed.</p>
 <h2 id="example">Example</h2>
 <p>Here’s a basic example of registering a service using a constructor function:</p>

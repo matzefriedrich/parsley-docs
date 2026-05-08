@@ -12,7 +12,7 @@ Suppose you have an interface `DataService` with two implementations: `remoteDat
 
 Register each service with a unique name using `RegisterNamed`. This allows you to specify different names for each implementation and control their lifecycle.
 
-:::code language="golang" source="/examples/registration-concepts/cmd/named-services/main.go" range="16-20" :::
+:::code language="golang" source="/examples/registration-concepts/cmd/named-services/main.go" range="18-22" :::
 
 In this example, `RegisterNamed` is used to register the constructor functions `NewRemoteDataService` and `NewLocalDataService` with the names `remote` and `local`, respectively. The `LifetimeTransient` parameter indicates that each service instance is transient and will be created anew each time it is resolved.
 
@@ -20,8 +20,8 @@ In this example, `RegisterNamed` is used to register the constructor functions `
 
 ## Resolve and Use Named Services
 
-To resolve a named service, you use a factory function that takes the name of the service (a `string` parameter) and returns an instance of the service along with any errors. This is done through the `ResolveRequiredService` function:
+To resolve a named service, you use a factory function that takes the name of the service (a `string` parameter) and returns an instance of the service along with any errors. This resolution is performed using the `ResolveRequiredService` function:
 
-:::code language="golang" source="/examples/registration-concepts/cmd/named-services/main.go" range="25-32" :::
+:::code language="golang" source="/examples/registration-concepts/cmd/named-services/main.go" range="25-34" :::
 
-> **Note:** You can combine the concept of factory functions and named services, but you must ensure that the signature of the factory function is the same for all named services.
+> **Note:** You can combine the concepts of factory functions and named services, but you must ensure the signature of the factory function is the same for all named services.

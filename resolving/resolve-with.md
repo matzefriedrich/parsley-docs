@@ -9,9 +9,7 @@ In the following example, the `newClient` constructor function registers a `clie
 Parsley's ability to inject specific instances dynamically improves flexibility in managing dependencies and provides greater control over the instantiation process. This feature is particularly beneficial for the following use cases:
 
 * **Runtime Configuration:** Dynamically configure services based on runtime conditions by passing specific instances.
-
 * **Dependency Injection in Testing:** Use mock objects or specific instances during tests to simulate various scenarios without altering the registration setup.
-
 * **Third-Party Integrations:** Integrate with third-party services or libraries that require preconfigured instances, ensuring they are used as dependencies when needed.
 
-By using `ResolveWithOptions`, you can push unregistered instances into the resolver, ensuring the correct instances are used when resolving dependencies.
+By using `ResolveWithOptions`, you can provide unregistered instances to the resolver, ensuring the correct instances are used when resolving dependencies.

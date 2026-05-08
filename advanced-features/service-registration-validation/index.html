@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831514044758">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831515664906">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831514044758" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831515664906" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831514044758" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831515664906" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -265,15 +265,9 @@ func NewB(a *A) *B {
 <p>It is recommended that service registrations be validated after the registration of service types is complete. This is also the case after registering services to a <strong>linked</strong> or <strong>scoped</strong> service registry during runtime.</p>
 <h3 id="why-this-matters">Why This Matters</h3>
 <ul>
-<li>
-<p><strong>Prevent runtime errors:</strong> Detect missing or invalid service registrations early to prevent application crashes.</p>
-</li>
-<li>
-<p><strong>Improve developer experience:</strong> Get clear, actionable error messages, helping you resolve issues quickly.</p>
-</li>
-<li>
-<p><strong>Avoid circular dependency traps:</strong> Protect your application from hard-to-diagnose circular dependencies that can lead to infinite recursion and stack overflow errors. For instance, you can organize application dependencies as <a href="../../registration/register-module/">modules</a> and verify the modules using unit tests. Use the validator at runtime if dependencies get dynamically registered depending on configuration.</p>
-</li>
+<li><strong>Prevent runtime errors:</strong> Detect missing or invalid service registrations early to prevent application crashes.</li>
+<li><strong>Improve developer experience:</strong> Get clear, actionable error messages, helping you resolve issues quickly.</li>
+<li><strong>Avoid circular dependency traps:</strong> Protect your application from hard-to-diagnose circular dependencies that can lead to infinite recursion and stack overflow errors. For instance, you can organize application dependencies as <a href="../../registration/register-module/">modules</a> and verify the modules using unit tests. Use the validator at runtime if dependencies are dynamically registered based on configuration.</li>
 </ul>
 <div id="retype-backlinks">
     <h2>See also</h2>

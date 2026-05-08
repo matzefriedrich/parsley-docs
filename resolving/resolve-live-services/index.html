@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831514044758">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831515664906">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831514044758" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831515664906" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831514044758" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831515664906" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -246,17 +246,11 @@ type ouchie struct {
 }</code></pre>
 </doc-codeblock></div>
 <p>In this example, a <code translate="no" v-pre>Greeter</code> service is registered with a transient lifetime. The <code translate="no" v-pre>Activate</code> method is used to create an instance of the <code translate="no" v-pre>ouchie</code> struct on the fly, consuming the <code translate="no" v-pre>Greeter</code> dependency within the factory function.</p>
-<p>This is helpful for use cases like the following:</p>
+<p>This is useful for use cases such as:</p>
 <ul>
-<li>
-<p><strong>Dynamic Object Creation:</strong> When you need to create objects that depend on registered services without having to register these objects themselves.</p>
-</li>
-<li>
-<p><strong>Complex Dependencies:</strong> For scenarios where objects require a complex set of dependencies that are not straightforward to register individually.</p>
-</li>
-<li>
-<p><strong>Third-Party Integrations:</strong> When integrating with third-party libraries that require on-the-fly object creation based on dynamically resolved dependencies.</p>
-</li>
+<li><strong>Dynamic Object Creation:</strong> When you need to create objects that depend on registered services without having to register those objects themselves.</li>
+<li><strong>Complex Dependencies:</strong> For scenarios where objects require a complex set of dependencies that are not straightforward to register individually.</li>
+<li><strong>Third-Party Integrations:</strong> When integrating with third-party libraries that require on-the-fly object creation based on dynamically resolved dependencies.</li>
 </ul>
 <p>The <code translate="no" v-pre>Activate</code> method allows for flexible and efficient dependency injection by dynamically pulling registered instances from the resolver and injecting them into your factory function, ensuring that your dynamically created objects have the necessary dependencies.</p>
 

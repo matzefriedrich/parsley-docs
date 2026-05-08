@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831514044758">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831515664906">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831514044758" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831515664906" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831514044758" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831515664906" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -257,18 +257,18 @@ func NewLocalDataServiceFactory() func(string) DataService {
 <h2 id="register-named-services-1">Register Named Services</h2>
 <p>Register each service with a unique name using <code translate="no" v-pre>RegisterNamed</code>. This allows you to specify different names for each implementation and control their lifecycle.</p>
 <div id="register-named-services-1-code-1" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-go"><code v-pre class="language-go">ctx := context.Background()
+<pre translate="no" class="language-go"><code v-pre class="language-go">registry := registration.NewServiceRegistry()
 
-registry := registration.NewServiceRegistry()
-
-_ = features.RegisterNamed[internal.DataService](ctx, registry,</code></pre>
+_ = features.RegisterNamed[internal.DataService](ctx, registry,
+	registration.NamedServiceRegistration(&quot;remote&quot;, internal.NewRemoteDataService, types.LifetimeTransient),
+	registration.NamedServiceRegistration(&quot;local&quot;, internal.NewLocalDataService, types.LifetimeTransient))</code></pre>
 </doc-codeblock></div>
 <p>In this example, <code translate="no" v-pre>RegisterNamed</code> is used to register the constructor functions <code translate="no" v-pre>NewRemoteDataService</code> and <code translate="no" v-pre>NewLocalDataService</code> with the names <code translate="no" v-pre>remote</code> and <code translate="no" v-pre>local</code>, respectively. The <code translate="no" v-pre>LifetimeTransient</code> parameter indicates that each service instance is transient and will be created anew each time it is resolved.</p>
 <blockquote>
 <p><strong>Note:</strong> Implementation types with names are automatically registered as an unnamed service with the desired interface type and lifetime scope. So, named services can be resolved (separately) by name or as a list of service instances per interface type.</p>
 </blockquote>
 <h2 id="resolve-and-use-named-services">Resolve and Use Named Services</h2>
-<p>To resolve a named service, you use a factory function that takes the name of the service (a <code translate="no" v-pre>string</code> parameter) and returns an instance of the service along with any errors. This is done through the <code translate="no" v-pre>ResolveRequiredService</code> function:</p>
+<p>To resolve a named service, you use a factory function that takes the name of the service (a <code translate="no" v-pre>string</code> parameter) and returns an instance of the service along with any errors. This resolution is performed using the <code translate="no" v-pre>ResolveRequiredService</code> function:</p>
 <div id="resolve-and-use-named-services-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">scope := resolving.NewScopedContext(ctx)
 
@@ -277,10 +277,12 @@ localDataService, err := serviceFactory(&quot;local&quot;)
 if err != nil {
 	panic(err)
 }
-</code></pre>
+
+data := localDataService.FetchData()
+fmt.Println(data)</code></pre>
 </doc-codeblock></div>
 <blockquote>
-<p><strong>Note:</strong> You can combine the concept of factory functions and named services, but you must ensure that the signature of the factory function is the same for all named services.</p>
+<p><strong>Note:</strong> You can combine the concepts of factory functions and named services, but you must ensure the signature of the factory function is the same for all named services.</p>
 </blockquote>
 <div id="retype-backlinks">
     <h2>See also</h2>

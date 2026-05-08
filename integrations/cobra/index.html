@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831514044758">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831515664906">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831514044758" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831515664906" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831514044758" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831515664906" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -225,7 +225,7 @@
         └── greeter.go</code></pre>
 </doc-codeblock></div>
 <h3 id="main-application">Main Application</h3>
-<p>The <code translate="no" v-pre>cmd/main.go</code> file serves as the application&#x27;s entry point. Here, the service dependencies are registered using a <code translate="no" v-pre>ServiceRegistry</code> instance. Dependency registration is organized in <code translate="no" v-pre>ModuleFunc</code> methods, keeping the main setup clean. Finally, a <code translate="no" v-pre>*charmer.CommandLineApplication</code> service is resolved, and its Execute method is called to run the application.</p>
+<p>The <code translate="no" v-pre>cmd/main.go</code> file serves as the application&#x27;s entry point. Here, the service dependencies are registered using a <code translate="no" v-pre>ServiceRegistry</code> instance. Dependency registration is organized in <code translate="no" v-pre>ModuleFunc</code> methods, keeping the main setup clean. Finally, a <code translate="no" v-pre>*charmer.CommandLineApplication</code> service is resolved, and its <code translate="no" v-pre>Execute</code> method is called to run the application.</p>
 <div id="main-application-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">package main
 
@@ -259,7 +259,7 @@ func main() {
 </doc-codeblock></div>
 <h3 id="modules">Modules</h3>
 <p>The <code translate="no" v-pre>internal/modules</code> package defines the service configurations required for the CLI setup.</p>
-<p>The <code translate="no" v-pre>cobra_module.go</code> module configures the Cobra application and registers it as a singleton service. It also enables the resolution of all <code translate="no" v-pre>*cobra.Command</code> types as a list, which is necessary to populate the Cobra application with registered commands.</p>
+<p>The <code translate="no" v-pre>cobra_module.go</code> module configures the Cobra application and registers it as a singleton service. It also enables the resolution of all <code translate="no" v-pre>*cobra.Command</code> types at once (as a list), which is necessary to populate the Cobra application with registered commands.</p>
 <div id="modules-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">package modules
 
@@ -324,7 +324,7 @@ func ServicesModule(registry types.ServiceRegistry) error {
 }</code></pre>
 </doc-codeblock></div>
 <h3 id="services">Services</h3>
-<p>The Greeter service in <code translate="no" v-pre>internal/services/greeter.go</code> generates a greeting message based on the provided name and politeness level. This service is used by command handlers to produce responses.</p>
+<p>The <code translate="no" v-pre>Greeter</code> service in <code translate="no" v-pre>internal/services/greeter.go</code> generates a greeting message based on the provided name and politeness level. This service is used by command handlers to produce responses.</p>
 <div id="services-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">package services
 
@@ -350,7 +350,7 @@ func NewGreeter() Greeter {
 }</code></pre>
 </doc-codeblock></div>
 <h3 id="command-handlers">Command Handlers</h3>
-<p>Command handlers in this example are services that implement the <code translate="no" v-pre>TypedCommand</code> interface, providing structured logic and dependency injection. For instance, the <code translate="no" v-pre>helloCommand</code> service uses <code translate="no" v-pre>Greeter</code> to output personalized greetings. With cobra-extensions and Parsley, command declaration, service resolution, and command logic are consolidated in the same module, making the codebase easier to navigate and maintain.</p>
+<p>Command handlers in this example are services that implement the <code translate="no" v-pre>TypedCommand</code> interface, providing structured logic and dependency injection. For instance, the <code translate="no" v-pre>helloCommand</code> service uses the <code translate="no" v-pre>Greeter</code> service to output personalized greetings. With <code translate="no" v-pre>cobra-extensions</code> and Parsley, command declaration, service resolution, and command logic are consolidated in the same module, making the codebase easier to navigate and maintain.</p>
 <div id="command-handlers-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">package commands
 
@@ -386,7 +386,7 @@ func NewHelloCommand(greeter services.Greeter) *cobra.Command {
 }</code></pre>
 </doc-codeblock></div>
 <h3 id="running-the-application">Running the Application</h3>
-<p>As configured in the code, the application will start a Cobra application and call its <code translate="no" v-pre>Execute</code> method. To run the application, navigate to the root directory and execute the following command:</p>
+<p>As configured in the code, the application will start a Cobra application and call its <code translate="no" v-pre>Execute</code> method. To run the application, navigate to its root directory and execute the following command:</p>
 <div id="running-the-application-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">go run main.go hello --name John --polite</code></pre>
 </doc-codeblock></div>

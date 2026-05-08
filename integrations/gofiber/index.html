@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831514044758">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831515664906">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831514044758" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.831515664906" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831514044758" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831514044758" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831515664906" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -333,7 +333,7 @@ type RouteHandler interface {
 	Register(app *fiber.App)
 }</code></pre>
 </doc-codeblock></div>
-<p>The <code translate="no" v-pre>internal/route_handlers/greeter.go</code> file registers the route handler for the <code translate="no" v-pre>/say-hello</code> endpoint, which returns a greeting message based on the query parameters provided in the request. The logic for the message generation is handled by the <code translate="no" v-pre>Greeter</code> service, which is injected into the <code translate="no" v-pre>NewGreeterRouteHandler</code> method.</p>
+<p>The <code translate="no" v-pre>internal/route_handlers/greeter.go</code> file registers the route handler for the <code translate="no" v-pre>/say-hello</code> endpoint, which returns a greeting message based on the query parameters provided in the request. The message generation logic is handled by the <code translate="no" v-pre>Greeter</code> service, which is injected into the <code translate="no" v-pre>NewGreeterRouteHandler</code> function.</p>
 <div id="route-handlers-code-2" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">package route_handlers
 
@@ -367,7 +367,7 @@ func NewGreeterRouteHandler(greeter services.Greeter) RouteHandler {
 	}
 }</code></pre>
 </doc-codeblock></div>
-<p>The <code translate="no" v-pre>route_handler_module.go</code> file handles the registration of the <code translate="no" v-pre>RouteHandler</code> services themselves.</p>
+<p>The <code translate="no" v-pre>route_handler_module.go</code> file handles the registration of the <code translate="no" v-pre>RouteHandler</code> services.</p>
 <div id="route-handlers-code-3" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">package modules
 
@@ -385,7 +385,7 @@ func RegisterRouteHandlers(registry types.ServiceRegistry) error {
 	return nil
 }</code></pre>
 </doc-codeblock></div>
-<p>This configuration ensures that all route handlers the application requires are correctly registered and injected into the Fiber application instance. Since the application service expects a set of route handler services, the <code translate="no" v-pre>RegisterList</code> method must be used to register a list activator for the <code translate="no" v-pre>RouteHandler</code> type.</p>
+<p>This configuration ensures that all required route handlers are correctly registered and injected into the Fiber application instance. Since the application service expects a set of route handler services, the <code translate="no" v-pre>RegisterList</code> method is used to register a list activator for the <code translate="no" v-pre>RouteHandler</code> type.</p>
 <h3 id="application-logic">Application Logic</h3>
 <p>The <code translate="no" v-pre>internal/application.go</code> file contains the main application service:</p>
 <div id="application-logic-code-1" class="codeblock-wrapper"><doc-codeblock>
@@ -420,13 +420,13 @@ func (a *parsleyApplication) Run(_ context.Context) error {
 	return a.app.Listen(&quot;:5502&quot;)
 }</code></pre>
 </doc-codeblock></div>
-<p>This file defines the <code translate="no" v-pre>parsleyApplication</code> struct as the main application service. It registers the route handlers and starts the GoFiber server on port <code translate="no" v-pre>5502</code>. However, aspects like having the listener port configurable or a graceful server shutdown are omitted here, but they could be addressed here as well.</p>
+<p>This file defines the <code translate="no" v-pre>parsleyApplication</code> struct as the main application service. It registers the route handlers and starts the GoFiber server on port <code translate="no" v-pre>5502</code>. While aspects like configurable listener ports or graceful server shutdown are omitted for simplicity, they could be addressed within this service as well.</p>
 <h3 id="running-the-application">Running the Application</h3>
-<p>To run the application, navigate to the root directory and execute the following command:</p>
+<p>To run the application, navigate to its root directory and execute the following command:</p>
 <div id="running-the-application-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">go run main.go</code></pre>
 </doc-codeblock></div>
-<p>As configured in the code, the application will start a GoFiber server on <code translate="no" v-pre>http://localhost:5502</code>. You can then access the <code translate="no" v-pre>/say-hello</code> endpoint:</p>
+<p>As configured, the application will start a GoFiber server on <code translate="no" v-pre>http://localhost:5502</code>. You can then access the <code translate="no" v-pre>/say-hello</code> endpoint:</p>
 <div id="running-the-application-code-2" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-bash"><code v-pre class="language-bash">curl &quot;http://localhost:5502/say-hello?name=John&quot;</code></pre>
 </doc-codeblock></div>
