@@ -11,10 +11,14 @@
 
 - [Register Constructor Functions](https://matzefriedrich.github.io/parsley-docs/registration/register-constructor-functions.md): Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.
 - [Register Instances](https://matzefriedrich.github.io/parsley-docs/registration/register-instances.md): Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.
+- [Registry Hierarchy](https://matzefriedrich.github.io/parsley-docs/registration/registry-hierarchy.md): Understand how to use linked registries and scopes to manage service registration inheritance and isolation in Parsley.
+- [Multi-Registry Aggregation](https://matzefriedrich.github.io/parsley-docs/registration/multi-registry-aggregation.md): Combine multiple service registries into a single accessor for service resolution in Parsley.
 - [Register Factory Functions](https://matzefriedrich.github.io/parsley-docs/registration/register-factory-functions.md): Use factory functions in Parsley for dynamic service configuration and more control over service creation.
+- [Context-Aware Factory Functions](https://matzefriedrich.github.io/parsley-docs/registration/context-aware-factory-functions.md): Register context-aware factory functions in Parsley to resolve services on demand using a specific context.
 - [Register Named Services](https://matzefriedrich.github.io/parsley-docs/registration/register-named-services.md): Use named service registration in Parsley to manage multiple implementations of the same interface with precise control.
 - [Manage Multiple Service Implementations](https://matzefriedrich.github.io/parsley-docs/registration/register-lists.md): Register and inject multiple services of the same contract type in Parsley using arrays or slices.
 - [Register Service Modules](https://matzefriedrich.github.io/parsley-docs/registration/register-module.md): Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.
+- [Bootstrap Application](https://matzefriedrich.github.io/parsley-docs/registration/bootstrap-application.md): Manage your application's lifecycle and dependency injection using the Parsley bootstrap package.
 
 ## Resolving Services
 
@@ -26,6 +30,7 @@
 ## Advanced Features
 
 - [Validating Service Registrations](https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation.md): Validate Parsley service registrations using the built-in Validator to identify missing or circular dependencies and prevent runtime errors.
+- [Manual Proxy and Interceptor Implementation](https://matzefriedrich.github.io/parsley-docs/advanced-features/manual-proxy-interceptor.md): Learn how to manually implement proxies and interceptors in Parsley without using the CLI generator.
 - [Advanced Dependency Injection with Generated Proxies](https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-proxy-services.md): Explore how the Parsley CLI generates proxy services and interfaces for service contracts using go:generate annotations.
 - [Mocking Made Easy with Parsley](https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-mocks.md): Learn how to use the Parsley CLI to generate mock implementations for service interfaces in Go, configure their behavior, and assert expectations in tests.
 
