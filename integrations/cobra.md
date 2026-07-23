@@ -35,7 +35,7 @@ cobra
 
 ### Main Application
 
-The `cmd/main.go` file serves as the application's entry point. Here, the service dependencies are registered using a `ServiceRegistry` instance. Dependency registration is organized in `ModuleFunc` methods, keeping the main setup clean. Finally, a `*charmer.CommandLineApplication` service is resolved, and its `Execute` method is called to run the application.
+The `cmd/main.go` file serves as the application's entry point. Here, the service dependencies are registered using a `ServiceRegistry` instance. Dependency registration is organized in `ModuleFunc` functions, keeping the main setup clean. Finally, a `*charmer.CommandLineApplication` service is resolved, and its `Execute` method is called to run the application.
 
 :::code language="golang" source="/examples/integrations/cobra/cmd/main.go" :::
 

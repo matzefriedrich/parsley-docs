@@ -160,10 +160,10 @@ For example, in the test case above:
 
 With the new `generate mocks` command, Parsley makes it easy to create fully configurable and traceable mock objects for your services.
 
-The mock generation feature is especially useful for writing tests, where you want to simulate different service behaviors, verify method calls, and ensure your components interact correctly with each other.
+The mock generation feature is especially useful for writing tests, where you want to simulate different service behaviors, verify method calls, and ensure your services interact correctly with each other.
 
 ### Using Parsley's Generator Commands Without Runtime Dependency Injection
 
-Parsley's generator commands, like the `generate mocks` command, can be used independently of Parsley's runtime dependency injection. This flexibility allows developers to leverage powerful code generation features, such as creating mock implementations for interfaces, without adopting Parsley's full DI system.
+Parsley's generator commands, like the `generate mocks` command, can be used independently of Parsley's runtime dependency injection. This flexibility allows developers to leverage powerful code generation features, such as creating mock implementations for interfaces, without adopting Parsley's full dependency injection system.
 
-For instance, you may prefer to manually wire your dependencies in a traditional Go setup while still using Parsley’s mock generation capabilities for testing. This makes Parsley a versatile tool that can be integrated into various workflows, whether or not you choose to use runtime DI for your projects.
+For instance, you may prefer to manually wire your dependencies in a traditional Go setup while still using Parsley’s mock generation capabilities for testing. This makes Parsley a versatile tool that can be integrated into various workflows, whether or not you choose to use runtime dependency injection for your projects.

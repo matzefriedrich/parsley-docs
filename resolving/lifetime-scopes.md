@@ -12,7 +12,7 @@ category:
 ---
 # Lifetime Scopes in Parsley
 
-Parsley allows you to control the lifetime of your service instances through different lifetime scopes. The lifetime setting determines how often the constructor or factory method of a service registration is called and how instances are managed.
+Parsley allows you to control the lifetime of your service instances through different lifetime scopes. The lifetime setting determines how often the constructor or factory function of a service registration is called and how instances are managed.
 
 ## Supported Service Lifetimes
 
@@ -42,7 +42,7 @@ The following demonstration is based on the greeter example code:
 
 :::code language="golang" source="/examples/resolving-services/internal/greeter.go" range="5-25" :::
 
-In this example, a factory method (instead of a constructor method) is used to intercept the creation of a service instance and trace an event each time Parsley activates a new `Greeter` service instance. The `traceResolveEventFor` method uses reflection to determine the type of the resolved service and traces the type name and pointer to the standard output.
+In this example, a factory function (instead of a constructor function) is used to intercept the creation of a service instance and trace an event each time Parsley activates a new `Greeter` service instance. The `traceResolveEventFor` method uses reflection to determine the type of the resolved service and traces the type name and pointer to the standard output.
 
 ```go
 func resolveGreeter(salutation string) func(resolver types.Resolver) internal.Greeter {
@@ -62,7 +62,7 @@ func traceResolveEventFor(service any) {
 }
 ```
 
-The `resolveGreeter` factory method is registered with Parsley. The lifetime for `Greeter` instances is set to `LifetimeScoped`, instructing the resolver to keep track of instances in the `Context` given when resolving the service.
+The `resolveGreeter` factory function is registered with Parsley. The lifetime for `Greeter` instances is set to `LifetimeScoped`, instructing the resolver to keep track of instances in the `Context` given when resolving the service.
 
 ```go
 registry := registration.NewServiceRegistry()
@@ -86,7 +86,7 @@ for i := 0; i < 3; i++ {
 
 The example produces the following output:
 
-```sh
+```text
 New internal.greeter instance created: 824633868736
 Hi, John
 Hi, John
@@ -107,7 +107,7 @@ for i := 0; i < 3; i++ {
 
 Now, for each iteration, a new context is created, thus requiring Parsley to activate a new service instance. The example produces the following output:
 
-```sh
+```text
 New internal.greeter instance created: 824633868736
 Hi, John
 New internal.greeter instance created: 824633868960
@@ -124,7 +124,7 @@ registry.Register(resolveGreeter("Hi"), types.LifetimeSingleton)
 
 ... Parsley does not store created instances in the given `Context` but in the instance cache attached to the resolver itself, resulting in the following output:
 
-```sh
+```text
 New internal.greeter instance created: 824633868736
 Hi, John
 Hi, John
