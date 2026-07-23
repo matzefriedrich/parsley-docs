@@ -1,10 +1,10 @@
 # Quick Start
 
-This quick start guide walks you through structuring your application and using Parsley to dynamically register and resolve services (or components) at runtime. In this documentation, the terms "services" and "components" are used interchangeably—they both refer to object instances of a specific type. To effectively understand dependency mapping in Parsley, let's look at a practical example involving types, interfaces, and constructor functions. Once you are familiar with the basics, you can check out the rest of this documentation for more advanced usage and integration examples.
+This guide covers structuring an application and using Parsley to dynamically register and resolve services at runtime. To understand dependency mapping in Parsley, look at a practical example involving types, interfaces, and constructor functions. After learning the basics, refer to the rest of the documentation for advanced usage and integration examples.
 
 ## Structuring the Application
 
-Inversion of Control (IoC) is a design principle that flips your application's traditional approach to handling dependencies. Instead of having components directly instantiate their dependencies, you structure your application so that dependencies are provided to components at the time of their creation. In Parsley, object instances are created through constructor functions, whereby dependencies are expressed as arguments. This approach decouples your components and promotes more flexible and maintainable code.
+Inversion of Control (IoC) is a design principle that flips your application's traditional approach to handling dependencies. Instead of having services directly instantiate their dependencies, you structure your application so that dependencies are provided to services at the time of their creation. In Parsley, object instances are created through constructor functions, whereby dependencies are expressed as arguments. This approach decouples your services and promotes more flexible and maintainable code.
 
 In the quick start example, we define a `DataService` interface and provide two implementations for it. The application maps the constructor functions to the abstraction and resolves all registered services to call their `FetchData` method in a loop.
 
@@ -18,7 +18,7 @@ go get github.com/matzefriedrich/parsley
 
 ### Define Interfaces
 
-Interfaces in Go are a powerful tool for decoupling dependencies and defining contracts between different components of an application or library. While the Go community often emphasizes composition over inheritance and favors concrete types over interfaces in many scenarios, defining interfaces remains viable, particularly when integrating with existing enterprise patterns—such as dependency injection—from other languages.
+Interfaces in Go are a powerful tool for decoupling dependencies and defining contracts between different services of an application or library. While the Go community often emphasizes composition over inheritance and favors concrete types over interfaces in many scenarios, defining interfaces remains viable, particularly when integrating with existing enterprise patterns—such as dependency injection—from other languages.
 
 ```go
 type DataService interface {
@@ -50,7 +50,7 @@ func (s *localDataService) FetchData() string {
 
 Constructor functions are responsible for creating instances of the implementation types. These functions specify the dependencies required by the implementation type through their parameters. Parsley supports various signatures for constructor functions, including those that accept a `context.Context` and those that return an `error`.
 
-To keep things simple for now, the services in this example are not dependent on other services; thus, the constructor functions do not have any parameters.
+In this example, the services do not depend on other services; therefore, the constructor functions have no parameters.
 
 ```go
 func NewRemoteDataService() DataService {

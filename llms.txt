@@ -26,7 +26,7 @@
 ## Advanced Features
 
 - [Validating Service Registrations](https://matzefriedrich.github.io/parsley-docs/advanced-features/service-registration-validation.md): Validate Parsley service registrations using the built-in Validator to identify missing or circular dependencies and prevent runtime errors.
-- [Advanced Dependency Injection With Generated Proxies](https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-proxy-services.md): Explore how the Parsley CLI generates proxy services and interfaces for service contracts using go:generate annotations.
+- [Advanced Dependency Injection with Generated Proxies](https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-proxy-services.md): Explore how the Parsley CLI generates proxy services and interfaces for service contracts using go:generate annotations.
 - [Mocking Made Easy with Parsley](https://matzefriedrich.github.io/parsley-docs/advanced-features/generate-mocks.md): Learn how to use the Parsley CLI to generate mock implementations for service interfaces in Go, configure their behavior, and assert expectations in tests.
 
 ## Integrations

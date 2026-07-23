@@ -17,7 +17,7 @@ Parsley is an easy-to-use, reflection-based dependency injection package that fi
 - **Modular Registrations:** [Bundle registrations into modules](registration/register-module.md) for cleaner organization.
 - **Lazy Loading:** [Dependencies are injected only when needed](resolving/resolve-lazy-proxy.md) using `Lazy[T]`.
 - **Custom Factories:** [Define custom factory functions](registration/register-factory-functions.md) for dynamic resolution.
-- **Provide service instances to the resolver:** [Provide service instances to the resolver](resolving/resolve-with.md) that cannot be automatically constructed.
+- **Provide Service Instances to the Resolver:** [Provide service instances to the resolver](resolving/resolve-with.md) that cannot be automatically constructed.
 
 ### Multiple Registrations
 

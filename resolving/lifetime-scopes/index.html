@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831515664906">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.838156976593">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.5.3">
+    <meta name="generator" content="Retype 4.6.0">
 
     <!-- Primary Meta Tags -->
     <title>Parsley - Understanding Lifetime Scopes: Manage Service Instance Lifetimes</title>
@@ -38,12 +38,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831515664906" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.838156976593" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831515664906" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831515664906" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.838156976593" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.838156976593" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.838156976593" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -60,7 +60,7 @@
                 <div class="flex items-center px-2 md:px-6">
                     <a id="retype-branding-logo" href="https://matzefriedrich.github.io/parsley-docs/" class="flex items-center leading-snug text-2xl">
                         <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Parsley</span>
-                    </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">v1.5.0-alpha1</span>
+                    </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">v1.5.2</span>
                 </div>
     
                 <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
@@ -207,9 +207,14 @@
 </div>
 
 <div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Manage service instance lifetimes in Parsley using transient, scoped, and singleton lifetime settings.</div>
-<p>Parsley allows you to control the lifetime of your service instances through different lifetime scopes. The lifetime setting determines how often the constructor or factory method of a service registration is called and how instances are managed.</p>
+<p>Parsley allows you to control the lifetime of your service instances through different lifetime scopes. The lifetime setting determines how often the constructor or factory function of a service registration is called and how instances are managed.</p>
 <h2 id="supported-service-lifetimes">Supported Service Lifetimes</h2>
 <p>The following lifetime scopes are supported:</p>
+<retype-table copy-text="| Name      | Value                                                                                                           |
+|-----------|:----------------------------------------------------------------------------------------------------------------|
+| Transient | A new instance is created every time the service is requested.                                                  |
+| Scoped    | The same instance is reused within a scope.                                                                     |
+| Singleton | The same instance is reused for all requests. Resolved instances remain valid for the lifetime of the resolver. |">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -234,6 +239,7 @@
 </tbody>
 </table>
 </div>
+</retype-table>
 <blockquote>
 <p><strong>Note:</strong> Multiple registrations for the same service type can use different lifetime scopes. The same is true for named service registrations.</p>
 </blockquote>
@@ -270,7 +276,7 @@ func (g *greeter) SayHello(name string, polite bool) {
 }
 </code></pre>
 </doc-codeblock></div>
-<p>In this example, a factory method (instead of a constructor method) is used to intercept the creation of a service instance and trace an event each time Parsley activates a new <code translate="no" v-pre>Greeter</code> service instance. The <code translate="no" v-pre>traceResolveEventFor</code> method uses reflection to determine the type of the resolved service and traces the type name and pointer to the standard output.</p>
+<p>In this example, a factory function (instead of a constructor function) is used to intercept the creation of a service instance and trace an event each time Parsley activates a new <code translate="no" v-pre>Greeter</code> service instance. The <code translate="no" v-pre>traceResolveEventFor</code> method uses reflection to determine the type of the resolved service and traces the type name and pointer to the standard output.</p>
 <div id="example-code-2" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func resolveGreeter(salutation string) func(resolver types.Resolver) internal.Greeter {
 	factory := internal.NewGreeterFactory(salutation)
@@ -288,7 +294,7 @@ func traceResolveEventFor(service any) {
 	fmt.Printf(&quot;New %s instance created: %d\n&quot;, typeName, instancePointer)
 }</code></pre>
 </doc-codeblock></div>
-<p>The <code translate="no" v-pre>resolveGreeter</code> factory method is registered with Parsley. The lifetime for <code translate="no" v-pre>Greeter</code> instances is set to <code translate="no" v-pre>LifetimeScoped</code>, instructing the resolver to keep track of instances in the <code translate="no" v-pre>Context</code> given when resolving the service.</p>
+<p>The <code translate="no" v-pre>resolveGreeter</code> factory function is registered with Parsley. The lifetime for <code translate="no" v-pre>Greeter</code> instances is set to <code translate="no" v-pre>LifetimeScoped</code>, instructing the resolver to keep track of instances in the <code translate="no" v-pre>Context</code> given when resolving the service.</p>
 <div id="example-code-3" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">registry := registration.NewServiceRegistry()
 err := registry.Register(resolveGreeter(&quot;Hi&quot;), types.LifetimeScoped)
@@ -308,7 +314,7 @@ for i := 0; i &lt; 3; i++ {
 </doc-codeblock></div>
 <p>The example produces the following output:</p>
 <div id="example-code-5" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">New internal.greeter instance created: 824633868736
+<pre translate="no" class="language-none"><code v-pre class="language-none">New internal.greeter instance created: 824633868736
 Hi, John
 Hi, John
 Hi, John</code></pre>
@@ -325,7 +331,7 @@ for i := 0; i &lt; 3; i++ {
 </doc-codeblock></div>
 <p>Now, for each iteration, a new context is created, thus requiring Parsley to activate a new service instance. The example produces the following output:</p>
 <div id="example-code-7" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">New internal.greeter instance created: 824633868736
+<pre translate="no" class="language-none"><code v-pre class="language-none">New internal.greeter instance created: 824633868736
 Hi, John
 New internal.greeter instance created: 824633868960
 Hi, John
@@ -338,7 +344,7 @@ Hi, John</code></pre>
 </doc-codeblock></div>
 <p>... Parsley does not store created instances in the given <code translate="no" v-pre>Context</code> but in the instance cache attached to the resolver itself, resulting in the following output:</p>
 <div id="example-code-9" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">New internal.greeter instance created: 824633868736
+<pre translate="no" class="language-none"><code v-pre class="language-none">New internal.greeter instance created: 824633868736
 Hi, John
 Hi, John
 Hi, John</code></pre>

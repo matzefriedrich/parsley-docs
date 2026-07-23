@@ -1,4 +1,4 @@
-# Advanced Dependency Injection With Generated Proxies
+# Advanced Dependency Injection with Generated Proxies
 
 The Parsley CLI introduces a powerful feature for advanced dependency injection through its `generate proxy` command. This command, combined with `//go:generate` annotations, automatically generates proxy services and interfaces for your service contracts.
 
