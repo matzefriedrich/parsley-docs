@@ -3,7 +3,7 @@ meta:
   title: Parsley - Register Service Instances
 description: Manually register complex service instances as singletons in Parsley to ensure consistent state and availability.
 icon: file
-label: Register Instances
+label: Registering Instances
 tags: [ registration, instances, lifetime management ]
 order: 95
 category:

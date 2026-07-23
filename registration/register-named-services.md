@@ -3,7 +3,7 @@ meta:
   title: Parsley - Registering Named Services to Manage Multiple Implementations
 description: Use named service registration in Parsley to manage multiple implementations of the same interface with precise control.
 icon: file
-label: Register Named Services
+label: Named Services
 tags: [ registration, multiple registrations, service factory ]
 order: 85
 category:

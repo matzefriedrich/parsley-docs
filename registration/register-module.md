@@ -3,7 +3,7 @@ meta:
   title: Parsley - Organize Service Registrations using Modules
 description: Group related services into modules in Parsley to improve code organization, reusability, and separation of concerns.
 icon: file
-label: Register Module
+label: Bundling Dependencies using Modules
 tags: [ registration ]
 order: 75
 category:

@@ -3,7 +3,7 @@ meta:
   title: Parsley - Advanced Service Registration using Factory Functions
 description: Use factory functions in Parsley for dynamic service configuration and more control over service creation.
 icon: file
-label: Register Factory Functions
+label: Factory Functions
 tags: [ registration, service factory ]
 order: 90
 category:
