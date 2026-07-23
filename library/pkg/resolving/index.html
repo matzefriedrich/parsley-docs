@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.838159297931">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.838159668659">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Parsley Docs - &quot;resolving&quot; package</title>
     <meta name="title" content="Parsley Docs - \"resolving\" package">
-    <meta name="description" content="Official documentation for the Parsley resolving package.">
+    <meta name="description" content="Official documentation of the Parsley´s \"resolving\" package">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving/">
     <meta property="og:title" content="Parsley Docs - \"resolving\" package">
-    <meta property="og:description" content="Official documentation for the Parsley resolving package.">
+    <meta property="og:description" content="Official documentation of the Parsley´s \"resolving\" package">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
@@ -31,19 +31,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving/">
     <meta name="twitter:title" content="Parsley Docs - \"resolving\" package">
-    <meta name="twitter:description" content="Official documentation for the Parsley resolving package.">
+    <meta name="twitter:description" content="Official documentation of the Parsley´s \"resolving\" package">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/library/pkg/resolving.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../resources/css/retype.css?v=4.6.0.838159297931" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=4.6.0.838159668659" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=4.6.0.838159297931" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=4.6.0.838159668659" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=4.6.0.838159297931" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=4.6.0.838159297931" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=4.6.0.838159668659" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=4.6.0.838159668659" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -211,7 +211,7 @@
     <div><a href="../../../categories/package-reference/">Package Reference</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Official documentation for the Parsley resolving package.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Official documentation of the Parsley´s &quot;resolving&quot; package</div>
 <div id="resolving-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">import &quot;github.com/matzefriedrich/parsley/pkg/resolving&quot;</code></pre>
 </doc-codeblock></div>
@@ -225,56 +225,56 @@
 <li><doc-anchor-trigger to="#WithInstance">func WithInstance[T any](instance T) types.ResolverOptionsFunc</doc-anchor-trigger></li>
 <li><doc-anchor-trigger to="#NamedServiceResolverActivatorFunc">type NamedServiceResolverActivatorFunc</doc-anchor-trigger>
 <ul>
-<li><doc-anchor-trigger to="#CreateNamedServiceResolverActivatorFunc">func CreateNamedServiceResolverActivatorFunc[T any](ctx context.Context) NamedServiceResolverActivatorFunc[T]</doc-anchor-trigger></li>
+<li><doc-anchor-trigger to="#CreateNamedServiceResolverActivatorFunc">func CreateNamedServiceResolverActivatorFunc[T any]() NamedServiceResolverActivatorFunc[T]</doc-anchor-trigger></li>
 </ul>
 </li>
 </ul>
 <p><a name="Activate"></a></p>
-<h2 id="func-activate">func Activate</h2>
+<h2 id="func-activate">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/resolving/activate.go#L12" class="outbound" target="_blank"><span>Activate</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-activate-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func Activate[T any](ctx context.Context, resolver types.Resolver, activatorFunc any, options ...types.ResolverOptionsFunc) (T, error)</code></pre>
 </doc-codeblock></div>
 <p>Activate attempts to create and return an instance of the requested type using the provided resolver. Use this method to instantiate service objects of unregistered types. The specified activator function can have parameters to demand service instances for registered service types.</p>
 <p><a name="NewResolver"></a></p>
-<h2 id="func-newresolver">func NewResolver</h2>
+<h2 id="func-newresolver">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/resolving/resolver.go#L59" class="outbound" target="_blank"><span>NewResolver</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-newresolver-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func NewResolver(registry types.ServiceRegistry) types.Resolver</code></pre>
 </doc-codeblock></div>
 <p>NewResolver creates and returns a new Resolver instance based on the provided ServiceRegistry.</p>
 <p><a name="NewScopedContext"></a></p>
-<h2 id="func-newscopedcontext">func NewScopedContext</h2>
+<h2 id="func-newscopedcontext">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/resolving/scope.go#L9" class="outbound" target="_blank"><span>NewScopedContext</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-newscopedcontext-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func NewScopedContext(ctx context.Context) context.Context</code></pre>
 </doc-codeblock></div>
 <p>NewScopedContext creates a new context with an associated service instance map, useful for managing service lifetimes within scope.</p>
 <p><a name="ResolveRequiredService"></a></p>
-<h2 id="func-resolverequiredservice">func ResolveRequiredService</h2>
+<h2 id="func-resolverequiredservice">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/resolving/resolver.go#L44" class="outbound" target="_blank"><span>ResolveRequiredService</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-resolverequiredservice-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func ResolveRequiredService[T any](ctx context.Context, resolver types.Resolver) (T, error)</code></pre>
 </doc-codeblock></div>
 <p>ResolveRequiredService resolves a single service instance of the specified type using the given resolver and context. The method can return the following errors: ErrorCannotResolveService, ErrorAmbiguousServiceInstancesResolved.</p>
 <p><a name="ResolveRequiredServices"></a></p>
-<h2 id="func-resolverequiredservices">func ResolveRequiredServices</h2>
+<h2 id="func-resolverequiredservices">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/resolving/resolver.go#L19" class="outbound" target="_blank"><span>ResolveRequiredServices</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-resolverequiredservices-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func ResolveRequiredServices[T any](ctx context.Context, resolver types.Resolver) ([]T, error)</code></pre>
 </doc-codeblock></div>
 <p>ResolveRequiredServices resolves all registered services of a specified type T using the given resolver and context.</p>
 <p><a name="WithInstance"></a></p>
-<h2 id="func-withinstance">func WithInstance</h2>
+<h2 id="func-withinstance">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/resolving/resolver_options.go#L19" class="outbound" target="_blank"><span>WithInstance</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-withinstance-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func WithInstance[T any](instance T) types.ResolverOptionsFunc</code></pre>
 </doc-codeblock></div>
 <p>WithInstance Creates a ResolverOptionsFunc that registers a specific instance of a type T with a service registry to be resolved as a singleton.</p>
 <p><a name="NamedServiceResolverActivatorFunc"></a></p>
-<h2 id="type-namedserviceresolveractivatorfunc">type NamedServiceResolverActivatorFunc</h2>
+<h2 id="type-namedserviceresolveractivatorfunc">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/resolving/named_service_resolver.go#L10" class="outbound" target="_blank"><span>NamedServiceResolverActivatorFunc</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>NamedServiceResolverActivatorFunc defines a function for resolving named services.</p>
 <div id="type-namedserviceresolveractivatorfunc-code-1" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-go"><code v-pre class="language-go">type NamedServiceResolverActivatorFunc[T any] func(types.Resolver) func(string) (T, error)</code></pre>
+<pre translate="no" class="language-go"><code v-pre class="language-go">type NamedServiceResolverActivatorFunc[T any] func(context.Context, types.Resolver) func(string) (T, error)</code></pre>
 </doc-codeblock></div>
 <p><a name="CreateNamedServiceResolverActivatorFunc"></a></p>
-<h3 id="func-createnamedserviceresolveractivatorfunc">func CreateNamedServiceResolverActivatorFunc</h3>
+<h3 id="func-createnamedserviceresolveractivatorfunc">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/resolving/named_service_resolver.go#L13" class="outbound" target="_blank"><span>CreateNamedServiceResolverActivatorFunc</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-createnamedserviceresolveractivatorfunc-code-1" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-go"><code v-pre class="language-go">func CreateNamedServiceResolverActivatorFunc[T any](ctx context.Context) NamedServiceResolverActivatorFunc[T]</code></pre>
+<pre translate="no" class="language-go"><code v-pre class="language-go">func CreateNamedServiceResolverActivatorFunc[T any]() NamedServiceResolverActivatorFunc[T]</code></pre>
 </doc-codeblock></div>
 <p>CreateNamedServiceResolverActivatorFunc creates a NamedServiceResolverActivatorFunc for resolving named services.</p>
 

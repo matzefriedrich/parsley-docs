@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/parsley-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.838159297931">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.838159668659">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Parsley Docs - &quot;features&quot; package</title>
     <meta name="title" content="Parsley Docs - \"features\" package">
-    <meta name="description" content="Official documentation for the Parsley features package.">
+    <meta name="description" content="Official documentation of the Parsley´s \"features\" package">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://matzefriedrich.github.io/parsley-docs/library/pkg/features/">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/features/">
     <meta property="og:title" content="Parsley Docs - \"features\" package">
-    <meta property="og:description" content="Official documentation for the Parsley features package.">
+    <meta property="og:description" content="Official documentation of the Parsley´s \"features\" package">
     <meta property="og:site_name" content="Parsley">
     <meta property="og:locale" content="en_US">
 
@@ -31,19 +31,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://matzefriedrich.github.io/parsley-docs/library/pkg/features/">
     <meta name="twitter:title" content="Parsley Docs - \"features\" package">
-    <meta name="twitter:description" content="Official documentation for the Parsley features package.">
+    <meta name="twitter:description" content="Official documentation of the Parsley´s \"features\" package">
 
     <!-- Alternate Markdown -->
     <link rel="alternate" type="text/markdown" href="https://matzefriedrich.github.io/parsley-docs/library/pkg/features.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../resources/css/retype.css?v=4.6.0.838159297931" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=4.6.0.838159668659" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=4.6.0.838159297931" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=4.6.0.838159668659" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=4.6.0.838159297931" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=4.6.0.838159297931" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=4.6.0.838159668659" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=4.6.0.838159668659" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -211,7 +211,7 @@
     <div><a href="../../../categories/package-reference/">Package Reference</a></div>
 </div>
 
-<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Official documentation for the Parsley features package.</div>
+<div id="retype-page-description" class="description-display text-description font-description leading-description mb-description-margin-bottom mt-description-margin-top tracking-description text-transform-description">Official documentation of the Parsley´s &quot;features&quot; package</div>
 <div id="features-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">import &quot;github.com/matzefriedrich/parsley/pkg/features&quot;</code></pre>
 </doc-codeblock></div>
@@ -220,7 +220,7 @@
 <li><doc-anchor-trigger to="#RegisterFactory">func RegisterFactory[T any](registry types.ServiceRegistry, scope types.LifetimeScope) error</doc-anchor-trigger></li>
 <li><doc-anchor-trigger to="#RegisterLazy">func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc any, scope types.LifetimeScope) error</doc-anchor-trigger></li>
 <li><doc-anchor-trigger to="#RegisterList">func RegisterList[T any](registry types.ServiceRegistry) error</doc-anchor-trigger></li>
-<li><doc-anchor-trigger to="#RegisterNamed">func RegisterNamed[T any](ctx context.Context, registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error</doc-anchor-trigger></li>
+<li><doc-anchor-trigger to="#RegisterNamed">func RegisterNamed[T any](registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error</doc-anchor-trigger></li>
 <li><doc-anchor-trigger to="#ArgMatch">type ArgMatch</doc-anchor-trigger>
 <ul>
 <li><doc-anchor-trigger to="#Exact">func Exact[T comparable](expected T) ArgMatch</doc-anchor-trigger></li>
@@ -291,55 +291,55 @@
 </li>
 </ul>
 <p><a name="RegisterFactory"></a></p>
-<h2 id="func-registerfactory">func RegisterFactory</h2>
+<h2 id="func-registerfactory">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/factory.go#L14" class="outbound" target="_blank"><span>RegisterFactory</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-registerfactory-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func RegisterFactory[T any](registry types.ServiceRegistry, scope types.LifetimeScope) error</code></pre>
 </doc-codeblock></div>
 <p>RegisterFactory registers a factory function for resolving instances of a specified type with a given lifetime scope.</p>
 <p><a name="RegisterLazy"></a></p>
-<h2 id="func-registerlazy">func RegisterLazy</h2>
+<h2 id="func-registerlazy">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/lazy_services.go#L47" class="outbound" target="_blank"><span>RegisterLazy</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-registerlazy-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func RegisterLazy[T any](registry types.ServiceRegistry, activatorFunc any, scope types.LifetimeScope) error</code></pre>
 </doc-codeblock></div>
 <p>RegisterLazy registers a lazily activated service in the service registry using the provided activator function.</p>
 <p><a name="RegisterList"></a></p>
-<h2 id="func-registerlist">func RegisterList</h2>
+<h2 id="func-registerlist">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/list_services.go#L11" class="outbound" target="_blank"><span>RegisterList</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-registerlist-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func RegisterList[T any](registry types.ServiceRegistry) error</code></pre>
 </doc-codeblock></div>
 <p>RegisterList registers a function that resolves and returns a list of services of type T with the specified registry.</p>
 <p><a name="RegisterNamed"></a></p>
-<h2 id="func-registernamed">func RegisterNamed</h2>
+<h2 id="func-registernamed">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/named_services.go#L26" class="outbound" target="_blank"><span>RegisterNamed</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <div id="func-registernamed-code-1" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-go"><code v-pre class="language-go">func RegisterNamed[T any](ctx context.Context, registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error</code></pre>
+<pre translate="no" class="language-go"><code v-pre class="language-go">func RegisterNamed[T any](registry types.ServiceRegistry, services ...registration.NamedServiceRegistrationFunc) error</code></pre>
 </doc-codeblock></div>
 <p>RegisterNamed registers named services with their respective activator functions and lifetime scopes. It supports dependency injection by associating names with service instances.</p>
 <p><a name="ArgMatch"></a></p>
-<h2 id="type-argmatch">type ArgMatch</h2>
+<h2 id="type-argmatch">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L4" class="outbound" target="_blank"><span>ArgMatch</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>ArgMatch is a function type used to match an argument against a certain condition during mock function verification.</p>
 <div id="type-argmatch-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type ArgMatch func(actual any) bool</code></pre>
 </doc-codeblock></div>
 <p><a name="Exact"></a></p>
-<h3 id="func-exact">func Exact</h3>
+<h3 id="func-exact">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L14" class="outbound" target="_blank"><span>Exact</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-exact-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func Exact[T comparable](expected T) ArgMatch</code></pre>
 </doc-codeblock></div>
 <p>Exact returns an ArgMatch that checks if a given argument is exactly equal to the specified expected value.</p>
 <p><a name="IsAny"></a></p>
-<h3 id="func-isany">func IsAny</h3>
+<h3 id="func-isany">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L7" class="outbound" target="_blank"><span>IsAny</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-isany-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func IsAny() ArgMatch</code></pre>
 </doc-codeblock></div>
 <p>IsAny always returns true, enabling it to match any given argument during mock function verification.</p>
 <p><a name="FactoryFunc"></a></p>
-<h2 id="type-factoryfunc">type FactoryFunc</h2>
+<h2 id="type-factoryfunc">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/factory.go#L11" class="outbound" target="_blank"><span>FactoryFunc</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>FactoryFunc represents a function that creates an instance of type T using a context for dependency resolution.</p>
 <div id="type-factoryfunc-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type FactoryFunc[T any] func(ctx context.Context) (T, error)</code></pre>
 </doc-codeblock></div>
 <p><a name="Interceptor"></a></p>
-<h2 id="type-interceptor">type Interceptor</h2>
+<h2 id="type-interceptor">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L10-L13" class="outbound" target="_blank"><span>Interceptor</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>Interceptor is a base interface type for defining interceptors that can be used to monitor or alter the behavior of other components.</p>
 <div id="type-interceptor-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type Interceptor interface {
@@ -348,7 +348,7 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="InterceptorBase"></a></p>
-<h2 id="type-interceptorbase">type InterceptorBase</h2>
+<h2 id="type-interceptorbase">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L25-L28" class="outbound" target="_blank"><span>InterceptorBase</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>InterceptorBase serves as a foundational structure for defining interceptors, managing essential data like name and position.</p>
 <div id="type-interceptorbase-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type InterceptorBase struct {
@@ -356,25 +356,25 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="NewInterceptorBase"></a></p>
-<h3 id="func-newinterceptorbase">func NewInterceptorBase</h3>
+<h3 id="func-newinterceptorbase">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L41" class="outbound" target="_blank"><span>NewInterceptorBase</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-newinterceptorbase-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func NewInterceptorBase(name string, position int) InterceptorBase</code></pre>
 </doc-codeblock></div>
 <p>NewInterceptorBase creates a new instance of InterceptorBase with the specified name and position for managing interceptor metadata.</p>
 <p><a name="InterceptorBase.Name"></a></p>
-<h3 id="func-interceptorbase-name">func (InterceptorBase) Name</h3>
+<h3 id="func-interceptorbase-name">func (InterceptorBase) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L31" class="outbound" target="_blank"><span>Name</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-interceptorbase-name-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (i InterceptorBase) Name() string</code></pre>
 </doc-codeblock></div>
 <p>Name retrieves the name of the interceptor, which is useful for identification and debugging purposes.</p>
 <p><a name="InterceptorBase.Position"></a></p>
-<h3 id="func-interceptorbase-position">func (InterceptorBase) Position</h3>
+<h3 id="func-interceptorbase-position">func (InterceptorBase) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L36" class="outbound" target="_blank"><span>Position</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-interceptorbase-position-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (i InterceptorBase) Position() int</code></pre>
 </doc-codeblock></div>
 <p>Position returns the position of the interceptor, helping determine its order in processing flows within a system.</p>
 <p><a name="Lazy"></a></p>
-<h2 id="type-lazy">type Lazy</h2>
+<h2 id="type-lazy">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/lazy_services.go#L40-L42" class="outbound" target="_blank"><span>Lazy</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>Lazy represents a type whose value is initialized lazily upon first access, typically to improve performance or manage resources.</p>
 <div id="type-lazy-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type Lazy[T any] interface {
@@ -382,7 +382,7 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="MethodCallContext"></a></p>
-<h2 id="type-methodcallcontext">type MethodCallContext</h2>
+<h2 id="type-methodcallcontext">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L49-L55" class="outbound" target="_blank"><span>MethodCallContext</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>MethodCallContext captures the context of a method call, including method name, parameters, and return values.</p>
 <div id="type-methodcallcontext-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type MethodCallContext struct {
@@ -390,13 +390,13 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="NewMethodCallContext"></a></p>
-<h3 id="func-newmethodcallcontext">func NewMethodCallContext</h3>
+<h3 id="func-newmethodcallcontext">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L126" class="outbound" target="_blank"><span>NewMethodCallContext</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-newmethodcallcontext-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func NewMethodCallContext(methodName string, parameterNames []string, parameters map[string]interface{}, returnNames ...string) *MethodCallContext</code></pre>
 </doc-codeblock></div>
 <p>NewMethodCallContext creates a new MethodCallContext instance with the provided method name, parameters, and return value names.</p>
 <p><a name="MethodInterceptor"></a></p>
-<h2 id="type-methodinterceptor">type MethodInterceptor</h2>
+<h2 id="type-methodinterceptor">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L17-L22" class="outbound" target="_blank"><span>MethodInterceptor</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>MethodInterceptor provides hooks to intercept method execution on a proxy object. It allows entering before method invocations, exiting after method executions, and handling errors during method execution for monitoring or altering behavior.</p>
 <div id="type-methodinterceptor-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type MethodInterceptor interface {
@@ -407,7 +407,7 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="MockBase"></a></p>
-<h2 id="type-mockbase">type MockBase</h2>
+<h2 id="type-mockbase">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L5-L7" class="outbound" target="_blank"><span>MockBase</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>MockBase is used as a foundational struct to track and manage mocked functions and their call history. It helps in testing by allowing function signature tracking and call verification.</p>
 <div id="type-mockbase-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type MockBase struct {
@@ -415,31 +415,31 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="NewMockBase"></a></p>
-<h3 id="func-newmockbase">func NewMockBase</h3>
+<h3 id="func-newmockbase">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L29" class="outbound" target="_blank"><span>NewMockBase</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-newmockbase-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func NewMockBase() MockBase</code></pre>
 </doc-codeblock></div>
 <p>NewMockBase initializes and returns an instance of MockBase, ideal for setting up and using mock functions in tests.</p>
 <p><a name="MockBase.AddFunction"></a></p>
-<h3 id="func-mockbase-addfunction">func (*MockBase) AddFunction</h3>
+<h3 id="func-mockbase-addfunction">func (*MockBase) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L36" class="outbound" target="_blank"><span>AddFunction</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-mockbase-addfunction-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (m *MockBase) AddFunction(name string, signature string)</code></pre>
 </doc-codeblock></div>
 <p>AddFunction adds a new mock function with the specified name and signature to the MockBase instance.</p>
 <p><a name="MockBase.TraceMethodCall"></a></p>
-<h3 id="func-mockbase-tracemethodcall">func (*MockBase) TraceMethodCall</h3>
+<h3 id="func-mockbase-tracemethodcall">func (*MockBase) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L45" class="outbound" target="_blank"><span>TraceMethodCall</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-mockbase-tracemethodcall-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (m *MockBase) TraceMethodCall(name string, arguments ...any)</code></pre>
 </doc-codeblock></div>
 <p>TraceMethodCall logs the invocation of a mocked function with specified arguments to facilitate function call tracking during testing. Before function calls can be tracked, the function must be registered with the MockBase instance; use AddFunction.</p>
 <p><a name="MockBase.Verify"></a></p>
-<h3 id="func-mockbase-verify">func (*MockBase) Verify</h3>
+<h3 id="func-mockbase-verify">func (*MockBase) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L56" class="outbound" target="_blank"><span>Verify</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-mockbase-verify-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (m *MockBase) Verify(name string, times TimesFunc, matches ...ArgMatch) bool</code></pre>
 </doc-codeblock></div>
 <p>Verify checks if a mock function was called a specific number of times, optionally matching provided argument conditions.</p>
 <p><a name="MockFunction"></a></p>
-<h2 id="type-mockfunction">type MockFunction</h2>
+<h2 id="type-mockfunction">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L10-L14" class="outbound" target="_blank"><span>MockFunction</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>MockFunction provides a structure to represent a mocked function in test scenarios. It allows tracking its calls and signature.</p>
 <div id="type-mockfunction-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type MockFunction struct {
@@ -447,13 +447,13 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="MockFunction.String"></a></p>
-<h3 id="func-mockfunction-string">func (MockFunction) String</h3>
+<h3 id="func-mockfunction-string">func (MockFunction) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock.go#L17" class="outbound" target="_blank"><span>String</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-mockfunction-string-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (m MockFunction) String() string</code></pre>
 </doc-codeblock></div>
 <p>String returns the signature of the mocked function if it exists, otherwise it returns the function&#x27;s name.</p>
 <p><a name="ParameterInfo"></a></p>
-<h2 id="type-parameterinfo">type ParameterInfo</h2>
+<h2 id="type-parameterinfo">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L59-L63" class="outbound" target="_blank"><span>ParameterInfo</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>ParameterInfo represents information about a method parameter, including its value, type, and name. It is used in method interception where parameters need to be inspected or logged.</p>
 <div id="type-parameterinfo-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type ParameterInfo struct {
@@ -461,31 +461,31 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="ParameterInfo.Name"></a></p>
-<h3 id="func-parameterinfo-name">func (ParameterInfo) Name</h3>
+<h3 id="func-parameterinfo-name">func (ParameterInfo) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L71" class="outbound" target="_blank"><span>Name</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-parameterinfo-name-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (p ParameterInfo) Name() string</code></pre>
 </doc-codeblock></div>
 <p>Name returns the parameter name.</p>
 <p><a name="ParameterInfo.ParameterType"></a></p>
-<h3 id="func-parameterinfo-parametertype">func (ParameterInfo) ParameterType</h3>
+<h3 id="func-parameterinfo-parametertype">func (ParameterInfo) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L81" class="outbound" target="_blank"><span>ParameterType</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-parameterinfo-parametertype-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (p ParameterInfo) ParameterType() reflect.Type</code></pre>
 </doc-codeblock></div>
 <p>ParameterType retrieves the reflected type of the parameter.</p>
 <p><a name="ParameterInfo.String"></a></p>
-<h3 id="func-parameterinfo-string">func (ParameterInfo) String</h3>
+<h3 id="func-parameterinfo-string">func (ParameterInfo) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L66" class="outbound" target="_blank"><span>String</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-parameterinfo-string-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (p ParameterInfo) String() string</code></pre>
 </doc-codeblock></div>
 <p>String returns a formatted string representation of the ParameterInfo, useful for logging and debugging purposes.</p>
 <p><a name="ParameterInfo.Value"></a></p>
-<h3 id="func-parameterinfo-value">func (ParameterInfo) Value</h3>
+<h3 id="func-parameterinfo-value">func (ParameterInfo) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L76" class="outbound" target="_blank"><span>Value</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-parameterinfo-value-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (p ParameterInfo) Value() interface{}</code></pre>
 </doc-codeblock></div>
 <p>Value returns the value of the parameter.</p>
 <p><a name="ProxyBase"></a></p>
-<h2 id="type-proxybase">type ProxyBase</h2>
+<h2 id="type-proxybase">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L138-L142" class="outbound" target="_blank"><span>ProxyBase</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>ProxyBase facilitates method interception by allowing the inclusion of multiple interceptors to target method calls. Typically used to monitor, log, or modify the behavior of an object&#x27;s method execution.</p>
 <div id="type-proxybase-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type ProxyBase struct {
@@ -493,31 +493,31 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="NewProxyBase"></a></p>
-<h3 id="func-newproxybase">func NewProxyBase</h3>
+<h3 id="func-newproxybase">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L204" class="outbound" target="_blank"><span>NewProxyBase</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-newproxybase-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func NewProxyBase[T any](target T, interceptors []MethodInterceptor) ProxyBase</code></pre>
 </doc-codeblock></div>
 <p>NewProxyBase creates a ProxyBase instance with the provided target and a sorted list of method interceptors. Useful for setting up method interception on the target object.</p>
 <p><a name="ProxyBase.InvokeEnterMethodInterceptors"></a></p>
-<h3 id="func-proxybase-invokeentermethodinterceptors">func (*ProxyBase) InvokeEnterMethodInterceptors</h3>
+<h3 id="func-proxybase-invokeentermethodinterceptors">func (*ProxyBase) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L173" class="outbound" target="_blank"><span>InvokeEnterMethodInterceptors</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-proxybase-invokeentermethodinterceptors-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (p *ProxyBase) InvokeEnterMethodInterceptors(callContext *MethodCallContext)</code></pre>
 </doc-codeblock></div>
 <p>InvokeEnterMethodInterceptors triggers the Enter method on all registered interceptors before the target method executes.</p>
 <p><a name="ProxyBase.InvokeExitMethodInterceptors"></a></p>
-<h3 id="func-proxybase-invokeexitmethodinterceptors">func (*ProxyBase) InvokeExitMethodInterceptors</h3>
+<h3 id="func-proxybase-invokeexitmethodinterceptors">func (*ProxyBase) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L196" class="outbound" target="_blank"><span>InvokeExitMethodInterceptors</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-proxybase-invokeexitmethodinterceptors-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (p *ProxyBase) InvokeExitMethodInterceptors(callContext *MethodCallContext)</code></pre>
 </doc-codeblock></div>
 <p>InvokeExitMethodInterceptors triggers the Exit method of all registered interceptors after the target method completes.</p>
 <p><a name="ProxyBase.InvokeMethodErrorInterceptors"></a></p>
-<h3 id="func-proxybase-invokemethoderrorinterceptors">func (*ProxyBase) InvokeMethodErrorInterceptors</h3>
+<h3 id="func-proxybase-invokemethoderrorinterceptors">func (*ProxyBase) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L145" class="outbound" target="_blank"><span>InvokeMethodErrorInterceptors</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-proxybase-invokemethoderrorinterceptors-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (p *ProxyBase) InvokeMethodErrorInterceptors(callContext *MethodCallContext, returnValues ...any)</code></pre>
 </doc-codeblock></div>
 <p>InvokeMethodErrorInterceptors intercepts the return values of a method, checks for errors, and triggers OnError for registered interceptors.</p>
 <p><a name="ReturnValueInfo"></a></p>
-<h2 id="type-returnvalueinfo">type ReturnValueInfo</h2>
+<h2 id="type-returnvalueinfo">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L86-L90" class="outbound" target="_blank"><span>ReturnValueInfo</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>ReturnValueInfo represents the value and type information of a method&#x27;s return value, used in method interception.</p>
 <div id="type-returnvalueinfo-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type ReturnValueInfo struct {
@@ -525,61 +525,61 @@
 }</code></pre>
 </doc-codeblock></div>
 <p><a name="NewReturnValueInfo"></a></p>
-<h3 id="func-newreturnvalueinfo">func NewReturnValueInfo</h3>
+<h3 id="func-newreturnvalueinfo">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L117" class="outbound" target="_blank"><span>NewReturnValueInfo</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-newreturnvalueinfo-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func NewReturnValueInfo(name string, value any, valueType reflect.Type) ReturnValueInfo</code></pre>
 </doc-codeblock></div>
 <p>NewReturnValueInfo creates a new ReturnValueInfo object.</p>
 <p><a name="ReturnValueInfo.Name"></a></p>
-<h3 id="func-returnvalueinfo-name">func (ReturnValueInfo) Name</h3>
+<h3 id="func-returnvalueinfo-name">func (ReturnValueInfo) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L93" class="outbound" target="_blank"><span>Name</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-returnvalueinfo-name-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (r ReturnValueInfo) Name() string</code></pre>
 </doc-codeblock></div>
 <p>Name returns the return value name.</p>
 <p><a name="ReturnValueInfo.String"></a></p>
-<h3 id="func-returnvalueinfo-string">func (ReturnValueInfo) String</h3>
+<h3 id="func-returnvalueinfo-string">func (ReturnValueInfo) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L108" class="outbound" target="_blank"><span>String</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-returnvalueinfo-string-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (r ReturnValueInfo) String() string</code></pre>
 </doc-codeblock></div>
 <p>String returns a string representation of ReturnValueInfo, formatting the value and its type for debugging purposes.</p>
 <p><a name="ReturnValueInfo.Value"></a></p>
-<h3 id="func-returnvalueinfo-value">func (ReturnValueInfo) Value</h3>
+<h3 id="func-returnvalueinfo-value">func (ReturnValueInfo) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L98" class="outbound" target="_blank"><span>Value</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-returnvalueinfo-value-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (r ReturnValueInfo) Value() interface{}</code></pre>
 </doc-codeblock></div>
 <p>Value returns the value stored in the ReturnValueInfo instance.</p>
 <p><a name="ReturnValueInfo.ValueType"></a></p>
-<h3 id="func-returnvalueinfo-valuetype">func (ReturnValueInfo) ValueType</h3>
+<h3 id="func-returnvalueinfo-valuetype">func (ReturnValueInfo) <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/proxies.go#L103" class="outbound" target="_blank"><span>ValueType</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-returnvalueinfo-valuetype-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func (r ReturnValueInfo) ValueType() reflect.Type</code></pre>
 </doc-codeblock></div>
 <p>ValueType retrieves the return value type.</p>
 <p><a name="TimesFunc"></a></p>
-<h2 id="type-timesfunc">type TimesFunc</h2>
+<h2 id="type-timesfunc">type <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L25" class="outbound" target="_blank"><span>TimesFunc</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h2>
 <p>TimesFunc is used to verify the number of times a mock function is called. It allows flexibility in call count assertions.</p>
 <div id="type-timesfunc-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">type TimesFunc func(times int) bool</code></pre>
 </doc-codeblock></div>
 <p><a name="TimesAtLeastOnce"></a></p>
-<h3 id="func-timesatleastonce">func TimesAtLeastOnce</h3>
+<h3 id="func-timesatleastonce">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L35" class="outbound" target="_blank"><span>TimesAtLeastOnce</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-timesatleastonce-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func TimesAtLeastOnce() TimesFunc</code></pre>
 </doc-codeblock></div>
 <p>TimesAtLeastOnce returns a TimesFunc that verifies if a mock function is called at least once.</p>
 <p><a name="TimesExactly"></a></p>
-<h3 id="func-timesexactly">func TimesExactly</h3>
+<h3 id="func-timesexactly">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L42" class="outbound" target="_blank"><span>TimesExactly</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-timesexactly-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func TimesExactly(n int) TimesFunc</code></pre>
 </doc-codeblock></div>
 <p>TimesExactly returns a TimesFunc that checks if the number of function calls is exactly equal to the specified value.</p>
 <p><a name="TimesNever"></a></p>
-<h3 id="func-timesnever">func TimesNever</h3>
+<h3 id="func-timesnever">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L49" class="outbound" target="_blank"><span>TimesNever</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-timesnever-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func TimesNever() TimesFunc</code></pre>
 </doc-codeblock></div>
 <p>TimesNever returns a TimesFunc that ensures the function has never been called, providing a strict zero call condition.</p>
 <p><a name="TimesOnce"></a></p>
-<h3 id="func-timesonce">func TimesOnce</h3>
+<h3 id="func-timesonce">func <a href="https://github.com/matzefriedrich/parsley/blob/main/parsley/pkg/features/mock_verify.go#L28" class="outbound" target="_blank"><span>TimesOnce</span><svg xmlns="http://www.w3.org/2000/svg" class="retype-outbound-trigger docs-icon ml-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"/></g></svg></a></h3>
 <div id="func-timesonce-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-go"><code v-pre class="language-go">func TimesOnce() TimesFunc</code></pre>
 </doc-codeblock></div>
@@ -593,8 +593,8 @@
                         <span class="mr-2"><a href="../../../tags/packages/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
                     <span>packages</span>
                 </a></span>
-                        <span class="mr-2"><a href="../../../tags/reference/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                    <span>reference</span>
+                        <span class="mr-2"><a href="../../../tags/features/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                    <span>features</span>
                 </a></span>
                     </span>
                 
