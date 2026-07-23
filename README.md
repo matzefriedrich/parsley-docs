@@ -15,44 +15,60 @@ The documentation is hosted at: [https://matzefriedrich.github.io/parsley-docs](
 
 ## Usage
 
+A `Makefile` is provided to simplify common tasks.
+
+### Initialization
+
+Install the required tools:
+
+```bash
+make init
+```
+
+Note: This will install `gomarkdoc` to a local `bin/` folder. `retype` should be installed globally as a dotnet tool.
+
+### Retype Commands
+
 Retype comes in different flavors; see [https://retype.com/guides/installation/](https://retype.com/guides/installation/) for further information on available installation options.
 
 ```bash
 dotnet tool install retypeapp --global
 ```
 
-Install `gomarkdoc`:
+Run the following command to build and preview the documentation locally using Retype:
 
 ```bash
-go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
+make start
+```
+
+To build the documentation:
+
+```bash
+make build
 ```
 
 ### Updating Package Documentation
 
-To update the Go package documentation in `library/pkg/`, run the provided script. This requires `gomarkdoc` to be installed and the `parsley` source repository to be present in the parent directory (`../parsley`).
+To update the Go package documentation in `library/pkg/`, run:
 
 ```bash
-./update-package-docs.sh
+make update-docs
 ```
 
-### Building Locally
+This requires the `parsley` source repository to be present in the parent directory (`../parsley`).
 
-Run the following command to build and preview the documentation locally using Retype:
-
-```bash
-retype start
-```
+### Docker
 
 You can also build a Docker image of the documentation site to view it locally:
 
 ```bash
-docker build --rm -t parsley-docs -f Dockerfile .
+make docker-build
 ```
 
 Run the documentation using the following command:
 
 ```bash
-docker run --rm -p 27821:80 parsley-docs
+make docker-run
 ```
 
 ---

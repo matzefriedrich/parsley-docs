@@ -1,7 +1,9 @@
 .idea/
+.retype/
 .vscode/
-
 .junie/*
+
 !.junie/AGENTS.md
 
 articles/
+bin/
