@@ -13,7 +13,7 @@ import (
 func main() {
 
 	registry := registration.NewServiceRegistry()
-	registry.Register(newClient, types.LifetimeTransient)
+	_ = registry.Register(newClient, types.LifetimeTransient)
 
 	resolver := resolving.NewResolver(registry)
 	ctx := resolving.NewScopedContext(context.Background())

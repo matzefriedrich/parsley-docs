@@ -12,7 +12,7 @@ import (
 func main() {
 
 	registry := registration.NewServiceRegistry()
-	registration.RegisterInstance[internal.DataService](registry, internal.NewLocalDataService())
+	_ = registration.RegisterInstance[internal.DataService](registry, internal.NewLocalDataService())
 
 	resolver := resolving.NewResolver(registry)
 	resolverContext := resolving.NewScopedContext(context.Background())

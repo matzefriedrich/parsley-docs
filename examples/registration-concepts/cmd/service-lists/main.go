@@ -15,11 +15,11 @@ func main() {
 
 	registry := registration.NewServiceRegistry()
 
-	registry.Register(internal.NewLocalDataService, types.LifetimeTransient)
-	registry.Register(internal.NewRemoteDataService, types.LifetimeTransient)
-	features.RegisterList[internal.DataService](registry)
+	_ = registry.Register(internal.NewLocalDataService, types.LifetimeTransient)
+	_ = registry.Register(internal.NewRemoteDataService, types.LifetimeTransient)
+	_ = features.RegisterList[internal.DataService](registry)
 
-	registry.Register(newAggregator, types.LifetimeTransient)
+	_ = registry.Register(newAggregator, types.LifetimeTransient)
 
 	resolver := resolving.NewResolver(registry)
 	ctx := resolving.NewScopedContext(context.Background())

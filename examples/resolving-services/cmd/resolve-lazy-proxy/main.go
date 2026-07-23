@@ -13,7 +13,7 @@ import (
 func main() {
 
 	registry := registration.NewServiceRegistry()
-	features.RegisterLazy[internal.Greeter](registry, internal.NewGreeterFactory("Hi"), types.LifetimeTransient)
+	_ = features.RegisterLazy[internal.Greeter](registry, internal.NewGreeterFactory("Hi"), types.LifetimeTransient)
 
 	resolver := resolving.NewResolver(registry)
 	ctx := resolving.NewScopedContext(context.Background())

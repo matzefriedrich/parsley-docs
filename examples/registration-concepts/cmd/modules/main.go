@@ -14,7 +14,7 @@ func main() {
 	ctx := context.Background()
 
 	registry := registration.NewServiceRegistry()
-	registry.RegisterModule(greeterModule)
+	_ = registry.RegisterModule(greeterModule)
 
 	resolver := resolving.NewResolver(registry)
 	resolverContext := resolving.NewScopedContext(ctx)
@@ -23,6 +23,6 @@ func main() {
 }
 
 func greeterModule(registry types.ServiceRegistry) error {
-	registry.Register(internal.NewGreeterFactory("Hi"), types.LifetimeTransient)
+	_ = registry.Register(internal.NewGreeterFactory("Hi"), types.LifetimeTransient)
 	return nil
 }

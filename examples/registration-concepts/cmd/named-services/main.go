@@ -17,7 +17,7 @@ func main() {
 
 	registry := registration.NewServiceRegistry()
 
-	_ = features.RegisterNamed[internal.DataService](ctx, registry,
+	_ = features.RegisterNamed[internal.DataService](registry,
 		registration.NamedServiceRegistration("remote", internal.NewRemoteDataService, types.LifetimeTransient),
 		registration.NamedServiceRegistration("local", internal.NewLocalDataService, types.LifetimeTransient))
 

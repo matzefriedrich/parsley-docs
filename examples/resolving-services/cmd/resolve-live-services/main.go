@@ -14,7 +14,7 @@ func main() {
 
 	registry := registration.NewServiceRegistry()
 
-	registry.Register(func() internal.Greeter {
+	_ = registry.Register(func() internal.Greeter {
 		factory := internal.NewGreeterFactory("Hi")
 		return factory()
 	}, types.LifetimeTransient)
