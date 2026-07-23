@@ -4,7 +4,7 @@ This repository contains the source files for the [Parsley](https://github.com/m
 
 Parsley is an easy-to-use, reflection-based dependency injection package that fits seamlessly into any Go application.
 
-## Live documentation
+## Live Documentation
 
 The documentation is hosted at: [https://matzefriedrich.github.io/parsley-docs](https://matzefriedrich.github.io/parsley-docs)
 
@@ -18,18 +18,18 @@ The documentation is hosted at: [https://matzefriedrich.github.io/parsley-docs](
 Retype comes in different flavors; see [https://retype.com/guides/installation/](https://retype.com/guides/installation/) for further information on available installation options.
 
 ```bash
-$ dotnet tool install retypeapp --global
+dotnet tool install retypeapp --global
 ```
 
 Install `gomarkdoc`:
 
 ```bash
-$ go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
+go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
 ```
 
 ### Updating Package Documentation
 
-To update the Go package documentation in `library/pkg/`, you can run the provided script. This requires `gomarkdoc` to be installed and the `parsley` source repository to be present in the parent directory (`../parsley`).
+To update the Go package documentation in `library/pkg/`, run the provided script. This requires `gomarkdoc` to be installed and the `parsley` source repository to be present in the parent directory (`../parsley`).
 
 ```bash
 ./update-package-docs.sh
@@ -46,13 +46,13 @@ retype start
 You can also build a Docker image of the documentation site to view it locally:
 
 ```bash
-$ docker build --rm -t parsley-docs -f Dockerfile .
+docker build --rm -t parsley-docs -f Dockerfile .
 ```
 
 Run the documentation using the following command:
 
 ```bash
-$ docker run --rm -p 27821:80 parsley-docs
+docker run --rm -p 27821:80 parsley-docs
 ```
 
 ---

@@ -1,6 +1,6 @@
 ---
 meta:
-  title: Parsley - Register services via Constructor Functions
+  title: Parsley - Register Services via Constructor Functions
 description: Register services in Parsley using constructor functions to automatically resolve and inject dependencies into your application.
 icon: file
 label: Register Constructor Functions
@@ -11,7 +11,7 @@ category:
 ---
 # Register Constructor Functions
 
-In Parsley, the fundamental way to register services is by providing a constructor function to the service registry. This method enables you to create instances of your services in a controlled manner and inject them into your application as needed.
+In Parsley, the fundamental way to register services is by providing a constructor function to the service registry. This enables you to create instances of your services in a controlled manner and inject them into your application as needed.
 
 ### What Is a Constructor Function?
 
